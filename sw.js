@@ -1,5 +1,5 @@
 /* 力训 · Service Worker —— 让 App 可安装、可离线 */
-const CACHE = 'lixun-v3';
+const CACHE = 'lixun-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -10,20 +10,28 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(
-    caches.open(CACHE)
-      .then((c) => c.addAll(ASSETS))
-      .then(() => self.skipWaiting())
-      .catch((err) => console.warn('[SW] 预缓存部分失败', err))
-  );
+  e.waitUntil((async () => {
+    const c = await caches.open(CACHE);
+    // 逐个缓存：任何一个失败都不该让整个安装失败
+    // （caches.addAll 是原子的，一个 404 就全盘失败且没有提示）
+    await Promise.all(ASSETS.map(async (url) => {
+      try {
+        const resp = await fetch(url, { cache: 'reload' });
+        if (resp && resp.ok) await c.put(url, resp);
+      } catch (err) {
+        // 忽略单个资源失败，其余资源照常缓存
+      }
+    }));
+    await self.skipWaiting();
+  })());
 });
 
 self.addEventListener('activate', (e) => {
-  e.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
-      .then(() => self.clients.claim())
-  );
+  e.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)));
+    await self.clients.claim();
+  })());
 });
 
 self.addEventListener('fetch', (e) => {
