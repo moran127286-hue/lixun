@@ -1,0 +1,11013 @@
+{
+ "version": 2,
+ "planName": "531 计划（19周6轮 + 13周4轮）",
+ "format": "blocks",
+ "sourceFile": "531计划.xlsx",
+ "createdAt": "2026-11-02T16:31:54.272Z",
+ "weeks": [
+  {
+   "label": "Week 1",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 117
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 135
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 153
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 90
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 64.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 74.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 84.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 49.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 128.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 148.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 168.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 99
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 41
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 47.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 53.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 31.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "第三轮",
+       "sets": null,
+       "reps": "TM",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": null,
+       "reps": "190",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": null,
+       "reps": "104",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": null,
+       "reps": "208",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": null,
+       "reps": "68",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      }
+     ]
+    }
+   ],
+   "week": 1
+  },
+  {
+   "label": "Week 2",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 126
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 144
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 162
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 90
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 69.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 79.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 89.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 49.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 138.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 158.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 178.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 99
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 44.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 50.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 56.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 31.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 2
+  },
+  {
+   "label": "Week 3",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 135
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 153
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 171
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 90
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 74.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 84.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 94.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 49.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 148.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 168.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 188.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 99
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 47.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 53.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 59.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 31.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 3
+  },
+  {
+   "label": "Week 1（2）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 122
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 140
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 158
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 120.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 66.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 76.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 86.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 66
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 133.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 153.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 173.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 132
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 43.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 49.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 56.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 42.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "第四轮",
+       "sets": null,
+       "reps": "TM",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": null,
+       "reps": "195",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": null,
+       "reps": "107",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": null,
+       "reps": "213",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": null,
+       "reps": "71",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      }
+     ]
+    }
+   ],
+   "week": 4
+  },
+  {
+   "label": "Week 2（2）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 131
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 149
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 167
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 120.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 71.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 81.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 91.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 66
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 143.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 163.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 183.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 132
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 46.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 52.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 59.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 42.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 5
+  },
+  {
+   "label": "Week 3（2）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 140
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 158
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 176
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 120.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 76.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 86.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 96.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 66
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 153.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 173.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 193.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 132
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 49.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 56.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 62.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 42.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 6
+  },
+  {
+   "label": "Week 1（3）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 123.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 142.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 161.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 152
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 67.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 78
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 88.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 83.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 135.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 156
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 176.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 166.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 44.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 51
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 57.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 54.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "第五轮",
+       "sets": null,
+       "reps": "TM",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": null,
+       "reps": "200",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": null,
+       "reps": "109",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": null,
+       "reps": "218",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": null,
+       "reps": "73",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      }
+     ]
+    }
+   ],
+   "week": 7
+  },
+  {
+   "label": "Week 2（3）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 133
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 152
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 171
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 152
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 72.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 83.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 93.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 83.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 145.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 166.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 187.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 166.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 47.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 54.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 61.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 54.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 8
+  },
+  {
+   "label": "Week 3（3）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 142.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 161.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 180.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 152
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 78
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 88.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 98.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 83.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 156
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 176.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 197.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 166.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 51
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 57.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 64.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 54.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 9
+  },
+  {
+   "label": "Week 1（4）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 126.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 146.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 165.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 156
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 69.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 79.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 90.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 85.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 138.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 159.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 181.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 170.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 45.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 52.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 59.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 56.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "第六轮",
+       "sets": null,
+       "reps": "TM",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": null,
+       "reps": "205",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": null,
+       "reps": "112",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": null,
+       "reps": "223",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": null,
+       "reps": "76",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      }
+     ]
+    }
+   ],
+   "week": 10
+  },
+  {
+   "label": "Week 2（4）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 136.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 156
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 175.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 156
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 74.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 85.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 95.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 85.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 149.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 170.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 191.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 170.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 49.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 56.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 63.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 56.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 11
+  },
+  {
+   "label": "Week 3（4）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 146.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 165.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 185.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 156
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 79.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 90.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 101.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 85.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 159.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 181.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 202.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 170.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 52.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 59.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 67
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 56.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 12
+  },
+  {
+   "label": "Week 1（5）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 130
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 150
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 170
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 180
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 70.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 81.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 92.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 98.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 141.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 163.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 185.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 196.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 47.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 54.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 62.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 65.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "说明：",
+       "sets": null,
+       "reps": null,
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "bbb：boring but big（枯燥但是有效）动作内容与当天主项一致",
+       "sets": null,
+       "reps": null,
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "辅助：该计划辅助可以自行更换自己喜欢的动作",
+       "sets": null,
+       "reps": null,
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "X+：极限次数组，即该组rpe在9-9.5左右",
+       "sets": null,
+       "reps": null,
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "MRS：表示第一组达到目标次数，后面尽力即可",
+       "sets": null,
+       "reps": null,
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "该表格所有重量均向下取整即可，单位为kg",
+       "sets": null,
+       "reps": null,
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "该计划每两轮结束deload一周",
+       "sets": null,
+       "reps": null,
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      }
+     ]
+    }
+   ],
+   "week": 13
+  },
+  {
+   "label": "Week 2（5）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 140
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 160
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 180
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 180
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 76.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 87.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 98.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 98.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 152.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 174.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 196.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 196.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 51.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 58.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 65.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 65.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 14
+  },
+  {
+   "label": "Week 3（5）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 150
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 170
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 190
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 180
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 81.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 92.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 103.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 98.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 163.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 185.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 207.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 196.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 54.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 62.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 69.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 65.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 15
+  },
+  {
+   "label": "Week 1（6）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 133.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 153.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 174.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 184.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 72.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 83.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 94.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 100.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 145
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 167.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 189.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 200.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 49.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 56.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 64.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 68
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 16
+  },
+  {
+   "label": "Week 2（6）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 143.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 164
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 184.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 184.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 78.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 89.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 100.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 100.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 156.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 178.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 200.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 200.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 52.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 60.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 68
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 68
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 17
+  },
+  {
+   "label": "Week 3（6）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 153.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 174.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 194.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 184.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 83.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 94.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 105.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 100.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 167.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 189.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 211.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 200.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高杠深蹲",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "杠铃划船",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 56.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 64.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 71.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 68
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 18
+  },
+  {
+   "label": "Week 1",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 111.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 128.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 145.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 85.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 90
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "kg",
+        "value": 59
+       },
+       "rest": null,
+       "note": "原 130lb · MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "kg",
+        "value": 84.8
+       },
+       "rest": null,
+       "note": "原 187lb · MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 61.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 70.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 80.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 47.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 60
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 50
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 20
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "kg",
+        "value": 20
+       },
+       "rest": null,
+       "note": "原 44lb · MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 105.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 121.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 137.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 81
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 59
+       },
+       "rest": null,
+       "note": "原 130lb · MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "kg",
+        "value": 59
+       },
+       "rest": null,
+       "note": "原 130lb · MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "kg",
+        "value": 54.9
+       },
+       "rest": null,
+       "note": "原 121lb · MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 43.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 50.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 57.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 33.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "kg",
+        "value": 90
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "kg",
+        "value": 7.5
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "kg",
+        "value": 15
+       },
+       "rest": null,
+       "note": "原 33lb · MRS 每组做到极限"
+      },
+      {
+       "name": "第三轮",
+       "sets": null,
+       "reps": "TM",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": null,
+       "reps": "181",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": null,
+       "reps": "100",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": null,
+       "reps": "172",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": null,
+       "reps": "73",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      }
+     ]
+    }
+   ],
+   "week": 19
+  },
+  {
+   "label": "Week 2",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 119.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 136.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 153.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 85.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 66.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 75.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 85.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 47.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 113.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 129.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 145.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 81
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 47.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 54
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 60.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 33.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 20
+  },
+  {
+   "label": "Week 3",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 128.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 145.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 162.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 102.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 70.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 80.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 89.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 56.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 121.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 137.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 153.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 97.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 50.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 57.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 64.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 40.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 21
+  },
+  {
+   "label": "Week 1（2）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 116.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 133.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 150.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 105.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 63.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 73.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 82.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 58.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 110.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 126.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 142.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 100.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 46.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 53.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 59.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 42
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "第四轮",
+       "sets": null,
+       "reps": "TM",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": null,
+       "reps": "186",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": null,
+       "reps": "102",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": null,
+       "reps": "177",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": null,
+       "reps": "75",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": null
+      }
+     ]
+    }
+   ],
+   "week": 22
+  },
+  {
+   "label": "Week 2（2）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 124.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 141.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 158.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 123.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 68.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 78.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 87.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 67.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 118.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 134.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 150.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 116.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 49.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 56.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 63.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 49
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 23
+  },
+  {
+   "label": "Week 3（2）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 133.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "RM:",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 150.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "AMRAP:",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 167.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 123.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 73.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 82.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 92.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 67.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 126.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 142.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 158.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 116.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 53.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 59.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 66.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "10",
+       "load": {
+        "type": "kg",
+        "value": 49
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 24
+  },
+  {
+   "label": "Week 1（3）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 117.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 135.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 153.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 144.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 64.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 74.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 84.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 79.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 111.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 129
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 146.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 137.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 47.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 54.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 61.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 58
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 25
+  },
+  {
+   "label": "Week 2（3）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 126.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 144.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 162.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 144.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 69.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 79.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 89.6
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 79.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 120.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 137.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 154.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 137.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 50.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 58
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 65.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 58
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 26
+  },
+  {
+   "label": "Week 3（3）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 135.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 153.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 172
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 162.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 74.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 84.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 94.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 89.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 129
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 146.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 163.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 154.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 54.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 61.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 68.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 65.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 27
+  },
+  {
+   "label": "Week 1（4）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 120.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 139.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 158.1
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 167.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 66.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 76.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 86.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 91.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 115.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 132.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 150.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 159.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 48.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 56.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 63.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 67.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 28
+  },
+  {
+   "label": "Week 2（4）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 130.2
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 148.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 167.4
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 186
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 71.4
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 81.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 91.8
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 102
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 123.9
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 141.6
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 159.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 177
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 52.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 60
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 67.5
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 75
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 29
+  },
+  {
+   "label": "Week 3（4）",
+   "sessions": [
+    {
+     "day": "训练日一",
+     "title": null,
+     "items": [
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 139.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 158.1
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "深蹲",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 176.7
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 186
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉变式",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿屈伸",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "腿弯举",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日二",
+     "title": null,
+     "items": [
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 76.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 86.7
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "卧推",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 96.9
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 102
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "窄距卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "上斜卧推",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "哑铃推举",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "三头训练",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日三",
+     "title": null,
+     "items": [
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 132.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 150.5
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "硬拉",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 168.2
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 177
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "高位下拉",
+       "sets": 3,
+       "reps": "10",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "坐姿划船",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "器械下拉",
+       "sets": 3,
+       "reps": "12",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    },
+    {
+     "day": "训练日四",
+     "title": null,
+     "items": [
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "5",
+       "load": {
+        "type": "kg",
+        "value": 56.3
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "3",
+       "load": {
+        "type": "kg",
+        "value": 63.8
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "实力举",
+       "sets": 1,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 71.3
+       },
+       "rest": null,
+       "note": "最后一组 AMRAP"
+      },
+      {
+       "name": "bbb",
+       "sets": 5,
+       "reps": "1",
+       "load": {
+        "type": "kg",
+        "value": 75
+       },
+       "rest": null,
+       "note": null
+      },
+      {
+       "name": "弹弓卧推",
+       "sets": 3,
+       "reps": "8",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "侧平举",
+       "sets": 4,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      },
+      {
+       "name": "面拉",
+       "sets": 3,
+       "reps": "15",
+       "load": {
+        "type": "none"
+       },
+       "rest": null,
+       "note": "MRS 每组做到极限"
+      }
+     ]
+    }
+   ],
+   "week": 30
+  }
+ ],
+ "warnings": []
+}

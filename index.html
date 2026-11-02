@@ -80,6 +80,33 @@
   .note{font-size:12px; color:var(--warn); margin-top:8px; background:#2a2110; border-radius:8px; padding:5px 9px;}
 
   .sets{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
+
+  .setrow{display:flex; align-items:center; gap:8px; margin-top:8px;}
+  .setrow .sid{width:18px; flex:0 0 auto; text-align:center; font-size:12px; color:var(--dim); font-variant-numeric:tabular-nums;}
+  .setrow .sin{
+    flex:1 1 0; min-width:0; padding:10px 6px; text-align:center;
+    border-radius:9px; background:var(--bg3); border:1px solid var(--line);
+    color:var(--txt); font-size:15px; font-variant-numeric:tabular-nums;
+    font-family:inherit; -moz-appearance:textfield;
+  }
+  .setrow .sin::-webkit-outer-spin-button,
+  .setrow .sin::-webkit-inner-spin-button{-webkit-appearance:none; margin:0;}
+  .setrow .sin:focus{outline:none; border-color:var(--accent);}
+  .setrow .sx{color:var(--dim); font-size:12px; flex:0 0 auto;}
+  .setrow .unit{color:var(--dim); font-size:11px; flex:0 0 auto; width:14px;}
+  .setrow .schk{
+    flex:0 0 auto; width:46px; height:40px; border-radius:10px;
+    background:var(--bg3); border:1.5px solid var(--line); color:var(--dim);
+    font-size:16px; font-weight:800; cursor:pointer;
+  }
+  .setrow .schk:active{transform:scale(.94);}
+  .setrow .schk.on{background:var(--okbg); border-color:var(--ok); color:#3fb950;}
+  .setrow.on .sin{background:#121a15; border-color:#1c3a25;}
+  .setrow .schk.more{width:30px; background:transparent; border-color:transparent; color:var(--dim); font-size:14px; font-weight:700;}
+  .setnote{font-size:11px; color:var(--dim); margin:-2px 0 0 26px; padding:3px 0 2px;}
+  .setnote b{color:var(--rpe); font-weight:700;}
+  .lasttime{font-size:11px; color:#6b7684; margin-top:6px; background:var(--bg3); border-radius:8px; padding:5px 9px; display:block;}
+  .lasttime b{color:#9db0c4; font-weight:700;}
   .setbtn{
     flex:1 1 0; min-width:30px; max-width:56px; height:42px; border-radius:11px;
     background:var(--bg3); border:1.5px solid var(--line); color:var(--dim);
@@ -181,8 +208,33 @@
     border:1px solid var(--line); color:var(--txt); font-size:14px; font-family:inherit;
   }
   dialog textarea{resize:vertical; min-height:52px;}
+  .sheet textarea, .sheetbody textarea{
+    width:100%; padding:10px 11px; border-radius:9px; background:var(--bg3);
+    border:1px solid var(--line); color:var(--txt); font-size:14px; font-family:inherit;
+    min-height:58px; resize:vertical;
+  }
+  .sheet select{ color:var(--txt); font-family:inherit; }
   dialog .acts{display:flex; gap:10px; margin-top:18px;}
   .empty{text-align:center; color:var(--dim); padding:40px 0; font-size:13px;}
+
+  .stepper{display:flex; align-items:center; gap:12px;}
+  .stepbtn{
+    width:52px; height:52px; border-radius:14px; background:var(--bg3);
+    border:1px solid var(--line); color:var(--txt); font-size:26px; font-weight:700; cursor:pointer;
+  }
+  .stepbtn:active{background:var(--bg4);}
+  .stepval{min-width:72px; text-align:center; font-size:30px; font-weight:800; font-variant-numeric:tabular-nums;}
+  .warmtag{color:var(--warn); font-weight:700;}
+  .setrow.warm .sin{border-color:#4a3a12; background:#241d0e;}
+  .librow{display:flex; align-items:flex-start; gap:8px; padding:11px 0; border-bottom:1px solid var(--line);}
+  .librow:last-child{border-bottom:0; padding-bottom:0;}
+  .libmain{flex:1; min-width:0; cursor:pointer;}
+  .libname{font-size:14px; font-weight:700; display:flex; align-items:center; gap:6px; flex-wrap:wrap; line-height:1.3;}
+  .libmeta{font-size:11px; color:var(--dim); margin-top:3px; font-variant-numeric:tabular-nums;}
+  .libact{display:flex; gap:6px; flex:0 0 auto; align-items:center; padding-top:2px;}
+  .mini{padding:6px 9px; border-radius:8px; background:var(--bg3); border:1px solid var(--line); color:var(--dim); font-size:11px; font-weight:700; cursor:pointer;}
+  .mini.danger{color:var(--danger); border-color:#4a2020;}
+  .badge-now{background:var(--okbg); color:#3fb950; border-radius:6px; padding:1px 7px; font-size:10px; font-weight:700; flex:0 0 auto;}
   .toast{
     position:fixed; left:50%; bottom:calc(120px + var(--safe-b)); transform:translateX(-50%) translateY(20px);
     background:#1f2630; color:var(--txt); border:1px solid var(--line);
@@ -204,9 +256,6 @@
   <div class="bar"><i id="progBar"></i></div>
 </header>
 
-<div class="scrollx" id="weekBar"></div>
-<div class="scrollx dayrow" id="dayBar"></div>
-
 <main id="main"></main>
 
 <div class="rest" id="rest">
@@ -222,7 +271,7 @@
 </div>
 
 <nav class="bottom">
-  <button id="navImport"><span class="ico">📥</span>导入</button>
+  <button id="navPlan"><span class="ico">📋</span>计划</button>
   <button id="navRefs"><span class="ico">⚖️</span>参考重量</button>
   <button id="navEdit"><span class="ico">✏️</span>编辑</button>
   <button id="navSettings"><span class="ico">⚙️</span>设置</button>
@@ -275,6 +324,159 @@
   </div>
 </div>
 
+<!-- 计划面板 -->
+<div class="sheet" id="planSheet">
+  <div class="sheethead">
+    <h3>计划</h3>
+    <button class="x" id="planClose">完成</button>
+  </div>
+  <div class="sheetbody">
+    <div class="card">
+      <h4>计划目录</h4>
+      <div id="libList"></div>
+      <button class="addbtn" id="btnNewPlan" style="margin-top:10px">+ 新建空白计划</button>
+    </div>
+    <div class="card">
+      <h4>导入新计划</h4>
+      <p class="hint" id="planMeta"></p>
+      <div class="rowbtns">
+        <button class="btn primary" id="btnImportXlsx">选择 Excel 文件</button>
+      </div>
+      <p class="hint" style="margin-top:10px">
+        安卓提示：微信/QQ 收到的文件常存在受限目录，App 里选不到。<br>
+        先在微信里点文件 → <b>⋯ → 保存到手机 / 用其他应用打开</b>，存到「下载」目录，再回来选。
+      </p>
+    </div>
+
+    <div class="card">
+      <h4>网站计划库</h4>
+      <p class="hint" id="syncHint">从网站拉取最新发布的计划，点「加入」即可进计划目录</p>
+      <button class="btn" id="btnSync">从网站同步</button>
+      <div id="syncList" style="margin-top:10px"></div>
+    </div>
+
+    <div class="card">
+      <h4>检查清单</h4>
+      <p class="hint" id="reviewHint"></p>
+      <button class="btn" id="btnOpenReview">查看待确认项</button>
+    </div>
+  </div>
+</div>
+
+<!-- 检查清单面板 -->
+<div class="sheet" id="reviewSheet">
+  <div class="sheethead">
+    <h3>检查清单</h3>
+    <button class="x" id="reviewClose">完成</button>
+  </div>
+  <div class="sheetbody">
+    <p class="hint" id="reviewTop"></p>
+    <div class="card" id="reviewList"></div>
+  </div>
+</div>
+
+<!-- 选择训练日 -->
+<div class="sheet" id="pickSheet">
+  <div class="sheethead">
+    <h3>切换训练日</h3>
+    <button class="x" id="pickClose">完成</button>
+  </div>
+  <div class="sheetbody">
+    <div class="card">
+      <h4>周</h4>
+      <div class="scrollx" id="pickWeeks" style="padding:0"></div>
+    </div>
+    <div class="card">
+      <h4>训练日</h4>
+      <div id="pickDays"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 编辑动作（全屏） -->
+<div class="sheet" id="editSheet">
+  <div class="sheethead">
+    <button class="x" id="edBack">← 返回</button>
+    <h3 id="edTitle" style="text-align:center">编辑动作</h3>
+    <button class="x" id="edSave" style="background:var(--accent);border-color:var(--accent);color:#fff">保存</button>
+  </div>
+  <div class="sheetbody">
+    <div class="card">
+      <h4>动作</h4>
+      <div class="field"><label>名称</label><input id="eName" type="text" style="width:190px;text-align:left"></div>
+    </div>
+
+    <div class="card">
+      <h4>组数</h4>
+      <div class="stepper">
+        <button class="stepbtn" id="edMinus">−</button>
+        <div class="stepval" id="edSets">3</div>
+        <button class="stepbtn" id="edPlus">+</button>
+        <span class="hint" style="margin:0 0 0 4px">组</span>
+      </div>
+      <div class="rowbtns" style="margin-top:14px">
+        <button class="btn" id="edWarm">热身组 <span id="edWarmN">0</span></button>
+        <button class="btn" id="edHist">动作历史</button>
+      </div>
+      <p class="hint">点「热身组」可循环设置前几组是热身（不算正式组）</p>
+    </div>
+
+    <div class="card">
+      <h4>重量</h4>
+      <div class="field"><label>类型</label>
+        <select id="eType" style="width:132px;padding:9px 10px;border-radius:9px;background:var(--bg3);border:1px solid var(--line);color:var(--txt);font-size:14px">
+          <option value="percent1RM">1RM 百分比</option>
+          <option value="rm">RM 次数</option>
+          <option value="kg">固定 kg</option>
+          <option value="kgRange">kg 区间</option>
+          <option value="rpe">RPE</option>
+          <option value="bodyweight">自重</option>
+          <option value="amap">力竭</option>
+          <option value="timed">计时</option>
+          <option value="none">无</option>
+        </select>
+      </div>
+      <div class="field" id="eValueField"><label id="eValueLabel">数值</label><input id="eValue" type="text"></div>
+      <div class="rowbtns">
+        <button class="btn" id="edWMinus">− 2.5</button>
+        <button class="btn" id="edWPlus">+ 2.5</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>次数 / 休息 / 备注</h4>
+      <div class="field"><label>次数</label><input id="eReps" type="text"></div>
+      <div class="field"><label>组休（秒）</label><input id="eRest" type="number" step="5"></div>
+      <div class="fl"><label>备注</label><textarea id="eNote"></textarea></div>
+    </div>
+
+    <button class="btn danger" id="edDelete" style="width:100%">删除这个动作</button>
+  </div>
+</div>
+
+<!-- 动作历史 -->
+<div class="sheet" id="histSheet">
+  <div class="sheethead">
+    <button class="x" id="histBack">← 返回</button>
+    <h3 style="text-align:center" id="histTitle">动作历史</h3>
+    <span style="width:64px"></span>
+  </div>
+  <div class="sheetbody">
+    <div class="card" id="histList"></div>
+  </div>
+</div>
+
+<!-- 每组备注 / RPE -->
+<dialog id="setDlg">
+  <h3 id="setDlgTitle">这一组</h3>
+  <div class="fl"><label>RPE 主观强度（1-10，可留空）</label><input id="sRpe" type="number" min="1" max="10" step="0.5"></div>
+  <div class="fl"><label>备注（肩胛收紧 / 最后一下卡住 / 换窄握…）</label><textarea id="sNote"></textarea></div>
+  <div class="acts">
+    <button class="btn" id="sCancel">取消</button>
+    <button class="btn primary" id="sSave">保存</button>
+  </div>
+</dialog>
+
 <!-- 条目编辑 -->
 <dialog id="itemDlg">
   <h3 id="itemDlgTitle">编辑动作</h3>
@@ -313,11 +515,207 @@
   </div>
 </dialog>
 
-<input type="file" id="fileInput" accept=".xlsx,.xlsm" style="display:none">
+<input type="file" id="fileInput" style="display:none">
 <div class="toast" id="toast"></div>
 
 <script>
 const DEFAULT_PLAN = {"version":2,"planName":"三乐卧推","format":"matrix","sourceFile":"三乐卧推4周+4周 入门.xlsx","createdAt":"2026-11-02T16:03:01.610Z","weeks":[{"label":"周 1","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":6,"reps":"3","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":4,"reps":"3","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"中握距（窄推）","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"上斜卧推、坐姿实力推（增肌训练）","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null},{"name":"双杠（尽量负重）","sets":5,"reps":"5","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":5,"reps":"4","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null}]}],"week":1},{"label":"周 2","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"杠铃卧推","sets":7,"reps":"2","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"腰间俯卧撑","sets":null,"reps":null,"load":{"type":"bodyweight"},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"5","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":5,"reps":"4","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"双杠（尽量负重）","sets":6,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]}],"week":2},{"label":"周 3","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"腰间俯卧撑","sets":null,"reps":null,"load":{"type":"bodyweight"},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":4,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"杠铃卧推","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"中握距（窄推）","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"6","load":{"type":"percent1RM","value":0.65},"rest":null,"note":null}]}],"week":3},{"label":"周 4","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"4","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":6,"reps":"2","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null},{"name":"双杠（负重）","sets":6,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"杠铃卧推","sets":3,"reps":"3","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"5","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"双杠（负重）","sets":5,"reps":"7","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"中握距（窄推）","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]}],"week":4},{"label":"W1","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":4,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"中握距（窄推）","sets":3,"reps":"5","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"3","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null},{"name":"杠铃卧推","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":5,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"双杠（负重）","sets":6,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]}],"week":5},{"label":"W2","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":8,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"腰间俯卧撑","sets":null,"reps":null,"load":{"type":"bodyweight"},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"杠铃卧推","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"7","load":{"type":"percent1RM","value":0.65},"rest":null,"note":null},{"name":"双杠（负重）","sets":5,"reps":"6","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null}]}],"week":6},{"label":"W3","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":6,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"2","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":5,"reps":"5","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":3,"reps":"5","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":4,"reps":"5","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"杠铃卧推","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]}],"week":7},{"label":"W4","sessions":[{"day":"星期一","title":null,"items":[{"name":"双杠（负重）","sets":5,"reps":"7","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":8,"reps":"2","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null},{"name":"杠铃卧推","sets":3,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"双杠（负重）","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]}],"week":8}],"warnings":[]};
+</script>
+<script>window.__EXERCISE_DB__ = ["杠铃卧推","暂停卧推","宽距杠铃卧推","上斜杠铃卧推","下斜杠铃卧推","哑铃卧推","平躺哑铃卧推","上斜哑铃卧推","下斜哑铃卧推","窄距哑铃卧推","器械推胸","悍马机推胸","上斜悍马机推胸","史密斯机卧推","下斜史密斯机卧推","上斜史密斯机卧推","史密斯 V-bar 卧推","哑铃飞鸟","平躺哑铃飞鸟","把手式蝴蝶机飞鸟","蝴蝶机飞鸟","绳索十字夹胸","绳索夹胸","仰卧屈臂上抬","双杠臂屈伸","双杠臂屈伸（负重）","俯卧撑","上台阶俯卧撑","跪姿俯卧撑","俯卧撑（负重）","反手俯卧撑","反手俯卧撑（负重）","臂屈伸式俯卧撑","臂屈伸式俯卧撑（负重）","地板飞鸟","地板飞鸟（中难度）","地板飞鸟（负重）","派克俯卧撑","俯卧撑-把柄","双杠臂屈伸（辅助）","平板绳索夹胸","上斜绳索夹胸","下斜绳索夹胸","上斜俯卧撑","下斜俯卧撑","下斜俯卧撑（负重）","仰卧旋转屈臂上拉","上斜哑铃飞鸟（锤式）","上斜哑铃飞鸟","反手上斜哑铃卧推","反手哑铃卧推","地板反手哑铃卧推","地板哑铃卧推（锤式）","哑铃卧推（锤式）","俯卧撑_支撑球","单手俯卧撑","杠铃片夹胸","悍马机卧推","鼓掌俯卧撑","弹力绳-高位飞鸟","弹力绳-低位飞鸟","弹力绳-十字飞鸟","弹力绳-阻力俯卧撑","弹力绳-前推","弹力绳-上推","弹力绳-卧推","弹力带-坐姿前推","抬腿杠铃卧推","下斜悍马机推胸","器械坐姿下夹胸","站姿器械下夹","上斜悍马机飞鸟","侧身单边悍马机推胸","单边悍马机推胸","器械推胸（版本2）","器械推胸（版本3）","下斜悍马机推胸（版本2）","对握式器械推胸","悍马机推胸（版本3）","器械推胸（版本4）","悍马机推胸（版本2）","蝴蝶机夹胸（版本2）","直立器械推胸(版本2)","直立器械推胸","塔式平板卧推","塔式上斜卧推","悍马多连杆卧推","上斜器械推胸","弹力带pallor推","宽距俯卧撑","上斜悍马机推胸2","弹力带站姿高位飞鸟","侧姿俯卧撑","墙式俯卧撑_进阶版","钻石俯卧撑","上斜哑铃锤式推举","射手俯卧撑","单侧射手俯卧撑","掌心向内上斜哑铃卧推","器械单臂胸推","器械上斜单臂胸部推举","器械胸部推举","深度俯卧撑","健身球哑铃飞鸟","健身球上斜哑铃飞鸟","仰卧哑铃锤式卧推_版本2","仰卧泡沫轴开胸放松","哑铃窄距卧推","窄距跪姿俯卧撑","哑铃下斜扭转飞鸟","绳索下斜飞鸟","上斜触肩俯卧撑","凳上派克式俯卧撑_版本2","杠杆夹胸","跪姿俯卧撑接婴儿式","俯卧撑进阶推展_胸部训练","哑铃挤压式卧推","派克转眼镜蛇俯卧撑","吊环双杠臂屈伸","吊环反身俯卧撑","吊环夹胸","吊环俯卧撑转侧平板","吊环下斜俯卧撑","哑铃低位飞鸟","椅子双臂臂屈伸","靠墙下斜俯卧撑","跪姿旋转俯卧撑","眼镜蛇俯卧撑","箱上跪姿下斜俯卧撑","跪姿俯卧撑划船","杠杆式上斜推胸","伪俄式挺身俯卧撑","下斜凳交替触肩俯卧撑","哑铃靠背屈臂上拉","45度罗马椅反向挺身","上斜凳反向挺身","弹力带上斜凳反向挺身","宽距高位下拉","窄距下拉","杠铃划船","反手杠铃划船","地雷杆单手划船","潘德雷划船","半程硬拉","绳索直臂下压","悍马机划船(v1)","器械下拉（版本2）","器械下拉","分动式高位划船","坐姿划船","拉杆坐姿划船(宽握)","拉杆坐姿划船(窄握)","哑铃划船","站姿哑铃划船","站姿旋转划船","平躺哑铃过头拉","俯卧杠铃划船","俯卧哑铃划船（锤式）","俯卧哑铃划船","T杆划船（宽）","T杆划船（窄）","引体向上","引体向上(负重)","反手引体向上","反手引体向上（负重）","引体向上（辅助）","窄距引体向上（辅助）","颈后下拉","V-bar下拉","绳索坐姿划船（单手）","铁杆直臂下压","宽握反手下拉","澳式引体","史密斯反手划船","山羊挺身","弹跳引体","单手下拉","坐地单手反握下拉","坐姿单手划船","哑铃划船（手扶）","绳索站姿旋转划船","俯卧反手哑铃划船","悍马机划船","悍马机正手下拉","V-bar划船","俯卧T-bar划船","平板手肘撑","TRX-坐姿下拉","TRX-坐姿下拉（负重）","TRX-水平划船","TRX-水平划船（中难度）","TRX-水平划船（负重）","弹力绳-俯身划船","弹力绳-坐姿划船","弹力绳-单手下拉","弹力绳-单手划船","弹力绳-反向早安","弹力绳-跪姿下拉","弹力绳-直臂下拉","弹力绳-坐姿直立划船","弹力绳-站姿直立划船","弹力绳-反手下拉","弹力绳-高位下拉","竖直坐姿绳索划船","器械划船1","器械划船2","海豹器械划船","海豹杠铃划船","坐姿绳索双边下拉","对握引体向上","坐姿器械背屈伸","器械大剪刀","悍马机大剪刀","悍马机-鹦鹉螺","轨道划船器划船","分动式高位划船2","分动式高位划船3","单手坐姿悍马机划船","单手悍马机下拉","单手悍马机划船","单手支撑式悍马俯身划船","单边大剪刀划船","反握式悍马划船","器械绳索划船","悍马机下拉（版本2）","悍马机划船（版本2）","悍马俯身划船","支撑式悍马俯身划船","窄握把手下拉","对握高位下拉","挂片器划船","绳索单边俯身划船","坐姿等长引体","跪姿弹力带划船","弹力带坐姿划船","壶铃单臂划船","悬带反握划船","哑铃上斜仰卧耸肩","绳索高位下拉","绳索直背坐姿划船","弹力带单臂扭转坐姿划船","猫式伸展","双杠架锤式握法引体向上","上斜俯卧划船","肩宽握引体向上_中握距","背部胸肌拉伸","器械高位划船","器械坐姿划船","脊柱拉伸","跪姿背阔肌拉伸","俯卧杠铃反手划船","绳索直臂下拉II","T杆划船","站姿绳索高位下拉","窄距引体向上","哑铃反握划船","仰卧下背拉伸","仰卧下背拉伸_屈膝","反向T杆划船","弹力带辅助引体向上","肩胛屈伸","凳上辅助引体向上","哑铃俯身划船_平板支撑式","宽握颈后引体向上","吊环膝触划船","吊环高位划船","吊环反向飞鸟","吊环引体向上","吊环宽握反身划船","反手吊环引体向上","吊环屈膝反身划船","椅子反身划船","反握器械高位下拉","窄距平行握引体向上_V把","毛巾超人划船","正手绳索俯身划船","毛巾滑动地面下拉","屈膝仰卧地板划船","反手绳索俯身划船","自主辅助反向过顶拉伸","椅间屈膝反向划船","椅间屈膝窄握反向引体","坐姿毛巾划船","哑铃俯卧撑划船","俯身毛巾划船","杠杆式坐姿划船","俯卧脉冲俯身划船","窄距正手下拉","反向哈克早安","杠铃深蹲","泽奇深蹲","杠铃哈克深蹲","哑铃二头弯举深蹲","前蹲","硬拉","相扑硬拉","杠铃罗马尼亚硬拉","高翻","罗马尼亚硬拉","哈克机深蹲","杰弗森深蹲","史密斯机深蹲","史密斯机箭步蹲","绳索辅助反向腿弯举","史密斯机保加利亚蹲","史密斯机坐蹲","史密斯机直腿硬拉","六角杠硬拉","硬拉器硬拉","杠铃直腿硬拉","哑铃深蹲","哑铃酒杯深蹲","哑铃前蹲","俯卧哑铃腿弯举","哑铃直腿硬拉","腿弯举","坐姿腿弯举","单边腿弯举（器械）","坐姿腿屈伸","腿举","器械倒蹬","器械倒蹬(版本2)","杠铃保加利亚蹲","杠铃箭步蹲","哑铃箭步蹲","哑铃箭步蹲_反向","哑铃保加利亚蹲","哑铃相扑蹲","深蹲跳","毛巾腿弯举","毛巾腿弯举（高难度）","自重深蹲","箭步踢腿","自重保加利亚蹲","保加利亚蹲（负重）","手枪深蹲","悍马机深蹲","自重腿弯举","箭步跳","TRX-手枪深蹲（手辅助）","TRX-手枪深蹲（中难度）","TRX-手枪深蹲（负重）","弹力带-提腿","弹力带-箭步蹲","弹力带-平躺腿弯举","弹力带-站姿踢腿","弹力带-站姿单腿内收","弹力带-站姿单腿外展","弹力带-登山者","弹力带-仰卧登山者","弹力带-站姿腿弯举","弹力带-箭步走","弹力带-深蹲","弹力带-单腿深蹲","弹力带-腿外展","弹力带-螃式走","弹力带-仰卧腿外展","弹力带-鸭式前行","犀牛腰带机深蹲","抓举","哑铃火箭推","杠铃火箭推","ssb深蹲","钟摆深蹲","六角杠深蹲","器械单腿腿屈伸","挂片器单腿屈伸","后弓步踢腿","跳跃深蹲","跳跃式上步","高抬腿深蹲","俯卧哑铃腘绳肌弯举","跪姿杠铃深蹲","杠铃站姿提踵","相扑深蹲","交替抬腿","单腿四分之一深蹲","自重后弓步","器械坐姿深蹲","连动式仰卧腿举_版本2","连动式仰卧腿举","悍马式高位深蹲","史密斯单腿箭步蹲","壶铃前蹲","哑铃俯卧腿弯举","哥萨克深蹲","单腿水平倒蹬","哑铃锤式相扑深蹲","滑冰式跳跃","壶铃硬拉","壶铃土耳其起身","站立提膝","原地箭步蹲","哑铃单腿台阶上步","负重拉伸箭步蹲","吊环腿弯举","吊环分腿深蹲","杠杆坐姿腿屈伸","垫高窄距深蹲","哑铃前架箭步蹲","髋部屈伸拉伸","滑地屈膝后蹬","杠铃前架弓步蹲","椅子登阶","史密斯机仰卧腿举","窄距腿举","哑铃侧弓步","箭步走","哑铃单腿深蹲","坐姿弹力带腿屈伸","单腿触踵深蹲","冲刺弓步","单腿低箱深蹲","踮脚尖相扑深蹲","自重单腿硬拉","窄距 45 度倒蹬机","宽距腿举","仰卧深蹲","俯卧反向哈克深蹲","地雷杆推肩","仰卧绳索曲杆提拉","上斜凳俯卧哑铃Y字上举","上斜哑铃T字举","哑铃单边Y字举","俯卧哑铃W字举","绳索直立划船","单边绳索侧拉","绳索单边侧拉_手扶","哑铃单边侧外旋","哑铃单边肩外旋","坐姿哑铃侧外旋","坐姿单臂哑铃外旋","坐姿锤式推举","侧卧单臂哑铃后束飞鸟","上斜凳俯卧哑铃反向上举","哑铃推肩","斯科特推举","古巴推举","阿诺德推肩","站姿哑铃推举","侧平举","哑铃过头侧平举","平板上斜侧平举","半俯身侧平举","器械侧平举","前平举","俯身飞鸟","杠铃前平举","杠铃片旋转","杠铃片前平举","站姿杠铃推举","站姿布拉德福德推举","史密斯机推举","坐姿杠铃推举","器械坐姿推举","悍马机坐姿推举","蝴蝶机反向飞鸟","俯身绳索飞鸟","绳索胯裆前平举","俯身绳索飞鸟（坐姿）","绳索侧平举","绳索侧平举（单边）","杠铃俯身提拉","哑铃俯身提拉","哑铃俯卧提拉","平板哑铃提拉","面拉","TRX-面拉","弹力带-面拉","弹力带-坐姿推举","弹力带-站姿推举","弹力带-前平举","弹力带-侧平举","弹力带-提拉","弹力带-侧拉","弹力带-俯身后束飞鸟","TRX-后束飞鸟","V-俯卧撑","V-俯卧撑（中难度）","V-俯卧撑（高难度）","毛巾侧平举","毛巾侧平举（高难度）","靠墙倒立撑","自由倒立撑","哑铃直立划船","器械把手侧平举","悍马机侧平举","悍马机半俯身侧平举","绳索交叉后束飞鸟","站姿器械侧平举","单手开肘悍马俯身划船","开肘悍马俯身划船","Y字绳索侧平举","弹力带_绳索_站姿侧平举","弹力带俯身肩后束飞鸟","弹力带站姿面拉","壶铃阿诺德推举","单臂哑铃侧平举","坐姿哑铃前平举","哑铃上斜俯身侧平举","肘关节环绕臂部运动","手臂画圈肩部拉伸","坐姿杠铃肩推","站姿弹力带后束划船","悍马式站姿维京推举","器械坐姿单臂后束飞鸟","悬挂带反向飞鸟","杠铃提拉","杠铃直立划船","器械坐姿反向飞鸟","站姿单臂绳索前平举","杠铃俯身三角肌后束上举","坐姿杠铃颈后推举","绳索交叉反向飞鸟","坐姿哑铃侧平举","站姿哑铃肩部环绕","哑铃弯举上推","站立交替手臂画圈","站立双臂甩动","站立双臂画圈","站立单臂画圈","坐姿锤式握法器械肩推","史密斯机提拉","吊环 Y 字上举","吊环分臂飞鸟","吊环前平举","吊环面拉","吊环单臂后束划船","吊环后束划船","EZ曲杆反重力推举","哑铃十字伸展","站姿绳索Y字","空握旋腕站姿侧平举","俯卧环绕飞鸟","平行把手绳索后束飞鸟划船","杠铃耸肩","绳索耸肩","哑铃上斜俯卧耸肩","哑铃耸肩","器械耸肩","硬拉器耸肩","史密斯耸肩","史密斯背后耸肩","弹力带-弹力带耸肩","耸肩器耸肩","杠铃过头耸肩","哑铃弯举","单手牧师凳弯举","坐姿单手牧师凳弯举","哑铃轮换弯举","坐姿哑铃弯举","牧师凳弯举","蜘蛛弯举","牧师凳锤式弯举","牧师凳佐特曼弯举","杠铃弯举","锤式弯举","绳索弯举","直杆正手绳索弯举","直杆绳索弯举","坐姿绳索铁杆弯举","集中弯举","上斜哑铃弯举","上斜锤式弯举","器械弯举","牧师器弯举","卧姿弯举","杠铃集中弯举","毛巾二头弯举","毛巾二头弯举（困难）","TRX-二头弯举","TRX-二头弯举（中难度）","TRX-二头弯举（负重）","弹力绳-站姿二头弯举","弹力绳-站姿轮换弯举","弹力绳-集中弯举","弹力绳-锤式弯举","弹力绳-坐姿弯举","背后二头单边弯举","EZ杆二头弯举","坐姿器械二头弯举","上举式器械弯举","哑铃环抱弯举","上斜哑铃弯举_变式2","健身球牧师哑铃弯举","俯卧上斜哑铃锤式弯举","单臂佐特曼牧师凳弯举","单腿集中弯举","哑铃交叉锤式弯举_版本2","绳索过顶弯举","悬挂带手臂弯举至耳侧","哑铃交替弯举","器械牧师凳弯举_版本2","俯卧泡沫轴肱二头肌放松","绳索单臂弯举","绳索站姿内旋弯举","俯卧上斜杠铃弯举","哑铃锤式交替弯举","俯卧上斜哑铃弯举","杠铃拖式弯举","吊环弯举","吊环单臂二头肌弯举","仰卧哑铃弯举","椅间屈膝反向引体弯举","仰卧双腿毛巾锤式弯举","绳索EZ杠二头弯举","EZ 杠窄握牧师凳弯举","哑铃过头臂屈伸","哑铃过头臂屈伸（单手）","坐姿杠铃过头臂屈伸","仰卧杠铃臂屈伸","绳索臂屈伸","跪姿绳索臂屈伸","绳索过头臂屈伸","绳索过头臂屈伸(跪姿)","悍马机三头下压","器械三头下压（正向）","器械臂屈伸","器械臂屈伸（版本2）","碎颅者","地板哑铃碎颅者","V-Bar 绳索下压","直杆绳索下压","绳索臂屈伸（单）","哑铃臂屈伸","平板哑铃臂屈伸（单）","窄距卧推(敞开式)","窄距卧推(靠近式)","反手三头臂屈伸","绳索高位前拉","窄距俯卧撑","平板臂屈伸","平板臂屈伸-高难度","平板三头推","平板臂屈伸_屈腿","TRX-三头臂屈伸","TRX-三头臂屈伸（中难度）","TRX-三头臂屈伸（负重）","弹力带-碎颅者","弹力带-过头臂屈伸","弹力带-单手臂屈伸","弹力带-三头压拉","单手绳索臂屈伸","弹力带站姿臂屈伸","弹力带颈后三头肌伸展","上斜哑铃三头伸展","仰卧单臂旋后握距肱三头肌伸展","仰卧哑铃旋前握肱三头肌伸展","绳索低位过头臂屈伸","跪姿肱三头肌伸展","仰卧哑铃交替臂屈伸","绳索高位过顶肱三头肌屈伸","绳索三头下压_SZ杆","弹力带三头下压","绳索俯身过顶三头肌伸展","坐姿哑铃三头肌伸展","器械三头伸展_版本 2","侧卧泡沫轴肱三头肌放松","站姿单臂绳索肱三头肌伸展","坐姿单臂哑铃颈后臂屈伸","仰卧哑铃臂屈伸","凳上臂屈伸","坐姿哑铃臂屈伸_变式2","坐姿杠杆臂屈伸","器械过顶三头肌伸展","站姿绳索反握弯举_直杆","辅助器下压","仰卧EZ杆臂屈伸","吊环肱三头肌伸展","哑铃坐姿臂屈伸","正握牧师器弯举","反握曲杆绳索三头下压","单臂侧姿绳索下压","器械三头伸展_版本1","坐姿杠铃提踵","站姿哑铃提踵","坐姿器械提踵","坐姿器械提踵(版本2)","站姿器械提踵","腿举机提踵","史密斯机提踵","训练器前弯举","驴式提踵","哑铃单腿提踵_变式","哑铃单腿提踵","站姿自重提踵","站姿弹力带双腿提踵_版本2","单腿地面提踵","坐姿哑铃提踵","站姿杠铃提踵","史密斯反向提踵","坐姿小腿拉伸","弹力绳小腿拉伸","腓骨肌拉伸","泡沫轴足底放松","泡沫轴小腿放松","侧卧单腿腓骨肌群滚动放松","侧卧腓骨肌群滚动放松","俯卧单腿胫骨前肌泡沫轴滚动放松","单腿站姿提踵","器械坐姿踮脚","足踝旋转拉伸","足踝拉伸_小腿训练","足踝侧向拉伸","垫高站姿提踵_椅子辅助","坐姿深蹲提踵","腿举机提踵_低脚位","正手杠铃手腕弯举","正手杠铃弯举","EZ正手杠铃弯举","正手杠铃手腕弯举（平板）","正手杠铃手腕弯举_平板v2","背身杠铃手腕弯举","绳索手腕弯举","单手哑铃手腕弯举（反手）","单手哑铃手腕弯举（正手）","垂式哑铃手腕弯举","杠铃片正手弯举","哑铃过凳腕弯举","杠铃仰卧臂屈伸_颅骨粉碎者","背后哑铃指弯举","手腕环绕","双杠臂屈伸_直上直下版","杠铃腕弯举_版本2","仰卧单腿反向毛巾弯举","坐姿下巴回收","上斜负重头后仰","上斜负重颈弯举","坐姿负重头后仰","平躺头后仰","抱头后仰","站姿负重头后仰","绳索头后仰","绳索颈弯举","负重颈弯举","跪姿头后仰","负重坐姿颈部后伸","负重仰卧颈部屈曲","器械颈部伸展_配重片式","器械颈部右侧屈","颈部侧伸展","仰卧泡沫轴颈部减压放松","坐姿颈部屈伸","坐姿髋外展","坐姿髋内收","哈克机反向深蹲","器械后踢V2","早安","杠铃臀冲","史密斯臀冲","哑铃臀冲","单腿哑铃臀冲","单腿哑铃硬拉","器械后踢","后踢","史密斯后踢","绳索直腿硬拉","杠铃臀桥","弹力绳-跪姿腿屈伸","水平山羊挺身","弹力绳-站姿后踢","弹力绳-直腿硬拉","俯身驴踢","史密斯机早安","史密斯罗马尼亚硬拉","器械臀冲","器械驴踢","地雷杆硬拉","地雷杆罗马尼亚硬拉","悍马机臀冲","站姿驴踢","弹力带侧躺腿外展","器械侧踢","绳索侧踢","绳索内收","哑铃上凳","杠铃上凳","悍马机外展","哈克机早安","分腿硬拉","单手分腿硬拉","史密斯机青蛙后蹬","哑铃甩","器械后蹬腿","坐姿弹力带外展","垫高自重臀冲","壶铃甩","弹力带早安","弹力带蚌式开合","弹力带螃蟹行走","弹力带跪姿臀冲","弹力带髋外展","挂片后摆腿","挂片式罗马尼亚硬拉","挂片站姿臀冲","直腿内收","直腿髋外展","站姿髋外展","绳索站姿臀冲","器械后蹬","臀冲架臀冲","弹力带臀冲","站姿髋外展（版本2）","坐姿哑铃早安","弹力带单腿硬拉","臀桥交替手臂伸展","弹力带单腿站姿髋内收","弹力带单腿髋伸展","弹力带髋内收","弹力带站姿髋外展","平板支撑抬腿_单侧","侧桥髋外展","后倾臀桥","哑铃硬拉","弹力带髋部拉动_拉力带穿越","杠铃单腿臀推","单腿壶铃硬拉","跪姿屈腿侧踢","单腿深蹲","杠铃侧弓步","45 度斜蹬机单腿腿举","深蹲侧踢","绳索窄距椅式起身","泡沫轴臀推","分腿蹲","俯卧地板挺身","踏板箱绳索直腿硬拉","弹力带俯身单腿后踢","泳式踢腿_臀部训练","杠杆反向挺身_片式负重","跪姿弹力带髋推","弹力带拉穿","侧卧髋内收","腰带机早安","单腿伸展桥式","腰带机硬拉_V杆","腰带机硬拉","站姿器械后踢","吊环臀桥","吊环直腿臀腿弯举","吊环侧蹲","杠铃单腿硬拉","哑铃摆荡","站姿侧抬腿","侧卧画圈抬腿","哑铃俯身屈髋硬拉","俯卧毛巾抗阻超伸","弹力带末端膝盖伸展","靠墙静蹲","弹力带侧拉弓箭步（原地）","弹力带膝盖末端单腿硬拉","单腿跨步侧压","直腿跨越","动态蝴蝶式","蹲姿转髋","青蛙趴抬腿","动态天鹅式","坐姿单腿画圆","跪姿侧跨越","下犬式","单腿跨步后压","跪姿膝盖画圈","9090旋转","绳索肩外旋","肘绕圈","肩绕圈","平躺大字开合","平躺式臀冲","平躺蝴蝶飞","抬腿开合","盆骨旋转","臀冲开合","臀桥行进","蛙式仰卧起坐","跪姿臀冲","青蛙式后屈伸","顶桌臀桥","顶胯开合","弓步","壶铃土耳其起身_深蹲式","壶铃单腿深蹲","壶铃单臂挺举","壶铃杯式深蹲","壶铃悬挂高翻","壶铃单臂侧式军事推举","上斜直腿髋部上抬","蛙式臀推","动感单车间歇骑行_进阶版3","平板支撑触脚尖","站立臂侧屈（屈臂）","哑铃翻举","分腿冲刺高弓步","分腿冲刺低弓步","固定轨迹椭圆机","卧式健身车","弓步单腿抬膝跳","静态侧卧支撑","地雷杆甩","平板支撑交替摆腿","固定熊爬","跪姿转体","猎鸟狗","反向支撑交叉腿","左右摸脚踝","平板交替手肘支撑","弹力带站姿转体拉拽","超人式","反向平板支撑","巫师扭转_腰部","单腿抬升俯卧撑","奥蒂斯起身","滚动桥式","壶铃风车","仰卧直腿髋上抬","扭转前平板支撑","时钟俯卧撑","屈腿直臂仰卧起坐","单腿臀桥外旋","单腿直腿臀桥保持","弹力带下斜仰卧起坐","绳索Pallof推","器械坐姿卷腹","平板支撑手臂上抬","器械腹部摆动","尺蠖式","哥本哈根屈膝侧平板支撑","哥本哈根侧平板支撑","单腿拉伸_屈膝版","仰卧交替抬腿_版本3","单腿直腿拉伸","剪刀式踢腿","跪姿健腹轮前推","哑铃体侧屈","左右摆腿","悬垂直腿上举","青蛙卷腹","俄罗斯转体_徒手","仰卧举腿收腹","罗马椅仰卧起坐","腹斜肌仰卧卷腹_直腿版","侧卧抬腿","仰卧单腿上举","侧卧全幅度抬腿","肘部俯卧撑","仰卧抬腿侧摆","侧平板抬腿","站立双侧屈","跪姿平板支撑","鸟狗式","詹达仰卧起坐","双杠垂直举腿_进阶版","吊环反向腹肌滚轮","吊环腹肌前倒","吊环屈体腰部练习","吊环仰卧卷腹","吊环登山跑","吊环侧支撑","仰卧抬腿髋部上举","俯身转体","椅子辅助仰卧起坐","蜘蛛式爬行俯卧撑","站姿髋部环绕","俯卧游泳式交替抬腿摆臂","凳上卷腹","交替侧蹲触脚跟","仰卧直腿行进","跪姿眼镜蛇俯卧撑","环绕式超人保持","肘触膝仰卧起坐","平板支撑开合跳","站姿风车转体","直拳组合","四点支撑对角抬手抬腿","平板支撑侧平举","跪姿器械转腰","反向山羊挺身","3/4 仰卧起坐","死虫","俄罗斯转体","水瓶俄罗斯转体","负重仰卧起坐","仰卧抬腿","抬腿","蝴蝶收腹","平板蝴蝶收腹","转体抬腿","器械卷腹","器械侧卷腹","空中单车","空中单车(高难度版)","绳索跪姿卷腹","平躺跪姿转体","保护式卷腹","平躺抬腿","站姿绳索转体","站姿绳索转体(版本2)","腹肌轮收","悬挂抬腿","负重悬挂抬腿","上斜卷腹转体","站姿绳索卷腹","史密斯上踢","卷腹","平板支撑","弹力带-跪姿卷腹","弹力带-仰卧卷腹","弹力带-下上转体","弹力带-上下转体","弹力带-十字转体","滑轮器卷腹","双头仰卧起","坐姿器械卷腹","器械抬腿","弹力带仰卧交替卷腹","仰卧交替剪刀腿","悍马机卷腹","弹力带站姿转体推举","负重俄罗斯转体_腿部上抬版","屈膝卷腹","器械卧姿屈膝抬腿","站姿健腹轮前推","扭转深蹲","反向卷腹","斜腹肌仰卧卷腹_地面版","地板卷腹","直腿上举卷腹","健身球卷腹","屈膝仰卧扭转","交叉登山者_桥式","交替触脚跟","站姿弹力带侧屈","弹力带站姿卷腹","波速球卷腹","绳索扭转_上下版2","泡沫轴反向卷腹","45 度侧屈卷腹","四分之一仰卧起坐","仰卧抱臂卷腹","触膝卷腹","吊环悬垂举腿提髋","吊环悬垂直腿提髋","吊环悬垂膝碰肘","瑞士球卷腹抬腿","V 字上举","直臂转体卷腹","悬垂直腿举髋","站姿屈臂侧弯","肘碰膝侧平板支撑卷腹","蟹式扭转触足卷腹","器械坐姿转体","坐姿短足训练","肩胛骨后缩灵活性","肩胛骨上回旋灵活性","肩胛骨下回旋灵活性","胸椎拉伸和打开","自重臀冲","平躺曲腿旋转","贴地俯卧撑转体","肩内外旋动态拉伸","扩胸开合","单臂侧转","跪姿前伸手","斜凳胸背扩","抱肘侧屈体","跑步_有氧训练","跑步接半蹲","跑跳接半蹲跳","跑步接单腿跳","跑步开合跳","墙天使","站姿踝关节环绕","站姿膝关节环绕","婴儿式伸展","过头三头拉伸","滑雪","三角肌后束拉伸","坐姿腿拉伸","直腿弯腰","单手抱头侧身","单手拉杆","箭步蹲拉伸","单手扶墙拉伸","单手扶墙腿拉伸","杆扩胸","辅助胸拉伸","胸背拉伸","后背正反手拉伸","仰卧抬腿拉伸","站姿腿拉伸","手臂交叉拉伸","泡沫轴臀冲","俯身猫式","滚轮腿交叉","台阶式小腿拉伸","单腿跪姿股四头肌拉伸","前臂拉伸","站姿侧弓步拉伸","坐姿单腿腘绳肌拉伸","坐姿下背部拉伸","爆发式侧弓步拉伸","交叉跪姿髋屈肌拉伸","膝关节环绕拉伸","下巴触胸腹部拉伸","仰头看天大腿拉伸","船式拉伸","固定杆背部伸展","仰卧臀部伸展","坐姿宽腿内收肌拉伸","仰卧交叉膝下拉伸展","弹力带肩部热身拉伸","髋关节环绕拉伸","弓步拉伸","坐姿猫牛式拉伸","眼镜蛇式瑜伽体式_腰部拉伸","双鸽式拉伸","最伟大拉伸","站姿背部扭转拉伸","站姿上举背部扭转拉伸","跪姿背部扭转拉伸","坐姿俯身背部拉伸","头顶胸部拉伸","站姿腘绳肌与小腿拉伸","跑者拉伸","坐姿宽角式拉伸","四足深蹲式拉伸","进阶髋屈肌与股四头肌拉伸","腘绳肌拉伸","蝴蝶式瑜伽拉伸","站姿腓肠肌拉伸","悬垂拉伸","脊柱前屈拉伸","泡沫轴腓肠肌松解","泡沫轴股内侧肌肉拉伸","泡沫轴胸肌放松滚动","大腿外侧强化松解","泡沫轴上背部放松滚动","泡沫轴髂胫束_ITB_松解","泡沫轴腘绳肌松解","颈部旋转滚动放松","仰卧臀部扭转泡沫轴放松","坐姿腘绳肌与臀部泡沫轴放松","仰卧髋外旋肌与髋伸肌泡沫轴放松","筋膜球梨状肌松解","分腿侧蹲泡沫轴放松_大腿","肩胛伸展泡沫轴松解","侧卧背阔肌泡沫轴放松","侧卧肱三头肌泡沫轴放松","仰卧胸腰椎泡沫轴放松_背部训练","仰卧颈部减压泡沫轴放松_版本2","俯卧胸肩前侧泡沫轴放松","全身环绕滚动放松","仰卧竖脊肌泡沫轴放松","侧卧上背部泡沫轴放松","侧卧下背部泡沫轴放松","坐姿臀部泡沫轴放松","仰卧肩部后旋泡沫轴放松","菱形肌泡沫轴放松","站姿单臂胸部伸展","站姿腹部转体拉伸","旋转式腹部拉伸","站姿髋屈肌拉伸","铁人交叉式拉伸","站姿体前屈_动态","站姿体前屈伸展","腹部拉伸","基础触趾","站姿双臂环抱后展拉伸","颈部环绕伸展","椭圆机","爬楼梯","跑步（有氧）","动感单车（有氧）","划船机","游泳","跳绳","滑雪机","爬坡走","波比跳","后踢腿跑","六角杠农夫行走","壶铃农夫行走","哑铃农夫行走","跑步机步行","划船机训练","高抬腿跳","快走","漫步机","上肢手摇健身车","平板支撑_计时","椭圆机(计时)","跑步(计时)","动感单车（计时）","战绳","高抬腿-Tabata","上台阶-Tabata","登山者-Tabata","开合跳-Tabata","左右跳-Tabata","砸药球-Tabata","原地跑-Tabata","箭步走侧转体-Tabata","滑雪-Tabata","爬楼梯-Tabata","动感单车-Tabata","战绳-Tabata","滑雪摇荡-tabata","坐姿拳击-tabata","哑铃甩-tabata","壶铃甩-tabata","波比跳-tabata","椭圆机-Tabata","深蹲跳-Tabata","箭步跳-Tabata"];</script>
+<script>/* 力训 · 动作名归并库
+ *
+ * 核心思想：一个动作 = 去掉括号说明后的基础名。
+ *   「双杠（负重）」和「双杠（尽量负重）」→ 同一个动作「双杠」
+ *   「槓鈴臥推」「杠铃卧推」→ 同一个动作「杠铃卧推」
+ *
+ * 标准动作名表来自开源项目 Foveluy/Xunji-movements（训记标准动作中文名表，1213 个）。
+ */
+(function (root, factory) {
+  var api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.ExLib = api;
+})(typeof self !== 'undefined' ? self : this, function () {
+  'use strict';
+
+  var DB = [];
+  var BASE_INDEX = {};   // 基础名 -> [标准全名]
+  var BASE_SET = {};
+
+  // 繁体 -> 简体（只覆盖健身场景常见字）
+  var T2S_PAIRS = '槓杠鈴铃臥卧舉举雙双撐撑體体彎弯繩绳機机側侧傾倾啞哑羅罗馬马亞亚個个單单後后點点環环帶带組组數数強强間间練练動动熱热鐘钟門门衝冲週周階阶復复減减傷伤節节頸颈髖髋髂髂駝驼離离腳脚輔辅槓杠線线內内與与為为並并於于從从會会麼么樣样點点線线趙赵';
+  var T2S = {};
+  for (var i = 0; i + 1 < T2S_PAIRS.length; i += 2) T2S[T2S_PAIRS[i]] = T2S_PAIRS[i + 1];
+
+  function toSimp(s) {
+    var out = '';
+    for (var i = 0; i < s.length; i++) {
+      var ch = s[i];
+      out += (T2S[ch] || ch);
+    }
+    return out;
+  }
+
+  function normalize(s) {
+    if (s == null) return '';
+    var t = String(s).trim();
+    t = toSimp(t);
+    t = t.replace(/（/g, '(').replace(/）/g, ')');
+    t = t.replace(/[\s\u3000]+/g, '');
+    return t;
+  }
+
+  // 同义写法 -> 标准动作名（不同作者的叫法差异）
+  var ALIAS = {
+    '双杠': '双杠臂屈伸',
+    '双杠撑体': '双杠臂屈伸',
+    '棒式撑体': '平板支撑',
+    '棒式': '平板支撑',
+    '平板撑': '平板支撑',
+    '平板支撑计时': '平板支撑',
+    '罗马尼亚式硬举': '罗马尼亚硬拉',
+    '罗马尼亚硬举': '罗马尼亚硬拉',
+    '硬举': '硬拉',
+    '相扑式硬举': '相扑硬拉',
+    '相扑式硬拉': '相扑硬拉',
+    '传统硬拉': '硬拉',
+    '坐姿器械股四头屈伸': '坐姿腿屈伸',
+    '俯身器械股二头弯举': '腿弯举',
+    '坐姿器械股二头弯举': '坐姿腿弯举',
+    '滑轮下拉': '高位下拉',
+    '滑轮水平拉': '坐姿划船',
+    '滑轮夹胸': '绳索夹胸',
+    '中握距': '窄距卧推',
+    '窄握': '窄距卧推',
+    '上斜卧推': '上斜杠铃卧推',
+    '坐姿实力推': '坐姿杠铃推举',
+    '实力推': '杠铃推举',
+    '颈后臂屈伸': '哑铃过头臂屈伸',
+    '仰卧三头肌伸展': '仰卧杠铃臂屈伸',
+    '三头下压': '直杆绳索下压',
+    '二头弯举': '杠铃弯举',
+    '弯举': '杠铃弯举',
+    '提踵': '站姿提踵',
+    '腿举机': '腿举'
+  };
+
+  // 去掉括号内容、尾部"_xxx"，得到基础名
+  function baseOf(s) {
+    var n = normalize(s);
+    if (!n) return '';
+    n = n.replace(/\([^()]*\)/g, '');
+    n = n.replace(/_[^_]*$/, '');
+    n = n.replace(/[·・,，、]+$/g, '');
+    n = n.trim();
+    if (ALIAS[n]) return ALIAS[n];
+    return n;
+  }
+
+  function buildIndex() {
+    BASE_INDEX = {};
+    BASE_SET = {};
+    DB.forEach(function (name) {
+      var b = baseOf(name);
+      if (!b) return;
+      if (!BASE_INDEX[b]) BASE_INDEX[b] = [];
+      BASE_INDEX[b].push(name);
+      BASE_SET[b] = true;
+    });
+  }
+
+  function setDB(list) {
+    DB = Array.isArray(list) ? list.slice() : [];
+    buildIndex();
+    return DB.length;
+  }
+
+  function isKnown(s) {
+    return BASE_SET[baseOf(s)] === true;
+  }
+
+  /**
+   * 归并一个动作名
+   * 返回 { base, variants, matched }
+   *   base     —— 参考重量用的唯一 key（去掉括号说明）
+   *   variants —— 出现过的标准全名（用于提示）
+   *   matched  —— 是否命中标准动作库
+   */
+  function canonical(raw) {
+    var n = normalize(raw);
+    if (!n) return { base: '', variants: [], matched: false };
+
+    // 1) 完全等于标准名
+    if (DB.indexOf(n) >= 0) {
+      var b1 = baseOf(n);
+      return { base: b1, variants: BASE_INDEX[b1] || [n], matched: true };
+    }
+
+    // 2) 去括号后等于标准基础名
+    var b2 = baseOf(n);
+    if (BASE_SET[b2]) {
+      return { base: b2, variants: BASE_INDEX[b2] || [n], matched: true };
+    }
+
+    // 3) 标准名里找「包含关系」的最长匹配（避免 双杠 误配到 双杠臂屈伸 这类模糊情况时过度归并）
+    var best = null;
+    for (var k = 0; k < DB.length; k++) {
+      var cand = DB[k];
+      if (cand.length < 3) continue;
+      if (n.indexOf(cand) >= 0) {
+        if (!best || cand.length > best.length) best = cand;
+      }
+    }
+    if (best) {
+      var b3 = baseOf(best);
+      return { base: b3, variants: BASE_INDEX[b3] || [best], matched: true };
+    }
+
+    // 4) 兜底：就用去括号后的名字，同类写法依然会合并
+    return { base: b2, variants: [n], matched: false };
+  }
+
+  /** 拆分一个单元格里的多个动作：「上斜卧推、坐姿实力推」→ 两个 */
+  function splitNames(raw) {
+    if (raw == null) return [];
+    var t = String(raw).trim().replace(/（/g, '(').replace(/）/g, ')');
+    if (!t) return [];
+    var parts = t.split(/[、，,]/).map(function (x) { return x.trim(); }).filter(Boolean);
+    if (parts.length < 2) return [t];
+    // 每段都像个动作名才拆，避免把说明文字拆坏
+    if (parts.every(function (p) { return baseOf(p).length >= 2; })) return parts;
+    return [t];
+  }
+
+  /**
+   * 把名字拆成「动作 + 备注」
+   *   「双杠（尽量负重）」→ { name: '双杠', note: '尽量负重' }
+   *   「中握距（窄推）」  → { name: '中握距', note: '窄推' }
+   */
+  function splitNote(raw) {
+    if (raw == null) return { name: '', note: '' };
+    var t = String(raw).trim().replace(/（/g, '(').replace(/）/g, ')');
+    var notes = [];
+    t = t.replace(/\(([^()]*)\)/g, function (_, inner) {
+      if (inner && inner.trim()) notes.push(inner.trim());
+      return '';
+    });
+    t = t.replace(/_/g, ' ').replace(/[\s\u3000]+/g, '').trim();
+    return {
+      name: t || String(raw).trim(),
+      note: notes.join(' · ')
+    };
+  }
+
+  return {
+    setDB: setDB,
+    normalize: normalize,
+    baseOf: baseOf,
+    canonical: canonical,
+    splitNames: splitNames,
+    splitNote: splitNote,
+    isKnown: isKnown,
+    size: function () { return DB.length; }
+  };
+});
 </script>
 <script>/*! xlsx.js (C) 2013-present SheetJS -- http://sheetjs.com */
 var XLSX={};function make_xlsx_lib(e){e.version="0.20.3";var r=1200,t=1252;var a;var n=[874,932,936,949,950,1250,1251,1252,1253,1254,1255,1256,1257,1258,1e4];var i={0:1252,1:65001,2:65001,77:1e4,128:932,129:949,130:1361,134:936,136:950,161:1253,162:1254,163:1258,177:1255,178:1256,186:1257,204:1251,222:874,238:1250,255:1252,69:6969};var s=function(e){if(n.indexOf(e)==-1)return;t=i[0]=e};function l(){s(1252)}var o=function(e){r=e;s(e)};function c(){o(1200);l()}function f(e){var r=[];for(var t=0,a=e.length;t<a;++t)r[t]=e.charCodeAt(t);return r}function u(e){var r=[];for(var t=0;t<e.length>>1;++t)r[t]=String.fromCharCode(e.charCodeAt(2*t)+(e.charCodeAt(2*t+1)<<8));return r.join("")}function h(e){var r=[];for(var t=0;t<e.length>>1;++t)r[t]=String.fromCharCode(e[2*t]+(e[2*t+1]<<8));return r.join("")}function d(e){var r=[];for(var t=0;t<e.length>>1;++t)r[t]=String.fromCharCode(e.charCodeAt(2*t+1)+(e.charCodeAt(2*t)<<8));return r.join("")}var p=function(e){var r=e.charCodeAt(0),t=e.charCodeAt(1);if(r==255&&t==254)return u(e.slice(2));if(r==254&&t==255)return d(e.slice(2));if(r==65279)return e.slice(1);return e};var m=function Dc(e){return String.fromCharCode(e)};var v=function Oc(e){return String.fromCharCode(e)};function g(e){a=e;o=function(e){r=e;s(e)};p=function(e){if(e.charCodeAt(0)===255&&e.charCodeAt(1)===254){return a.utils.decode(1200,f(e.slice(2)))}return e};m=function n(e){if(r===1200)return String.fromCharCode(e);return a.utils.decode(r,[e&255,e>>8])[0]};v=function i(e){return a.utils.decode(t,[e])[0]};va()}var b=null;var w=true;var k="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";function y(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;for(var c=0;c<e.length;){t=e.charCodeAt(c++);i=t>>2;a=e.charCodeAt(c++);s=(t&3)<<4|a>>4;n=e.charCodeAt(c++);l=(a&15)<<2|n>>6;o=n&63;if(isNaN(a)){l=o=64}else if(isNaN(n)){o=64}r+=k.charAt(i)+k.charAt(s)+k.charAt(l)+k.charAt(o)}return r}function x(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;for(var c=0;c<e.length;){t=e.charCodeAt(c++);if(t>255)t=95;i=t>>2;a=e.charCodeAt(c++);if(a>255)a=95;s=(t&3)<<4|a>>4;n=e.charCodeAt(c++);if(n>255)n=95;l=(a&15)<<2|n>>6;o=n&63;if(isNaN(a)){l=o=64}else if(isNaN(n)){o=64}r+=k.charAt(i)+k.charAt(s)+k.charAt(l)+k.charAt(o)}return r}function C(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;for(var c=0;c<e.length;){t=e[c++];i=t>>2;a=e[c++];s=(t&3)<<4|a>>4;n=e[c++];l=(a&15)<<2|n>>6;o=n&63;if(isNaN(a)){l=o=64}else if(isNaN(n)){o=64}r+=k.charAt(i)+k.charAt(s)+k.charAt(l)+k.charAt(o)}return r}function S(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;if(e.slice(0,5)=="data:"){var c=e.slice(0,1024).indexOf(";base64,");if(c>-1)e=e.slice(c+8)}e=e.replace(/[^\w\+\/\=]/g,"");for(var c=0;c<e.length;){i=k.indexOf(e.charAt(c++));s=k.indexOf(e.charAt(c++));t=i<<2|s>>4;r+=String.fromCharCode(t);l=k.indexOf(e.charAt(c++));a=(s&15)<<4|l>>2;if(l!==64){r+=String.fromCharCode(a)}o=k.indexOf(e.charAt(c++));n=(l&3)<<6|o;if(o!==64){r+=String.fromCharCode(n)}}return r}var _=function(){return typeof Buffer!=="undefined"&&typeof undefined!=="undefined"&&typeof{}!=="undefined"&&!!{}.node}();var A=function(){if(typeof Buffer!=="undefined"){var e=!Buffer.from;if(!e)try{Buffer.from("foo","utf8")}catch(r){e=true}return e?function(e,r){return r?new Buffer(e,r):new Buffer(e)}:Buffer.from.bind(Buffer)}return function(){}}();var T=function(){if(typeof Buffer==="undefined")return false;var e=A([65,0]);if(!e)return false;var r=e.toString("utf16le");return r.length==1}();function E(e){if(_)return Buffer.alloc?Buffer.alloc(e):new Buffer(e);return typeof Uint8Array!="undefined"?new Uint8Array(e):new Array(e)}function F(e){if(_)return Buffer.allocUnsafe?Buffer.allocUnsafe(e):new Buffer(e);return typeof Uint8Array!="undefined"?new Uint8Array(e):new Array(e)}var D=function Nc(e){if(_)return A(e,"binary");return e.split("").map(function(e){return e.charCodeAt(0)&255})};function O(e){if(typeof ArrayBuffer==="undefined")return D(e);var r=new ArrayBuffer(e.length),t=new Uint8Array(r);for(var a=0;a!=e.length;++a)t[a]=e.charCodeAt(a)&255;return r}function N(e){if(Array.isArray(e))return e.map(function(e){return String.fromCharCode(e)}).join("");var r=[];for(var t=0;t<e.length;++t)r[t]=String.fromCharCode(e[t]);return r.join("")}function M(e){if(typeof Uint8Array==="undefined")throw new Error("Unsupported");return new Uint8Array(e)}function I(e){if(typeof ArrayBuffer=="undefined")throw new Error("Unsupported");if(e instanceof ArrayBuffer)return I(new Uint8Array(e));var r=new Array(e.length);for(var t=0;t<e.length;++t)r[t]=e[t];return r}var P=_?function(e){return Buffer.concat(e.map(function(e){return Buffer.isBuffer(e)?e:A(e)}))}:function(e){if(typeof Uint8Array!=="undefined"){var r=0,t=0;for(r=0;r<e.length;++r)t+=e[r].length;var a=new Uint8Array(t);var n=0;for(r=0,t=0;r<e.length;t+=n,++r){n=e[r].length;if(e[r]instanceof Uint8Array)a.set(e[r],t);else if(typeof e[r]=="string")a.set(new Uint8Array(D(e[r])),t);else a.set(new Uint8Array(e[r]),t)}return a}return[].concat.apply([],e.map(function(e){return Array.isArray(e)?e:[].slice.call(e)}))};function R(e){var r=[],t=0,a=e.length+250;var n=E(e.length+255);for(var i=0;i<e.length;++i){var s=e.charCodeAt(i);if(s<128)n[t++]=s;else if(s<2048){n[t++]=192|s>>6&31;n[t++]=128|s&63}else if(s>=55296&&s<57344){s=(s&1023)+64;var l=e.charCodeAt(++i)&1023;n[t++]=240|s>>8&7;n[t++]=128|s>>2&63;n[t++]=128|l>>6&15|(s&3)<<4;n[t++]=128|l&63}else{n[t++]=224|s>>12&15;n[t++]=128|s>>6&63;n[t++]=128|s&63}if(t>a){r.push(n.slice(0,t));t=0;n=E(65535);a=65530}}r.push(n.slice(0,t));return P(r)}var L=/\u0000/g,U=/[\u0001-\u0006]/g;function B(e){var r="",t=e.length-1;while(t>=0)r+=e.charAt(t--);return r}function z(e,r){var t=""+e;return t.length>=r?t:xr("0",r-t.length)+t}function W(e,r){var t=""+e;return t.length>=r?t:xr(" ",r-t.length)+t}function j(e,r){var t=""+e;return t.length>=r?t:t+xr(" ",r-t.length)}function H(e,r){var t=""+Math.round(e);return t.length>=r?t:xr("0",r-t.length)+t}function V(e,r){var t=""+e;return t.length>=r?t:xr("0",r-t.length)+t}var X=Math.pow(2,32);function G(e,r){if(e>X||e<-X)return H(e,r);var t=Math.round(e);return V(t,r)}function Y(e,r){r=r||0;return e.length>=7+r&&(e.charCodeAt(r)|32)===103&&(e.charCodeAt(r+1)|32)===101&&(e.charCodeAt(r+2)|32)===110&&(e.charCodeAt(r+3)|32)===101&&(e.charCodeAt(r+4)|32)===114&&(e.charCodeAt(r+5)|32)===97&&(e.charCodeAt(r+6)|32)===108}var J=[["Sun","Sunday"],["Mon","Monday"],["Tue","Tuesday"],["Wed","Wednesday"],["Thu","Thursday"],["Fri","Friday"],["Sat","Saturday"]];var Z=[["J","Jan","January"],["F","Feb","February"],["M","Mar","March"],["A","Apr","April"],["M","May","May"],["J","Jun","June"],["J","Jul","July"],["A","Aug","August"],["S","Sep","September"],["O","Oct","October"],["N","Nov","November"],["D","Dec","December"]];function K(e){if(!e)e={};e[0]="General";e[1]="0";e[2]="0.00";e[3]="#,##0";e[4]="#,##0.00";e[9]="0%";e[10]="0.00%";e[11]="0.00E+00";e[12]="# ?/?";e[13]="# ??/??";e[14]="m/d/yy";e[15]="d-mmm-yy";e[16]="d-mmm";e[17]="mmm-yy";e[18]="h:mm AM/PM";e[19]="h:mm:ss AM/PM";e[20]="h:mm";e[21]="h:mm:ss";e[22]="m/d/yy h:mm";e[37]="#,##0 ;(#,##0)";e[38]="#,##0 ;[Red](#,##0)";e[39]="#,##0.00;(#,##0.00)";e[40]="#,##0.00;[Red](#,##0.00)";e[45]="mm:ss";e[46]="[h]:mm:ss";e[47]="mmss.0";e[48]="##0.0E+0";e[49]="@";e[56]='"上午/下午 "hh"時"mm"分"ss"秒 "';return e}var q={0:"General",1:"0",2:"0.00",3:"#,##0",4:"#,##0.00",9:"0%",10:"0.00%",11:"0.00E+00",12:"# ?/?",13:"# ??/??",14:"m/d/yy",15:"d-mmm-yy",16:"d-mmm",17:"mmm-yy",18:"h:mm AM/PM",19:"h:mm:ss AM/PM",20:"h:mm",21:"h:mm:ss",22:"m/d/yy h:mm",37:"#,##0 ;(#,##0)",38:"#,##0 ;[Red](#,##0)",39:"#,##0.00;(#,##0.00)",40:"#,##0.00;[Red](#,##0.00)",45:"mm:ss",46:"[h]:mm:ss",47:"mmss.0",48:"##0.0E+0",49:"@",56:'"上午/下午 "hh"時"mm"分"ss"秒 "'};var Q={5:37,6:38,7:39,8:40,23:0,24:0,25:0,26:0,27:14,28:14,29:14,30:14,31:14,50:14,51:14,52:14,53:14,54:14,55:14,56:14,57:14,58:14,59:1,60:2,61:3,62:4,67:9,68:10,69:12,70:13,71:14,72:14,73:15,74:16,75:17,76:20,77:21,78:22,79:45,80:46,81:47,82:0};var ee={5:'"$"#,##0_);\\("$"#,##0\\)',63:'"$"#,##0_);\\("$"#,##0\\)',6:'"$"#,##0_);[Red]\\("$"#,##0\\)',64:'"$"#,##0_);[Red]\\("$"#,##0\\)',7:'"$"#,##0.00_);\\("$"#,##0.00\\)',65:'"$"#,##0.00_);\\("$"#,##0.00\\)',8:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',66:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',41:'_(* #,##0_);_(* \\(#,##0\\);_(* "-"_);_(@_)',42:'_("$"* #,##0_);_("$"* \\(#,##0\\);_("$"* "-"_);_(@_)',43:'_(* #,##0.00_);_(* \\(#,##0.00\\);_(* "-"??_);_(@_)',44:'_("$"* #,##0.00_);_("$"* \\(#,##0.00\\);_("$"* "-"??_);_(@_)'};function re(e,r,t){var a=e<0?-1:1;var n=e*a;var i=0,s=1,l=0;var o=1,c=0,f=0;var u=Math.floor(n);while(c<r){u=Math.floor(n);l=u*s+i;f=u*c+o;if(n-u<5e-8)break;n=1/(n-u);i=s;s=l;o=c;c=f}if(f>r){if(c>r){f=o;l=i}else{f=c;l=s}}if(!t)return[0,a*l,f];var h=Math.floor(a*l/f);return[h,a*l-h*f,f]}function te(e){var r=e.toPrecision(16);if(r.indexOf("e")>-1){var t=r.slice(0,r.indexOf("e"));t=t.indexOf(".")>-1?t.slice(0,t.slice(0,2)=="0."?17:16):t.slice(0,15)+xr("0",t.length-15);return t+r.slice(r.indexOf("e"))}var a=r.indexOf(".")>-1?r.slice(0,r.slice(0,2)=="0."?17:16):r.slice(0,15)+xr("0",r.length-15);return Number(a)}function ae(e,r,t){if(e>2958465||e<0)return null;e=te(e);var a=e|0,n=Math.floor(86400*(e-a)),i=0;var s=[];var l={D:a,T:n,u:86400*(e-a)-n,y:0,m:0,d:0,H:0,M:0,S:0,q:0};if(Math.abs(l.u)<1e-6)l.u=0;if(r&&r.date1904)a+=1462;if(l.u>.9999){l.u=0;if(++n==86400){l.T=n=0;++a;++l.D}}if(a===60){s=t?[1317,10,29]:[1900,2,29];i=3}else if(a===0){s=t?[1317,8,29]:[1900,1,0];i=6}else{if(a>60)--a;var o=new Date(1900,0,1);o.setDate(o.getDate()+a-1);s=[o.getFullYear(),o.getMonth()+1,o.getDate()];i=o.getDay();if(a<60)i=(i+6)%7;if(t)i=fe(o,s)}l.y=s[0];l.m=s[1];l.d=s[2];l.S=n%60;n=Math.floor(n/60);l.M=n%60;n=Math.floor(n/60);l.H=n;l.q=i;return l}function ne(e){return e.indexOf(".")==-1?e:e.replace(/(?:\.0*|(\.\d*[1-9])0+)$/,"$1")}function ie(e){if(e.indexOf("E")==-1)return e;return e.replace(/(?:\.0*|(\.\d*[1-9])0+)[Ee]/,"$1E").replace(/(E[+-])(\d)$/,"$10$2")}function se(e){var r=e<0?12:11;var t=ne(e.toFixed(12));if(t.length<=r)return t;t=e.toPrecision(10);if(t.length<=r)return t;return e.toExponential(5)}function le(e){var r=ne(e.toFixed(11));return r.length>(e<0?12:11)||r==="0"||r==="-0"?e.toPrecision(6):r}function oe(e){if(!isFinite(e))return isNaN(e)?"#NUM!":"#DIV/0!";var r=Math.floor(Math.log(Math.abs(e))*Math.LOG10E),t;if(r>=-4&&r<=-1)t=e.toPrecision(10+r);else if(Math.abs(r)<=9)t=se(e);else if(r===10)t=e.toFixed(10).substr(0,12);else t=le(e);return ne(ie(t.toUpperCase()))}function ce(e,r){switch(typeof e){case"string":return e;case"boolean":return e?"TRUE":"FALSE";case"number":return(e|0)===e?e.toString(10):oe(e);case"undefined":return"";case"object":if(e==null)return"";if(e instanceof Date)return $e(14,dr(e,r&&r.date1904),r);}throw new Error("unsupported value in General format: "+e)}function fe(e,r){r[0]-=581;var t=e.getDay();if(e<60)t=(t+6)%7;return t}function ue(e,r,t,a){var n="",i=0,s=0,l=t.y,o,c=0;switch(e){case 98:l=t.y+543;case 121:switch(r.length){case 1:;case 2:o=l%100;c=2;break;default:o=l%1e4;c=4;break;}break;case 109:switch(r.length){case 1:;case 2:o=t.m;c=r.length;break;case 3:return Z[t.m-1][1];case 5:return Z[t.m-1][0];default:return Z[t.m-1][2];}break;case 100:switch(r.length){case 1:;case 2:o=t.d;c=r.length;break;case 3:return J[t.q][0];default:return J[t.q][1];}break;case 104:switch(r.length){case 1:;case 2:o=1+(t.H+11)%12;c=r.length;break;default:throw"bad hour format: "+r;}break;case 72:switch(r.length){case 1:;case 2:o=t.H;c=r.length;break;default:throw"bad hour format: "+r;}break;case 77:switch(r.length){case 1:;case 2:o=t.M;c=r.length;break;default:throw"bad minute format: "+r;}break;case 115:if(r!="s"&&r!="ss"&&r!=".0"&&r!=".00"&&r!=".000")throw"bad second format: "+r;if(t.u===0&&(r=="s"||r=="ss"))return z(t.S,r.length);if(a>=2)s=a===3?1e3:100;else s=a===1?10:1;i=Math.round(s*(t.S+t.u));if(i>=60*s)i=0;if(r==="s")return i===0?"0":""+i/s;n=z(i,2+a);if(r==="ss")return n.substr(0,2);return"."+n.substr(2,r.length-1);case 90:switch(r){case"[h]":;case"[hh]":o=t.D*24+t.H;break;case"[m]":;case"[mm]":o=(t.D*24+t.H)*60+t.M;break;case"[s]":;case"[ss]":o=((t.D*24+t.H)*60+t.M)*60+(a==0?Math.round(t.S+t.u):t.S);break;default:throw"bad abstime format: "+r;}c=r.length===3?1:2;break;case 101:o=l;c=1;break;}var f=c>0?z(o,c):"";return f}function he(e){var r=3;if(e.length<=r)return e;var t=e.length%r,a=e.substr(0,t);for(;t!=e.length;t+=r)a+=(a.length>0?",":"")+e.substr(t,r);return a}var de=/%/g;function pe(e,r,t){var a=r.replace(de,""),n=r.length-a.length;return Me(e,a,t*Math.pow(10,2*n))+xr("%",n)}function me(e,r,t){var a=r.length-1;while(r.charCodeAt(a-1)===44)--a;return Me(e,r.substr(0,a),t/Math.pow(10,3*(r.length-a)))}function ve(e,r){var t;var a=e.indexOf("E")-e.indexOf(".")-1;if(e.match(/^#+0.0E\+0$/)){if(r==0)return"0.0E+0";else if(r<0)return"-"+ve(e,-r);var n=e.indexOf(".");if(n===-1)n=e.indexOf("E");var i=Math.floor(Math.log(r)*Math.LOG10E)%n;if(i<0)i+=n;t=(r/Math.pow(10,i)).toPrecision(a+1+(n+i)%n);if(t.indexOf("e")===-1){var s=Math.floor(Math.log(r)*Math.LOG10E);if(t.indexOf(".")===-1)t=t.charAt(0)+"."+t.substr(1)+"E+"+(s-t.length+i);else t+="E+"+(s-i);while(t.substr(0,2)==="0."){t=t.charAt(0)+t.substr(2,n)+"."+t.substr(2+n);t=t.replace(/^0+([1-9])/,"$1").replace(/^0+\./,"0.")}t=t.replace(/\+-/,"-")}t=t.replace(/^([+-]?)(\d*)\.(\d*)[Ee]/,function(e,r,t,a){return r+t+a.substr(0,(n+i)%n)+"."+a.substr(i)+"E"})}else t=r.toExponential(a);if(e.match(/E\+00$/)&&t.match(/e[+-]\d$/))t=t.substr(0,t.length-1)+"0"+t.charAt(t.length-1);if(e.match(/E\-/)&&t.match(/e\+/))t=t.replace(/e\+/,"e");return t.replace("e","E")}var ge=/# (\?+)( ?)\/( ?)(\d+)/;function be(e,r,t){var a=parseInt(e[4],10),n=Math.round(r*a),i=Math.floor(n/a);var s=n-i*a,l=a;return t+(i===0?"":""+i)+" "+(s===0?xr(" ",e[1].length+1+e[4].length):W(s,e[1].length)+e[2]+"/"+e[3]+z(l,e[4].length))}function we(e,r,t){return t+(r===0?"":""+r)+xr(" ",e[1].length+2+e[4].length)}var ke=/^#*0*\.([0#]+)/;var ye=/\)[^)]*[0#]/;var xe=/\(###\) ###\\?-####/;function Ce(e){var r="",t;for(var a=0;a!=e.length;++a)switch(t=e.charCodeAt(a)){case 35:break;case 63:r+=" ";break;case 48:r+="0";break;default:r+=String.fromCharCode(t);}return r}function Se(e,r){var t=Math.pow(10,r);return""+Math.round(e*t)/t}function _e(e,r){var t=e-Math.floor(e),a=Math.pow(10,r);if(r<(""+Math.round(t*a)).length)return 0;return Math.round(t*a)}function Ae(e,r){if(r<(""+Math.round((e-Math.floor(e))*Math.pow(10,r))).length){return 1}return 0}function Te(e){if(e<2147483647&&e>-2147483648)return""+(e>=0?e|0:e-1|0);return""+Math.floor(e)}function Ee(e,r,t){if(e.charCodeAt(0)===40&&!r.match(ye)){var a=r.replace(/\( */,"").replace(/ \)/,"").replace(/\)/,"");if(t>=0)return Ee("n",a,t);return"("+Ee("n",a,-t)+")"}if(r.charCodeAt(r.length-1)===44)return me(e,r,t);if(r.indexOf("%")!==-1)return pe(e,r,t);if(r.indexOf("E")!==-1)return ve(r,t);if(r.charCodeAt(0)===36)return"$"+Ee(e,r.substr(r.charAt(1)==" "?2:1),t);var n;var i,s,l,o=Math.abs(t),c=t<0?"-":"";if(r.match(/^00+$/))return c+G(o,r.length);if(r.match(/^[#?]+$/)){n=G(t,0);if(n==="0")n="";return n.length>r.length?n:Ce(r.substr(0,r.length-n.length))+n}if(i=r.match(ge))return be(i,o,c);if(r.match(/^#+0+$/))return c+G(o,r.length-r.indexOf("0"));if(i=r.match(ke)){n=Se(t,i[1].length).replace(/^([^\.]+)$/,"$1."+Ce(i[1])).replace(/\.$/,"."+Ce(i[1])).replace(/\.(\d*)$/,function(e,r){return"."+r+xr("0",Ce(i[1]).length-r.length)});return r.indexOf("0.")!==-1?n:n.replace(/^0\./,".")}r=r.replace(/^#+([0.])/,"$1");if(i=r.match(/^(0*)\.(#*)$/)){return c+Se(o,i[2].length).replace(/\.(\d*[1-9])0*$/,".$1").replace(/^(-?\d*)$/,"$1.").replace(/^0\./,i[1].length?"0.":".")}if(i=r.match(/^#{1,3},##0(\.?)$/))return c+he(G(o,0));if(i=r.match(/^#,##0\.([#0]*0)$/)){return t<0?"-"+Ee(e,r,-t):he(""+(Math.floor(t)+Ae(t,i[1].length)))+"."+z(_e(t,i[1].length),i[1].length)}if(i=r.match(/^#,#*,#0/))return Ee(e,r.replace(/^#,#*,/,""),t);if(i=r.match(/^([0#]+)(\\?-([0#]+))+$/)){n=B(Ee(e,r.replace(/[\\-]/g,""),t));s=0;return B(B(r.replace(/\\/g,"")).replace(/[0#]/g,function(e){return s<n.length?n.charAt(s++):e==="0"?"0":""}))}if(r.match(xe)){n=Ee(e,"##########",t);return"("+n.substr(0,3)+") "+n.substr(3,3)+"-"+n.substr(6)}var f="";if(i=r.match(/^([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(i[4].length,7);l=re(o,Math.pow(10,s)-1,false);n=""+c;f=Me("n",i[1],l[1]);if(f.charAt(f.length-1)==" ")f=f.substr(0,f.length-1)+"0";n+=f+i[2]+"/"+i[3];f=j(l[2],s);if(f.length<i[4].length)f=Ce(i[4].substr(i[4].length-f.length))+f;n+=f;return n}if(i=r.match(/^# ([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(Math.max(i[1].length,i[4].length),7);l=re(o,Math.pow(10,s)-1,true);return c+(l[0]||(l[1]?"":"0"))+" "+(l[1]?W(l[1],s)+i[2]+"/"+i[3]+j(l[2],s):xr(" ",2*s+1+i[2].length+i[3].length))}if(i=r.match(/^[#0?]+$/)){n=G(t,0);if(r.length<=n.length)return n;return Ce(r.substr(0,r.length-n.length))+n}if(i=r.match(/^([#0?]+)\.([#0]+)$/)){n=""+t.toFixed(Math.min(i[2].length,10)).replace(/([^0])0+$/,"$1");s=n.indexOf(".");var u=r.indexOf(".")-s,h=r.length-n.length-u;return Ce(r.substr(0,u)+n+r.substr(r.length-h))}if(i=r.match(/^00,000\.([#0]*0)$/)){s=_e(t,i[1].length);return t<0?"-"+Ee(e,r,-t):he(Te(t)).replace(/^\d,\d{3}$/,"0$&").replace(/^\d*$/,function(e){return"00,"+(e.length<3?z(0,3-e.length):"")+e})+"."+z(s,i[1].length)}switch(r){case"###,##0.00":return Ee(e,"#,##0.00",t);case"###,###":;case"##,###":;case"#,###":var d=he(G(o,0));return d!=="0"?c+d:"";case"###,###.00":return Ee(e,"###,##0.00",t).replace(/^0\./,".");case"#,###.00":return Ee(e,"#,##0.00",t).replace(/^0\./,".");default:;}throw new Error("unsupported format |"+r+"|")}function Fe(e,r,t){var a=r.length-1;while(r.charCodeAt(a-1)===44)--a;return Me(e,r.substr(0,a),t/Math.pow(10,3*(r.length-a)))}function De(e,r,t){var a=r.replace(de,""),n=r.length-a.length;return Me(e,a,t*Math.pow(10,2*n))+xr("%",n)}function Oe(e,r){var t;var a=e.indexOf("E")-e.indexOf(".")-1;if(e.match(/^#+0.0E\+0$/)){if(r==0)return"0.0E+0";else if(r<0)return"-"+Oe(e,-r);var n=e.indexOf(".");if(n===-1)n=e.indexOf("E");var i=Math.floor(Math.log(r)*Math.LOG10E)%n;if(i<0)i+=n;t=(r/Math.pow(10,i)).toPrecision(a+1+(n+i)%n);if(!t.match(/[Ee]/)){var s=Math.floor(Math.log(r)*Math.LOG10E);if(t.indexOf(".")===-1)t=t.charAt(0)+"."+t.substr(1)+"E+"+(s-t.length+i);else t+="E+"+(s-i);t=t.replace(/\+-/,"-")}t=t.replace(/^([+-]?)(\d*)\.(\d*)[Ee]/,function(e,r,t,a){return r+t+a.substr(0,(n+i)%n)+"."+a.substr(i)+"E"})}else t=r.toExponential(a);if(e.match(/E\+00$/)&&t.match(/e[+-]\d$/))t=t.substr(0,t.length-1)+"0"+t.charAt(t.length-1);if(e.match(/E\-/)&&t.match(/e\+/))t=t.replace(/e\+/,"e");return t.replace("e","E")}function Ne(e,r,t){if(e.charCodeAt(0)===40&&!r.match(ye)){var a=r.replace(/\( */,"").replace(/ \)/,"").replace(/\)/,"");if(t>=0)return Ne("n",a,t);return"("+Ne("n",a,-t)+")"}if(r.charCodeAt(r.length-1)===44)return Fe(e,r,t);if(r.indexOf("%")!==-1)return De(e,r,t);if(r.indexOf("E")!==-1)return Oe(r,t);if(r.charCodeAt(0)===36)return"$"+Ne(e,r.substr(r.charAt(1)==" "?2:1),t);var n;var i,s,l,o=Math.abs(t),c=t<0?"-":"";if(r.match(/^00+$/))return c+z(o,r.length);if(r.match(/^[#?]+$/)){n=""+t;if(t===0)n="";return n.length>r.length?n:Ce(r.substr(0,r.length-n.length))+n}if(i=r.match(ge))return we(i,o,c);if(r.match(/^#+0+$/))return c+z(o,r.length-r.indexOf("0"));if(i=r.match(ke)){n=(""+t).replace(/^([^\.]+)$/,"$1."+Ce(i[1])).replace(/\.$/,"."+Ce(i[1]));n=n.replace(/\.(\d*)$/,function(e,r){return"."+r+xr("0",Ce(i[1]).length-r.length)});return r.indexOf("0.")!==-1?n:n.replace(/^0\./,".")}r=r.replace(/^#+([0.])/,"$1");if(i=r.match(/^(0*)\.(#*)$/)){return c+(""+o).replace(/\.(\d*[1-9])0*$/,".$1").replace(/^(-?\d*)$/,"$1.").replace(/^0\./,i[1].length?"0.":".")}if(i=r.match(/^#{1,3},##0(\.?)$/))return c+he(""+o);if(i=r.match(/^#,##0\.([#0]*0)$/)){return t<0?"-"+Ne(e,r,-t):he(""+t)+"."+xr("0",i[1].length)}if(i=r.match(/^#,#*,#0/))return Ne(e,r.replace(/^#,#*,/,""),t);if(i=r.match(/^([0#]+)(\\?-([0#]+))+$/)){n=B(Ne(e,r.replace(/[\\-]/g,""),t));s=0;return B(B(r.replace(/\\/g,"")).replace(/[0#]/g,function(e){return s<n.length?n.charAt(s++):e==="0"?"0":""}))}if(r.match(xe)){n=Ne(e,"##########",t);return"("+n.substr(0,3)+") "+n.substr(3,3)+"-"+n.substr(6)}var f="";if(i=r.match(/^([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(i[4].length,7);l=re(o,Math.pow(10,s)-1,false);n=""+c;f=Me("n",i[1],l[1]);if(f.charAt(f.length-1)==" ")f=f.substr(0,f.length-1)+"0";n+=f+i[2]+"/"+i[3];f=j(l[2],s);if(f.length<i[4].length)f=Ce(i[4].substr(i[4].length-f.length))+f;n+=f;return n}if(i=r.match(/^# ([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(Math.max(i[1].length,i[4].length),7);l=re(o,Math.pow(10,s)-1,true);return c+(l[0]||(l[1]?"":"0"))+" "+(l[1]?W(l[1],s)+i[2]+"/"+i[3]+j(l[2],s):xr(" ",2*s+1+i[2].length+i[3].length))}if(i=r.match(/^[#0?]+$/)){n=""+t;if(r.length<=n.length)return n;return Ce(r.substr(0,r.length-n.length))+n}if(i=r.match(/^([#0]+)\.([#0]+)$/)){n=""+t.toFixed(Math.min(i[2].length,10)).replace(/([^0])0+$/,"$1");s=n.indexOf(".");var u=r.indexOf(".")-s,h=r.length-n.length-u;return Ce(r.substr(0,u)+n+r.substr(r.length-h))}if(i=r.match(/^00,000\.([#0]*0)$/)){return t<0?"-"+Ne(e,r,-t):he(""+t).replace(/^\d,\d{3}$/,"0$&").replace(/^\d*$/,function(e){return"00,"+(e.length<3?z(0,3-e.length):"")+e})+"."+z(0,i[1].length)}switch(r){case"###,###":;case"##,###":;case"#,###":var d=he(""+o);return d!=="0"?c+d:"";default:if(r.match(/\.[0#?]*$/))return Ne(e,r.slice(0,r.lastIndexOf(".")),t)+Ce(r.slice(r.lastIndexOf(".")));}throw new Error("unsupported format |"+r+"|")}function Me(e,r,t){return(t|0)===t?Ne(e,r,t):Ee(e,r,t)}function Ie(e){var r=[];var t=false;for(var a=0,n=0;a<e.length;++a)switch(e.charCodeAt(a)){case 34:t=!t;break;case 95:;case 42:;case 92:++a;break;case 59:r[r.length]=e.substr(n,a-n);n=a+1;}r[r.length]=e.substr(n);if(t===true)throw new Error("Format |"+e+"| unterminated string ");return r}var Pe=/\[[HhMmSs\u0E0A\u0E19\u0E17]*\]/;function Re(e){var r=0,t="",a="";while(r<e.length){switch(t=e.charAt(r)){case"G":if(Y(e,r))r+=6;r++;break;case'"':for(;e.charCodeAt(++r)!==34&&r<e.length;){}++r;break;case"\\":r+=2;break;case"_":r+=2;break;case"@":++r;break;case"B":;case"b":if(e.charAt(r+1)==="1"||e.charAt(r+1)==="2")return true;case"M":;case"D":;case"Y":;case"H":;case"S":;case"E":;case"m":;case"d":;case"y":;case"h":;case"s":;case"e":;case"g":return true;case"A":;case"a":;case"上":if(e.substr(r,3).toUpperCase()==="A/P")return true;if(e.substr(r,5).toUpperCase()==="AM/PM")return true;if(e.substr(r,5).toUpperCase()==="上午/下午")return true;++r;break;case"[":a=t;while(e.charAt(r++)!=="]"&&r<e.length)a+=e.charAt(r);if(a.match(Pe))return true;break;case".":;case"0":;case"#":while(r<e.length&&("0#?.,E+-%".indexOf(t=e.charAt(++r))>-1||t=="\\"&&e.charAt(r+1)=="-"&&"0#".indexOf(e.charAt(r+2))>-1)){}break;case"?":while(e.charAt(++r)===t){}break;case"*":++r;if(e.charAt(r)==" "||e.charAt(r)=="*")++r;break;case"(":;case")":++r;break;case"1":;case"2":;case"3":;case"4":;case"5":;case"6":;case"7":;case"8":;case"9":while(r<e.length&&"0123456789".indexOf(e.charAt(++r))>-1){}break;case" ":++r;break;default:++r;break;}}return false}function Le(e,r,t,a){var n=[],i="",s=0,l="",o="t",c,f,u;var h="H";while(s<e.length){switch(l=e.charAt(s)){case"G":if(!Y(e,s))throw new Error("unrecognized character "+l+" in "+e);n[n.length]={t:"G",v:"General"};s+=7;break;case'"':for(i="";(u=e.charCodeAt(++s))!==34&&s<e.length;)i+=String.fromCharCode(u);n[n.length]={t:"t",v:i};++s;break;case"\\":var d=e.charAt(++s),p=d==="("||d===")"?d:"t";n[n.length]={t:p,v:d};++s;break;case"_":n[n.length]={t:"t",v:" "};s+=2;break;case"@":n[n.length]={t:"T",v:r};++s;break;case"B":;case"b":if(e.charAt(s+1)==="1"||e.charAt(s+1)==="2"){if(c==null){c=ae(r,t,e.charAt(s+1)==="2");if(c==null)return""}n[n.length]={t:"X",v:e.substr(s,2)};o=l;s+=2;break};case"M":;case"D":;case"Y":;case"H":;case"S":;case"E":l=l.toLowerCase();case"m":;case"d":;case"y":;case"h":;case"s":;case"e":;case"g":if(r<0)return"";if(c==null){c=ae(r,t);if(c==null)return""}i=l;while(++s<e.length&&e.charAt(s).toLowerCase()===l)i+=l;if(l==="m"&&o.toLowerCase()==="h")l="M";if(l==="h")l=h;n[n.length]={t:l,v:i};o=l;break;case"A":;case"a":;case"上":var m={t:l,v:l};if(c==null)c=ae(r,t);if(e.substr(s,3).toUpperCase()==="A/P"){if(c!=null)m.v=c.H>=12?e.charAt(s+2):l;m.t="T";h="h";s+=3}else if(e.substr(s,5).toUpperCase()==="AM/PM"){if(c!=null)m.v=c.H>=12?"PM":"AM";m.t="T";s+=5;h="h"}else if(e.substr(s,5).toUpperCase()==="上午/下午"){if(c!=null)m.v=c.H>=12?"下午":"上午";m.t="T";s+=5;h="h"}else{m.t="t";++s}if(c==null&&m.t==="T")return"";n[n.length]=m;o=l;break;case"[":i=l;while(e.charAt(s++)!=="]"&&s<e.length)i+=e.charAt(s);if(i.slice(-1)!=="]")throw'unterminated "[" block: |'+i+"|";if(i.match(Pe)){if(c==null){c=ae(r,t);if(c==null)return""}n[n.length]={t:"Z",v:i.toLowerCase()};o=i.charAt(1)}else if(i.indexOf("$")>-1){i=(i.match(/\$([^-\[\]]*)/)||[])[1]||"$";if(!Re(e))n[n.length]={t:"t",v:i}}break;case".":if(c!=null){i=l;while(++s<e.length&&(l=e.charAt(s))==="0")i+=l;n[n.length]={t:"s",v:i};break};case"0":;case"#":i=l;while(++s<e.length&&"0#?.,E+-%".indexOf(l=e.charAt(s))>-1)i+=l;n[n.length]={t:"n",v:i};break;case"?":i=l;while(e.charAt(++s)===l)i+=l;n[n.length]={t:l,v:i};o=l;break;case"*":++s;if(e.charAt(s)==" "||e.charAt(s)=="*")++s;break;case"(":;case")":n[n.length]={t:a===1?"t":l,v:l};++s;break;case"1":;case"2":;case"3":;case"4":;case"5":;case"6":;case"7":;case"8":;case"9":i=l;while(s<e.length&&"0123456789".indexOf(e.charAt(++s))>-1)i+=e.charAt(s);n[n.length]={t:"D",v:i};break;case" ":n[n.length]={t:l,v:l};++s;break;case"$":n[n.length]={t:"t",v:"$"};++s;break;default:if(",$-+/():!^&'~{}<>=€acfijklopqrtuvwxzP".indexOf(l)===-1)throw new Error("unrecognized character "+l+" in "+e);n[n.length]={t:"t",v:l};++s;break;}}var v=0,g=0,b;for(s=n.length-1,o="t";s>=0;--s){switch(n[s].t){case"h":;case"H":n[s].t=h;o="h";if(v<1)v=1;break;case"s":if(b=n[s].v.match(/\.0+$/)){g=Math.max(g,b[0].length-1);v=4}if(v<3)v=3;case"d":;case"y":;case"e":o=n[s].t;break;case"M":o=n[s].t;if(v<2)v=2;break;case"m":if(o==="s"){n[s].t="M";if(v<2)v=2}break;case"X":break;case"Z":if(v<1&&n[s].v.match(/[Hh]/))v=1;if(v<2&&n[s].v.match(/[Mm]/))v=2;if(v<3&&n[s].v.match(/[Ss]/))v=3;}}var w;switch(v){case 0:break;case 1:;case 2:;case 3:if(c.u>=.5){c.u=0;++c.S}if(c.S>=60){c.S=0;++c.M}if(c.M>=60){c.M=0;++c.H}if(c.H>=24){c.H=0;++c.D;w=ae(c.D);w.u=c.u;w.S=c.S;w.M=c.M;w.H=c.H;c=w}break;case 4:switch(g){case 1:c.u=Math.round(c.u*10)/10;break;case 2:c.u=Math.round(c.u*100)/100;break;case 3:c.u=Math.round(c.u*1e3)/1e3;break;}if(c.u>=1){c.u=0;++c.S}if(c.S>=60){c.S=0;++c.M}if(c.M>=60){c.M=0;++c.H}if(c.H>=24){c.H=0;++c.D;w=ae(c.D);w.u=c.u;w.S=c.S;w.M=c.M;w.H=c.H;c=w}break;}var k="",y;for(s=0;s<n.length;++s){switch(n[s].t){case"t":;case"T":;case" ":;case"D":break;case"X":n[s].v="";n[s].t=";";break;case"d":;case"m":;case"y":;case"h":;case"H":;case"M":;case"s":;case"e":;case"b":;case"Z":n[s].v=ue(n[s].t.charCodeAt(0),n[s].v,c,g);n[s].t="t";break;case"n":;case"?":y=s+1;while(n[y]!=null&&((l=n[y].t)==="?"||l==="D"||(l===" "||l==="t")&&n[y+1]!=null&&(n[y+1].t==="?"||n[y+1].t==="t"&&n[y+1].v==="/")||n[s].t==="("&&(l===" "||l==="n"||l===")")||l==="t"&&(n[y].v==="/"||n[y].v===" "&&n[y+1]!=null&&n[y+1].t=="?"))){n[s].v+=n[y].v;n[y]={v:"",t:";"};++y}k+=n[s].v;s=y-1;break;case"G":n[s].t="t";n[s].v=ce(r,t);break;}}var x="",C,S;if(k.length>0){if(k.charCodeAt(0)==40){C=r<0&&k.charCodeAt(0)===45?-r:r;S=Me("n",k,C)}else{C=r<0&&a>1?-r:r;S=Me("n",k,C);if(C<0&&n[0]&&n[0].t=="t"){S=S.substr(1);n[0].v="-"+n[0].v}}y=S.length-1;var _=n.length;for(s=0;s<n.length;++s)if(n[s]!=null&&n[s].t!="t"&&n[s].v.indexOf(".")>-1){_=s;break}var A=n.length;if(_===n.length&&S.indexOf("E")===-1){for(s=n.length-1;s>=0;--s){if(n[s]==null||"n?".indexOf(n[s].t)===-1)continue;if(y>=n[s].v.length-1){y-=n[s].v.length;n[s].v=S.substr(y+1,n[s].v.length)}else if(y<0)n[s].v="";else{n[s].v=S.substr(0,y+1);y=-1}n[s].t="t";A=s}if(y>=0&&A<n.length)n[A].v=S.substr(0,y+1)+n[A].v}else if(_!==n.length&&S.indexOf("E")===-1){y=S.indexOf(".")-1;for(s=_;s>=0;--s){if(n[s]==null||"n?".indexOf(n[s].t)===-1)continue;f=n[s].v.indexOf(".")>-1&&s===_?n[s].v.indexOf(".")-1:n[s].v.length-1;x=n[s].v.substr(f+1);for(;f>=0;--f){if(y>=0&&(n[s].v.charAt(f)==="0"||n[s].v.charAt(f)==="#"))x=S.charAt(y--)+x}n[s].v=x;n[s].t="t";A=s}if(y>=0&&A<n.length)n[A].v=S.substr(0,y+1)+n[A].v;y=S.indexOf(".")+1;for(s=_;s<n.length;++s){if(n[s]==null||"n?(".indexOf(n[s].t)===-1&&s!==_)continue;f=n[s].v.indexOf(".")>-1&&s===_?n[s].v.indexOf(".")+1:0;x=n[s].v.substr(0,f);for(;f<n[s].v.length;++f){if(y<S.length)x+=S.charAt(y++)}n[s].v=x;n[s].t="t";A=s}}}for(s=0;s<n.length;++s)if(n[s]!=null&&"n?".indexOf(n[s].t)>-1){C=a>1&&r<0&&s>0&&n[s-1].v==="-"?-r:r;n[s].v=Me(n[s].t,n[s].v,C);n[s].t="t"}var T="";for(s=0;s!==n.length;++s)if(n[s]!=null)T+=n[s].v;return T}var Ue=/\[(=|>[=]?|<[>=]?)(-?\d+(?:\.\d*)?)\]/;function Be(e,r){if(r==null)return false;var t=parseFloat(r[2]);switch(r[1]){case"=":if(e==t)return true;break;case">":if(e>t)return true;break;case"<":if(e<t)return true;break;case"<>":if(e!=t)return true;break;case">=":if(e>=t)return true;break;case"<=":if(e<=t)return true;break;}return false}function ze(e,r){var t=Ie(e);var a=t.length,n=t[a-1].indexOf("@");if(a<4&&n>-1)--a;if(t.length>4)throw new Error("cannot find right format for |"+t.join("|")+"|");if(typeof r!=="number")return[4,t.length===4||n>-1?t[t.length-1]:"@"];if(typeof r==="number"&&!isFinite(r))r=0;switch(t.length){case 1:t=n>-1?["General","General","General",t[0]]:[t[0],t[0],t[0],"@"];break;case 2:t=n>-1?[t[0],t[0],t[0],t[1]]:[t[0],t[1],t[0],"@"];break;case 3:t=n>-1?[t[0],t[1],t[0],t[2]]:[t[0],t[1],t[2],"@"];break;case 4:break;}var i=r>0?t[0]:r<0?t[1]:t[2];if(t[0].indexOf("[")===-1&&t[1].indexOf("[")===-1)return[a,i];if(t[0].match(/\[[=<>]/)!=null||t[1].match(/\[[=<>]/)!=null){var s=t[0].match(Ue);var l=t[1].match(Ue);return Be(r,s)?[a,t[0]]:Be(r,l)?[a,t[1]]:[a,t[s!=null&&l!=null?2:1]]}return[a,i]}function $e(e,r,t){if(t==null)t={};var a="";switch(typeof e){case"string":if(e=="m/d/yy"&&t.dateNF)a=t.dateNF;else a=e;break;case"number":if(e==14&&t.dateNF)a=t.dateNF;else a=(t.table!=null?t.table:q)[e];if(a==null)a=t.table&&t.table[Q[e]]||q[Q[e]];if(a==null)a=ee[e]||"General";break;}if(Y(a,0))return ce(r,t);if(r instanceof Date)r=dr(r,t.date1904);var n=ze(a,r);if(Y(n[1]))return ce(r,t);if(r===true)r="TRUE";else if(r===false)r="FALSE";else if(r===""||r==null)return"";else if(isNaN(r)&&n[1].indexOf("0")>-1)return"#NUM!";else if(!isFinite(r)&&n[1].indexOf("0")>-1)return"#DIV/0!";return Le(n[1],r,t,n[0])}function We(e,r){if(typeof r!="number"){r=+r||-1;for(var t=0;t<392;++t){if(q[t]==undefined){if(r<0)r=t;continue}if(q[t]==e){r=t;break}}if(r<0)r=391}q[r]=e;return r}function je(e){for(var r=0;r!=392;++r)if(e[r]!==undefined)We(e[r],r)}function He(){q=K()}var Ve={format:$e,load:We,_table:q,load_table:je,parse_date_code:ae,is_date:Re,get_table:function Mc(){return Ve._table=q}};var Xe={5:'"$"#,##0_);\\("$"#,##0\\)',6:'"$"#,##0_);[Red]\\("$"#,##0\\)',7:'"$"#,##0.00_);\\("$"#,##0.00\\)',8:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',23:"General",24:"General",25:"General",26:"General",27:"m/d/yy",28:"m/d/yy",29:"m/d/yy",30:"m/d/yy",31:"m/d/yy",32:"h:mm:ss",33:"h:mm:ss",34:"h:mm:ss",35:"h:mm:ss",36:"m/d/yy",41:'_(* #,##0_);_(* (#,##0);_(* "-"_);_(@_)',42:'_("$"* #,##0_);_("$"* (#,##0);_("$"* "-"_);_(@_)',43:'_(* #,##0.00_);_(* (#,##0.00);_(* "-"??_);_(@_)',44:'_("$"* #,##0.00_);_("$"* (#,##0.00);_("$"* "-"??_);_(@_)',50:"m/d/yy",51:"m/d/yy",52:"m/d/yy",53:"m/d/yy",54:"m/d/yy",55:"m/d/yy",56:"m/d/yy",57:"m/d/yy",58:"m/d/yy",59:"0",60:"0.00",61:"#,##0",62:"#,##0.00",63:'"$"#,##0_);\\("$"#,##0\\)',64:'"$"#,##0_);[Red]\\("$"#,##0\\)',65:'"$"#,##0.00_);\\("$"#,##0.00\\)',66:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',67:"0%",68:"0.00%",69:"# ?/?",70:"# ??/??",71:"m/d/yy",72:"m/d/yy",73:"d-mmm-yy",74:"d-mmm",75:"mmm-yy",76:"h:mm",77:"h:mm:ss",78:"m/d/yy h:mm",79:"mm:ss",80:"[h]:mm:ss",81:"mmss.0"};var Ge=/[dD]+|[mM]+|[yYeE]+|[Hh]+|[Ss]+/g;function Ye(e){var r=typeof e=="number"?q[e]:e;r=r.replace(Ge,"(\\d+)");Ge.lastIndex=0;return new RegExp("^"+r+"$");
@@ -453,7 +851,7 @@ parse_Primary(n.content)}catch(l){}a="/EncryptionInfo";n=Qe.find(e,a);if(!n||!n.
 
   /* ---------------- 样式识别 ---------------- */
   function detectFormat(wb) {
-    var hasPctHeader = false, hasColumnHeader = false;
+    var hasPctHeader = false, hasColumnHeader = false, hasBlockHeader = false;
     wb.SheetNames.forEach(function (n) {
       if (/營養|营养|有氧/.test(n)) return;
       var ws = wb.Sheets[n];
@@ -461,16 +859,28 @@ parse_Primary(n.content)}catch(l){}a="/EncryptionInfo";n=Qe.find(e,a);if(!n||!n.
       var XLSX = wb.__XLSX;
       var range = XLSX.utils.decode_range(ws['!ref']);
       for (var r = range.s.r; r <= Math.min(range.e.r, 60); r++) {
-        for (var c = range.s.c; c <= Math.min(range.e.c, 30); c++) {
+        var rowText = {};
+        for (var c = range.s.c; c <= Math.min(range.e.c, 40); c++) {
           var cell = ws[XLSX.utils.encode_cell({ r: r, c: c })];
           var v = cell && cell.v;
           if (typeof v !== 'string') continue;
-          if (v.trim() === '%') hasPctHeader = true;
-          if (/^組數$|^组数$/.test(v.trim())) hasColumnHeader = true;
+          var s = v.trim();
+          rowText[c] = s;
+          if (s === '%') hasPctHeader = true;
+          if (/^組數$|^组数$/.test(s)) hasColumnHeader = true;
+        }
+        // 「锻炼|重量|次数|组数」四列一组 —— 5/3/1 这类模板
+        for (var k in rowText) {
+          var kc = Number(k);
+          if (rowText[kc] === '重量' && rowText[kc + 1] === '次数' && rowText[kc + 2] === '组数') {
+            var nm = rowText[kc - 1];
+            if (nm && /^(锻炼|動作|动作|训练动作|动作名称|項目|项目)$/.test(nm)) hasBlockHeader = true;
+          }
         }
       }
     });
     if (hasPctHeader) return 'matrix';
+    if (hasBlockHeader) return 'blocks';
     if (hasColumnHeader) return 'columns';
     return 'text';
   }
@@ -555,6 +965,179 @@ parse_Primary(n.content)}catch(l){}a="/EncryptionInfo";n=Qe.find(e,a);if(!n||!n.
           if (items.length) sessions.push({ day: day, title: null, items: items });
         });
         weeks.push({ label: weekLabel || ('W' + (weeks.length + 1)), sessions: sessions });
+      });
+    });
+
+    return { weeks: weeks, warnings: warnings };
+  }
+
+  /* ================= 适配器 B2：区块表（锻炼|重量|次数|组数） =================
+   * 5/3/1 这类模板：横向多个「周」区块，纵向多个 Day，每个区块 4 列。
+   */
+  var DAY_WORDS = { one: '一', two: '二', three: '三', four: '四', five: '五', six: '六', seven: '七' };
+
+  function parseKgCell(v) {
+    if (v == null) return { load: { type: 'none' }, note: null };
+    if (typeof v === 'number') return { load: { type: 'kg', value: Math.round(v * 10) / 10 }, note: null };
+    var s = String(v).trim();
+    if (!s || s === '?' || s === '？') return { load: { type: 'none' }, note: null };
+    var m;
+    if ((m = s.match(/^(\d+(?:\.\d+)?)\s*(?:kg|KG|Kg|公斤)$/))) {
+      return { load: { type: 'kg', value: parseFloat(m[1]) }, note: null };
+    }
+    if ((m = s.match(/^(\d+(?:\.\d+)?)\s*(?:lb|LB|Lb|磅)$/))) {
+      return { load: { type: 'kg', value: Math.round(parseFloat(m[1]) * 0.4536 * 10) / 10 }, note: '原 ' + s };
+    }
+    if ((m = s.match(/^(\d+(?:\.\d+)?)$/))) return { load: { type: 'kg', value: parseFloat(m[1]) }, note: null };
+    return { load: { type: 'none' }, note: null };
+  }
+
+  function parseRepsCell(v) {
+    if (v == null) return { reps: null, note: null };
+    if (typeof v === 'number') return { reps: String(Math.round(v)), note: null };
+    var s = String(v).trim();
+    var m = /^(\d+)\s*\+$/.exec(s);
+    if (m) return { reps: m[1], note: '最后一组 AMRAP' };
+    return { reps: s || null, note: null };
+  }
+
+  function parseSetsCell(v) {
+    if (v == null) return { sets: null, note: null };
+    if (typeof v === 'number') return { sets: Math.round(v), note: null };
+    var s = String(v).trim();
+    var m = /^(\d+)\s*MRS$/i.exec(s);
+    if (m) return { sets: parseInt(m[1], 10), note: 'MRS 每组做到极限' };
+    m = /^(\d+)/.exec(s);
+    if (m) return { sets: parseInt(m[1], 10), note: null };
+    return { sets: null, note: null };
+  }
+
+  function adaptBlocks(XLSX, wb, opts) {
+    var weeks = [];
+    var warnings = [];
+
+    wb.SheetNames.forEach(function (sname) {
+      if (/營養|营养|有氧/.test(sname)) return;
+      var ws = wb.Sheets[sname];
+      if (!ws || !ws['!ref']) return;
+      var range = XLSX.utils.decode_range(ws['!ref']);
+
+      function raw(r, c) {
+        var x = ws[XLSX.utils.encode_cell({ r: r, c: c })];
+        return x ? x.v : null;
+      }
+      function txt(r, c) {
+        var v = raw(r, c);
+        return typeof v === 'string' ? v.trim() : null;
+      }
+      function numv(r, c) {
+        var v = raw(r, c);
+        return typeof v === 'number' ? v : null;
+      }
+
+      // 1) 找出所有 4 列表头
+      var heads = [];
+      for (var r = range.s.r; r <= range.e.r; r++) {
+        for (var c = range.s.c; c <= range.e.c; c++) {
+          if (txt(r, c) === '重量' && txt(r, c + 1) === '次数' && txt(r, c + 2) === '组数') {
+            heads.push({ hr: r, nameCol: c - 1, wCol: c, rCol: c + 1, sCol: c + 2 });
+          }
+        }
+      }
+      if (!heads.length) return;
+
+      var headerRowSet = {};
+      heads.forEach(function (h) { headerRowSet[h.hr] = true; });
+
+      // 2) 每个区块找 week / day 标签（向上一直找到顶部，用「标签单元格位置」唯一标识一周）
+      var labelCount = {};
+      heads.forEach(function (b) {
+        b.day = null; b.weekText = null; b.weekCell = null;
+        for (var rr = b.hr - 1; rr >= range.s.r; rr--) {
+          for (var cc = b.nameCol; cc <= b.nameCol + 2; cc++) {
+            var t = txt(rr, cc);
+            if (!t) continue;
+            if (!b.day && /^(Day|第[一二三四五六日\d]|星期|周[一二三四五六日天])/i.test(t)) b.day = t;
+            if (!b.weekCell) {
+              var m = /(Week\s*\d+|第[一二三四五六七八九十\d]+周)/i.exec(t);
+              if (m) { b.weekText = m[1].replace(/\s+/g, ' '); b.weekCell = { r: rr, c: cc }; }
+            }
+          }
+          if (b.day && b.weekCell) break;
+        }
+        if (!b.day) b.day = '训练日';
+        if (!b.weekCell) { b.weekText = sname; b.weekCell = { r: -1, c: -1 }; }
+      });
+
+      // 3) 组装：同一「周标签单元格」= 同一周
+      var weekOrder = [];
+      var weekMap = {};
+      var labelCount = {};
+      heads.forEach(function (b) {
+        var wkKey = sname + '|' + b.weekCell.r + '_' + b.weekCell.c;
+        if (!weekMap[wkKey]) {
+          // 同名周（第 2 轮又从 Week 1 开始）→ 加序号
+          var txtLabel = b.weekText;
+          labelCount[txtLabel] = (labelCount[txtLabel] || 0) + 1;
+          if (labelCount[txtLabel] > 1) txtLabel = txtLabel + '（' + labelCount[txtLabel] + '）';
+          weekMap[wkKey] = { label: txtLabel, sessions: [], _dayMap: {} };
+          weekOrder.push(weekMap[wkKey]);
+        }
+        var wk = weekMap[wkKey];
+
+        // day 名（英文 Day One -> 训练日一）
+        var dayName = b.day;
+        var dm = /Day\s*(One|Two|Three|Four|Five|Six|Seven)/i.exec(b.day);
+        if (dm) dayName = '训练日' + (DAY_WORDS[dm[1].toLowerCase()] || dm[1]);
+        else {
+          var dm2 = /Day\s*(\d+)/i.exec(b.day);
+          if (dm2) dayName = '训练日' + dm2[1];
+        }
+
+        if (!wk._dayMap[dayName]) {
+          wk._dayMap[dayName] = { day: dayName, title: null, items: [] };
+          wk.sessions.push(wk._dayMap[dayName]);
+        }
+        var sess = wk._dayMap[dayName];
+
+        // 4) 读这个区块下面各行的动作
+        for (var r2 = b.hr + 1; r2 <= range.e.r; r2++) {
+          if (headerRowSet[r2]) break;
+          var nameCell = txt(r2, b.nameCol);
+          var wVal = raw(r2, b.wCol);
+          var rVal = raw(r2, b.rCol);
+          var sVal = raw(r2, b.sCol);
+
+          // 整行都空 -> 本区块结束
+          if (nameCell == null && wVal == null && rVal == null && sVal == null) break;
+          // 遇到下一个 Day/Week 标记行 -> 结束
+          if (nameCell && /^(Day\s|Week\s|第[一二三四五六七八九十\d]+[周轮])/i.test(nameCell) && wVal == null && rVal == null) break;
+
+          var name = nameCell || (sess.items.length ? sess.items[sess.items.length - 1].name : null);
+          if (!name) continue;
+          if (/^(锻炼|動作|动作|重量|次数|组数)$/.test(name)) continue;
+
+          var kg = parseKgCell(wVal);
+          var rp = parseRepsCell(rVal);
+          var st = parseSetsCell(sVal);
+
+          var notes = [kg.note, rp.note, st.note].filter(Boolean);
+          sess.items.push({
+            name: name,
+            sets: st.sets,
+            reps: rp.reps,
+            load: kg.load,
+            rest: null,
+            note: notes.length ? notes.join(' · ') : null
+          });
+        }
+      });
+
+      weekOrder.forEach(function (w) {
+        delete w._dayMap;
+        if (w.sessions.some(function (s) { return s.items.length; })) {
+          weeks.push({ label: w.label, sessions: w.sessions.filter(function (s) { return s.items.length; }) });
+        }
       });
     });
 
@@ -782,6 +1365,7 @@ parse_Primary(n.content)}catch(l){}a="/EncryptionInfo";n=Qe.find(e,a);if(!n||!n.
     var fmt = opts.forceFormat || detectFormat(workbook);
     var result;
     if (fmt === 'matrix') result = adaptMatrix(XLSX, workbook, opts);
+    else if (fmt === 'blocks') result = adaptBlocks(XLSX, workbook, opts);
     else if (fmt === 'columns') result = adaptColumns(XLSX, workbook, opts);
     else result = adaptText(XLSX, workbook, opts);
 
@@ -815,10 +1399,12 @@ parse_Primary(n.content)}catch(l){}a="/EncryptionInfo";n=Qe.find(e,a);if(!n||!n.
 /* ============================================================
  * 存储
  * ========================================================== */
-const K_PLAN = 'lixun.plan.v2';
+const K_LIB  = 'lixun.library.v1';
 const K_REFS = 'lixun.refs.v1';
 const K_SET  = 'lixun.settings.v2';
-const K_PROG = 'lixun.progress.v2';
+const K_PROG2 = 'lixun.progress.v3';
+const K_PLAN_LEGACY = 'lixun.plan.v2';
+const K_PROG_LEGACY = 'lixun.progress.v2';
 
 function loadJSON(k, def){
   try{ const s = localStorage.getItem(k); return s ? JSON.parse(s) : def; }
@@ -835,23 +1421,124 @@ function todayISO(){
 }
 
 /* ============================================================
- * 状态
+ * 动作库（训记标准动作名 1213 个，来自 Foveluy/Xunji-movements）
  * ========================================================== */
-let PLAN = loadJSON(K_PLAN, null);
-if(!PLAN || PLAN.version !== 2 || !Array.isArray(PLAN.weeks) || !PLAN.weeks.length){
-  PLAN = JSON.parse(JSON.stringify(DEFAULT_PLAN));
+if(window.ExLib && window.__EXERCISE_DB__) ExLib.setDB(window.__EXERCISE_DB__);
+
+/* 参考重量按「纯动作名」存：双杠（负重）/ 双杠（尽量负重）→ 双杠 */
+function refKey(name){ return (window.ExLib ? ExLib.baseOf(name || '') : String(name || '').trim()); }
+function getRef(name){ return REFS[refKey(name)] || {}; }
+function refVariantsOf(name){
+  var c = window.ExLib ? ExLib.canonical(name || '') : { variants: [name], matched: false };
+  return { variants: c.variants || [name], matched: !!c.matched };
 }
+
+/* ============================================================
+ * 计划内容规范化：拆多动作 + 括号说明移到备注
+ * ========================================================== */
+function joinNote(a, b){
+  a = (a || '').trim(); b = (b || '').trim();
+  if(!a) return b || null;
+  if(!b) return a || null;
+  if(a.indexOf(b) >= 0) return a;
+  return a + ' · ' + b;
+}
+
+function normalizePlanItems(plan){
+  if(!window.ExLib || plan.normV3) return plan;
+  plan.weeks.forEach(w => w.sessions.forEach(s => {
+    const out = [];
+    s.items.forEach(it => {
+      const raw = it.name || '';
+      const parts = ExLib.splitNames(raw);
+      if(parts.length > 1){
+        parts.forEach((p, idx) => {
+          const sn = ExLib.splitNote(p);
+          const copy = Object.assign({}, it);
+          copy.uid = idx === 0 ? it.uid : null;   // 第一段保留原 uid，其余新生成
+          copy.name = sn.name;
+          copy.note = joinNote(sn.note, it.note);
+          out.push(copy);
+        });
+      } else {
+        const sn = ExLib.splitNote(raw);
+        it.name = sn.name;
+        it.note = joinNote(sn.note, it.note);
+        out.push(it);
+      }
+    });
+    s.items = out;
+  }));
+  plan.normV3 = true;
+  return plan;
+}
+
+
 let REFS = loadJSON(K_REFS, {});
 let settings = Object.assign(
   { startDate: todayISO(), restSec: 120, barKg: 20, rounding: 2.5, roundMode: 'floor' },
   loadJSON(K_SET, {})
 );
-let progress = loadJSON(K_PROG, {});
+
+function newPlanId(){ return 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+function normalizePlanObject(p){
+  if(!p || !Array.isArray(p.weeks) || !p.weeks.length) return null;
+  p.version = 2;
+  if(!p.id) p.id = newPlanId();
+  if(!p.createdAt) p.createdAt = new Date().toISOString();
+  return p;
+}
+
+let LIB = loadJSON(K_LIB, null);
+if(!LIB || !Array.isArray(LIB.items) || !LIB.items.length){
+  // 首次升级：把旧版单计划迁移进计划库
+  let first = normalizePlanObject(loadJSON(K_PLAN_LEGACY, null));
+  if(!first) first = normalizePlanObject(JSON.parse(JSON.stringify(DEFAULT_PLAN)));
+  LIB = { activeId: first.id, items: [first] };
+}
+LIB.items = LIB.items.map(normalizePlanObject).filter(Boolean);
+if(!LIB.items.length){
+  const d = normalizePlanObject(JSON.parse(JSON.stringify(DEFAULT_PLAN)));
+  LIB.items.push(d);
+}
+if(!LIB.items.some(p => p.id === LIB.activeId)) LIB.activeId = LIB.items[0].id;
+
+// 把所有计划和参考重量按「纯动作名」规范化一次
+LIB.items.forEach(p => normalizePlanItems(p));
+(function migrateRefs(){
+  var changed = false;
+  Object.keys(REFS).forEach(function (oldKey) {
+    var nk = refKey(oldKey);
+    if(nk === oldKey) return;
+    REFS[nk] = Object.assign({}, REFS[nk] || {}, REFS[oldKey]);
+    delete REFS[oldKey];
+    changed = true;
+  });
+  if(changed) saveJSON(K_REFS, REFS);
+})();
+
+let PLAN = LIB.items.find(p => p.id === LIB.activeId);
+
+let progressMap = loadJSON(K_PROG2, null);
+if(!progressMap || typeof progressMap !== 'object') progressMap = {};
+if(!progressMap[LIB.activeId]){
+  // 旧版扁平进度归属给当前计划
+  progressMap[LIB.activeId] = loadJSON(K_PROG_LEGACY, {}) || {};
+}
+let progress = progressMap[LIB.activeId];
+
+function persistProgress(){
+  progressMap[LIB.activeId] = progress;
+  saveJSON(K_PROG2, progressMap);
+}
+function persistLibrary(){ saveJSON(K_LIB, LIB); }
 
 /* 给每个条目一个稳定 uid，保证编辑后打卡记录不串 */
 let uidSeq = 1;
-function ensureUids(){
-  PLAN.weeks.forEach((w, wi) => w.sessions.forEach((s, si) => s.items.forEach((it, ii) => {
+function ensureUids(p){
+  const plan = p || PLAN;
+  plan.weeks.forEach(w => w.sessions.forEach(s => s.items.forEach(it => {
     if(!it.uid) it.uid = 'u' + (uidSeq++);
   })));
 }
@@ -917,7 +1604,7 @@ const TYPE_LABEL = {
  */
 function resolveLoad(item){
   const L = item.load || { type: 'none' };
-  const ref = REFS[item.name] || {};
+  const ref = getRef(item.name);
   const base = { tag: TYPE_LABEL[L.type] || '', cls: 'none', kg: null, detail: '', plates: null };
 
   if(L.type === 'percent1RM'){
@@ -1019,14 +1706,68 @@ function dayWeekday(dayName){
 })();
 
 /* ============================================================
+ * 历史记录（用于「上次做了多少」）
+ * ========================================================== */
+const K_HIST = 'lixun.history.v1';
+let HIST = loadJSON(K_HIST, []);
+
+function pushHistory(exKey, w, r, rpe, note){
+  if(!exKey) return;
+  HIST.push({ d: todayISO(), ex: exKey, w: w, r: r, rpe: rpe || null, note: note || null, ts: Date.now() });
+  if(HIST.length > 4000) HIST = HIST.slice(-4000);
+  saveJSON(K_HIST, HIST);
+}
+function updateTodayHistory(exKey, patch){
+  for(let i = HIST.length - 1; i >= 0; i--){
+    const h = HIST[i];
+    if(h.d === todayISO() && h.ex === exKey){ Object.assign(h, patch); saveJSON(K_HIST, HIST); return true; }
+  }
+  return false;
+}
+function lastOf(exKey){
+  const d = todayISO();
+  for(let i = HIST.length - 1; i >= 0; i--){
+    const h = HIST[i];
+    if(h.ex === exKey && h.d !== d) return h;
+  }
+  return null;
+}
+
+/* ============================================================
  * 进度
  * ========================================================== */
 function setKey(wi, di, uid, si){ return wi + '.' + di + '.' + uid + '.' + si; }
 function itemSets(it){ return it.sets && it.sets > 0 ? it.sets : 1; }
+
+// 每组记录：{ done, w(实际重量), r(实际次数), ts }
+function getSetRec(wi, di, uid, si){
+  const v = progress[setKey(wi, di, uid, si)];
+  if(v == null) return null;
+  if(typeof v === 'number') return { done: true, w: null, r: null, ts: v };  // 旧版数据
+  return v;
+}
+function isSetDone(wi, di, uid, si){
+  const v = getSetRec(wi, di, uid, si);
+  return !!(v && v.done);
+}
+function writeSetRec(wi, di, uid, si, patch){
+  const k = setKey(wi, di, uid, si);
+  const cur = getSetRec(wi, di, uid, si) || { done: false, w: null, r: null };
+  progress[k] = Object.assign({}, cur, patch);
+  persistProgress();
+}
 function itemDone(wi, di, it){
   const n = itemSets(it); let c = 0;
-  for(let s = 0; s < n; s++) if(progress[setKey(wi, di, it.uid, s)]) c++;
+  for(let s = 0; s < n; s++) if(isSetDone(wi, di, it.uid, s)) c++;
   return c;
+}
+function defaultWeightOf(it){
+  const r = resolveLoad(it);
+  return r.kg != null ? r.kg : null;
+}
+function defaultRepsOf(it){
+  const m = String(it.reps == null ? '' : it.reps).match(/\d+/);
+  return m ? parseInt(m[0], 10) : null;
 }
 function sessionProgress(wi, di){
   const s = sessionsOf(wi)[di];
@@ -1052,39 +1793,8 @@ function weekFullyDone(wi){
 function renderAll(){
   $('planTitle').textContent = PLAN.planName || '力训计划';
   $('planSub').textContent = PLAN.weeks.length + ' 周 · ' + PLAN.weeks.reduce((a,w)=>a+w.sessions.length,0) + ' 训练日';
-  renderWeekBar();
-  renderDayBar();
   renderMain();
   renderProgress();
-}
-
-function renderWeekBar(){
-  const bar = $('weekBar');
-  bar.innerHTML = '';
-  PLAN.weeks.forEach((wk, wi) => {
-    const b = document.createElement('button');
-    b.className = 'chip' + (wi === state.w ? ' active' : '');
-    b.innerHTML = `第${wi+1}周${weekFullyDone(wi) ? '<span class="dot">✓</span>' : ''}`;
-    b.onclick = () => { state.w = wi; state.d = 0; renderAll(); window.scrollTo({ top: 0 }); };
-    bar.appendChild(b);
-  });
-  const act = bar.querySelector('.chip.active');
-  if(act) act.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
-}
-
-function renderDayBar(){
-  const bar = $('dayBar');
-  bar.innerHTML = '';
-  sessionsOf(state.w).forEach((s, di) => {
-    const b = document.createElement('button');
-    const isToday = (state.w === weekIndexFromDate()) && dayWeekday(s.day) === todayWeekday;
-    b.className = 'chip daychip' + (di === state.d ? ' active' : '');
-    const p = sessionProgress(state.w, di);
-    const mark = (p.total > 0 && p.done === p.total) ? '<span class="dot">✓</span>' : '';
-    b.innerHTML = (s.day || ('第' + (di+1) + '天')) + (isToday ? ' · 今天' : '') + mark;
-    b.onclick = () => { state.d = di; renderMain(); renderDayBar(); };
-    bar.appendChild(b);
-  });
 }
 
 function renderMain(){
@@ -1097,8 +1807,15 @@ function renderMain(){
   const p = sessionProgress(wi, state.d);
   const head = document.createElement('div');
   head.className = 'sesshead';
-  head.innerHTML = '<h2>' + (s.day || '训练') + (s.title ? ' · ' + escapeHtml(s.title) : '') + '</h2>'
-                 + '<div class="cnt">' + s.items.length + ' 个动作 · ' + p.done + '/' + p.total + ' 组</div>';
+  head.innerHTML = '<div style="min-width:0"><h2>' + (s.day || '训练')
+                 + (s.title ? ' · ' + escapeHtml(s.title) : '') + '</h2>'
+                 + '<div class="cnt">' + s.items.length + ' 个动作 · ' + p.done + '/' + p.total
+                 + ' 组</div></div>';
+  const pickBtn = document.createElement('button');
+  pickBtn.className = 'btn sm';
+  pickBtn.textContent = '切换';
+  pickBtn.onclick = openPicker;
+  head.appendChild(pickBtn);
   main.appendChild(head);
 
   s.items.forEach((it, ii) => main.appendChild(renderItem(it, ii, wi)));
@@ -1152,6 +1869,19 @@ function renderItem(it, ii, wi){
     card.appendChild(n);
   }
 
+  const lh = lastOf(refKey(it.name));
+  if(lh){
+    const lt = document.createElement('div');
+    lt.className = 'lasttime';
+    let t = '上次';
+    if(lh.w != null) t += ' ' + lh.w + 'kg';
+    if(lh.r != null) t += ' × ' + lh.r + '次';
+    if(lh.rpe != null) t += ' · RPE ' + lh.rpe;
+    if(lh.note) t += ' · ' + lh.note;
+    lt.innerHTML = '<b>' + escapeHtml(t) + '</b>';
+    card.appendChild(lt);
+  }
+
   // 缺参考重量时，整张卡可点，直接跳到参考重量页
   if(r.need){
     card.style.cursor = 'pointer';
@@ -1162,15 +1892,84 @@ function renderItem(it, ii, wi){
   }
 
   const setsWrap = document.createElement('div');
-  setsWrap.className = 'sets';
+  setsWrap.className = 'setrows';
   const n = itemSets(it);
+  const defW = defaultWeightOf(it);
+  const defR = defaultRepsOf(it);
   for(let si = 0; si < n; si++){
-    const b = document.createElement('button');
-    b.className = 'setbtn' + (progress[setKey(wi, di, it.uid, si)] ? ' on' : '');
-    b.textContent = it.sets ? (si + 1) : '完成';
-    if(!it.sets) b.classList.add('wide');
-    b.onclick = () => toggleSet(wi, di, it, si);
-    setsWrap.appendChild(b);
+    const rec = getSetRec(wi, di, it.uid, si) || {};
+    const row = document.createElement('div');
+    row.className = 'setrow' + (rec.done ? ' on' : '');
+
+    const isWarm = si < (it.warmup || 0);
+    const idx = document.createElement('span');
+    idx.className = 'sid';
+    idx.textContent = isWarm ? '热' : (it.sets ? (si + 1) : '✓');
+    if(isWarm){ idx.classList.add('warmtag'); row.classList.add('warm'); }
+    row.appendChild(idx);
+
+    const wIn = document.createElement('input');
+    wIn.className = 'sin';
+    wIn.type = 'number';
+    wIn.inputMode = 'decimal';
+    wIn.step = '2.5';
+    wIn.placeholder = defW != null ? String(defW) : 'kg';
+    wIn.value = (rec.w != null) ? rec.w : '';
+    wIn.onchange = () => {
+      const v = wIn.value.trim();
+      writeSetRec(wi, di, it.uid, si, { w: v === '' ? null : parseFloat(v) });
+    };
+    row.appendChild(wIn);
+
+    const u = document.createElement('span');
+    u.className = 'unit';
+    u.textContent = 'kg';
+    row.appendChild(u);
+
+    const x = document.createElement('span');
+    x.className = 'sx';
+    x.textContent = '×';
+    row.appendChild(x);
+
+    const rIn = document.createElement('input');
+    rIn.className = 'sin';
+    rIn.type = 'number';
+    rIn.inputMode = 'numeric';
+    rIn.placeholder = defR != null ? String(defR) : '次';
+    rIn.value = (rec.r != null) ? rec.r : '';
+    rIn.onchange = () => {
+      const v = rIn.value.trim();
+      writeSetRec(wi, di, it.uid, si, { r: v === '' ? null : parseInt(v, 10) });
+    };
+    row.appendChild(rIn);
+
+    const u2 = document.createElement('span');
+    u2.className = 'unit';
+    u2.textContent = '次';
+    row.appendChild(u2);
+
+    const more = document.createElement('button');
+    more.className = 'schk more';
+    more.textContent = '⋯';
+    more.onclick = () => openSetDlg(wi, di, it, si, rec);
+    row.appendChild(more);
+
+    const chk = document.createElement('button');
+    chk.className = 'schk' + (rec.done ? ' on' : '');
+    chk.textContent = rec.done ? '✓' : '';
+    chk.onclick = () => toggleSet(wi, di, it, si, wIn, rIn);
+    row.appendChild(chk);
+
+    setsWrap.appendChild(row);
+
+    if(rec.rpe != null || rec.note){
+      const sn = document.createElement('div');
+      sn.className = 'setnote';
+      sn.innerHTML = (rec.rpe != null ? '<b>RPE ' + rec.rpe + '</b>' : '')
+        + (rec.rpe != null && rec.note ? ' · ' : '')
+        + (rec.note ? escapeHtml(rec.note) : '');
+      setsWrap.appendChild(sn);
+    }
   }
   card.appendChild(setsWrap);
 
@@ -1220,11 +2019,23 @@ function fmtNum(n){
 /* ============================================================
  * 打卡
  * ========================================================== */
-function toggleSet(wi, di, it, si){
-  const k = setKey(wi, di, it.uid, si);
-  if(progress[k]){ delete progress[k]; saveJSON(K_PROG, progress); renderAll(); return; }
-  progress[k] = Date.now();
-  saveJSON(K_PROG, progress);
+function toggleSet(wi, di, it, si, wIn, rIn){
+  const rec = getSetRec(wi, di, it.uid, si) || {};
+  if(rec.done){
+    writeSetRec(wi, di, it.uid, si, { done: false });
+    renderAll();
+    return;
+  }
+  // 打勾时把输入框的当前值一并存下来（没填就记默认值）
+  let w = rec.w, r = rec.r;
+  if(wIn && wIn.value.trim() !== '') w = parseFloat(wIn.value);
+  else if(w == null) w = defaultWeightOf(it);
+  if(rIn && rIn.value.trim() !== '') r = parseInt(rIn.value, 10);
+  else if(r == null) r = defaultRepsOf(it);
+
+  const cur = getSetRec(wi, di, it.uid, si) || {};
+  writeSetRec(wi, di, it.uid, si, { done: true, w: w, r: r, ts: Date.now() });
+  pushHistory(refKey(it.name), w, r, cur.rpe, cur.note);
   renderAll();
   startRest((it.rest && it.rest > 0) ? it.rest : settings.restSec);
 }
@@ -1296,61 +2107,88 @@ $('skip').onclick = () => {
  * 参考重量
  * ========================================================== */
 function collectExerciseNames(){
-  const seen = new Map();
-  const add = n => { if(n && !seen.has(n)) seen.set(n, { name: n, uses: [] }); };
-  PLAN.weeks.forEach((w, wi) => w.sessions.forEach((s, si) => s.items.forEach(it => {
-    add(it.name);
-    if(it.name) seen.get(it.name).uses.push(it.load && it.load.type);
+  const map = new Map();   // key(纯动作名) -> {key, display, variants:[], uses:[]}
+  const add = raw => {
+    if(!raw) return null;
+    const key = refKey(raw);
+    if(!key) return null;
+    if(!map.has(key)){
+      map.set(key, { key: key, display: ExLib.splitNote(raw).name || key, variants: [], uses: [] });
+    }
+    const e = map.get(key);
+    const v = String(raw).trim();
+    if(e.variants.indexOf(v) < 0) e.variants.push(v);
+    return e;
+  };
+  PLAN.weeks.forEach(w => w.sessions.forEach(s => s.items.forEach(it => {
+    const e = add(it.name);
+    if(e) e.uses.push((it.load && it.load.type) || 'none');
   })));
-  Object.keys(REFS).forEach(add);
-  return Array.from(seen.values());
+  Object.keys(REFS).forEach(k => {
+    if(!map.has(k)) map.set(k, { key: k, display: k, variants: [k], uses: [] });
+  });
+  return Array.from(map.values());
 }
 
+function refStatusOf(entry){
+  const ref = REFS[entry.key] || {};
+  const types = entry.uses || [];
+  const needsOneRM = types.indexOf('percent1RM') >= 0;
+  const needsWork = types.indexOf('rm') >= 0;
+  const needOne = needsOneRM && ref.oneRM == null;
+  const needWork = needsWork && ref.work == null && ref.oneRM == null;
+  return { needOne: needOne, needWork: needWork, ok: !needOne && !needWork };
+}
+
+// 兼容旧调用
 function refStatus(name){
-  const ref = REFS[name] || {};
-  const edges = collectExerciseNames().find(x => x.name === name);
-  const types = edges ? edges.uses : [];
-  const needsOneRM = types.includes('percent1RM');
-  const needsWork = types.includes('rm');
-  let needOne = needsOneRM && ref.oneRM == null;
-  let needWork = needsWork && ref.work == null && ref.oneRM == null;
-  return { needOne, needWork, ok: !needOne && !needWork };
+  const k = refKey(name);
+  const e = collectExerciseNames().find(x => x.key === k) || { key: k, uses: [] };
+  return refStatusOf(e);
 }
 
 function renderRefs(){
   const list = $('refsList');
   list.innerHTML = '';
-  const names = collectExerciseNames();
+  const entries = collectExerciseNames();
 
   let missing = 0;
-  names.forEach(x => { const st = refStatus(x.name); if(!st.ok) missing++; });
+  entries.forEach(x => { if(!refStatusOf(x).ok) missing++; });
   $('refsHint').innerHTML = missing
-    ? '共 <b style="color:var(--txt)">' + names.length + '</b> 个动作，其中 <b style="color:var(--warn)">' + missing + '</b> 个还没填参考重量。<br>填了 1RM 就能按百分比自动算；只填「做组重量」也可以。'
-    : '共 <b style="color:var(--txt)">' + names.length + '</b> 个动作，参考重量都齐了 ✓';
+    ? '共 <b style="color:var(--txt)">' + entries.length + '</b> 个动作，其中 <b style="color:var(--warn)">' + missing + '</b> 个还没填参考重量。<br>括号里的说明已归到备注，同一个动作只算一次（如「双杠」负重/辅助共用一份）。'
+    : '共 <b style="color:var(--txt)">' + entries.length + '</b> 个动作，参考重量都齐了 ✓';
 
-  if(!names.length){
+  if(!entries.length){
     list.innerHTML = '<div class="empty">计划里还没有动作</div>';
     return;
   }
 
-  names.forEach(x => {
-    const ref = REFS[x.name] || {};
-    const st = refStatus(x.name);
+  entries.forEach(x => {
+    const ref = REFS[x.key] || {};
+    const st = refStatusOf(x);
     const row = document.createElement('div');
     row.className = 'field';
+
+    const extra = x.variants.length > 1 ? '（' + x.variants.length + ' 种写法）'
+      : (x.variants[0] && x.variants[0] !== x.display ? '（' + x.variants[0].replace(x.display, '').replace(/[（）()]/g, '') + '）' : '');
+    const label = '<label title="' + escapeHtml(x.variants.join(' / ')) + '">'
+      + escapeHtml(x.display.length > 12 ? x.display.slice(0, 12) + '…' : x.display)
+      + (extra ? '<span style="color:var(--dim);font-size:11px"> ' + escapeHtml(extra) + '</span>' : '')
+      + '</label>';
+
     row.innerHTML =
       '<div class="dotstat ' + (st.ok ? 'ok' : 'miss') + '"></div>'
-      + '<label title="' + escapeHtml(x.name) + '">' + escapeHtml(x.name.length > 14 ? x.name.slice(0, 14) + '…' : x.name) + '</label>'
-      + '<input type="number" step="0.5" placeholder="1RM" value="' + (ref.oneRM != null ? ref.oneRM : '') + '" data-name="' + escapeHtml(x.name) + '" data-field="oneRM">'
-      + '<input type="number" step="0.5" placeholder="做组" value="' + (ref.work != null ? ref.work : '') + '" data-name="' + escapeHtml(x.name) + '" data-field="work">';
+      + label
+      + '<input type="number" step="0.5" placeholder="1RM" value="' + (ref.oneRM != null ? ref.oneRM : '') + '" data-key="' + escapeHtml(x.key) + '" data-field="oneRM">'
+      + '<input type="number" step="0.5" placeholder="做组" value="' + (ref.work != null ? ref.work : '') + '" data-key="' + escapeHtml(x.key) + '" data-field="work">';
 
     row.querySelectorAll('input').forEach(inp => {
       inp.onchange = () => {
-        const nm = inp.getAttribute('data-name');
+        const k = inp.getAttribute('data-key');
         const f = inp.getAttribute('data-field');
-        REFS[nm] = REFS[nm] || {};
+        REFS[k] = REFS[k] || {};
         const v = inp.value.trim();
-        REFS[nm][f] = v === '' ? null : parseFloat(v);
+        REFS[k][f] = v === '' ? null : parseFloat(v);
         saveJSON(K_REFS, REFS);
         renderRefs();
         renderMain();
@@ -1372,7 +2210,8 @@ $('refsClose').onclick = closeRefs;
 $('addRef').onclick = () => {
   const name = prompt('动作名称');
   if(!name) return;
-  REFS[name.trim()] = REFS[name.trim()] || {};
+  const rk = refKey(name);
+  REFS[rk] = REFS[rk] || {};
   saveJSON(K_REFS, REFS);
   renderRefs();
 };
@@ -1381,28 +2220,167 @@ $('gRound').onchange = e => { settings.rounding = parseFloat(e.target.value) || 
 $('gMode').onchange = e => { settings.roundMode = e.target.value; saveSettings(); };
 
 function saveSettings(){ saveJSON(K_SET, settings); renderRefs(); renderMain(); }
-function savePlan(){ saveJSON(K_PLAN, PLAN); }
+function savePlan(){ persistLibrary(); }
 
 /* ============================================================
  * 条目编辑
  * ========================================================== */
 let editing = { item: null, wi: 0, di: 0, isNew: false };
 
+let edSetsCache = 3, edWarmCache = 0;
+
 function openItemEditor(item, wi, di){
   editing = { item: item, wi: wi, di: di, isNew: !item };
-  const it = item || { name: '', sets: 3, reps: '', load: { type: 'none' }, rest: null, note: null };
-  $('itemDlgTitle').textContent = item ? '编辑动作' : '添加动作';
-  $('iName').value = it.name || '';
-  $('iSets').value = it.sets == null ? '' : it.sets;
-  $('iReps').value = it.reps == null ? '' : it.reps;
-  $('iType').value = (it.load && it.load.type) || 'none';
-  $('iValue').value = (it.load && it.load.value != null) ? it.load.value : '';
-  $('iRest').value = it.rest || '';
-  $('iNote').value = it.note || '';
-  $('iDelete').style.display = item ? '' : 'none';
-  syncEditorValue();
-  $('itemDlg').showModal();
+  const it = item || { name: '', sets: 3, reps: '', load: { type: 'none' }, rest: null, note: null, warmup: 0 };
+  edSetsCache = Math.max(1, it.sets || 3);
+  edWarmCache = it.warmup || 0;
+  $('edTitle').textContent = item ? '编辑动作' : '添加动作';
+  $('eName').value = it.name || '';
+  $('eReps').value = it.reps == null ? '' : it.reps;
+  $('eRest').value = it.rest || '';
+  $('eNote').value = it.note || '';
+  $('eType').value = (it.load && it.load.type) || 'none';
+  $('eValue').value = (it.load && it.load.value != null) ? it.load.value : '';
+  $('edDelete').style.display = item ? '' : 'none';
+  refreshEdSetUI();
+  syncEdValue();
+  $('editSheet').classList.add('show');
 }
+
+function refreshEdSetUI(){
+  if(edWarmCache > edSetsCache) edWarmCache = edSetsCache;
+  $('edSets').textContent = edSetsCache;
+  $('edWarmN').textContent = edWarmCache;
+}
+
+function syncEdValue(){
+  const t = $('eType').value;
+  const map = {
+    percent1RM: ['百分比（0.8 = 80%）', '0.8'],
+    rm: ['RM 次数（如 8-12）', '8-12'],
+    kg: ['公斤数', '60'],
+    kgRange: ['区间（如 2.5~10）', '2.5~10'],
+    rpe: ['RPE（1-10）', '9'],
+    timed: ['时间（如 45秒）', '45秒']
+  };
+  const c = map[t];
+  $('eValueField').style.display = c ? '' : 'none';
+  if(c){ $('eValueLabel').textContent = c[0]; $('eValue').placeholder = c[1]; }
+}
+
+$('eType').onchange = syncEdValue;
+$('edMinus').onclick = () => { if(edSetsCache > 1){ edSetsCache--; refreshEdSetUI(); } };
+$('edPlus').onclick  = () => { if(edSetsCache < 30){ edSetsCache++; refreshEdSetUI(); } };
+$('edWarm').onclick  = () => { edWarmCache = (edWarmCache >= edSetsCache) ? 0 : edWarmCache + 1; refreshEdSetUI(); };
+$('edBack').onclick  = () => $('editSheet').classList.remove('show');
+
+function adjustLoad(d){
+  const t = $('eType').value;
+  if(t === 'percent1RM'){
+    let v = parseFloat($('eValue').value) || 0;
+    if(v > 1) v = v / 100;
+    v = Math.max(0.3, Math.min(1.1, v + d / 100));
+    $('eValue').value = Math.round(v * 1000) / 1000;
+  } else if(t === 'kg'){
+    let v = parseFloat($('eValue').value) || 0;
+    $('eValue').value = Math.round((v + d) * 100) / 100;
+  } else {
+    toast('这个重量类型不支持 ±2.5 微调');
+  }
+}
+$('edWMinus').onclick = () => adjustLoad(-2.5);
+$('edWPlus').onclick  = () => adjustLoad(2.5);
+
+$('edSave').onclick = () => {
+  const name = $('eName').value.trim();
+  if(!name){ toast('请填动作名称'); return; }
+  const type = $('eType').value;
+  let value = $('eValue').value.trim();
+  if(type === 'percent1RM'){
+    let n = parseFloat(value);
+    if(isNaN(n)){ toast('百分比要填数字，如 0.8'); return; }
+    if(n > 1) n = n / 100;
+    value = n;
+  } else if(type === 'rm' || type === 'kg' || type === 'rpe'){
+    value = parseFloat(value);
+    if(isNaN(value)){
+      toast('数值填错了');
+      return;
+    }
+  } else if(type === 'timed'){
+    value = value || null;
+  } else {
+    value = null;
+  }
+
+  const data = {
+    name: name,
+    sets: edSetsCache,
+    reps: $('eReps').value.trim() || null,
+    load: { type: type, value: value },
+    rest: $('eRest').value ? parseInt($('eRest').value, 10) : null,
+    note: $('eNote').value.trim() || null,
+    warmup: edWarmCache || 0
+  };
+
+  const items = sessionsOf(editing.wi)[editing.di].items;
+  if(editing.isNew){
+    data.uid = 'u' + (uidSeq++) + '_' + Date.now();
+    items.push(data);
+  } else {
+    data.uid = editing.item.uid;
+    Object.assign(editing.item, data);
+  }
+  savePlan();
+  $('editSheet').classList.remove('show');
+  renderAll();
+  toast('已保存');
+};
+
+$('edDelete').onclick = () => {
+  if(!editing.item) return;
+  if(!confirm('删除「' + editing.item.name + '」？')) return;
+  const items = sessionsOf(editing.wi)[editing.di].items;
+  const i = items.indexOf(editing.item);
+  if(i >= 0) items.splice(i, 1);
+  savePlan();
+  $('editSheet').classList.remove('show');
+  renderAll();
+};
+
+$('edHist').onclick = () => {
+  const it = editing.item;
+  if(!it){ toast('先保存这个动作，再看历史'); return; }
+  const ex = refKey(it.name);
+  const rows = HIST.filter(h => h.ex === ex).slice(-15).reverse();
+  $('histTitle').textContent = (it.name || '') + ' · 历史';
+  const list = $('histList');
+  list.innerHTML = '';
+  $('histSheet').classList.add('show');
+  if(!rows.length){
+    list.innerHTML = '<p class="hint">还没有记录。练完打勾后这里会出现。</p>';
+    return;
+  }
+  rows.forEach(h => {
+    const d = document.createElement('div');
+    d.className = 'field';
+    d.innerHTML = '<label style="font-size:12px;color:var(--dim)">' + escapeHtml(h.d) + '</label>'
+      + '<span style="font-size:14px;font-variant-numeric:tabular-nums">'
+      + (h.w != null ? h.w + ' kg' : '') + (h.r != null ? ' × ' + h.r : '')
+      + (h.rpe != null ? ' · RPE ' + h.rpe : '') + '</span>';
+    if(h.note){
+      const n = document.createElement('div');
+      n.className = 'hint';
+      n.style.marginLeft = '0';
+      n.textContent = h.note;
+      list.appendChild(d);
+      list.appendChild(n);
+    } else {
+      list.appendChild(d);
+    }
+  });
+};
+$('histBack').onclick = () => $('histSheet').classList.remove('show');
 
 function syncEditorValue(){
   const t = $('iType').value;
@@ -1478,11 +2456,366 @@ $('iDelete').onclick = () => {
 };
 
 /* ============================================================
- * 导入
+ * 计划面板：计划目录 + Excel 导入
  * ========================================================== */
 let pendingPlan = null;
 
-$('navImport').onclick = () => $('fileInput').click();
+function planStats(){
+  return {
+    weeks: PLAN.weeks.length,
+    sessions: PLAN.weeks.reduce((a, w) => a + w.sessions.length, 0),
+    items: PLAN.weeks.reduce((a, w) => a + w.sessions.reduce((b, s) => b + s.items.length, 0), 0)
+  };
+}
+
+function openPlan(){
+  renderPlanMeta();
+  renderLibrary();
+  $('planSheet').classList.add('show');
+}
+
+function renderPlanMeta(){
+  const st = planStats();
+  const issues = planIssues();
+  $('planMeta').textContent = (PLAN.planName || '未命名') + ' · ' + st.weeks + ' 周 · '
+    + st.sessions + ' 训练日 · ' + st.items + ' 个动作 · 格式 ' + (PLAN.format || '内置');
+  $('reviewHint').textContent = issues.length
+    ? ('发现 ' + issues.length + ' 处需要确认（缺组数 / 缺次数 / 重量没识别等）')
+    : '没有发现明显问题 ✓';
+}
+
+function planProgressCount(p){
+  const m = progressMap[p.id] || {};
+  return Object.keys(m).length;
+}
+
+function renderLibrary(){
+  const box = $('libList');
+  box.innerHTML = '';
+  LIB.items.forEach(p => {
+    const isActive = p.id === LIB.activeId;
+    const sessions = p.weeks.reduce((a, w) => a + w.sessions.length, 0);
+    const items = p.weeks.reduce((a, w) => a + w.sessions.reduce((b, s) => b + s.items.length, 0), 0);
+    const doneN = planProgressCount(p);
+
+    const row = document.createElement('div');
+    row.className = 'librow';
+
+    const main = document.createElement('div');
+    main.className = 'libmain';
+    main.innerHTML = '<div class="libname">' + escapeHtml(p.planName || '未命名')
+      + (isActive ? ' <span class="badge-now">当前</span>' : '') + '</div>'
+      + '<div class="libmeta">' + p.weeks.length + ' 周 · ' + sessions + ' 训练日 · ' + items + ' 动作'
+      + (doneN ? ' · 已打卡 ' + doneN + ' 组' : '') + '</div>';
+    main.onclick = () => { if(!isActive) switchPlan(p.id); };
+
+    const act = document.createElement('div');
+    act.className = 'libact';
+
+    if(!isActive){
+      const sw = document.createElement('button');
+      sw.className = 'mini';
+      sw.textContent = '切到';
+      sw.onclick = (e) => { e.stopPropagation(); switchPlan(p.id); };
+      act.appendChild(sw);
+    }
+    const rn = document.createElement('button');
+    rn.className = 'mini';
+    rn.textContent = '改名';
+    rn.onclick = (e) => { e.stopPropagation(); renamePlan(p.id); };
+    act.appendChild(rn);
+
+    if(LIB.items.length > 1){
+      const del = document.createElement('button');
+      del.className = 'mini danger';
+      del.textContent = '删除';
+      del.onclick = (e) => { e.stopPropagation(); deletePlan(p.id); };
+      act.appendChild(del);
+    }
+
+    row.appendChild(main);
+    row.appendChild(act);
+    box.appendChild(row);
+  });
+}
+
+function switchPlan(id){
+  if(id === LIB.activeId) return;
+  const target = LIB.items.find(p => p.id === id);
+  if(!target) return;
+  progressMap[LIB.activeId] = progress;   // 先保存当前计划进度
+  LIB.activeId = id;
+  PLAN = target;
+  ensureUids();
+  progress = progressMap[id] || (progressMap[id] = {});
+  state.w = weekIndexFromDate();
+  state.d = 0;
+  persistLibrary();
+  persistProgress();
+  renderAll();
+  renderPlanMeta();
+  renderLibrary();
+  toast('已切换到：' + (PLAN.planName || '未命名'));
+}
+
+function renamePlan(id){
+  const p = LIB.items.find(x => x.id === id);
+  if(!p) return;
+  const name = prompt('计划名称', p.planName || '');
+  if(name == null) return;
+  p.planName = name.trim() || p.planName;
+  if(id === LIB.activeId) PLAN.planName = p.planName;
+  persistLibrary();
+  renderAll();
+  renderPlanMeta();
+  renderLibrary();
+}
+
+function deletePlan(id){
+  if(LIB.items.length <= 1){ toast('至少保留一个计划'); return; }
+  const p = LIB.items.find(x => x.id === id);
+  if(!p) return;
+  if(!confirm('删除计划「' + (p.planName || '未命名') + '」？\n它的打卡记录也会一起删除。')) return;
+  LIB.items = LIB.items.filter(x => x.id !== id);
+  delete progressMap[id];
+  if(LIB.activeId === id){
+    LIB.activeId = LIB.items[0].id;
+    PLAN = LIB.items[0];
+    ensureUids();
+    progress = progressMap[LIB.activeId] || (progressMap[LIB.activeId] = {});
+  }
+  persistLibrary();
+  saveJSON(K_PROG2, progressMap);
+  state.w = weekIndexFromDate();
+  state.d = 0;
+  renderAll();
+  renderPlanMeta();
+  renderLibrary();
+  toast('已删除');
+}
+
+function addBlankPlan(){
+  const id = newPlanId();
+  const p = {
+    id: id, version: 2, planName: '新计划 ' + (LIB.items.length + 1),
+    format: 'blank', createdAt: new Date().toISOString(),
+    weeks: [{ week: 1, label: '第1周', sessions: [
+      { day: '训练日一', title: null, items: [] }
+    ] }]
+  };
+  progressMap[id] = {};
+  LIB.items.push(p);
+  persistLibrary();
+  saveJSON(K_PROG2, progressMap);
+  switchPlan(id);
+  state.edit = true;
+  $('navEdit').classList.add('on');
+  renderAll();
+  $('planSheet').classList.remove('show');
+  toast('已新建空白计划，点「编辑」加动作');
+}
+$('navPlan').onclick = openPlan;
+$('planClose').onclick = () => { $('planSheet').classList.remove('show'); renderAll(); };
+
+$('btnImportXlsx').onclick = () => $('fileInput').click();
+$('btnOpenReview').onclick = openReview;
+$('btnNewPlan').onclick = addBlankPlan;
+
+function normalizePlan(plan){
+  if(!plan || typeof plan !== 'object') throw new Error('不是有效的计划数据');
+  if(!Array.isArray(plan.weeks) || !plan.weeks.length) throw new Error('缺少 weeks 数据');
+  plan.version = 2;
+  plan.weeks.forEach(w => {
+    if(!Array.isArray(w.sessions)) w.sessions = [];
+    w.sessions.forEach(s => { if(!Array.isArray(s.items)) s.items = []; });
+  });
+  return plan;
+}
+
+function applyImportedPlan(plan, sourceName){
+  plan = normalizePlan(plan);
+  if(!plan.planName){
+    plan.planName = String(sourceName || '导入的计划').replace(/\.(json|xlsx|xlsm)$/i, '');
+  }
+  if(LIB.items.some(x => x.id === plan.id)) plan.id = newPlanId();
+  if(!plan.id) plan.id = newPlanId();
+  plan.createdAt = plan.createdAt || new Date().toISOString();
+  plan.updatedAt = new Date().toISOString();
+  normalizePlanItems(plan);
+  ensureUids(plan);
+
+  // JSON 里若带了 1RM，自动灌进「参考重量」，导入后立即能算出重量
+  let seeded = 0;
+  if(plan.meta && plan.meta.oneRM && typeof plan.meta.oneRM === 'object'){
+    Object.keys(plan.meta.oneRM).forEach(k => {
+      const v = plan.meta.oneRM[k];
+      if(v == null || !k) return;
+      const rk = refKey(k);
+      REFS[rk] = REFS[rk] || {};
+      if(REFS[rk].oneRM == null){ REFS[rk].oneRM = v; seeded++; }
+    });
+    saveJSON(K_REFS, REFS);
+  }
+  if(plan.meta && plan.meta.roundingStep > 0){
+    settings.rounding = plan.meta.roundingStep;
+    saveJSON(K_SET, settings);
+  }
+
+  // 旧计划原样留在目录里，新计划加进去并切过去
+  progressMap[LIB.activeId] = progress;
+  LIB.items.push(plan);
+  LIB.activeId = plan.id;
+  PLAN = plan;
+  progress = progressMap[plan.id] = {};
+
+  persistLibrary();
+  persistProgress();
+  state.w = weekIndexFromDate();
+  state.d = 0;
+  $('planSheet').classList.remove('show');
+  renderAll();
+  window.scrollTo({ top: 0 });
+  toast('已加入计划目录：' + PLAN.planName + (seeded ? '（带入 ' + seeded + ' 个 1RM）' : ''));
+  setTimeout(maybeOpenReview, 400);
+}
+
+/* ============================================================
+ * 从网站同步计划
+ * ========================================================== */
+let syncedPlans = [];
+
+$('btnSync').onclick = async () => {
+  const hint = $('syncHint');
+  const list = $('syncList');
+  hint.textContent = '正在同步…';
+  list.innerHTML = '';
+  try{
+    const r = await fetch('./plans/index.json?t=' + Date.now(), { cache: 'no-store' });
+    if(!r.ok) throw new Error('服务器返回 ' + r.status);
+    syncedPlans = await r.json();
+    if(!Array.isArray(syncedPlans) || !syncedPlans.length){
+      hint.textContent = '网站上暂时还没有计划';
+      return;
+    }
+    hint.textContent = '共 ' + syncedPlans.length + ' 个计划，点「加入」下载到本机';
+    renderSyncList();
+  }catch(e){
+    hint.textContent = '同步失败：' + (e && e.message ? e.message : e) + '（需要联网，或网站还没发布计划）';
+  }
+};
+
+function renderSyncList(){
+  const box = $('syncList');
+  box.innerHTML = '';
+  syncedPlans.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'librow';
+    const already = LIB.items.some(p => p.planName === item.name);
+    row.innerHTML = '<div class="libmain"><div class="libname">' + escapeHtml(item.name || item.file)
+      + (already ? ' <span class="badge-now">已在目录</span>' : '') + '</div>'
+      + '<div class="libmeta">' + escapeHtml(item.desc || '') + '</div></div>';
+    const b = document.createElement('button');
+    b.className = 'mini';
+    b.textContent = already ? '重新拉取' : '加入';
+    b.onclick = async () => {
+      b.textContent = '…';
+      try{
+        const pr = await fetch('./plans/' + item.file + '?t=' + Date.now(), { cache: 'no-store' });
+        if(!pr.ok) throw new Error('HTTP ' + pr.status);
+        const plan = await pr.json();
+        applyImportedPlan(plan, item.name);
+        b.textContent = '已加入';
+        setTimeout(() => { renderSyncList(); renderLibrary(); }, 600);
+      }catch(e){
+        b.textContent = '失败';
+        alert('下载失败：' + (e && e.message ? e.message : e));
+      }
+    };
+    row.appendChild(b);
+    box.appendChild(row);
+  });
+}
+
+/* ============================================================
+ * 检查清单
+ * ========================================================== */
+function planIssues(){
+  const out = [];
+  PLAN.weeks.forEach((w, wi) => w.sessions.forEach((s, si) => s.items.forEach((it, ii) => {
+    const probs = [];
+    if(!it.name) probs.push('缺动作名');
+    if(!it.sets) probs.push('缺组数');
+    if(!it.reps) probs.push('缺次数');
+    if(it.load && it.load.type === 'none' && it.name) probs.push('重量未识别');
+    if(it.name && String(it.name).length > 34) probs.push('名称过长');
+    if(probs.length){
+      out.push({ wi: wi, si: si, ii: ii, item: it, probs: probs,
+        where: '第' + (wi + 1) + '周 · ' + (s.day || ('第' + (si + 1) + '天')) });
+    }
+  })));
+  return out;
+}
+
+function maybeOpenReview(){
+  if(planIssues().length) openReview();
+}
+
+function openReview(){
+  const issues = planIssues();
+  const list = $('reviewList');
+  list.innerHTML = '';
+  $('reviewTop').textContent = issues.length
+    ? '共 ' + issues.length + ' 处建议确认一下。点「改」直接跳到编辑框。'
+    : '没有发现明显问题 ✓';
+  $('reviewSheet').classList.add('show');
+  if(!issues.length) return;
+
+  const groups = new Map();
+  issues.forEach(x => {
+    if(!groups.has(x.where)) groups.set(x.where, []);
+    groups.get(x.where).push(x);
+  });
+
+  groups.forEach((arr, where) => {
+    const head = document.createElement('div');
+    head.style.cssText = 'font-size:12px;color:var(--dim);font-weight:700;margin:12px 0 6px';
+    head.textContent = where + '（' + arr.length + '）';
+    list.appendChild(head);
+
+    arr.forEach(x => {
+      const row = document.createElement('div');
+      row.className = 'field';
+      const lab = document.createElement('label');
+      lab.style.cssText = 'flex:1;min-width:0';
+      lab.innerHTML = '<div style="color:var(--txt);font-size:13px">'
+        + escapeHtml((x.item.name || '(未命名)').slice(0, 30)) + '</div>'
+        + '<div style="font-size:11px;color:var(--warn);margin-top:2px">' + escapeHtml(x.probs.join(' · ')) + '</div>';
+      const b = document.createElement('button');
+      b.className = 'btn sm';
+      b.textContent = '改';
+      b.onclick = () => {
+        $('reviewSheet').classList.remove('show');
+        state.w = x.wi;
+        state.d = x.si;
+        renderAll();
+        setTimeout(() => openItemEditor(x.item, x.wi, x.si), 250);
+        setTimeout(() => { if($('reviewSheet').classList.contains('show')) openReview(); }, 600);
+      };
+      row.appendChild(lab);
+      row.appendChild(b);
+      list.appendChild(row);
+    });
+  });
+}
+
+$('reviewClose').onclick = () => {
+  $('reviewSheet').classList.remove('show');
+  renderAll();
+};
+
+/* ============================================================
+ * Excel 导入
+ * ========================================================== */
 $('fileInput').onchange = async (e) => {
   const file = e.target.files && e.target.files[0];
   if(!file) return;
@@ -1495,7 +2828,7 @@ $('fileInput').onchange = async (e) => {
     pendingPlan = plan;
     showImportPreview(plan, file.name);
   }catch(err){
-    alert('解析失败：' + (err && err.message ? err.message : err));
+    alert('这个文件没法当作 Excel 读取。\n\n请确认：\n· 是 .xlsx / .xlsm 文件（老的 .xls 不支持）\n· 文件是从「下载」目录选的，不是微信的受限目录\n\n原始错误：' + (err && err.message ? err.message : err));
   }
 };
 
@@ -1521,21 +2854,10 @@ function showImportPreview(plan, fileName){
 $('cancelImport').onclick = () => { pendingPlan = null; $('importDlg').close(); };
 $('confirmImport').onclick = () => {
   if(!pendingPlan) return;
-  if(Object.keys(progress).length && !confirm('导入新计划会清空当前打卡记录，继续？')) return;
-  PLAN = pendingPlan;
+  const plan = pendingPlan;
   pendingPlan = null;
-  progress = {};
-  ensureUids();
-  savePlan();
-  saveJSON(K_PROG, progress);
-  state.w = weekIndexFromDate();
-  state.d = 0;
   $('importDlg').close();
-  renderAll();
-  window.scrollTo({ top: 0 });
-  const missing = collectExerciseNames().filter(x => !refStatus(x.name).ok).length;
-  if(missing) toast('导入成功，但有 ' + missing + ' 个动作需要填参考重量');
-  else toast('导入成功');
+  applyImportedPlan(plan, plan.sourceFile || plan.planName);
 };
 
 /* ============================================================
@@ -1552,15 +2874,81 @@ $('sStart').onchange = e => { settings.startDate = e.target.value || todayISO();
 $('sRest').onchange = e => { settings.restSec = Math.max(10, Math.min(900, parseInt(e.target.value,10) || 120)); saveSettings(); };
 $('btnResetProg').onclick = () => {
   if(!confirm('清空全部打卡记录？')) return;
-  progress = {}; saveJSON(K_PROG, progress); renderAll(); toast('已清空');
+  progress = {}; persistProgress(); renderAll(); toast('已清空');
 };
 $('btnRestore').onclick = () => {
-  if(!confirm('恢复内置的三乐卧推计划？当前计划会被覆盖。')) return;
-  PLAN = JSON.parse(JSON.stringify(DEFAULT_PLAN));
-  progress = {}; ensureUids();
-  savePlan(); saveJSON(K_PROG, progress);
-  state.w = weekIndexFromDate(); state.d = 0;
-  renderAll(); toast('已恢复');
+  if(!confirm('把内置的三乐卧推计划加入计划目录？（不会覆盖现有计划）')) return;
+  $('settingsSheet').classList.remove('show');
+  applyImportedPlan(JSON.parse(JSON.stringify(DEFAULT_PLAN)), '内置·三乐卧推');
+};
+
+/* ============================================================
+ * 切换训练日
+ * ========================================================== */
+function openPicker(){ renderPicker(); $('pickSheet').classList.add('show'); }
+
+function renderPicker(){
+  const wb = $('pickWeeks');
+  wb.innerHTML = '';
+  PLAN.weeks.forEach((w, wi) => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (wi === state.w ? ' active' : '');
+    b.textContent = '第' + (wi + 1) + '周' + (weekFullyDone(wi) ? ' ✓' : '');
+    b.onclick = () => { state.w = wi; state.d = 0; renderPicker(); renderMain(); renderProgress(); };
+    wb.appendChild(b);
+  });
+
+  const db = $('pickDays');
+  db.innerHTML = '';
+  sessionsOf(state.w).forEach((s, di) => {
+    const p = sessionProgress(state.w, di);
+    const done = p.total > 0 && p.done === p.total;
+    const row = document.createElement('div');
+    row.className = 'librow';
+    row.innerHTML = '<div class="libmain"><div class="libname">'
+      + escapeHtml(s.day || ('第' + (di + 1) + '天'))
+      + (done ? ' <span class="badge-now">完成</span>' : '')
+      + (di === state.d ? ' <span class="badge-now" style="background:#132a4a;color:#79c0ff">当前</span>' : '')
+      + '</div><div class="libmeta">' + s.items.length + ' 个动作 · ' + p.done + '/' + p.total + ' 组</div></div>';
+    const b = document.createElement('button');
+    b.className = 'mini';
+    b.textContent = '切到';
+    b.onclick = () => {
+      state.d = di;
+      $('pickSheet').classList.remove('show');
+      renderMain(); renderProgress();
+    };
+    row.appendChild(b);
+    db.appendChild(row);
+  });
+}
+$('pickClose').onclick = () => { $('pickSheet').classList.remove('show'); renderAll(); };
+
+/* ============================================================
+ * 每组备注 / RPE
+ * ========================================================== */
+let editingSet = null;
+
+function openSetDlg(wi, di, it, si, rec){
+  editingSet = { wi: wi, di: di, it: it, si: si };
+  $('setDlgTitle').textContent = it.name + ' · 第' + (si + 1) + '组';
+  $('sRpe').value = (rec && rec.rpe != null) ? rec.rpe : '';
+  $('sNote').value = (rec && rec.note) ? rec.note : '';
+  $('setDlg').showModal();
+}
+$('sCancel').onclick = () => { editingSet = null; $('setDlg').close(); };
+$('sSave').onclick = () => {
+  if(!editingSet) return;
+  const rpeRaw = $('sRpe').value.trim();
+  const note = $('sNote').value.trim();
+  const rpe = rpeRaw === '' ? null : parseFloat(rpeRaw);
+  writeSetRec(editingSet.wi, editingSet.di, editingSet.it.uid, editingSet.si, {
+    rpe: rpe, note: note || null
+  });
+  updateTodayHistory(refKey(editingSet.it.name), { rpe: rpe, note: note || null });
+  editingSet = null;
+  $('setDlg').close();
+  renderMain();
 };
 
 /* ============================================================

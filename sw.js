@@ -1,5 +1,5 @@
 /* 力训 · Service Worker —— 让 App 可安装、可离线 */
-const CACHE = 'lixun-v5';
+const CACHE = 'lixun-v6';
 const ASSETS = [
   './',
   './index.html',
@@ -38,6 +38,8 @@ self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
   if (url.origin !== self.location.origin) return;
+  // 计划文件必须走网络，不能吃缓存（否则「从网站同步」会拿到旧计划）
+  if (url.pathname.indexOf('/plans/') >= 0) return;
 
   e.respondWith(
     caches.match(e.request, { ignoreSearch: true }).then((hit) => {
