@@ -10,10 +10,10 @@
 <title>力训 · 计划打卡</title>
 <style>
   :root{
-    --bg:#0d1117; --bg2:#161b22; --bg3:#1f2630;
+    --bg:#0d1117; --bg2:#161b22; --bg3:#1f2630; --bg4:#262f3b;
     --line:#2b3441; --txt:#e6edf3; --dim:#8b98a8;
     --accent:#2f81f7; --ok:#2ea043; --okbg:#12341d;
-    --warn:#d29922; --danger:#f85149;
+    --warn:#d29922; --danger:#f85149; --rpe:#a371f7;
     --safe-b: env(safe-area-inset-bottom, 0px);
     --safe-t: env(safe-area-inset-top, 0px);
   }
@@ -23,11 +23,11 @@
     background:var(--bg); color:var(--txt);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     font-size:15px; line-height:1.45;
-    padding-bottom:calc(96px + var(--safe-b));
+    padding-bottom:calc(104px + var(--safe-b));
     overscroll-behavior-y:contain;
   }
+  body.resting{padding-bottom:calc(190px + var(--safe-b));}
   body.flash{animation:flashRed .18s ease-in-out 0s 6;}
-  body.resting{padding-bottom:calc(180px + var(--safe-b));}
   @keyframes flashRed{0%,100%{background:var(--bg)}50%{background:#3d1114}}
 
   header{
@@ -36,7 +36,7 @@
     border-bottom:1px solid var(--line);
     padding:calc(10px + var(--safe-t)) 14px 8px;
   }
-  .title{font-size:16px; font-weight:700; letter-spacing:.2px;}
+  .title{font-size:16px; font-weight:700; letter-spacing:.2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   .sub{font-size:12px; color:var(--dim); margin-top:3px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
   .sub b{color:var(--ok); font-weight:600;}
   .bar{height:3px; background:var(--bg3); border-radius:2px; margin-top:8px; overflow:hidden;}
@@ -47,8 +47,7 @@
   .chip{
     flex:0 0 auto; padding:7px 14px; border-radius:999px;
     background:var(--bg2); border:1px solid var(--line); color:var(--dim);
-    font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap;
-    transition:.15s;
+    font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; transition:.15s;
   }
   .chip.active{background:var(--accent); border-color:var(--accent); color:#fff;}
   .chip .dot{color:var(--ok); margin-left:4px;}
@@ -60,89 +59,137 @@
   .sesshead h2{font-size:15px; margin:0; font-weight:700;}
   .sesshead .cnt{font-size:12px; color:var(--dim);}
 
-  .item{
-    background:var(--bg2); border:1px solid var(--line); border-radius:14px;
-    padding:13px 14px; margin-bottom:10px;
-  }
+  .item{background:var(--bg2); border:1px solid var(--line); border-radius:14px; padding:13px 14px; margin-bottom:10px;}
   .item.done{border-color:#1c3a25; background:linear-gradient(180deg,#121a15,#161b22);}
+  .item.need{border-color:#4a3a12;}
   .row1{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
   .ex{font-size:15px; font-weight:700; line-height:1.3;}
-  .meta{font-size:12px; color:var(--dim); margin-top:3px; font-variant-numeric:tabular-nums;}
-  .meta .pct{color:var(--warn);}
-  .wt{text-align:right; flex:0 0 auto;}
-  .wt .big{font-size:22px; font-weight:800; font-variant-numeric:tabular-nums; color:var(--txt); line-height:1.1;}
+  .meta{font-size:12px; color:var(--dim); margin-top:3px; font-variant-numeric:tabular-nums; display:flex; gap:8px; flex-wrap:wrap;}
+  .tag{display:inline-block; padding:1px 7px; border-radius:6px; font-size:11px; font-weight:700;}
+  .tag.pct{background:#132a4a; color:#79c0ff;}
+  .tag.rpe{background:#241b38; color:var(--rpe);}
+  .tag.rm{background:#2a2110; color:var(--warn);}
+  .tag.bw{background:#1b2632; color:#8b98a8;}
+  .tag.none{background:#2a1a1a; color:var(--danger);}
+  .wt{text-align:right; flex:0 0 auto; min-width:64px;}
+  .wt .big{font-size:22px; font-weight:800; font-variant-numeric:tabular-nums; line-height:1.1;}
   .wt .big small{font-size:11px; font-weight:600; color:var(--dim); margin-left:1px;}
   .wt .tgt{font-size:11px; color:var(--dim); margin-top:2px; font-variant-numeric:tabular-nums;}
-  .wt .tgt s{color:#6b7684;}
-  .plates{font-size:11px; color:#5b6673; margin-top:2px;}
-  .note{font-size:12px; color:var(--warn); margin-top:8px; background:#2a2110; border-radius:8px; padding:5px 9px; display:inline-block;}
+  .wt .plates{font-size:11px; color:#5b6673; margin-top:2px;}
+  .wt .ask{font-size:12px; color:var(--danger); font-weight:700;}
+  .note{font-size:12px; color:var(--warn); margin-top:8px; background:#2a2110; border-radius:8px; padding:5px 9px;}
 
   .sets{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
   .setbtn{
     flex:1 1 0; min-width:30px; max-width:56px; height:42px; border-radius:11px;
-    background:var(--bg3); border:1.5px solid var(--line);
-    color:var(--dim); font-size:13px; font-weight:700;
-    font-variant-numeric:tabular-nums;
+    background:var(--bg3); border:1.5px solid var(--line); color:var(--dim);
+    font-size:13px; font-weight:700; font-variant-numeric:tabular-nums;
     cursor:pointer; display:flex; align-items:center; justify-content:center;
-    transition:transform .08s, background .15s, border-color .15s;
-    user-select:none;
+    transition:transform .08s, background .15s, border-color .15s; user-select:none;
   }
   .setbtn:active{transform:scale(.9);}
   .setbtn.on{background:var(--okbg); border-color:var(--ok); color:#3fb950;}
-  .setbtn.wide{flex:0 0 auto; min-width:0; max-width:none; width:auto; padding:0 18px; font-size:13px; white-space:nowrap;}
+  .setbtn.wide{flex:0 0 auto; min-width:0; max-width:none; width:auto; padding:0 18px; white-space:nowrap;}
+
+  .editrow{display:flex; gap:8px; margin-top:10px;}
+  .ebtn{
+    flex:1; padding:8px; border-radius:9px; background:var(--bg3);
+    border:1px dashed var(--line); color:var(--dim); font-size:12px; font-weight:700; cursor:pointer;
+  }
+  .ebtn.danger{color:var(--danger); border-color:#4a2020;}
+  .addbtn{
+    width:100%; padding:12px; border-radius:12px; background:transparent;
+    border:1.5px dashed var(--line); color:var(--dim); font-size:13px; font-weight:700; cursor:pointer; margin-top:4px;
+  }
 
   .rest{
-    position:fixed; left:0; right:0; bottom:0; z-index:50;
-    background:rgba(22,27,34,.97); backdrop-filter:blur(14px);
-    border-top:1px solid var(--line);
-    padding:12px 16px calc(12px + var(--safe-b));
+    position:fixed; left:0; right:0; bottom:calc(66px + var(--safe-b)); z-index:60;
+    background:rgba(22,27,34,.98); backdrop-filter:blur(14px);
+    border-top:1px solid var(--line); padding:12px 16px;
     transform:translateY(120%); transition:transform .25s cubic-bezier(.2,.8,.2,1);
   }
   .rest.show{transform:translateY(0);}
   .restinner{display:flex; align-items:center; gap:14px;}
-  .clock{font-size:34px; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:-1px; min-width:104px;}
+  .clock{font-size:32px; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:-1px; min-width:100px;}
   .clock.low{color:var(--danger);}
-  .clock small{font-size:12px; color:var(--dim); font-weight:600; letter-spacing:0; margin-left:4px;}
+  .clock small{font-size:11px; color:var(--dim); font-weight:600; letter-spacing:0; margin-left:4px;}
   .restbtns{display:flex; gap:8px; margin-left:auto;}
-  .rbtn{
-    padding:10px 14px; border-radius:10px; background:var(--bg3);
-    border:1px solid var(--line); color:var(--txt); font-size:13px; font-weight:700;
-    cursor:pointer;
-  }
-  .rbtn:active{background:#2a3441;}
+  .rbtn{padding:10px 13px; border-radius:10px; background:var(--bg3); border:1px solid var(--line); color:var(--txt); font-size:13px; font-weight:700; cursor:pointer;}
   .rbtn.primary{background:var(--accent); border-color:var(--accent); color:#fff;}
   .track{height:4px; background:var(--bg3); border-radius:2px; margin-top:10px; overflow:hidden;}
   .track > i{display:block; height:100%; background:var(--accent); width:100%;}
   .track > i.low{background:var(--danger);}
-  .restlabel{font-size:11px; color:var(--dim); margin-top:7px;}
 
-  .tools{display:flex; gap:10px; margin-top:18px;}
-  .tool{
-    flex:1; padding:11px; border-radius:11px; background:var(--bg2);
-    border:1px solid var(--line); color:var(--dim); font-size:13px; font-weight:600;
-    cursor:pointer; text-align:center;
+  nav.bottom{
+    position:fixed; left:0; right:0; bottom:0; z-index:70;
+    display:flex; background:rgba(13,17,23,.97); backdrop-filter:blur(14px);
+    border-top:1px solid var(--line); padding-bottom:var(--safe-b);
   }
-  .tool:active{background:var(--bg3);}
-  .empty{text-align:center; color:var(--dim); padding:40px 0; font-size:13px;}
-  .celebrate{text-align:center; padding:16px; color:var(--ok); font-weight:700; font-size:14px;}
-  dialog{
-    background:var(--bg2); color:var(--txt); border:1px solid var(--line);
-    border-radius:16px; padding:20px; width:min(360px,88vw);
+  nav.bottom button{
+    flex:1; padding:9px 2px 10px; background:transparent; border:0; color:var(--dim);
+    font-size:10px; font-weight:600; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:2px;
   }
-  dialog::backdrop{background:rgba(0,0,0,.65);}
-  dialog h3{margin:0 0 14px; font-size:16px;}
-  dialog label{display:block; font-size:12px; color:var(--dim); margin:12px 0 5px;}
-  dialog input, dialog select{
-    width:100%; padding:9px 11px; border-radius:9px; background:var(--bg3);
+  nav.bottom button .ico{font-size:19px; line-height:1.1;}
+  nav.bottom button.on{color:var(--accent);}
+
+  .sheet{
+    position:fixed; inset:0; z-index:100; background:var(--bg);
+    display:flex; flex-direction:column; transform:translateY(100%);
+    transition:transform .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .sheet.show{transform:translateY(0);}
+  .sheethead{
+    display:flex; align-items:center; gap:12px; padding:calc(12px + var(--safe-t)) 16px 12px;
+    border-bottom:1px solid var(--line); background:var(--bg2);
+  }
+  .sheethead h3{margin:0; font-size:16px; flex:1;}
+  .sheethead .x{padding:6px 10px; border-radius:9px; background:var(--bg3); border:1px solid var(--line); color:var(--txt); font-size:13px; font-weight:700; cursor:pointer;}
+  .sheetbody{flex:1; overflow-y:auto; padding:14px 16px calc(24px + var(--safe-b));}
+
+  .card{background:var(--bg2); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px;}
+  .card h4{margin:0 0 10px; font-size:13px; color:var(--dim); font-weight:700; letter-spacing:.3px;}
+  .field{display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--line);}
+  .field:last-child{border-bottom:0;}
+  .field label{font-size:13px; color:var(--txt); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis;}
+  .field input{
+    width:88px; padding:8px 10px; border-radius:9px; background:var(--bg3);
+    border:1px solid var(--line); color:var(--txt); font-size:14px; font-family:inherit; text-align:right;
+    font-variant-numeric:tabular-nums;
+  }
+  .field input:focus{outline:none; border-color:var(--accent);}
+  .field input.bad{border-color:#5a2320; background:#2a1414;}
+  .dotstat{width:8px; height:8px; border-radius:50%; flex:0 0 auto;}
+  .dotstat.ok{background:var(--ok);}
+  .dotstat.miss{background:var(--warn);}
+  .hint{font-size:12px; color:var(--dim); line-height:1.6; margin:6px 0 0;}
+  .rowbtns{display:flex; gap:10px; margin-top:14px;}
+  .btn{
+    flex:1; padding:12px; border-radius:11px; border:1px solid var(--line);
+    background:var(--bg3); color:var(--txt); font-size:14px; font-weight:700; cursor:pointer;
+  }
+  .btn.primary{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .btn.danger{color:var(--danger); border-color:#4a2020;}
+  .btn.sm{flex:0 0 auto; padding:9px 14px; font-size:13px;}
+
+  dialog{background:var(--bg2); color:var(--txt); border:1px solid var(--line); border-radius:16px; padding:18px; width:min(400px,92vw);}
+  dialog::backdrop{background:rgba(0,0,0,.7);}
+  dialog h3{margin:0 0 4px; font-size:16px;}
+  dialog .fl{margin-top:12px;}
+  dialog label{display:block; font-size:12px; color:var(--dim); margin-bottom:5px;}
+  dialog input, dialog select, dialog textarea{
+    width:100%; padding:10px 11px; border-radius:9px; background:var(--bg3);
     border:1px solid var(--line); color:var(--txt); font-size:14px; font-family:inherit;
   }
-  dialog .acts{display:flex; gap:10px; margin-top:20px;}
-  dialog .acts button{
-    flex:1; padding:11px; border-radius:10px; border:1px solid var(--line);
-    background:var(--bg3); color:var(--txt); font-weight:700; font-size:14px; cursor:pointer;
+  dialog textarea{resize:vertical; min-height:52px;}
+  dialog .acts{display:flex; gap:10px; margin-top:18px;}
+  .empty{text-align:center; color:var(--dim); padding:40px 0; font-size:13px;}
+  .toast{
+    position:fixed; left:50%; bottom:calc(120px + var(--safe-b)); transform:translateX(-50%) translateY(20px);
+    background:#1f2630; color:var(--txt); border:1px solid var(--line);
+    padding:10px 16px; border-radius:10px; font-size:13px; z-index:200;
+    opacity:0; transition:.2s; pointer-events:none; max-width:88vw; text-align:center;
   }
-  dialog .acts .save{background:var(--accent); border-color:var(--accent);}
-  dialog .acts .danger{color:var(--danger);}
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
 </style>
 </head>
 <body>
@@ -150,8 +197,8 @@
 <header>
   <div class="title" id="planTitle">力训计划</div>
   <div class="sub">
-    <span>1RM <b id="oneRM">-</b> kg</span>
-    <span id="totalProg">完成 0 / 0 组</span>
+    <span id="planSub">—</span>
+    <span id="totalProg"></span>
     <span id="todayTag"></span>
   </div>
   <div class="bar"><i id="progBar"></i></div>
@@ -172,37 +219,105 @@
     </div>
   </div>
   <div class="track"><i id="restTrack"></i></div>
-  <div class="restlabel" id="restLabel">组间歇计时中…</div>
 </div>
 
-<dialog id="settingsDlg">
-  <h3>设置</h3>
-  <label>开始日期（决定「今天」定位到第几周）</label>
-  <input type="date" id="startDate">
-  <label>默认组间歇（秒）</label>
-  <input type="number" id="restSec" min="10" max="600" step="5">
-  <label>杠铃重量（kg，用于杠铃片换算）</label>
-  <input type="number" id="barKg" min="0" max="50" step="2.5">
-  <div class="acts">
-    <button class="danger" id="resetProg">清空打卡</button>
-    <button class="save" id="saveSettings">保存</button>
+<nav class="bottom">
+  <button id="navImport"><span class="ico">📥</span>导入</button>
+  <button id="navRefs"><span class="ico">⚖️</span>参考重量</button>
+  <button id="navEdit"><span class="ico">✏️</span>编辑</button>
+  <button id="navSettings"><span class="ico">⚙️</span>设置</button>
+</nav>
+
+<!-- 参考重量面板 -->
+<div class="sheet" id="refsSheet">
+  <div class="sheethead">
+    <h3>参考重量</h3>
+    <button class="x" id="refsClose">完成</button>
   </div>
-  <button id="restorePlan" style="width:100%;margin-top:10px;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--bg3);color:var(--txt);font-weight:700;font-size:14px;cursor:pointer;">恢复内置默认计划</button>
+  <div class="sheetbody">
+    <p class="hint" id="refsHint"></p>
+    <div class="card" id="refsList"></div>
+    <button class="addbtn" id="addRef">+ 添加动作</button>
+    <div class="card" style="margin-top:14px">
+      <h4>全局</h4>
+      <div class="field"><label>杠铃重量（kg）</label><input type="number" id="gBar" step="2.5" min="0"></div>
+      <div class="field"><label>取整步长（kg）</label><input type="number" id="gRound" step="0.5" min="0.5"></div>
+      <div class="field"><label>取整方式</label>
+        <select id="gMode" style="width:118px; padding:8px 10px; border-radius:9px; background:var(--bg3); border:1px solid var(--line); color:var(--txt); font-size:14px;">
+          <option value="floor">向下取整</option>
+          <option value="nearest">四舍五入</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 设置面板 -->
+<div class="sheet" id="settingsSheet">
+  <div class="sheethead">
+    <h3>设置</h3>
+    <button class="x" id="setClose">完成</button>
+  </div>
+  <div class="sheetbody">
+    <div class="card">
+      <h4>计划</h4>
+      <div class="field"><label>开始日期</label><input type="date" id="sStart" style="width:150px"></div>
+      <div class="field"><label>默认组间歇（秒）</label><input type="number" id="sRest" min="10" max="900" step="5"></div>
+      <div class="rowbtns">
+        <button class="btn danger" id="btnResetProg">清空打卡</button>
+        <button class="btn" id="btnRestore">恢复内置计划</button>
+      </div>
+    </div>
+    <div class="card">
+      <h4>当前计划</h4>
+      <p class="hint" id="planInfo"></p>
+    </div>
+  </div>
+</div>
+
+<!-- 条目编辑 -->
+<dialog id="itemDlg">
+  <h3 id="itemDlgTitle">编辑动作</h3>
+  <div class="fl"><label>动作名称</label><input id="iName" type="text"></div>
+  <div class="fl"><label>组数</label><input id="iSets" type="number" min="0" max="30"></div>
+  <div class="fl"><label>次数（可写 8-10 / 45秒 / 力竭）</label><input id="iReps" type="text"></div>
+  <div class="fl"><label>重量类型</label>
+    <select id="iType">
+      <option value="percent1RM">1RM 百分比</option>
+      <option value="rm">RM（如 8-12RM）</option>
+      <option value="kg">固定 kg</option>
+      <option value="kgRange">kg 区间</option>
+      <option value="rpe">RPE（主观强度）</option>
+      <option value="bodyweight">自重</option>
+      <option value="amap">力竭 / AMAP</option>
+      <option value="timed">计时</option>
+      <option value="none">无（纯文字）</option>
+    </select>
+  </div>
+  <div class="fl" id="iValueWrap"><label id="iValueLabel">数值</label><input id="iValue" type="text"></div>
+  <div class="fl"><label>组间休息（秒，留空用默认）</label><input id="iRest" type="number" min="0" max="1800" step="5"></div>
+  <div class="fl"><label>备注</label><textarea id="iNote"></textarea></div>
+  <div class="acts">
+    <button class="btn danger" id="iDelete">删除</button>
+    <button class="btn primary" id="iSave">保存</button>
+  </div>
 </dialog>
 
 <dialog id="importDlg">
-  <h3>导入 Excel 计划</h3>
-  <div id="importInfo" style="font-size:13px;color:var(--dim);line-height:1.75;"></div>
-  <div id="importWarn" style="font-size:12px;color:var(--warn);margin-top:10px;line-height:1.6;"></div>
+  <h3>导入计划</h3>
+  <div id="importInfo" style="font-size:13px;color:var(--dim);line-height:1.8;margin-top:6px"></div>
+  <div id="importWarn" style="font-size:12px;color:var(--warn);margin-top:10px;line-height:1.6"></div>
   <div class="acts">
-    <button id="cancelImport">取消</button>
-    <button class="save" id="confirmImport">确认导入</button>
+    <button class="btn" id="cancelImport">取消</button>
+    <button class="btn primary" id="confirmImport">导入</button>
   </div>
 </dialog>
+
 <input type="file" id="fileInput" accept=".xlsx,.xlsm" style="display:none">
+<div class="toast" id="toast"></div>
 
 <script>
-const DEFAULT_PLAN = {"planName":"三乐卧推 4周+4周 入门","oneRM":85,"bar":20.0,"source":"C:\\Users\\mo'ran\\Desktop\\三乐卧推4周+4周 入门.xlsx","totalWeeks":8,"weeks":[{"week":1,"sheet":"储备1（4周）","label":"周 1","sessions":[{"day":"星期一","weekday":1,"items":[{"exercise":"杠铃卧推","sets":6,"reps":3,"pct":0.7,"target":59.5,"actual":60.0,"plates":[20.0],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":4,"reps":3,"pct":0.75,"target":63.75,"actual":65.0,"plates":[20.0,2.5],"estimated":false,"note":null},{"exercise":"中握距（窄推）","sets":3,"reps":6,"pct":0.6,"target":51.0,"actual":50.0,"plates":[15.0],"estimated":false,"note":null}]},{"day":"星期三","weekday":3,"items":[{"exercise":"上斜卧推、坐姿实力推（增肌训练）","sets":6,"reps":4,"pct":0.6,"target":51.0,"actual":50.0,"plates":[15.0],"estimated":true,"note":"原表未填重量，按 60% × 1RM 估算"},{"exercise":"双杠（尽量负重）","sets":5,"reps":5,"pct":0.7,"target":null,"actual":null,"plates":[],"estimated":false,"note":"自重动作，原表未给重量"}]},{"day":"星期五","weekday":5,"items":[{"exercise":"杠铃卧推","sets":5,"reps":4,"pct":0.7,"target":59.5,"actual":60.0,"plates":[20.0],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":4,"reps":6,"pct":0.6,"target":51.0,"actual":50.0,"plates":[15.0],"estimated":false,"note":null}]}]},{"week":2,"sheet":"储备1（4周）","label":"周 2","sessions":[{"day":"星期一","weekday":1,"items":[{"exercise":"杠铃卧推","sets":6,"reps":4,"pct":0.75,"target":63.75,"actual":65.0,"plates":[20.0,2.5],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":7,"reps":2,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null},{"exercise":"腰间俯卧撑","sets":null,"reps":null,"pct":null,"target":null,"actual":null,"plates":[],"estimated":false,"note":"原表无处方，自由发挥"}]},{"day":"星期三","weekday":3,"items":[{"exercise":"杠铃卧推","sets":3,"reps":6,"pct":0.6,"target":51.0,"actual":50.0,"plates":[15.0],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":5,"reps":5,"pct":0.7,"target":59.5,"actual":60.0,"plates":[20.0],"estimated":false,"note":null}]},{"day":"星期五","weekday":5,"items":[{"exercise":"杠铃卧推","sets":5,"reps":4,"pct":0.75,"target":63.75,"actual":65.0,"plates":[20.0,2.5],"estimated":false,"note":null},{"exercise":"双杠（尽量负重）","sets":6,"reps":6,"pct":0.7,"target":null,"actual":null,"plates":[],"estimated":false,"note":"自重动作，原表未给重量"}]}]},{"week":3,"sheet":"储备1（4周）","label":"周 3","sessions":[{"day":"星期一","weekday":1,"items":[{"exercise":"杠铃卧推","sets":3,"reps":6,"pct":0.75,"target":63.75,"actual":65.0,"plates":[20.0,2.5],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":5,"reps":3,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null},{"exercise":"腰间俯卧撑","sets":null,"reps":null,"pct":null,"target":null,"actual":null,"plates":[],"estimated":false,"note":"原表无处方，自由发挥"}]},{"day":"星期三","weekday":3,"items":[{"exercise":"杠铃卧推","sets":4,"reps":4,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":4,"reps":6,"pct":0.7,"target":59.5,"actual":60.0,"plates":[20.0],"estimated":false,"note":null},{"exercise":"中握距（窄推）","sets":4,"reps":6,"pct":0.6,"target":51.0,"actual":50.0,"plates":[15.0],"estimated":false,"note":null}]},{"day":"星期五","weekday":5,"items":[{"exercise":"杠铃卧推","sets":6,"reps":4,"pct":0.75,"target":63.75,"actual":65.0,"plates":[20.0,2.5],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":5,"reps":6,"pct":0.65,"target":55.25,"actual":55.0,"plates":[15.0,2.5],"estimated":false,"note":null}]}]},{"week":4,"sheet":"储备1（4周）","label":"周 4","sessions":[{"day":"星期一","weekday":1,"items":[{"exercise":"杠铃卧推","sets":3,"reps":4,"pct":0.7,"target":59.5,"actual":60.0,"plates":[20.0],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":6,"reps":2,"pct":0.85,"target":72.25,"actual":72.5,"plates":[20.0,5.0,1.25],"estimated":false,"note":null},{"exercise":"双杠（负重）","sets":6,"reps":6,"pct":0.7,"target":null,"actual":null,"plates":[],"estimated":false,"note":"自重动作，原表未给重量"}]},{"day":"星期三","weekday":3,"items":[{"exercise":"杠铃卧推","sets":3,"reps":3,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":3,"reps":3,"pct":0.85,"target":72.25,"actual":72.5,"plates":[20.0,5.0,1.25],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":5,"reps":5,"pct":0.7,"target":59.5,"actual":60.0,"plates":[20.0],"estimated":false,"note":null}]},{"day":"星期五","weekday":5,"items":[{"exercise":"双杠（负重）","sets":5,"reps":7,"pct":0.75,"target":null,"actual":null,"plates":[],"estimated":false,"note":"自重动作，原表未给重量"},{"exercise":"中握距（窄推）","sets":3,"reps":6,"pct":0.7,"target":59.5,"actual":60.0,"plates":[20.0],"estimated":false,"note":null}]}]},{"week":5,"sheet":"储备2（4周）","label":"W1","sessions":[{"day":"星期一","weekday":1,"items":[{"exercise":"杠铃卧推","sets":4,"reps":4,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null},{"exercise":"中握距（窄推）","sets":3,"reps":5,"pct":0.75,"target":63.75,"actual":65.0,"plates":[20.0,2.5],"estimated":false,"note":null}]},{"day":"星期三","weekday":3,"items":[{"exercise":"杠铃卧推","sets":3,"reps":3,"pct":0.85,"target":72.25,"actual":72.5,"plates":[20.0,5.0,1.25],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":4,"reps":6,"pct":0.6,"target":51.0,"actual":50.0,"plates":[15.0],"estimated":false,"note":null}]},{"day":"星期五","weekday":5,"items":[{"exercise":"杠铃卧推","sets":5,"reps":3,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null},{"exercise":"双杠（负重）","sets":6,"reps":6,"pct":0.7,"target":null,"actual":null,"plates":[],"estimated":false,"note":"自重动作，原表未给重量"}]}]},{"week":6,"sheet":"储备2（4周）","label":"W2","sessions":[{"day":"星期一","weekday":1,"items":[{"exercise":"杠铃卧推","sets":8,"reps":3,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null},{"exercise":"腰间俯卧撑","sets":null,"reps":null,"pct":null,"target":null,"actual":null,"plates":[],"estimated":false,"note":"原表无处方，自由发挥"}]},{"day":"星期三","weekday":3,"items":[{"exercise":"杠铃卧推","sets":3,"reps":6,"pct":0.75,"target":63.75,"actual":65.0,"plates":[20.0,2.5],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":6,"reps":4,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null}]},{"day":"星期五","weekday":5,"items":[{"exercise":"杠铃卧推","sets":3,"reps":7,"pct":0.65,"target":55.25,"actual":55.0,"plates":[15.0,2.5],"estimated":false,"note":null},{"exercise":"双杠（负重）","sets":5,"reps":6,"pct":0.75,"target":null,"actual":null,"plates":[],"estimated":false,"note":"自重动作，原表未给重量"}]}]},{"week":7,"sheet":"储备2（4周）","label":"W3","sessions":[{"day":"星期一","weekday":1,"items":[{"exercise":"杠铃卧推","sets":6,"reps":3,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":5,"reps":2,"pct":0.85,"target":72.25,"actual":72.5,"plates":[20.0,5.0,1.25],"estimated":false,"note":null}]},{"day":"星期三","weekday":3,"items":[{"exercise":"杠铃卧推","sets":5,"reps":5,"pct":0.7,"target":59.5,"actual":60.0,"plates":[20.0],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":3,"reps":5,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null}]},{"day":"星期五","weekday":5,"items":[{"exercise":"杠铃卧推","sets":4,"reps":5,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":3,"reps":6,"pct":0.7,"target":59.5,"actual":60.0,"plates":[20.0],"estimated":false,"note":null}]}]},{"week":8,"sheet":"储备2（4周）","label":"W4","sessions":[{"day":"星期一","weekday":1,"items":[{"exercise":"双杠（负重）","sets":5,"reps":7,"pct":0.7,"target":null,"actual":null,"plates":[],"estimated":false,"note":"自重动作，原表未给重量"},{"exercise":"杠铃卧推","sets":5,"reps":3,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null}]},{"day":"星期三","weekday":3,"items":[{"exercise":"杠铃卧推","sets":8,"reps":2,"pct":0.85,"target":72.25,"actual":72.5,"plates":[20.0,5.0,1.25],"estimated":false,"note":null},{"exercise":"杠铃卧推","sets":3,"reps":4,"pct":0.8,"target":68.0,"actual":67.5,"plates":[20.0,2.5,1.25],"estimated":false,"note":null}]},{"day":"星期五","weekday":5,"items":[{"exercise":"杠铃卧推","sets":4,"reps":6,"pct":0.75,"target":63.75,"actual":65.0,"plates":[20.0,2.5],"estimated":false,"note":null},{"exercise":"双杠（负重）","sets":6,"reps":4,"pct":0.8,"target":null,"actual":null,"plates":[],"estimated":false,"note":"自重动作，原表未给重量"}]}]}],"warnings":[]};
+const DEFAULT_PLAN = {"version":2,"planName":"三乐卧推","format":"matrix","sourceFile":"三乐卧推4周+4周 入门.xlsx","createdAt":"2026-11-02T16:03:01.610Z","weeks":[{"label":"周 1","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":6,"reps":"3","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":4,"reps":"3","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"中握距（窄推）","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"上斜卧推、坐姿实力推（增肌训练）","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null},{"name":"双杠（尽量负重）","sets":5,"reps":"5","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":5,"reps":"4","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null}]}],"week":1},{"label":"周 2","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"杠铃卧推","sets":7,"reps":"2","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"腰间俯卧撑","sets":null,"reps":null,"load":{"type":"bodyweight"},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"5","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":5,"reps":"4","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"双杠（尽量负重）","sets":6,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]}],"week":2},{"label":"周 3","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"腰间俯卧撑","sets":null,"reps":null,"load":{"type":"bodyweight"},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":4,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"杠铃卧推","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"中握距（窄推）","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"6","load":{"type":"percent1RM","value":0.65},"rest":null,"note":null}]}],"week":3},{"label":"周 4","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"4","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":6,"reps":"2","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null},{"name":"双杠（负重）","sets":6,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"杠铃卧推","sets":3,"reps":"3","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"5","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"双杠（负重）","sets":5,"reps":"7","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"中握距（窄推）","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]}],"week":4},{"label":"W1","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":4,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"中握距（窄推）","sets":3,"reps":"5","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"3","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null},{"name":"杠铃卧推","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.6},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":5,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"双杠（负重）","sets":6,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]}],"week":5},{"label":"W2","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":8,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"腰间俯卧撑","sets":null,"reps":null,"load":{"type":"bodyweight"},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"杠铃卧推","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":3,"reps":"7","load":{"type":"percent1RM","value":0.65},"rest":null,"note":null},{"name":"双杠（负重）","sets":5,"reps":"6","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null}]}],"week":6},{"label":"W3","sessions":[{"day":"星期一","title":null,"items":[{"name":"杠铃卧推","sets":6,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"2","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":5,"reps":"5","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":3,"reps":"5","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":4,"reps":"5","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null},{"name":"杠铃卧推","sets":3,"reps":"6","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null}]}],"week":7},{"label":"W4","sessions":[{"day":"星期一","title":null,"items":[{"name":"双杠（负重）","sets":5,"reps":"7","load":{"type":"percent1RM","value":0.7},"rest":null,"note":null},{"name":"杠铃卧推","sets":5,"reps":"3","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]},{"day":"星期三","title":null,"items":[{"name":"杠铃卧推","sets":8,"reps":"2","load":{"type":"percent1RM","value":0.85},"rest":null,"note":null},{"name":"杠铃卧推","sets":3,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]},{"day":"星期五","title":null,"items":[{"name":"杠铃卧推","sets":4,"reps":"6","load":{"type":"percent1RM","value":0.75},"rest":null,"note":null},{"name":"双杠（负重）","sets":6,"reps":"4","load":{"type":"percent1RM","value":0.8},"rest":null,"note":null}]}],"week":8}],"warnings":[]};
 </script>
 <script>/*! xlsx.js (C) 2013-present SheetJS -- http://sheetjs.com */
 var XLSX={};function make_xlsx_lib(e){e.version="0.20.3";var r=1200,t=1252;var a;var n=[874,932,936,949,950,1250,1251,1252,1253,1254,1255,1256,1257,1258,1e4];var i={0:1252,1:65001,2:65001,77:1e4,128:932,129:949,130:1361,134:936,136:950,161:1253,162:1254,163:1258,177:1255,178:1256,186:1257,204:1251,222:874,238:1250,255:1252,69:6969};var s=function(e){if(n.indexOf(e)==-1)return;t=i[0]=e};function l(){s(1252)}var o=function(e){r=e;s(e)};function c(){o(1200);l()}function f(e){var r=[];for(var t=0,a=e.length;t<a;++t)r[t]=e.charCodeAt(t);return r}function u(e){var r=[];for(var t=0;t<e.length>>1;++t)r[t]=String.fromCharCode(e.charCodeAt(2*t)+(e.charCodeAt(2*t+1)<<8));return r.join("")}function h(e){var r=[];for(var t=0;t<e.length>>1;++t)r[t]=String.fromCharCode(e[2*t]+(e[2*t+1]<<8));return r.join("")}function d(e){var r=[];for(var t=0;t<e.length>>1;++t)r[t]=String.fromCharCode(e.charCodeAt(2*t+1)+(e.charCodeAt(2*t)<<8));return r.join("")}var p=function(e){var r=e.charCodeAt(0),t=e.charCodeAt(1);if(r==255&&t==254)return u(e.slice(2));if(r==254&&t==255)return d(e.slice(2));if(r==65279)return e.slice(1);return e};var m=function Dc(e){return String.fromCharCode(e)};var v=function Oc(e){return String.fromCharCode(e)};function g(e){a=e;o=function(e){r=e;s(e)};p=function(e){if(e.charCodeAt(0)===255&&e.charCodeAt(1)===254){return a.utils.decode(1200,f(e.slice(2)))}return e};m=function n(e){if(r===1200)return String.fromCharCode(e);return a.utils.decode(r,[e&255,e>>8])[0]};v=function i(e){return a.utils.decode(t,[e])[0]};va()}var b=null;var w=true;var k="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";function y(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;for(var c=0;c<e.length;){t=e.charCodeAt(c++);i=t>>2;a=e.charCodeAt(c++);s=(t&3)<<4|a>>4;n=e.charCodeAt(c++);l=(a&15)<<2|n>>6;o=n&63;if(isNaN(a)){l=o=64}else if(isNaN(n)){o=64}r+=k.charAt(i)+k.charAt(s)+k.charAt(l)+k.charAt(o)}return r}function x(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;for(var c=0;c<e.length;){t=e.charCodeAt(c++);if(t>255)t=95;i=t>>2;a=e.charCodeAt(c++);if(a>255)a=95;s=(t&3)<<4|a>>4;n=e.charCodeAt(c++);if(n>255)n=95;l=(a&15)<<2|n>>6;o=n&63;if(isNaN(a)){l=o=64}else if(isNaN(n)){o=64}r+=k.charAt(i)+k.charAt(s)+k.charAt(l)+k.charAt(o)}return r}function C(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;for(var c=0;c<e.length;){t=e[c++];i=t>>2;a=e[c++];s=(t&3)<<4|a>>4;n=e[c++];l=(a&15)<<2|n>>6;o=n&63;if(isNaN(a)){l=o=64}else if(isNaN(n)){o=64}r+=k.charAt(i)+k.charAt(s)+k.charAt(l)+k.charAt(o)}return r}function S(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;if(e.slice(0,5)=="data:"){var c=e.slice(0,1024).indexOf(";base64,");if(c>-1)e=e.slice(c+8)}e=e.replace(/[^\w\+\/\=]/g,"");for(var c=0;c<e.length;){i=k.indexOf(e.charAt(c++));s=k.indexOf(e.charAt(c++));t=i<<2|s>>4;r+=String.fromCharCode(t);l=k.indexOf(e.charAt(c++));a=(s&15)<<4|l>>2;if(l!==64){r+=String.fromCharCode(a)}o=k.indexOf(e.charAt(c++));n=(l&3)<<6|o;if(o!==64){r+=String.fromCharCode(n)}}return r}var _=function(){return typeof Buffer!=="undefined"&&typeof undefined!=="undefined"&&typeof{}!=="undefined"&&!!{}.node}();var A=function(){if(typeof Buffer!=="undefined"){var e=!Buffer.from;if(!e)try{Buffer.from("foo","utf8")}catch(r){e=true}return e?function(e,r){return r?new Buffer(e,r):new Buffer(e)}:Buffer.from.bind(Buffer)}return function(){}}();var T=function(){if(typeof Buffer==="undefined")return false;var e=A([65,0]);if(!e)return false;var r=e.toString("utf16le");return r.length==1}();function E(e){if(_)return Buffer.alloc?Buffer.alloc(e):new Buffer(e);return typeof Uint8Array!="undefined"?new Uint8Array(e):new Array(e)}function F(e){if(_)return Buffer.allocUnsafe?Buffer.allocUnsafe(e):new Buffer(e);return typeof Uint8Array!="undefined"?new Uint8Array(e):new Array(e)}var D=function Nc(e){if(_)return A(e,"binary");return e.split("").map(function(e){return e.charCodeAt(0)&255})};function O(e){if(typeof ArrayBuffer==="undefined")return D(e);var r=new ArrayBuffer(e.length),t=new Uint8Array(r);for(var a=0;a!=e.length;++a)t[a]=e.charCodeAt(a)&255;return r}function N(e){if(Array.isArray(e))return e.map(function(e){return String.fromCharCode(e)}).join("");var r=[];for(var t=0;t<e.length;++t)r[t]=String.fromCharCode(e[t]);return r.join("")}function M(e){if(typeof Uint8Array==="undefined")throw new Error("Unsupported");return new Uint8Array(e)}function I(e){if(typeof ArrayBuffer=="undefined")throw new Error("Unsupported");if(e instanceof ArrayBuffer)return I(new Uint8Array(e));var r=new Array(e.length);for(var t=0;t<e.length;++t)r[t]=e[t];return r}var P=_?function(e){return Buffer.concat(e.map(function(e){return Buffer.isBuffer(e)?e:A(e)}))}:function(e){if(typeof Uint8Array!=="undefined"){var r=0,t=0;for(r=0;r<e.length;++r)t+=e[r].length;var a=new Uint8Array(t);var n=0;for(r=0,t=0;r<e.length;t+=n,++r){n=e[r].length;if(e[r]instanceof Uint8Array)a.set(e[r],t);else if(typeof e[r]=="string")a.set(new Uint8Array(D(e[r])),t);else a.set(new Uint8Array(e[r]),t)}return a}return[].concat.apply([],e.map(function(e){return Array.isArray(e)?e:[].slice.call(e)}))};function R(e){var r=[],t=0,a=e.length+250;var n=E(e.length+255);for(var i=0;i<e.length;++i){var s=e.charCodeAt(i);if(s<128)n[t++]=s;else if(s<2048){n[t++]=192|s>>6&31;n[t++]=128|s&63}else if(s>=55296&&s<57344){s=(s&1023)+64;var l=e.charCodeAt(++i)&1023;n[t++]=240|s>>8&7;n[t++]=128|s>>2&63;n[t++]=128|l>>6&15|(s&3)<<4;n[t++]=128|l&63}else{n[t++]=224|s>>12&15;n[t++]=128|s>>6&63;n[t++]=128|s&63}if(t>a){r.push(n.slice(0,t));t=0;n=E(65535);a=65530}}r.push(n.slice(0,t));return P(r)}var L=/\u0000/g,U=/[\u0001-\u0006]/g;function B(e){var r="",t=e.length-1;while(t>=0)r+=e.charAt(t--);return r}function z(e,r){var t=""+e;return t.length>=r?t:xr("0",r-t.length)+t}function W(e,r){var t=""+e;return t.length>=r?t:xr(" ",r-t.length)+t}function j(e,r){var t=""+e;return t.length>=r?t:t+xr(" ",r-t.length)}function H(e,r){var t=""+Math.round(e);return t.length>=r?t:xr("0",r-t.length)+t}function V(e,r){var t=""+e;return t.length>=r?t:xr("0",r-t.length)+t}var X=Math.pow(2,32);function G(e,r){if(e>X||e<-X)return H(e,r);var t=Math.round(e);return V(t,r)}function Y(e,r){r=r||0;return e.length>=7+r&&(e.charCodeAt(r)|32)===103&&(e.charCodeAt(r+1)|32)===101&&(e.charCodeAt(r+2)|32)===110&&(e.charCodeAt(r+3)|32)===101&&(e.charCodeAt(r+4)|32)===114&&(e.charCodeAt(r+5)|32)===97&&(e.charCodeAt(r+6)|32)===108}var J=[["Sun","Sunday"],["Mon","Monday"],["Tue","Tuesday"],["Wed","Wednesday"],["Thu","Thursday"],["Fri","Friday"],["Sat","Saturday"]];var Z=[["J","Jan","January"],["F","Feb","February"],["M","Mar","March"],["A","Apr","April"],["M","May","May"],["J","Jun","June"],["J","Jul","July"],["A","Aug","August"],["S","Sep","September"],["O","Oct","October"],["N","Nov","November"],["D","Dec","December"]];function K(e){if(!e)e={};e[0]="General";e[1]="0";e[2]="0.00";e[3]="#,##0";e[4]="#,##0.00";e[9]="0%";e[10]="0.00%";e[11]="0.00E+00";e[12]="# ?/?";e[13]="# ??/??";e[14]="m/d/yy";e[15]="d-mmm-yy";e[16]="d-mmm";e[17]="mmm-yy";e[18]="h:mm AM/PM";e[19]="h:mm:ss AM/PM";e[20]="h:mm";e[21]="h:mm:ss";e[22]="m/d/yy h:mm";e[37]="#,##0 ;(#,##0)";e[38]="#,##0 ;[Red](#,##0)";e[39]="#,##0.00;(#,##0.00)";e[40]="#,##0.00;[Red](#,##0.00)";e[45]="mm:ss";e[46]="[h]:mm:ss";e[47]="mmss.0";e[48]="##0.0E+0";e[49]="@";e[56]='"上午/下午 "hh"時"mm"分"ss"秒 "';return e}var q={0:"General",1:"0",2:"0.00",3:"#,##0",4:"#,##0.00",9:"0%",10:"0.00%",11:"0.00E+00",12:"# ?/?",13:"# ??/??",14:"m/d/yy",15:"d-mmm-yy",16:"d-mmm",17:"mmm-yy",18:"h:mm AM/PM",19:"h:mm:ss AM/PM",20:"h:mm",21:"h:mm:ss",22:"m/d/yy h:mm",37:"#,##0 ;(#,##0)",38:"#,##0 ;[Red](#,##0)",39:"#,##0.00;(#,##0.00)",40:"#,##0.00;[Red](#,##0.00)",45:"mm:ss",46:"[h]:mm:ss",47:"mmss.0",48:"##0.0E+0",49:"@",56:'"上午/下午 "hh"時"mm"分"ss"秒 "'};var Q={5:37,6:38,7:39,8:40,23:0,24:0,25:0,26:0,27:14,28:14,29:14,30:14,31:14,50:14,51:14,52:14,53:14,54:14,55:14,56:14,57:14,58:14,59:1,60:2,61:3,62:4,67:9,68:10,69:12,70:13,71:14,72:14,73:15,74:16,75:17,76:20,77:21,78:22,79:45,80:46,81:47,82:0};var ee={5:'"$"#,##0_);\\("$"#,##0\\)',63:'"$"#,##0_);\\("$"#,##0\\)',6:'"$"#,##0_);[Red]\\("$"#,##0\\)',64:'"$"#,##0_);[Red]\\("$"#,##0\\)',7:'"$"#,##0.00_);\\("$"#,##0.00\\)',65:'"$"#,##0.00_);\\("$"#,##0.00\\)',8:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',66:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',41:'_(* #,##0_);_(* \\(#,##0\\);_(* "-"_);_(@_)',42:'_("$"* #,##0_);_("$"* \\(#,##0\\);_("$"* "-"_);_(@_)',43:'_(* #,##0.00_);_(* \\(#,##0.00\\);_(* "-"??_);_(@_)',44:'_("$"* #,##0.00_);_("$"* \\(#,##0.00\\);_("$"* "-"??_);_(@_)'};function re(e,r,t){var a=e<0?-1:1;var n=e*a;var i=0,s=1,l=0;var o=1,c=0,f=0;var u=Math.floor(n);while(c<r){u=Math.floor(n);l=u*s+i;f=u*c+o;if(n-u<5e-8)break;n=1/(n-u);i=s;s=l;o=c;c=f}if(f>r){if(c>r){f=o;l=i}else{f=c;l=s}}if(!t)return[0,a*l,f];var h=Math.floor(a*l/f);return[h,a*l-h*f,f]}function te(e){var r=e.toPrecision(16);if(r.indexOf("e")>-1){var t=r.slice(0,r.indexOf("e"));t=t.indexOf(".")>-1?t.slice(0,t.slice(0,2)=="0."?17:16):t.slice(0,15)+xr("0",t.length-15);return t+r.slice(r.indexOf("e"))}var a=r.indexOf(".")>-1?r.slice(0,r.slice(0,2)=="0."?17:16):r.slice(0,15)+xr("0",r.length-15);return Number(a)}function ae(e,r,t){if(e>2958465||e<0)return null;e=te(e);var a=e|0,n=Math.floor(86400*(e-a)),i=0;var s=[];var l={D:a,T:n,u:86400*(e-a)-n,y:0,m:0,d:0,H:0,M:0,S:0,q:0};if(Math.abs(l.u)<1e-6)l.u=0;if(r&&r.date1904)a+=1462;if(l.u>.9999){l.u=0;if(++n==86400){l.T=n=0;++a;++l.D}}if(a===60){s=t?[1317,10,29]:[1900,2,29];i=3}else if(a===0){s=t?[1317,8,29]:[1900,1,0];i=6}else{if(a>60)--a;var o=new Date(1900,0,1);o.setDate(o.getDate()+a-1);s=[o.getFullYear(),o.getMonth()+1,o.getDate()];i=o.getDay();if(a<60)i=(i+6)%7;if(t)i=fe(o,s)}l.y=s[0];l.m=s[1];l.d=s[2];l.S=n%60;n=Math.floor(n/60);l.M=n%60;n=Math.floor(n/60);l.H=n;l.q=i;return l}function ne(e){return e.indexOf(".")==-1?e:e.replace(/(?:\.0*|(\.\d*[1-9])0+)$/,"$1")}function ie(e){if(e.indexOf("E")==-1)return e;return e.replace(/(?:\.0*|(\.\d*[1-9])0+)[Ee]/,"$1E").replace(/(E[+-])(\d)$/,"$10$2")}function se(e){var r=e<0?12:11;var t=ne(e.toFixed(12));if(t.length<=r)return t;t=e.toPrecision(10);if(t.length<=r)return t;return e.toExponential(5)}function le(e){var r=ne(e.toFixed(11));return r.length>(e<0?12:11)||r==="0"||r==="-0"?e.toPrecision(6):r}function oe(e){if(!isFinite(e))return isNaN(e)?"#NUM!":"#DIV/0!";var r=Math.floor(Math.log(Math.abs(e))*Math.LOG10E),t;if(r>=-4&&r<=-1)t=e.toPrecision(10+r);else if(Math.abs(r)<=9)t=se(e);else if(r===10)t=e.toFixed(10).substr(0,12);else t=le(e);return ne(ie(t.toUpperCase()))}function ce(e,r){switch(typeof e){case"string":return e;case"boolean":return e?"TRUE":"FALSE";case"number":return(e|0)===e?e.toString(10):oe(e);case"undefined":return"";case"object":if(e==null)return"";if(e instanceof Date)return $e(14,dr(e,r&&r.date1904),r);}throw new Error("unsupported value in General format: "+e)}function fe(e,r){r[0]-=581;var t=e.getDay();if(e<60)t=(t+6)%7;return t}function ue(e,r,t,a){var n="",i=0,s=0,l=t.y,o,c=0;switch(e){case 98:l=t.y+543;case 121:switch(r.length){case 1:;case 2:o=l%100;c=2;break;default:o=l%1e4;c=4;break;}break;case 109:switch(r.length){case 1:;case 2:o=t.m;c=r.length;break;case 3:return Z[t.m-1][1];case 5:return Z[t.m-1][0];default:return Z[t.m-1][2];}break;case 100:switch(r.length){case 1:;case 2:o=t.d;c=r.length;break;case 3:return J[t.q][0];default:return J[t.q][1];}break;case 104:switch(r.length){case 1:;case 2:o=1+(t.H+11)%12;c=r.length;break;default:throw"bad hour format: "+r;}break;case 72:switch(r.length){case 1:;case 2:o=t.H;c=r.length;break;default:throw"bad hour format: "+r;}break;case 77:switch(r.length){case 1:;case 2:o=t.M;c=r.length;break;default:throw"bad minute format: "+r;}break;case 115:if(r!="s"&&r!="ss"&&r!=".0"&&r!=".00"&&r!=".000")throw"bad second format: "+r;if(t.u===0&&(r=="s"||r=="ss"))return z(t.S,r.length);if(a>=2)s=a===3?1e3:100;else s=a===1?10:1;i=Math.round(s*(t.S+t.u));if(i>=60*s)i=0;if(r==="s")return i===0?"0":""+i/s;n=z(i,2+a);if(r==="ss")return n.substr(0,2);return"."+n.substr(2,r.length-1);case 90:switch(r){case"[h]":;case"[hh]":o=t.D*24+t.H;break;case"[m]":;case"[mm]":o=(t.D*24+t.H)*60+t.M;break;case"[s]":;case"[ss]":o=((t.D*24+t.H)*60+t.M)*60+(a==0?Math.round(t.S+t.u):t.S);break;default:throw"bad abstime format: "+r;}c=r.length===3?1:2;break;case 101:o=l;c=1;break;}var f=c>0?z(o,c):"";return f}function he(e){var r=3;if(e.length<=r)return e;var t=e.length%r,a=e.substr(0,t);for(;t!=e.length;t+=r)a+=(a.length>0?",":"")+e.substr(t,r);return a}var de=/%/g;function pe(e,r,t){var a=r.replace(de,""),n=r.length-a.length;return Me(e,a,t*Math.pow(10,2*n))+xr("%",n)}function me(e,r,t){var a=r.length-1;while(r.charCodeAt(a-1)===44)--a;return Me(e,r.substr(0,a),t/Math.pow(10,3*(r.length-a)))}function ve(e,r){var t;var a=e.indexOf("E")-e.indexOf(".")-1;if(e.match(/^#+0.0E\+0$/)){if(r==0)return"0.0E+0";else if(r<0)return"-"+ve(e,-r);var n=e.indexOf(".");if(n===-1)n=e.indexOf("E");var i=Math.floor(Math.log(r)*Math.LOG10E)%n;if(i<0)i+=n;t=(r/Math.pow(10,i)).toPrecision(a+1+(n+i)%n);if(t.indexOf("e")===-1){var s=Math.floor(Math.log(r)*Math.LOG10E);if(t.indexOf(".")===-1)t=t.charAt(0)+"."+t.substr(1)+"E+"+(s-t.length+i);else t+="E+"+(s-i);while(t.substr(0,2)==="0."){t=t.charAt(0)+t.substr(2,n)+"."+t.substr(2+n);t=t.replace(/^0+([1-9])/,"$1").replace(/^0+\./,"0.")}t=t.replace(/\+-/,"-")}t=t.replace(/^([+-]?)(\d*)\.(\d*)[Ee]/,function(e,r,t,a){return r+t+a.substr(0,(n+i)%n)+"."+a.substr(i)+"E"})}else t=r.toExponential(a);if(e.match(/E\+00$/)&&t.match(/e[+-]\d$/))t=t.substr(0,t.length-1)+"0"+t.charAt(t.length-1);if(e.match(/E\-/)&&t.match(/e\+/))t=t.replace(/e\+/,"e");return t.replace("e","E")}var ge=/# (\?+)( ?)\/( ?)(\d+)/;function be(e,r,t){var a=parseInt(e[4],10),n=Math.round(r*a),i=Math.floor(n/a);var s=n-i*a,l=a;return t+(i===0?"":""+i)+" "+(s===0?xr(" ",e[1].length+1+e[4].length):W(s,e[1].length)+e[2]+"/"+e[3]+z(l,e[4].length))}function we(e,r,t){return t+(r===0?"":""+r)+xr(" ",e[1].length+2+e[4].length)}var ke=/^#*0*\.([0#]+)/;var ye=/\)[^)]*[0#]/;var xe=/\(###\) ###\\?-####/;function Ce(e){var r="",t;for(var a=0;a!=e.length;++a)switch(t=e.charCodeAt(a)){case 35:break;case 63:r+=" ";break;case 48:r+="0";break;default:r+=String.fromCharCode(t);}return r}function Se(e,r){var t=Math.pow(10,r);return""+Math.round(e*t)/t}function _e(e,r){var t=e-Math.floor(e),a=Math.pow(10,r);if(r<(""+Math.round(t*a)).length)return 0;return Math.round(t*a)}function Ae(e,r){if(r<(""+Math.round((e-Math.floor(e))*Math.pow(10,r))).length){return 1}return 0}function Te(e){if(e<2147483647&&e>-2147483648)return""+(e>=0?e|0:e-1|0);return""+Math.floor(e)}function Ee(e,r,t){if(e.charCodeAt(0)===40&&!r.match(ye)){var a=r.replace(/\( */,"").replace(/ \)/,"").replace(/\)/,"");if(t>=0)return Ee("n",a,t);return"("+Ee("n",a,-t)+")"}if(r.charCodeAt(r.length-1)===44)return me(e,r,t);if(r.indexOf("%")!==-1)return pe(e,r,t);if(r.indexOf("E")!==-1)return ve(r,t);if(r.charCodeAt(0)===36)return"$"+Ee(e,r.substr(r.charAt(1)==" "?2:1),t);var n;var i,s,l,o=Math.abs(t),c=t<0?"-":"";if(r.match(/^00+$/))return c+G(o,r.length);if(r.match(/^[#?]+$/)){n=G(t,0);if(n==="0")n="";return n.length>r.length?n:Ce(r.substr(0,r.length-n.length))+n}if(i=r.match(ge))return be(i,o,c);if(r.match(/^#+0+$/))return c+G(o,r.length-r.indexOf("0"));if(i=r.match(ke)){n=Se(t,i[1].length).replace(/^([^\.]+)$/,"$1."+Ce(i[1])).replace(/\.$/,"."+Ce(i[1])).replace(/\.(\d*)$/,function(e,r){return"."+r+xr("0",Ce(i[1]).length-r.length)});return r.indexOf("0.")!==-1?n:n.replace(/^0\./,".")}r=r.replace(/^#+([0.])/,"$1");if(i=r.match(/^(0*)\.(#*)$/)){return c+Se(o,i[2].length).replace(/\.(\d*[1-9])0*$/,".$1").replace(/^(-?\d*)$/,"$1.").replace(/^0\./,i[1].length?"0.":".")}if(i=r.match(/^#{1,3},##0(\.?)$/))return c+he(G(o,0));if(i=r.match(/^#,##0\.([#0]*0)$/)){return t<0?"-"+Ee(e,r,-t):he(""+(Math.floor(t)+Ae(t,i[1].length)))+"."+z(_e(t,i[1].length),i[1].length)}if(i=r.match(/^#,#*,#0/))return Ee(e,r.replace(/^#,#*,/,""),t);if(i=r.match(/^([0#]+)(\\?-([0#]+))+$/)){n=B(Ee(e,r.replace(/[\\-]/g,""),t));s=0;return B(B(r.replace(/\\/g,"")).replace(/[0#]/g,function(e){return s<n.length?n.charAt(s++):e==="0"?"0":""}))}if(r.match(xe)){n=Ee(e,"##########",t);return"("+n.substr(0,3)+") "+n.substr(3,3)+"-"+n.substr(6)}var f="";if(i=r.match(/^([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(i[4].length,7);l=re(o,Math.pow(10,s)-1,false);n=""+c;f=Me("n",i[1],l[1]);if(f.charAt(f.length-1)==" ")f=f.substr(0,f.length-1)+"0";n+=f+i[2]+"/"+i[3];f=j(l[2],s);if(f.length<i[4].length)f=Ce(i[4].substr(i[4].length-f.length))+f;n+=f;return n}if(i=r.match(/^# ([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(Math.max(i[1].length,i[4].length),7);l=re(o,Math.pow(10,s)-1,true);return c+(l[0]||(l[1]?"":"0"))+" "+(l[1]?W(l[1],s)+i[2]+"/"+i[3]+j(l[2],s):xr(" ",2*s+1+i[2].length+i[3].length))}if(i=r.match(/^[#0?]+$/)){n=G(t,0);if(r.length<=n.length)return n;return Ce(r.substr(0,r.length-n.length))+n}if(i=r.match(/^([#0?]+)\.([#0]+)$/)){n=""+t.toFixed(Math.min(i[2].length,10)).replace(/([^0])0+$/,"$1");s=n.indexOf(".");var u=r.indexOf(".")-s,h=r.length-n.length-u;return Ce(r.substr(0,u)+n+r.substr(r.length-h))}if(i=r.match(/^00,000\.([#0]*0)$/)){s=_e(t,i[1].length);return t<0?"-"+Ee(e,r,-t):he(Te(t)).replace(/^\d,\d{3}$/,"0$&").replace(/^\d*$/,function(e){return"00,"+(e.length<3?z(0,3-e.length):"")+e})+"."+z(s,i[1].length)}switch(r){case"###,##0.00":return Ee(e,"#,##0.00",t);case"###,###":;case"##,###":;case"#,###":var d=he(G(o,0));return d!=="0"?c+d:"";case"###,###.00":return Ee(e,"###,##0.00",t).replace(/^0\./,".");case"#,###.00":return Ee(e,"#,##0.00",t).replace(/^0\./,".");default:;}throw new Error("unsupported format |"+r+"|")}function Fe(e,r,t){var a=r.length-1;while(r.charCodeAt(a-1)===44)--a;return Me(e,r.substr(0,a),t/Math.pow(10,3*(r.length-a)))}function De(e,r,t){var a=r.replace(de,""),n=r.length-a.length;return Me(e,a,t*Math.pow(10,2*n))+xr("%",n)}function Oe(e,r){var t;var a=e.indexOf("E")-e.indexOf(".")-1;if(e.match(/^#+0.0E\+0$/)){if(r==0)return"0.0E+0";else if(r<0)return"-"+Oe(e,-r);var n=e.indexOf(".");if(n===-1)n=e.indexOf("E");var i=Math.floor(Math.log(r)*Math.LOG10E)%n;if(i<0)i+=n;t=(r/Math.pow(10,i)).toPrecision(a+1+(n+i)%n);if(!t.match(/[Ee]/)){var s=Math.floor(Math.log(r)*Math.LOG10E);if(t.indexOf(".")===-1)t=t.charAt(0)+"."+t.substr(1)+"E+"+(s-t.length+i);else t+="E+"+(s-i);t=t.replace(/\+-/,"-")}t=t.replace(/^([+-]?)(\d*)\.(\d*)[Ee]/,function(e,r,t,a){return r+t+a.substr(0,(n+i)%n)+"."+a.substr(i)+"E"})}else t=r.toExponential(a);if(e.match(/E\+00$/)&&t.match(/e[+-]\d$/))t=t.substr(0,t.length-1)+"0"+t.charAt(t.length-1);if(e.match(/E\-/)&&t.match(/e\+/))t=t.replace(/e\+/,"e");return t.replace("e","E")}function Ne(e,r,t){if(e.charCodeAt(0)===40&&!r.match(ye)){var a=r.replace(/\( */,"").replace(/ \)/,"").replace(/\)/,"");if(t>=0)return Ne("n",a,t);return"("+Ne("n",a,-t)+")"}if(r.charCodeAt(r.length-1)===44)return Fe(e,r,t);if(r.indexOf("%")!==-1)return De(e,r,t);if(r.indexOf("E")!==-1)return Oe(r,t);if(r.charCodeAt(0)===36)return"$"+Ne(e,r.substr(r.charAt(1)==" "?2:1),t);var n;var i,s,l,o=Math.abs(t),c=t<0?"-":"";if(r.match(/^00+$/))return c+z(o,r.length);if(r.match(/^[#?]+$/)){n=""+t;if(t===0)n="";return n.length>r.length?n:Ce(r.substr(0,r.length-n.length))+n}if(i=r.match(ge))return we(i,o,c);if(r.match(/^#+0+$/))return c+z(o,r.length-r.indexOf("0"));if(i=r.match(ke)){n=(""+t).replace(/^([^\.]+)$/,"$1."+Ce(i[1])).replace(/\.$/,"."+Ce(i[1]));n=n.replace(/\.(\d*)$/,function(e,r){return"."+r+xr("0",Ce(i[1]).length-r.length)});return r.indexOf("0.")!==-1?n:n.replace(/^0\./,".")}r=r.replace(/^#+([0.])/,"$1");if(i=r.match(/^(0*)\.(#*)$/)){return c+(""+o).replace(/\.(\d*[1-9])0*$/,".$1").replace(/^(-?\d*)$/,"$1.").replace(/^0\./,i[1].length?"0.":".")}if(i=r.match(/^#{1,3},##0(\.?)$/))return c+he(""+o);if(i=r.match(/^#,##0\.([#0]*0)$/)){return t<0?"-"+Ne(e,r,-t):he(""+t)+"."+xr("0",i[1].length)}if(i=r.match(/^#,#*,#0/))return Ne(e,r.replace(/^#,#*,/,""),t);if(i=r.match(/^([0#]+)(\\?-([0#]+))+$/)){n=B(Ne(e,r.replace(/[\\-]/g,""),t));s=0;return B(B(r.replace(/\\/g,"")).replace(/[0#]/g,function(e){return s<n.length?n.charAt(s++):e==="0"?"0":""}))}if(r.match(xe)){n=Ne(e,"##########",t);return"("+n.substr(0,3)+") "+n.substr(3,3)+"-"+n.substr(6)}var f="";if(i=r.match(/^([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(i[4].length,7);l=re(o,Math.pow(10,s)-1,false);n=""+c;f=Me("n",i[1],l[1]);if(f.charAt(f.length-1)==" ")f=f.substr(0,f.length-1)+"0";n+=f+i[2]+"/"+i[3];f=j(l[2],s);if(f.length<i[4].length)f=Ce(i[4].substr(i[4].length-f.length))+f;n+=f;return n}if(i=r.match(/^# ([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(Math.max(i[1].length,i[4].length),7);l=re(o,Math.pow(10,s)-1,true);return c+(l[0]||(l[1]?"":"0"))+" "+(l[1]?W(l[1],s)+i[2]+"/"+i[3]+j(l[2],s):xr(" ",2*s+1+i[2].length+i[3].length))}if(i=r.match(/^[#0?]+$/)){n=""+t;if(r.length<=n.length)return n;return Ce(r.substr(0,r.length-n.length))+n}if(i=r.match(/^([#0]+)\.([#0]+)$/)){n=""+t.toFixed(Math.min(i[2].length,10)).replace(/([^0])0+$/,"$1");s=n.indexOf(".");var u=r.indexOf(".")-s,h=r.length-n.length-u;return Ce(r.substr(0,u)+n+r.substr(r.length-h))}if(i=r.match(/^00,000\.([#0]*0)$/)){return t<0?"-"+Ne(e,r,-t):he(""+t).replace(/^\d,\d{3}$/,"0$&").replace(/^\d*$/,function(e){return"00,"+(e.length<3?z(0,3-e.length):"")+e})+"."+z(0,i[1].length)}switch(r){case"###,###":;case"##,###":;case"#,###":var d=he(""+o);return d!=="0"?c+d:"";default:if(r.match(/\.[0#?]*$/))return Ne(e,r.slice(0,r.lastIndexOf(".")),t)+Ce(r.slice(r.lastIndexOf(".")));}throw new Error("unsupported format |"+r+"|")}function Me(e,r,t){return(t|0)===t?Ne(e,r,t):Ee(e,r,t)}function Ie(e){var r=[];var t=false;for(var a=0,n=0;a<e.length;++a)switch(e.charCodeAt(a)){case 34:t=!t;break;case 95:;case 42:;case 92:++a;break;case 59:r[r.length]=e.substr(n,a-n);n=a+1;}r[r.length]=e.substr(n);if(t===true)throw new Error("Format |"+e+"| unterminated string ");return r}var Pe=/\[[HhMmSs\u0E0A\u0E19\u0E17]*\]/;function Re(e){var r=0,t="",a="";while(r<e.length){switch(t=e.charAt(r)){case"G":if(Y(e,r))r+=6;r++;break;case'"':for(;e.charCodeAt(++r)!==34&&r<e.length;){}++r;break;case"\\":r+=2;break;case"_":r+=2;break;case"@":++r;break;case"B":;case"b":if(e.charAt(r+1)==="1"||e.charAt(r+1)==="2")return true;case"M":;case"D":;case"Y":;case"H":;case"S":;case"E":;case"m":;case"d":;case"y":;case"h":;case"s":;case"e":;case"g":return true;case"A":;case"a":;case"上":if(e.substr(r,3).toUpperCase()==="A/P")return true;if(e.substr(r,5).toUpperCase()==="AM/PM")return true;if(e.substr(r,5).toUpperCase()==="上午/下午")return true;++r;break;case"[":a=t;while(e.charAt(r++)!=="]"&&r<e.length)a+=e.charAt(r);if(a.match(Pe))return true;break;case".":;case"0":;case"#":while(r<e.length&&("0#?.,E+-%".indexOf(t=e.charAt(++r))>-1||t=="\\"&&e.charAt(r+1)=="-"&&"0#".indexOf(e.charAt(r+2))>-1)){}break;case"?":while(e.charAt(++r)===t){}break;case"*":++r;if(e.charAt(r)==" "||e.charAt(r)=="*")++r;break;case"(":;case")":++r;break;case"1":;case"2":;case"3":;case"4":;case"5":;case"6":;case"7":;case"8":;case"9":while(r<e.length&&"0123456789".indexOf(e.charAt(++r))>-1){}break;case" ":++r;break;default:++r;break;}}return false}function Le(e,r,t,a){var n=[],i="",s=0,l="",o="t",c,f,u;var h="H";while(s<e.length){switch(l=e.charAt(s)){case"G":if(!Y(e,s))throw new Error("unrecognized character "+l+" in "+e);n[n.length]={t:"G",v:"General"};s+=7;break;case'"':for(i="";(u=e.charCodeAt(++s))!==34&&s<e.length;)i+=String.fromCharCode(u);n[n.length]={t:"t",v:i};++s;break;case"\\":var d=e.charAt(++s),p=d==="("||d===")"?d:"t";n[n.length]={t:p,v:d};++s;break;case"_":n[n.length]={t:"t",v:" "};s+=2;break;case"@":n[n.length]={t:"T",v:r};++s;break;case"B":;case"b":if(e.charAt(s+1)==="1"||e.charAt(s+1)==="2"){if(c==null){c=ae(r,t,e.charAt(s+1)==="2");if(c==null)return""}n[n.length]={t:"X",v:e.substr(s,2)};o=l;s+=2;break};case"M":;case"D":;case"Y":;case"H":;case"S":;case"E":l=l.toLowerCase();case"m":;case"d":;case"y":;case"h":;case"s":;case"e":;case"g":if(r<0)return"";if(c==null){c=ae(r,t);if(c==null)return""}i=l;while(++s<e.length&&e.charAt(s).toLowerCase()===l)i+=l;if(l==="m"&&o.toLowerCase()==="h")l="M";if(l==="h")l=h;n[n.length]={t:l,v:i};o=l;break;case"A":;case"a":;case"上":var m={t:l,v:l};if(c==null)c=ae(r,t);if(e.substr(s,3).toUpperCase()==="A/P"){if(c!=null)m.v=c.H>=12?e.charAt(s+2):l;m.t="T";h="h";s+=3}else if(e.substr(s,5).toUpperCase()==="AM/PM"){if(c!=null)m.v=c.H>=12?"PM":"AM";m.t="T";s+=5;h="h"}else if(e.substr(s,5).toUpperCase()==="上午/下午"){if(c!=null)m.v=c.H>=12?"下午":"上午";m.t="T";s+=5;h="h"}else{m.t="t";++s}if(c==null&&m.t==="T")return"";n[n.length]=m;o=l;break;case"[":i=l;while(e.charAt(s++)!=="]"&&s<e.length)i+=e.charAt(s);if(i.slice(-1)!=="]")throw'unterminated "[" block: |'+i+"|";if(i.match(Pe)){if(c==null){c=ae(r,t);if(c==null)return""}n[n.length]={t:"Z",v:i.toLowerCase()};o=i.charAt(1)}else if(i.indexOf("$")>-1){i=(i.match(/\$([^-\[\]]*)/)||[])[1]||"$";if(!Re(e))n[n.length]={t:"t",v:i}}break;case".":if(c!=null){i=l;while(++s<e.length&&(l=e.charAt(s))==="0")i+=l;n[n.length]={t:"s",v:i};break};case"0":;case"#":i=l;while(++s<e.length&&"0#?.,E+-%".indexOf(l=e.charAt(s))>-1)i+=l;n[n.length]={t:"n",v:i};break;case"?":i=l;while(e.charAt(++s)===l)i+=l;n[n.length]={t:l,v:i};o=l;break;case"*":++s;if(e.charAt(s)==" "||e.charAt(s)=="*")++s;break;case"(":;case")":n[n.length]={t:a===1?"t":l,v:l};++s;break;case"1":;case"2":;case"3":;case"4":;case"5":;case"6":;case"7":;case"8":;case"9":i=l;while(s<e.length&&"0123456789".indexOf(e.charAt(++s))>-1)i+=e.charAt(s);n[n.length]={t:"D",v:i};break;case" ":n[n.length]={t:l,v:l};++s;break;case"$":n[n.length]={t:"t",v:"$"};++s;break;default:if(",$-+/():!^&'~{}<>=€acfijklopqrtuvwxzP".indexOf(l)===-1)throw new Error("unrecognized character "+l+" in "+e);n[n.length]={t:"t",v:l};++s;break;}}var v=0,g=0,b;for(s=n.length-1,o="t";s>=0;--s){switch(n[s].t){case"h":;case"H":n[s].t=h;o="h";if(v<1)v=1;break;case"s":if(b=n[s].v.match(/\.0+$/)){g=Math.max(g,b[0].length-1);v=4}if(v<3)v=3;case"d":;case"y":;case"e":o=n[s].t;break;case"M":o=n[s].t;if(v<2)v=2;break;case"m":if(o==="s"){n[s].t="M";if(v<2)v=2}break;case"X":break;case"Z":if(v<1&&n[s].v.match(/[Hh]/))v=1;if(v<2&&n[s].v.match(/[Mm]/))v=2;if(v<3&&n[s].v.match(/[Ss]/))v=3;}}var w;switch(v){case 0:break;case 1:;case 2:;case 3:if(c.u>=.5){c.u=0;++c.S}if(c.S>=60){c.S=0;++c.M}if(c.M>=60){c.M=0;++c.H}if(c.H>=24){c.H=0;++c.D;w=ae(c.D);w.u=c.u;w.S=c.S;w.M=c.M;w.H=c.H;c=w}break;case 4:switch(g){case 1:c.u=Math.round(c.u*10)/10;break;case 2:c.u=Math.round(c.u*100)/100;break;case 3:c.u=Math.round(c.u*1e3)/1e3;break;}if(c.u>=1){c.u=0;++c.S}if(c.S>=60){c.S=0;++c.M}if(c.M>=60){c.M=0;++c.H}if(c.H>=24){c.H=0;++c.D;w=ae(c.D);w.u=c.u;w.S=c.S;w.M=c.M;w.H=c.H;c=w}break;}var k="",y;for(s=0;s<n.length;++s){switch(n[s].t){case"t":;case"T":;case" ":;case"D":break;case"X":n[s].v="";n[s].t=";";break;case"d":;case"m":;case"y":;case"h":;case"H":;case"M":;case"s":;case"e":;case"b":;case"Z":n[s].v=ue(n[s].t.charCodeAt(0),n[s].v,c,g);n[s].t="t";break;case"n":;case"?":y=s+1;while(n[y]!=null&&((l=n[y].t)==="?"||l==="D"||(l===" "||l==="t")&&n[y+1]!=null&&(n[y+1].t==="?"||n[y+1].t==="t"&&n[y+1].v==="/")||n[s].t==="("&&(l===" "||l==="n"||l===")")||l==="t"&&(n[y].v==="/"||n[y].v===" "&&n[y+1]!=null&&n[y+1].t=="?"))){n[s].v+=n[y].v;n[y]={v:"",t:";"};++y}k+=n[s].v;s=y-1;break;case"G":n[s].t="t";n[s].v=ce(r,t);break;}}var x="",C,S;if(k.length>0){if(k.charCodeAt(0)==40){C=r<0&&k.charCodeAt(0)===45?-r:r;S=Me("n",k,C)}else{C=r<0&&a>1?-r:r;S=Me("n",k,C);if(C<0&&n[0]&&n[0].t=="t"){S=S.substr(1);n[0].v="-"+n[0].v}}y=S.length-1;var _=n.length;for(s=0;s<n.length;++s)if(n[s]!=null&&n[s].t!="t"&&n[s].v.indexOf(".")>-1){_=s;break}var A=n.length;if(_===n.length&&S.indexOf("E")===-1){for(s=n.length-1;s>=0;--s){if(n[s]==null||"n?".indexOf(n[s].t)===-1)continue;if(y>=n[s].v.length-1){y-=n[s].v.length;n[s].v=S.substr(y+1,n[s].v.length)}else if(y<0)n[s].v="";else{n[s].v=S.substr(0,y+1);y=-1}n[s].t="t";A=s}if(y>=0&&A<n.length)n[A].v=S.substr(0,y+1)+n[A].v}else if(_!==n.length&&S.indexOf("E")===-1){y=S.indexOf(".")-1;for(s=_;s>=0;--s){if(n[s]==null||"n?".indexOf(n[s].t)===-1)continue;f=n[s].v.indexOf(".")>-1&&s===_?n[s].v.indexOf(".")-1:n[s].v.length-1;x=n[s].v.substr(f+1);for(;f>=0;--f){if(y>=0&&(n[s].v.charAt(f)==="0"||n[s].v.charAt(f)==="#"))x=S.charAt(y--)+x}n[s].v=x;n[s].t="t";A=s}if(y>=0&&A<n.length)n[A].v=S.substr(0,y+1)+n[A].v;y=S.indexOf(".")+1;for(s=_;s<n.length;++s){if(n[s]==null||"n?(".indexOf(n[s].t)===-1&&s!==_)continue;f=n[s].v.indexOf(".")>-1&&s===_?n[s].v.indexOf(".")+1:0;x=n[s].v.substr(0,f);for(;f<n[s].v.length;++f){if(y<S.length)x+=S.charAt(y++)}n[s].v=x;n[s].t="t";A=s}}}for(s=0;s<n.length;++s)if(n[s]!=null&&"n?".indexOf(n[s].t)>-1){C=a>1&&r<0&&s>0&&n[s-1].v==="-"?-r:r;n[s].v=Me(n[s].t,n[s].v,C);n[s].t="t"}var T="";for(s=0;s!==n.length;++s)if(n[s]!=null)T+=n[s].v;return T}var Ue=/\[(=|>[=]?|<[>=]?)(-?\d+(?:\.\d*)?)\]/;function Be(e,r){if(r==null)return false;var t=parseFloat(r[2]);switch(r[1]){case"=":if(e==t)return true;break;case">":if(e>t)return true;break;case"<":if(e<t)return true;break;case"<>":if(e!=t)return true;break;case">=":if(e>=t)return true;break;case"<=":if(e<=t)return true;break;}return false}function ze(e,r){var t=Ie(e);var a=t.length,n=t[a-1].indexOf("@");if(a<4&&n>-1)--a;if(t.length>4)throw new Error("cannot find right format for |"+t.join("|")+"|");if(typeof r!=="number")return[4,t.length===4||n>-1?t[t.length-1]:"@"];if(typeof r==="number"&&!isFinite(r))r=0;switch(t.length){case 1:t=n>-1?["General","General","General",t[0]]:[t[0],t[0],t[0],"@"];break;case 2:t=n>-1?[t[0],t[0],t[0],t[1]]:[t[0],t[1],t[0],"@"];break;case 3:t=n>-1?[t[0],t[1],t[0],t[2]]:[t[0],t[1],t[2],"@"];break;case 4:break;}var i=r>0?t[0]:r<0?t[1]:t[2];if(t[0].indexOf("[")===-1&&t[1].indexOf("[")===-1)return[a,i];if(t[0].match(/\[[=<>]/)!=null||t[1].match(/\[[=<>]/)!=null){var s=t[0].match(Ue);var l=t[1].match(Ue);return Be(r,s)?[a,t[0]]:Be(r,l)?[a,t[1]]:[a,t[s!=null&&l!=null?2:1]]}return[a,i]}function $e(e,r,t){if(t==null)t={};var a="";switch(typeof e){case"string":if(e=="m/d/yy"&&t.dateNF)a=t.dateNF;else a=e;break;case"number":if(e==14&&t.dateNF)a=t.dateNF;else a=(t.table!=null?t.table:q)[e];if(a==null)a=t.table&&t.table[Q[e]]||q[Q[e]];if(a==null)a=ee[e]||"General";break;}if(Y(a,0))return ce(r,t);if(r instanceof Date)r=dr(r,t.date1904);var n=ze(a,r);if(Y(n[1]))return ce(r,t);if(r===true)r="TRUE";else if(r===false)r="FALSE";else if(r===""||r==null)return"";else if(isNaN(r)&&n[1].indexOf("0")>-1)return"#NUM!";else if(!isFinite(r)&&n[1].indexOf("0")>-1)return"#DIV/0!";return Le(n[1],r,t,n[0])}function We(e,r){if(typeof r!="number"){r=+r||-1;for(var t=0;t<392;++t){if(q[t]==undefined){if(r<0)r=t;continue}if(q[t]==e){r=t;break}}if(r<0)r=391}q[r]=e;return r}function je(e){for(var r=0;r!=392;++r)if(e[r]!==undefined)We(e[r],r)}function He(){q=K()}var Ve={format:$e,load:We,_table:q,load_table:je,parse_date_code:ae,is_date:Re,get_table:function Mc(){return Ve._table=q}};var Xe={5:'"$"#,##0_);\\("$"#,##0\\)',6:'"$"#,##0_);[Red]\\("$"#,##0\\)',7:'"$"#,##0.00_);\\("$"#,##0.00\\)',8:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',23:"General",24:"General",25:"General",26:"General",27:"m/d/yy",28:"m/d/yy",29:"m/d/yy",30:"m/d/yy",31:"m/d/yy",32:"h:mm:ss",33:"h:mm:ss",34:"h:mm:ss",35:"h:mm:ss",36:"m/d/yy",41:'_(* #,##0_);_(* (#,##0);_(* "-"_);_(@_)',42:'_("$"* #,##0_);_("$"* (#,##0);_("$"* "-"_);_(@_)',43:'_(* #,##0.00_);_(* (#,##0.00);_(* "-"??_);_(@_)',44:'_("$"* #,##0.00_);_("$"* (#,##0.00);_("$"* "-"??_);_(@_)',50:"m/d/yy",51:"m/d/yy",52:"m/d/yy",53:"m/d/yy",54:"m/d/yy",55:"m/d/yy",56:"m/d/yy",57:"m/d/yy",58:"m/d/yy",59:"0",60:"0.00",61:"#,##0",62:"#,##0.00",63:'"$"#,##0_);\\("$"#,##0\\)',64:'"$"#,##0_);[Red]\\("$"#,##0\\)',65:'"$"#,##0.00_);\\("$"#,##0.00\\)',66:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',67:"0%",68:"0.00%",69:"# ?/?",70:"# ??/??",71:"m/d/yy",72:"m/d/yy",73:"d-mmm-yy",74:"d-mmm",75:"mmm-yy",76:"h:mm",77:"h:mm:ss",78:"m/d/yy h:mm",79:"mm:ss",80:"[h]:mm:ss",81:"mmss.0"};var Ge=/[dD]+|[mM]+|[yYeE]+|[Hh]+|[Ss]+/g;function Ye(e){var r=typeof e=="number"?q[e]:e;r=r.replace(Ge,"(\\d+)");Ge.lastIndex=0;return new RegExp("^"+r+"$");
@@ -215,11 +330,13 @@ xmlns:Vt[0],"xmlns:vt":Ht.vt})],a;if(e.SSF&&(a=Yi(e.SSF))!=null)t[t.length]=a;t[
 var q=B?E+B-1:E;if(F>D.e.c)D.e.c=F;if(F<D.s.c)D.s.c=F;if(E<D.s.r)D.s.r=E;if(q>D.e.r)D.e.r=q;w=ft(v[0],false);k=ut(v[0],true);V=[];X={};g={t:w["数据类型"]||w["value-type"],v:null};if(w["style-name"]&&M[w["style-name"]])g.z=M[w["style-name"]];if(a.cellFormula){if(w.formula)w.formula=mt(w.formula);if(w["number-matrix-columns-spanned"]&&w["number-matrix-rows-spanned"]){R=parseInt(w["number-matrix-rows-spanned"],10)||0;L=parseInt(w["number-matrix-columns-spanned"],10)||0;P={s:{r:E,c:F},e:{r:E+R-1,c:F+L-1}};g.F=Ka(P);$.push([P,g.F])}if(w.formula)g.f=Bs(w.formula);else for(K=0;K<$.length;++K)if(E>=$[K][0].s.r&&E<=$[K][0].e.r)if(F>=$[K][0].s.c&&F<=$[K][0].e.c)g.F=$[K][1]}if(w["number-columns-spanned"]||w["number-rows-spanned"]){R=parseInt(w["number-rows-spanned"]||"1",10)||1;L=parseInt(w["number-columns-spanned"]||"1",10)||1;if(R*L>1){P={s:{r:E,c:F},e:{r:E+R-1,c:F+L-1}};I.push(P)}}if(w["number-columns-repeated"])z=parseInt(w["number-columns-repeated"],10);switch(g.t){case"boolean":g.t="b";g.v=_t(w["boolean-value"])||+w["boolean-value"]>=1;break;case"float":g.t="n";g.v=parseFloat(w.value);if(a.cellDates&&g.z&&Re(g.z)){g.v=pr(g.v+(W.WBProps.date1904?1462:0));g.t=typeof g.v=="number"?"n":"d"}break;case"percentage":g.t="n";g.v=parseFloat(w.value);break;case"currency":g.t="n";g.v=parseFloat(w.value);break;case"date":g.t="d";g.v=wr(w["date-value"],W.WBProps.date1904);if(!a.cellDates){g.t="n";g.v=dr(g.v,W.WBProps.date1904)}if(!g.z)g.z="m/d/yy";break;case"time":g.t="n";g.v=mr(w["time-value"])/86400;if(a.cellDates){g.v=pr(g.v);g.t=typeof g.v=="number"?"n":"d"}if(!g.z)g.z="HH:MM:SS";break;case"number":g.t="n";g.v=parseFloat(w["数据数值"]);break;default:if(g.t==="string"||g.t==="text"||!g.t){g.t="s";if(w["string-value"]!=null){y=mt(w["string-value"]);A=[]}}else throw new Error("Unsupported value type "+g.t);}}else{J=false;if(k["calcext:value-type"]=="error"&&Fn[y]!=null){g.t="e";g.w=y;g.v=Fn[y]}if(g.t==="s"){g.v=y||"";if(A.length)g.R=A;J=x==0}if(j.Target)g.l=j;if(V.length>0){g.c=V;V=[]}if(y&&a.cellText!==false)g.w=y;if(J){g.t="z";delete g.v}if(!J||a.sheetStubs){if(!(a.sheetRows&&a.sheetRows<=E)){for(var Q=0;Q<B;++Q){z=parseInt(w["number-columns-repeated"]||"1",10);if(a.dense){if(!m["!data"][E+Q])m["!data"][E+Q]=[];m["!data"][E+Q][F]=Q==0?g:yr(g);while(--z>0)m["!data"][E+Q][F+z]=yr(g)}else{m[Ja({r:E+Q,c:F})]=g;while(--z>0)m[Ja({r:E+Q,c:F+z})]=yr(g)}if(D.e.c<=F)D.e.c=F}}}z=parseInt(w["number-columns-repeated"]||"1",10);F+=z-1;z=0;g={};y="";A=[]}j={};break;case"document":;case"document-content":;case"电子表格文档":;case"spreadsheet":;case"主体":;case"scripts":;case"styles":;case"font-face-decls":;case"master-styles":if(v[1]==="/"){if((s=i.pop())[0]!==v[3])throw"Bad state: "+s}else if(v[0].charAt(v[0].length-2)!=="/")i.push([v[3],true]);break;case"annotation":if(v[1]==="/"){if((s=i.pop())[0]!==v[3])throw"Bad state: "+s;X.t=y;if(A.length)X.R=A;X.a=G;V.push(X);y=S;x=_;A=T}else if(v[0].charAt(v[0].length-2)!=="/"){i.push([v[3],false]);var ee=ft(v[0],true);if(!(ee["display"]&&_t(ee["display"])))V.hidden=true;S=y;_=x;T=A;y="";x=0;A=[]}G="";Y=0;break;case"creator":if(v[1]==="/"){G=n.slice(Y,v.index)}else Y=v.index+v[0].length;break;case"meta":;case"元数据":;case"settings":;case"config-item-set":;case"config-item-map-indexed":;case"config-item-map-entry":;case"config-item-map-named":;case"shapes":;case"frame":;case"text-box":;case"image":;case"data-pilot-tables":;case"list-style":;case"form":;case"dde-links":;case"event-listeners":;case"chart":if(v[1]==="/"){if((s=i.pop())[0]!==v[3])throw"Bad state: "+s}else if(v[0].charAt(v[0].length-2)!=="/")i.push([v[3],false]);y="";x=0;A=[];break;case"scientific-number":;case"currency-symbol":;case"fill-character":break;case"text-style":;case"boolean-style":;case"number-style":;case"currency-style":;case"percentage-style":;case"date-style":;case"time-style":if(v[1]==="/"){var re=jt.lastIndex;go(n.slice(o,jt.lastIndex),r,N);jt.lastIndex=re}else if(v[0].charAt(v[0].length-2)!=="/"){o=jt.lastIndex-v[0].length}break;case"script":break;case"libraries":break;case"automatic-styles":break;case"default-style":;case"page-layout":break;case"style":{var te=ft(v[0],false);if(te["family"]=="table-cell"&&N[te["data-style-name"]])M[te["name"]]=N[te["data-style-name"]]}break;case"map":break;case"font-face":break;case"paragraph-properties":break;case"table-properties":break;case"table-column-properties":break;case"table-row-properties":break;case"table-cell-properties":break;case"number":break;case"fraction":break;case"day":;case"month":;case"year":;case"era":;case"day-of-week":;case"week-of-year":;case"quarter":;case"hours":;case"minutes":;case"seconds":;case"am-pm":break;case"boolean":break;case"text":if(v[0].slice(-2)==="/>")break;else if(v[1]==="/")switch(i[i.length-1][0]){case"number-style":;case"date-style":;case"time-style":c+=n.slice(f,v.index);break;}else f=v.index+v[0].length;break;case"named-range":l=ft(v[0],false);H=$s(l["cell-range-address"]);var ae={Name:l.name,Ref:H[0]+"!"+H[1]};if(Z)ae.Sheet=p.length;W.Names.push(ae);break;case"text-content":break;case"text-properties":break;case"embedded-text":break;case"body":;case"电子表格":break;case"forms":break;case"table-column":break;case"table-header-rows":break;case"table-rows":break;case"table-column-group":break;case"table-header-columns":break;case"table-columns":break;case"null-date":l=ft(v[0],false);switch(l["date-value"]){case"1904-01-01":W.WBProps.date1904=true;break;}break;case"graphic-properties":break;case"calculation-settings":break;case"named-expressions":break;case"label-range":break;case"label-ranges":break;case"named-expression":break;case"sort":break;case"sort-by":break;case"sort-groups":break;case"tab":break;case"line-break":break;case"span":break;case"p":;case"文本串":if(["master-styles"].indexOf(i[i.length-1][0])>-1)break;if(v[1]==="/"&&(!w||!w["string-value"])){var ne=vo(n.slice(x,v.index),C);y=(y.length>0?y+"\n":"")+ne[0]}else if(v[0].slice(-2)=="/>"){y+="\n"}else{C=ft(v[0],false);x=v.index+v[0].length}break;case"s":break;case"database-range":if(v[1]==="/")break;try{H=$s(ft(v[0])["target-range-address"]);d[H[0]]["!autofilter"]={ref:H[1]}}catch(ie){}break;case"date":break;case"object":break;case"title":;case"标题":break;case"desc":break;case"binary-data":break;case"table-source":break;case"scenario":break;case"iteration":break;case"content-validations":break;case"content-validation":break;case"help-message":break;case"error-message":break;case"database-ranges":break;case"filter":break;case"filter-and":break;case"filter-or":break;case"filter-condition":break;case"filter-set-item":break;case"list-level-style-bullet":break;case"list-level-style-number":break;case"list-level-properties":break;case"sender-firstname":;case"sender-lastname":;case"sender-initials":;case"sender-title":;case"sender-position":;case"sender-email":;case"sender-phone-private":;case"sender-fax":;case"sender-company":;case"sender-phone-work":;case"sender-street":;case"sender-city":;case"sender-postal-code":;case"sender-country":;case"sender-state-or-province":;case"author-name":;case"author-initials":;case"chapter":;case"file-name":;case"template-name":;case"sheet-name":break;case"event-listener":break;case"initial-creator":;case"creation-date":;case"print-date":;case"generator":;case"document-statistic":;case"user-defined":;case"editing-duration":;case"editing-cycles":break;case"config-item":break;case"page-number":break;case"page-count":break;case"time":break;case"cell-range-source":break;case"detective":break;case"operation":break;case"highlighted-range":break;case"data-pilot-table":;case"source-cell-range":;case"source-service":;case"data-pilot-field":;case"data-pilot-level":;case"data-pilot-subtotals":;case"data-pilot-subtotal":;case"data-pilot-members":;case"data-pilot-member":;case"data-pilot-display-info":;case"data-pilot-sort-info":;case"data-pilot-layout-info":;case"data-pilot-field-reference":;case"data-pilot-groups":;case"data-pilot-group":;case"data-pilot-group-member":break;case"rect":break;case"dde-connection-decls":;case"dde-connection-decl":;case"dde-link":;case"dde-source":break;case"properties":break;case"property":break;case"a":if(v[1]!=="/"){j=ft(v[0],false);if(!j.href)break;j.Target=mt(j.href);delete j.href;if(j.Target.charAt(0)=="#"&&j.Target.indexOf(".")>-1){H=$s(j.Target.slice(1));j.Target="#"+H[0]+"!"+H[1]}else if(j.Target.match(/^\.\.[\\\/]/))j.Target=j.Target.slice(3)}break;case"table-protection":break;case"data-pilot-grand-total":break;case"office-document-common-attrs":break;default:switch(v[2]){case"dc:":;case"calcext:":;case"loext:":;case"ooo:":;case"chartooo:":;case"draw:":;case"style:":;case"chart:":;case"form:":;case"uof:":;case"表:":;case"字:":break;default:if(a.WTF)throw new Error(v);};}var se={Sheets:d,SheetNames:p,Workbook:W};if(a.bookSheets)delete se.Sheets;return se}function wo(e,r){r=r||{};if(Gr(e,"META-INF/manifest.xml"))Wn(Jr(e,"META-INF/manifest.xml"),r);var t=Zr(e,"styles.xml");var a=t&&go(Dt(t),r);var n=Zr(e,"content.xml");if(!n)throw new Error("Missing content.xml in ODS / UOF file");var i=bo(Dt(n),r,a);if(Gr(e,"meta.xml"))i.Props=Jn(Jr(e,"meta.xml"));i.bookType="ods";return i}function ko(e,r){var t=bo(e,r);t.bookType="fods";return t}var yo=function(){var e=["<office:master-styles>",'<style:master-page style:name="mp1" style:page-layout-name="mp1">',"<style:header/>",'<style:header-left style:display="false"/>',"<style:footer/>",'<style:footer-left style:display="false"/>',"</style:master-page>","</office:master-styles>"].join("");var r="<office:document-styles "+Ut({"xmlns:office":"urn:oasis:names:tc:opendocument:xmlns:office:1.0","xmlns:table":"urn:oasis:names:tc:opendocument:xmlns:table:1.0","xmlns:style":"urn:oasis:names:tc:opendocument:xmlns:style:1.0","xmlns:text":"urn:oasis:names:tc:opendocument:xmlns:text:1.0","xmlns:draw":"urn:oasis:names:tc:opendocument:xmlns:drawing:1.0","xmlns:fo":"urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0","xmlns:xlink":"http://www.w3.org/1999/xlink","xmlns:dc":"http://purl.org/dc/elements/1.1/","xmlns:number":"urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0","xmlns:svg":"urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0","xmlns:of":"urn:oasis:names:tc:opendocument:xmlns:of:1.2","office:version":"1.2"})+">"+e+"</office:document-styles>";return function t(){return at+r}}();function xo(e,r){var t="number",a="",n={"style:name":r},i="",s=0;e=e.replace(/"[$]"/g,"$");e:{if(e.indexOf(";")>-1){console.error("Unsupported ODS Style Map exported.  Using first branch of "+e);e=e.slice(0,e.indexOf(";"))}if(e=="@"){t="text";a="<number:text-content/>";break e}if(e.indexOf(/\$/)>-1){t="currency"}if(e[s]=='"'){i="";while(e[++s]!='"'||e[++s]=='"')i+=e[s];--s;if(e[s+1]=="*"){s++;a+="<number:fill-character>"+bt(i.replace(/""/g,'"'))+"</number:fill-character>"}else{a+="<number:text>"+bt(i.replace(/""/g,'"'))+"</number:text>"}e=e.slice(s+1);s=0}var l=e.match(/# (\?+)\/(\?+)/);if(l){a+=Bt("number:fraction",null,{"number:min-integer-digits":0,"number:min-numerator-digits":l[1].length,"number:max-denominator-value":Math.max(+l[1].replace(/./g,"9"),+l[2].replace(/./g,"9"))});break e}if(l=e.match(/# (\?+)\/(\d+)/)){a+=Bt("number:fraction",null,{"number:min-integer-digits":0,"number:min-numerator-digits":l[1].length,"number:denominator-value":+l[2]});break e}if(l=e.match(/\b(\d+)(|\.\d+)%/)){t="percentage";a+=Bt("number:number",null,{"number:decimal-places":l[2]&&l.length-1||0,"number:min-decimal-places":l[2]&&l.length-1||0,"number:min-integer-digits":l[1].length})+"<number:text>%</number:text>";break e}var o=false;if(["y","m","d"].indexOf(e[0])>-1){t="date";r:for(;s<e.length;++s)switch(i=e[s].toLowerCase()){case"h":;case"s":o=true;--s;break r;case"m":t:for(var c=s+1;c<e.length;++c)switch(e[c]){case"y":;case"d":break t;case"h":;case"s":o=true;--s;break r;};case"y":;case"d":while((e[++s]||"").toLowerCase()==i[0])i+=i[0];--s;switch(i){case"y":;case"yy":a+="<number:year/>";break;case"yyy":;case"yyyy":a+='<number:year number:style="long"/>';break;case"mmmmm":console.error("ODS has no equivalent of format |mmmmm|");case"m":;case"mm":;case"mmm":;case"mmmm":a+='<number:month number:style="'+(i.length%2?"short":"long")+'" number:textual="'+(i.length>=3?"true":"false")+'"/>';break;case"d":;case"dd":a+='<number:day number:style="'+(i.length%2?"short":"long")+'"/>';break;case"ddd":;case"dddd":a+='<number:day-of-week number:style="'+(i.length%2?"short":"long")+'"/>';break;}break;case'"':while(e[++s]!='"'||e[++s]=='"')i+=e[s];--s;a+="<number:text>"+bt(i.slice(1).replace(/""/g,'"'))+"</number:text>";break;case"\\":i=e[++s];a+="<number:text>"+bt(i)+"</number:text>";break;case"/":;case":":a+="<number:text>"+bt(i)+"</number:text>";break;default:console.error("unrecognized character "+i+" in ODF format "+e);}if(!o)break e;e=e.slice(s+1);s=0}if(e.match(/^\[?[hms]/)){if(t=="number")t="time";if(e.match(/\[/)){e=e.replace(/[\[\]]/g,"");n["number:truncate-on-overflow"]="false"}for(;s<e.length;++s)switch(i=e[s].toLowerCase()){case"h":;case"m":;case"s":while((e[++s]||"").toLowerCase()==i[0])i+=i[0];--s;switch(i){case"h":;case"hh":a+='<number:hours number:style="'+(i.length%2?"short":"long")+'"/>';break;case"m":;case"mm":a+='<number:minutes number:style="'+(i.length%2?"short":"long")+'"/>';break;case"s":;case"ss":if(e[s+1]==".")do{i+=e[s+1];++s}while(e[s+1]=="0");a+='<number:seconds number:style="'+(i.match("ss")?"long":"short")+'"'+(i.match(/\./)?' number:decimal-places="'+(i.match(/0+/)||[""])[0].length+'"':"")+"/>";break;}break;case'"':while(e[++s]!='"'||e[++s]=='"')i+=e[s];--s;a+="<number:text>"+bt(i.slice(1).replace(/""/g,'"'))+"</number:text>";break;case"/":;case":":a+="<number:text>"+bt(i)+"</number:text>";break;case"a":if(e.slice(s,s+3).toLowerCase()=="a/p"){a+="<number:am-pm/>";s+=2;break}if(e.slice(s,s+5).toLowerCase()=="am/pm"){a+="<number:am-pm/>";s+=4;break};default:console.error("unrecognized character "+i+" in ODF format "+e);}break e}if(e.indexOf(/\$/)>-1){t="currency"}if(e[0]=="$"){a+='<number:currency-symbol number:language="en" number:country="US">$</number:currency-symbol>';e=e.slice(1);s=0}s=0;if(e[s]=='"'){while(e[++s]!='"'||e[++s]=='"')i+=e[s];--s;if(e[s+1]=="*"){s++;a+="<number:fill-character>"+bt(i.replace(/""/g,'"'))+"</number:fill-character>"}else{a+="<number:text>"+bt(i.replace(/""/g,'"'))+"</number:text>"}e=e.slice(s+1);s=0}var f=e.match(/([#0][0#,]*)(\.[0#]*|)(E[+]?0*|)/i);if(!f||!f[0])console.error("Could not find numeric part of "+e);else{var u=f[1].replace(/,/g,"");a+="<number:"+(f[3]?"scientific-":"")+"number"+' number:min-integer-digits="'+(u.indexOf("0")==-1?"0":u.length-u.indexOf("0"))+'"'+(f[0].indexOf(",")>-1?' number:grouping="true"':"")+(f[2]&&' number:decimal-places="'+(f[2].length-1)+'"'||' number:decimal-places="0"')+(f[3]&&f[3].indexOf("+")>-1?' number:forced-exponent-sign="true"':"")+(f[3]?' number:min-exponent-digits="'+f[3].match(/0+/)[0].length+'"':"")+">"+"</number:"+(f[3]?"scientific-":"")+"number>";s=f.index+f[0].length}if(e[s]=='"'){i="";while(e[++s]!='"'||e[++s]=='"')i+=e[s];--s;a+="<number:text>"+bt(i.replace(/""/g,'"'))+"</number:text>"}}if(!a){console.error("Could not generate ODS number format for |"+e+"|");return""}return Bt("number:"+t+"-style",a,n)}function Co(e,r,t){var a=[];for(var n=0;n<e.length;++n){var i=e[n];if(!i)continue;if(i.Sheet==(t==-1?null:t))a.push(i)}if(!a.length)return"";return"      <table:named-expressions>\n"+a.map(function(e){var r=(t==-1?"$":"")+Ws(e.Ref);return"        "+Bt("table:named-range",null,{"table:name":e.Name,"table:cell-range-address":r,"table:base-cell-address":r.replace(/[\.][^\.]*$/,".$A$1")})}).join("\n")+"\n      </table:named-expressions>\n"}var So=function(){var e=function(e,r){return bt(e).replace(/  +/g,function(e){return'<text:s text:c="'+e.length+'"/>'}).replace(/\t/g,"<text:tab/>").replace(/\n/g,r?"<text:line-break/>":"</text:p><text:p>").replace(/^ /,"<text:s/>").replace(/ $/,"<text:s/>")};var r="          <table:table-cell />\n";var t=function(t,a,n,i,s,l){var o=[];o.push('      <table:table table:name="'+bt(a.SheetNames[n])+'" table:style-name="ta1">\n');var c=0,f=0,u=Za(t["!ref"]||"A1");var h=t["!merges"]||[],d=0;var p=t["!data"]!=null;if(t["!cols"]){for(f=0;f<=u.e.c;++f)o.push("        <table:table-column"+(t["!cols"][f]?' table:style-name="co'+t["!cols"][f].ods+'"':"")+"></table:table-column>\n")}var m="",v=t["!rows"]||[];for(c=0;c<u.s.r;++c){m=v[c]?' table:style-name="ro'+v[c].ods+'"':"";o.push("        <table:table-row"+m+"></table:table-row>\n")}for(;c<=u.e.r;++c){m=v[c]?' table:style-name="ro'+v[c].ods+'"':"";o.push("        <table:table-row"+m+">\n");for(f=0;f<u.s.c;++f)o.push(r);for(;f<=u.e.c;++f){var g=false,b={},w="";for(d=0;d!=h.length;++d){if(h[d].s.c>f)continue;if(h[d].s.r>c)continue;if(h[d].e.c<f)continue;if(h[d].e.r<c)continue;if(h[d].s.c!=f||h[d].s.r!=c)g=true;b["table:number-columns-spanned"]=h[d].e.c-h[d].s.c+1;b["table:number-rows-spanned"]=h[d].e.r-h[d].s.r+1;break}if(g){o.push("          <table:covered-table-cell/>\n");continue}var k=Ja({r:c,c:f}),y=p?(t["!data"][c]||[])[f]:t[k];if(y&&y.f){b["table:formula"]=bt(zs(y.f));if(y.F){if(y.F.slice(0,k.length)==k){var x=Za(y.F);b["table:number-matrix-columns-spanned"]=x.e.c-x.s.c+1;b["table:number-matrix-rows-spanned"]=x.e.r-x.s.r+1}}}if(!y){o.push(r);continue}switch(y.t){case"b":w=y.v?"TRUE":"FALSE";b["office:value-type"]="boolean";b["office:boolean-value"]=y.v?"true":"false";break;case"n":if(!isFinite(y.v)){if(isNaN(y.v)){w="#NUM!";b["table:formula"]="of:=#NUM!"}else{w="#DIV/0!";b["table:formula"]="of:="+(y.v<0?"-":"")+"1/0"}b["office:string-value"]="";b["office:value-type"]="string";b["calcext:value-type"]="error"}else{w=y.w||String(y.v||0);b["office:value-type"]="float";b["office:value"]=y.v||0}break;case"s":;case"str":w=y.v==null?"":y.v;b["office:value-type"]="string";break;case"d":w=y.w||wr(y.v,l).toISOString();b["office:value-type"]="date";b["office:date-value"]=wr(y.v,l).toISOString();b["table:style-name"]="ce1";break;default:o.push(r);continue;}var C=e(w);if(y.l&&y.l.Target){var S=y.l.Target;S=S.charAt(0)=="#"?"#"+Ws(S.slice(1)):S;if(S.charAt(0)!="#"&&!S.match(/^\w+:/))S="../"+S;C=Bt("text:a",C,{"xlink:href":S.replace(/&/g,"&amp;")})}if(s[y.z])b["table:style-name"]="ce"+s[y.z].slice(1);var _=Bt("text:p",C,{});if(y.c){var A="",T="",E={};for(var F=0;F<y.c.length;++F){if(!A&&y.c[F].a)A=y.c[F].a;T+="<text:p>"+e(y.c[F].t)+"</text:p>"}if(!y.c.hidden)E["office:display"]=true;_=Bt("office:annotation",T,E)+_}o.push("          "+Bt("table:table-cell",_,b)+"\n")}o.push("        </table:table-row>\n")}if((a.Workbook||{}).Names)o.push(Co(a.Workbook.Names,a.SheetNames,n));o.push("      </table:table>\n");return o.join("")};var a=function(e,r){e.push(" <office:automatic-styles>\n");var t=0;r.SheetNames.map(function(e){return r.Sheets[e]}).forEach(function(r){if(!r)return;if(r["!cols"]){for(var a=0;a<r["!cols"].length;++a)if(r["!cols"][a]){var n=r["!cols"][a];if(n.width==null&&n.wpx==null&&n.wch==null)continue;Ui(n);n.ods=t;var i=r["!cols"][a].wpx+"px";e.push('  <style:style style:name="co'+t+'" style:family="table-column">\n');e.push('   <style:table-column-properties fo:break-before="auto" style:column-width="'+i+'"/>\n');e.push("  </style:style>\n");++t}}});var a=0;r.SheetNames.map(function(e){return r.Sheets[e]}).forEach(function(r){if(!r)return;if(r["!rows"]){for(var t=0;t<r["!rows"].length;++t)if(r["!rows"][t]){r["!rows"][t].ods=a;var n=r["!rows"][t].hpx+"px";e.push('  <style:style style:name="ro'+a+'" style:family="table-row">\n');e.push('   <style:table-row-properties fo:break-before="auto" style:row-height="'+n+'"/>\n');e.push("  </style:style>\n");++a}}});e.push('  <style:style style:name="ta1" style:family="table" style:master-page-name="mp1">\n');e.push('   <style:table-properties table:display="true" style:writing-mode="lr-tb"/>\n');e.push("  </style:style>\n");e.push('  <number:date-style style:name="N37" number:automatic-order="true">\n');e.push('   <number:month number:style="long"/>\n');e.push("   <number:text>/</number:text>\n");e.push('   <number:day number:style="long"/>\n');e.push("   <number:text>/</number:text>\n");e.push("   <number:year/>\n");e.push("  </number:date-style>\n");var n={};var i=69;r.SheetNames.map(function(e){return r.Sheets[e]}).forEach(function(r){if(!r)return;var t=r["!data"]!=null;if(!r["!ref"])return;var a=Za(r["!ref"]);for(var s=0;s<=a.e.r;++s)for(var l=0;l<=a.e.c;++l){var o=t?(r["!data"][s]||[])[l]:r[Ja({r:s,c:l})];if(!o||!o.z||o.z.toLowerCase()=="general")continue;if(!n[o.z]){var c=xo(o.z,"N"+i);if(c){n[o.z]="N"+i;++i;e.push(c+"\n")}}}});e.push('  <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N37"/>\n');ir(n).forEach(function(r){e.push('<style:style style:name="ce'+n[r].slice(1)+'" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="'+n[r]+'"/>\n')});e.push(" </office:automatic-styles>\n");return n};return function n(e,r){var n=[at];var i=Ut({"xmlns:office":"urn:oasis:names:tc:opendocument:xmlns:office:1.0","xmlns:table":"urn:oasis:names:tc:opendocument:xmlns:table:1.0","xmlns:style":"urn:oasis:names:tc:opendocument:xmlns:style:1.0","xmlns:text":"urn:oasis:names:tc:opendocument:xmlns:text:1.0","xmlns:draw":"urn:oasis:names:tc:opendocument:xmlns:drawing:1.0","xmlns:fo":"urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0","xmlns:xlink":"http://www.w3.org/1999/xlink","xmlns:dc":"http://purl.org/dc/elements/1.1/","xmlns:meta":"urn:oasis:names:tc:opendocument:xmlns:meta:1.0","xmlns:number":"urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0","xmlns:presentation":"urn:oasis:names:tc:opendocument:xmlns:presentation:1.0","xmlns:svg":"urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0","xmlns:chart":"urn:oasis:names:tc:opendocument:xmlns:chart:1.0","xmlns:dr3d":"urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0","xmlns:math":"http://www.w3.org/1998/Math/MathML","xmlns:form":"urn:oasis:names:tc:opendocument:xmlns:form:1.0","xmlns:script":"urn:oasis:names:tc:opendocument:xmlns:script:1.0","xmlns:ooo":"http://openoffice.org/2004/office","xmlns:ooow":"http://openoffice.org/2004/writer","xmlns:oooc":"http://openoffice.org/2004/calc","xmlns:dom":"http://www.w3.org/2001/xml-events","xmlns:xforms":"http://www.w3.org/2002/xforms","xmlns:xsd":"http://www.w3.org/2001/XMLSchema","xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance","xmlns:sheet":"urn:oasis:names:tc:opendocument:sh33tjs:1.0","xmlns:rpt":"http://openoffice.org/2005/report","xmlns:of":"urn:oasis:names:tc:opendocument:xmlns:of:1.2","xmlns:xhtml":"http://www.w3.org/1999/xhtml","xmlns:grddl":"http://www.w3.org/2003/g/data-view#","xmlns:tableooo":"http://openoffice.org/2009/table","xmlns:drawooo":"http://openoffice.org/2010/draw","xmlns:calcext":"urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0","xmlns:loext":"urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0","xmlns:field":"urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0","xmlns:formx":"urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0","xmlns:css3t":"http://www.w3.org/TR/css3-text/","office:version":"1.2"});var s=Ut({"xmlns:config":"urn:oasis:names:tc:opendocument:xmlns:config:1.0","office:mimetype":"application/vnd.oasis.opendocument.spreadsheet"});if(r.bookType=="fods"){n.push("<office:document"+i+s+">\n");n.push(Gn().replace(/<office:document-meta[^<>]*?>/,"").replace(/<\/office:document-meta>/,"")+"\n")}else n.push("<office:document-content"+i+">\n");var l=a(n,e);n.push("  <office:body>\n");n.push("    <office:spreadsheet>\n");if(((e.Workbook||{}).WBProps||{}).date1904)n.push('      <table:calculation-settings table:case-sensitive="false" table:search-criteria-must-apply-to-whole-cell="true" table:use-wildcards="true" table:use-regular-expressions="false" table:automatic-find-labels="false">\n        <table:null-date table:date-value="1904-01-01"/>\n      </table:calculation-settings>\n');for(var o=0;o!=e.SheetNames.length;++o)n.push(t(e.Sheets[e.SheetNames[o]],e,o,r,l,((e.Workbook||{}).WBProps||{}).date1904));if((e.Workbook||{}).Names)n.push(Co(e.Workbook.Names,e.SheetNames,-1));n.push("    </office:spreadsheet>\n");n.push("  </office:body>\n");if(r.bookType=="fods")n.push("</office:document>");else n.push("</office:document-content>");return n.join("")}}();function _o(e,r){if(r.bookType=="fods")return So(e,r);var t=et();var a="";var n=[];var i=[];a="mimetype";Qr(t,a,"application/vnd.oasis.opendocument.spreadsheet");a="content.xml";Qr(t,a,So(e,r));n.push([a,"text/xml"]);i.push([a,"ContentFile"]);a="styles.xml";Qr(t,a,yo(e,r));n.push([a,"text/xml"]);i.push([a,"StylesFile"]);a="meta.xml";Qr(t,a,at+Gn());n.push([a,"text/xml"]);i.push([a,"MetadataFile"]);a="manifest.rdf";Qr(t,a,Xn(i));n.push([a,"application/rdf+xml"]);a="META-INF/manifest.xml";Qr(t,a,jn(n));return t}function Ao(e){return function r(t){for(var a=0;a!=e.length;++a){var n=e[a];if(t[n[0]]===undefined)t[n[0]]=n[1];if(n[2]==="n")t[n[0]]=Number(t[n[0]])}}}function To(e){Ao([["cellNF",false],["cellHTML",true],["cellFormula",true],["cellStyles",false],["cellText",true],["cellDates",false],["sheetStubs",false],["sheetRows",0,"n"],["bookDeps",false],["bookSheets",false],["bookProps",false],["bookFiles",false],["bookVBA",false],["password",""],["WTF",false]])(e)}function Eo(e){Ao([["cellDates",false],["bookSST",false],["bookType","xlsx"],["compression",false],["WTF",false]])(e)}function Fo(e){if(Rn.WS.indexOf(e)>-1)return"sheet";if(Rn.CS&&e==Rn.CS)return"chart";if(Rn.DS&&e==Rn.DS)return"dialog";if(Rn.MS&&e==Rn.MS)return"macro";return e&&e.length?e:"sheet"}function Do(e,r){if(!e)return 0;try{e=r.map(function a(r){if(!r.id)r.id=r.strRelID;return[r.name,e["!id"][r.id].Target,Fo(e["!id"][r.id].Type)]})}catch(t){return null}return!e||e.length===0?null:e}function Oo(e,r,t,a,n,i,s,l){if(!e||!e["!legdrawel"])return;var o=tt(e["!legdrawel"].Target,a);var c=Zr(t,o,true);if(c)ds(Dt(c),e,l||[])}function No(e,r,t,a,n,i,s,l,o,c,f,u){try{i[a]=Un(Zr(e,t,true),r);var h=Jr(e,r);var d;switch(l){case"sheet":d=Gl(h,r,n,o,i[a],c,f,u);break;case"chart":d=Yl(h,r,n,o,i[a],c,f,u);if(!d||!d["!drawel"])break;var p=tt(d["!drawel"].Target,r);var m=Ln(p);var v=hs(Zr(e,p,true),Un(Zr(e,m,true),p));var g=tt(v,p);var b=Ln(g);d=Fl(Zr(e,g,true),g,o,Un(Zr(e,b,true),g),c,d);break;case"macro":d=Jl(h,r,n,o,i[a],c,f,u);break;case"dialog":d=Zl(h,r,n,o,i[a],c,f,u);break;default:throw new Error("Unrecognized sheet type "+l);}s[a]=d;var w=[],k=[];if(i&&i[a])ir(i[a]).forEach(function(t){var n="";if(i[a][t].Type==Rn.CMNT){n=tt(i[a][t].Target,r);w=Ql(Jr(e,n,true),n,o);if(!w||!w.length)return;vs(d,w,false)}if(i[a][t].Type==Rn.TCMNT){n=tt(i[a][t].Target,r);k=k.concat(ws(Jr(e,n,true),o))}});if(k&&k.length)vs(d,k,true,o.people||[]);Oo(d,l,e,r,n,o,c,w)}catch(y){if(o.WTF)throw y}}function Mo(e){return e.charAt(0)=="/"?e.slice(1):e}function Io(e,r){He();r=r||{};To(r);if(Gr(e,"META-INF/manifest.xml"))return wo(e,r);if(Gr(e,"objectdata.xml"))return wo(e,r);if(Gr(e,"Index/Document.iwa")){if(typeof Uint8Array=="undefined")throw new Error("NUMBERS file parsing requires Uint8Array support");if(typeof parse_numbers_iwa!="undefined"){if(e.FileIndex)return parse_numbers_iwa(e,r);var t=Qe.utils.cfb_new();qr(e).forEach(function(r){Qr(t,r,Kr(e,r))});return parse_numbers_iwa(t,r)}throw new Error("Unsupported NUMBERS file")}if(!Gr(e,"[Content_Types].xml")){if(Gr(e,"index.xml.gz"))throw new Error("Unsupported NUMBERS 08 file");if(Gr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");var a=Qe.find(e,"Index.zip");if(a){r=yr(r);delete r.type;if(typeof a.content=="string")r.type="binary";if(typeof Bun!=="undefined"&&Buffer.isBuffer(a.content))return Xo(new Uint8Array(a.content),r);return Xo(a.content,r)}throw new Error("Unsupported ZIP file")}var n=qr(e);var i=In(Zr(e,"[Content_Types].xml"));var s=false;var l,o;if(i.workbooks.length===0){o="xl/workbook.xml";if(Jr(e,o,true))i.workbooks.push(o)}if(i.workbooks.length===0){o="xl/workbook.bin";if(!Jr(e,o,true))throw new Error("Could not find workbook");i.workbooks.push(o);s=true}if(i.workbooks[0].slice(-3)=="bin")s=true;var c={};var f={};if(!r.bookSheets&&!r.bookProps){js=[];if(i.sst)try{js=ql(Jr(e,Mo(i.sst)),i.sst,r)}catch(u){if(r.WTF)throw u}if(r.cellStyles&&i.themes.length)c=ss(Zr(e,i.themes[0].replace(/^\//,""),true)||"",r);if(i.style)f=Kl(Jr(e,Mo(i.style)),i.style,c,r)}i.links.map(function(t){try{var a=Un(Zr(e,Ln(Mo(t))),t);return ro(Jr(e,Mo(t)),a,t,r)}catch(n){}});var h=Xl(Jr(e,Mo(i.workbooks[0])),i.workbooks[0],r);var d={},p="";if(i.coreprops.length){p=Jr(e,Mo(i.coreprops[0]),true);if(p)d=Jn(p);if(i.extprops.length!==0){p=Jr(e,Mo(i.extprops[0]),true);if(p)ri(p,d,r)}}var m={};if(!r.bookSheets||r.bookProps){if(i.custprops.length!==0){p=Zr(e,Mo(i.custprops[0]),true);if(p)m=ni(p,r)}}var v={};if(r.bookSheets||r.bookProps){if(h.Sheets)l=h.Sheets.map(function N(e){return e.name});else if(d.Worksheets&&d.SheetNames.length>0)l=d.SheetNames;if(r.bookProps){v.Props=d;v.Custprops=m}if(r.bookSheets&&typeof l!=="undefined")v.SheetNames=l;if(r.bookSheets?v.SheetNames:r.bookProps)return v}l={};var g={};if(r.bookDeps&&i.calcchain)g=eo(Jr(e,Mo(i.calcchain)),i.calcchain,r);var b=0;var w={};var k,y;{var x=h.Sheets;d.Worksheets=x.length;d.SheetNames=[];for(var C=0;C!=x.length;++C){d.SheetNames[C]=x[C].name}}var S=s?"bin":"xml";var _=i.workbooks[0].lastIndexOf("/");var A=(i.workbooks[0].slice(0,_+1)+"_rels/"+i.workbooks[0].slice(_+1)+".rels").replace(/^\//,"");if(!Gr(e,A))A="xl/_rels/workbook."+S+".rels";var T=Un(Zr(e,A,true),A.replace(/_rels.*/,"s5s"));if((i.metadata||[]).length>=1){r.xlmeta=to(Jr(e,Mo(i.metadata[0])),i.metadata[0],r)}if((i.people||[]).length>=1){r.people=ys(Jr(e,Mo(i.people[0])),r)}if(T)T=Do(T,h.Sheets);var E=Jr(e,"xl/worksheets/sheet.xml",true)?1:0;e:for(b=0;b!=d.Worksheets;++b){var F="sheet";if(T&&T[b]){k="xl/"+T[b][1].replace(/[\/]?xl\//,"");if(!Gr(e,k))k=T[b][1];if(!Gr(e,k))k=A.replace(/_rels\/[\S\s]*$/,"")+T[b][1];F=T[b][2]}else{k="xl/worksheets/sheet"+(b+1-E)+"."+S;k=k.replace(/sheet0\./,"sheet.")}y=k.replace(/^(.*)(\/)([^\/]*)$/,"$1/_rels/$3.rels");if(r&&r.sheets!=null)switch(typeof r.sheets){case"number":if(b!=r.sheets)continue e;break;case"string":if(d.SheetNames[b].toLowerCase()!=r.sheets.toLowerCase())continue e;break;default:if(Array.isArray&&Array.isArray(r.sheets)){var D=false;for(var O=0;O!=r.sheets.length;++O){if(typeof r.sheets[O]=="number"&&r.sheets[O]==b)D=1;if(typeof r.sheets[O]=="string"&&r.sheets[O].toLowerCase()==d.SheetNames[b].toLowerCase())D=1}if(!D)continue e};}No(e,k,y,d.SheetNames[b],b,w,l,F,r,h,c,f)}v={Directory:i,Workbook:h,Props:d,Custprops:m,Deps:g,Sheets:l,SheetNames:d.SheetNames,Strings:js,Styles:f,Themes:c,SSF:yr(q)};if(r&&r.bookFiles){if(e.files){v.keys=n;v.files=e.files}else{v.keys=[];v.files={};e.FullPaths.forEach(function(r,t){r=r.replace(/^Root Entry[\/]/,"");v.keys.push(r);v.files[r]=e.FileIndex[t]})}}if(r&&r.bookVBA){if(i.vba.length>0)v.vbaraw=Jr(e,Mo(i.vba[0]),true);else if(i.defaults&&i.defaults.bin===Cs)v.vbaraw=Jr(e,"xl/vbaProject.bin",true)}v.bookType=s?"xlsb":"xlsx";return v}function Po(e,r){var t=r||{};var a="Workbook",n=Qe.find(e,a);try{a="/!DataSpaces/Version";n=Qe.find(e,a);if(!n||!n.content)throw new Error("ECMA-376 Encrypted file missing "+a);parse_DataSpaceVersionInfo(n.content);a="/!DataSpaces/DataSpaceMap";n=Qe.find(e,a);if(!n||!n.content)throw new Error("ECMA-376 Encrypted file missing "+a);var i=parse_DataSpaceMap(n.content);if(i.length!==1||i[0].comps.length!==1||i[0].comps[0].t!==0||i[0].name!=="StrongEncryptionDataSpace"||i[0].comps[0].v!=="EncryptedPackage")throw new Error("ECMA-376 Encrypted file bad "+a);a="/!DataSpaces/DataSpaceInfo/StrongEncryptionDataSpace";n=Qe.find(e,a);if(!n||!n.content)throw new Error("ECMA-376 Encrypted file missing "+a);var s=parse_DataSpaceDefinition(n.content);if(s.length!=1||s[0]!="StrongEncryptionTransform")throw new Error("ECMA-376 Encrypted file bad "+a);a="/!DataSpaces/TransformInfo/StrongEncryptionTransform/!Primary";n=Qe.find(e,a);if(!n||!n.content)throw new Error("ECMA-376 Encrypted file missing "+a);
 parse_Primary(n.content)}catch(l){}a="/EncryptionInfo";n=Qe.find(e,a);if(!n||!n.content)throw new Error("ECMA-376 Encrypted file missing "+a);var o=parse_EncryptionInfo(n.content);a="/EncryptedPackage";n=Qe.find(e,a);if(!n||!n.content)throw new Error("ECMA-376 Encrypted file missing "+a);if(o[0]==4&&typeof decrypt_agile!=="undefined")return decrypt_agile(o[1],n.content,t.password||"",t);if(o[0]==2&&typeof decrypt_std76!=="undefined")return decrypt_std76(o[1],n.content,t.password||"",t);throw new Error("File is password-protected")}function Ro(e,r){if(e&&!e.SSF){e.SSF=yr(q)}if(e&&e.SSF){He();je(e.SSF);r.revssf=or(e.SSF);r.revssf[e.SSF[65535]]=0;r.ssf=e.SSF}r.rels={};r.wbrels={};r.Strings=[];r.Strings.Count=0;r.Strings.Unique=0;if(Vs)r.revStrings=new Map;else{r.revStrings={};r.revStrings.foo=[];delete r.revStrings.foo}var t="bin";var a=true;var n=Mn();Eo(r=r||{});var i=et();var s="",l=0;r.cellXfs=[];Js(r.cellXfs,{},{revssf:{General:0}});if(!e.Props)e.Props={};s="docProps/core.xml";Qr(i,s,Kn(e.Props,r));n.coreprops.push(s);zn(r.rels,2,s,Rn.CORE_PROPS);s="docProps/app.xml";if(e.Props&&e.Props.SheetNames){}else if(!e.Workbook||!e.Workbook.Sheets)e.Props.SheetNames=e.SheetNames;else{var o=[];for(var c=0;c<e.SheetNames.length;++c)if((e.Workbook.Sheets[c]||{}).Hidden!=2)o.push(e.SheetNames[c]);e.Props.SheetNames=o}e.Props.Worksheets=e.Props.SheetNames.length;Qr(i,s,ti(e.Props,r));n.extprops.push(s);zn(r.rels,3,s,Rn.EXT_PROPS);if(e.Custprops!==e.Props&&ir(e.Custprops||{}).length>0){s="docProps/custom.xml";Qr(i,s,ii(e.Custprops,r));n.custprops.push(s);zn(r.rels,4,s,Rn.CUST_PROPS)}var f=["SheetJ5"];r.tcid=0;for(l=1;l<=e.SheetNames.length;++l){var u={"!id":{}};var h=e.Sheets[e.SheetNames[l-1]];var d=(h||{})["!type"]||"sheet";switch(d){case"chart":;default:s="xl/worksheets/sheet"+l+"."+t;Qr(i,s,write_ws_bin(l-1,r,e,u));n.sheets.push(s);zn(r.wbrels,-1,"worksheets/sheet"+l+"."+t,Rn.WS[0]);}if(h){var p=h["!comments"];var m=false;var v="";if(p&&p.length>0){var g=false;p.forEach(function(e){e[1].forEach(function(e){if(e.T==true)g=true})});if(g){v="xl/threadedComments/threadedComment"+l+".xml";Qr(i,v,ks(p,f,r));n.threadedcomments.push(v);zn(u,-1,"../threadedComments/threadedComment"+l+".xml",Rn.TCMNT)}v="xl/comments"+l+"."+t;Qr(i,v,write_comments_bin(p,r));n.comments.push(v);zn(u,-1,"../comments"+l+"."+t,Rn.CMNT);m=true}if(h["!legacy"]){if(m)Qr(i,"xl/drawings/vmlDrawing"+l+".vml",ps(l,h["!comments"]))}delete h["!comments"];delete h["!legacy"]}if(u["!id"].rId1)Qr(i,Ln(s),Bn(u))}if(r.Strings!=null&&r.Strings.length>0){s="xl/sharedStrings."+t;Qr(i,s,write_sst_bin(r.Strings,r));n.strs.push(s);zn(r.wbrels,-1,"sharedStrings."+t,Rn.SST)}s="xl/workbook."+t;Qr(i,s,write_wb_bin(e,r));n.workbooks.push(s);zn(r.rels,1,s,Rn.WB);s="xl/theme/theme1.xml";var b=ls(e.Themes,r);Qr(i,s,b);n.themes.push(s);zn(r.wbrels,-1,"theme/theme1.xml",Rn.THEME);s="xl/styles."+t;Qr(i,s,write_sty_bin(e,r));n.styles.push(s);zn(r.wbrels,-1,"styles."+t,Rn.STY);if(e.vbaraw&&a){s="xl/vbaProject.bin";Qr(i,s,e.vbaraw);n.vba.push(s);zn(r.wbrels,-1,"vbaProject.bin",Rn.VBA)}s="xl/metadata."+t;Qr(i,s,write_xlmeta_bin());n.metadata.push(s);zn(r.wbrels,-1,"metadata."+t,Rn.XLMETA);if(f.length>1){s="xl/persons/person.xml";Qr(i,s,xs(f,r));n.people.push(s);zn(r.wbrels,-1,"persons/person.xml",Rn.PEOPLE)}Qr(i,"[Content_Types].xml",Pn(n,r));Qr(i,"_rels/.rels",Bn(r.rels));Qr(i,"xl/_rels/workbook."+t+".rels",Bn(r.wbrels));delete r.revssf;delete r.ssf;return i}function Lo(e,r){if(e&&!e.SSF){e.SSF=yr(q)}if(e&&e.SSF){He();je(e.SSF);r.revssf=or(e.SSF);r.revssf[e.SSF[65535]]=0;r.ssf=e.SSF}r.rels={};r.wbrels={};r.Strings=[];r.Strings.Count=0;r.Strings.Unique=0;if(Vs)r.revStrings=new Map;else{r.revStrings={};r.revStrings.foo=[];delete r.revStrings.foo}var t="xml";var a=As.indexOf(r.bookType)>-1;var n=Mn();Eo(r=r||{});var i=et();var s="",l=0;r.cellXfs=[];Js(r.cellXfs,{},{revssf:{General:0}});if(!e.Props)e.Props={};s="docProps/core.xml";Qr(i,s,Kn(e.Props,r));n.coreprops.push(s);zn(r.rels,2,s,Rn.CORE_PROPS);s="docProps/app.xml";if(e.Props&&e.Props.SheetNames){}else if(!e.Workbook||!e.Workbook.Sheets)e.Props.SheetNames=e.SheetNames;else{var o=[];for(var c=0;c<e.SheetNames.length;++c)if((e.Workbook.Sheets[c]||{}).Hidden!=2)o.push(e.SheetNames[c]);e.Props.SheetNames=o}e.Props.Worksheets=e.Props.SheetNames.length;Qr(i,s,ti(e.Props,r));n.extprops.push(s);zn(r.rels,3,s,Rn.EXT_PROPS);if(e.Custprops!==e.Props&&ir(e.Custprops||{}).length>0){s="docProps/custom.xml";Qr(i,s,ii(e.Custprops,r));n.custprops.push(s);zn(r.rels,4,s,Rn.CUST_PROPS)}var f=["SheetJ5"];r.tcid=0;for(l=1;l<=e.SheetNames.length;++l){var u={"!id":{}};var h=e.Sheets[e.SheetNames[l-1]];var d=(h||{})["!type"]||"sheet";switch(d){case"chart":;default:s="xl/worksheets/sheet"+l+"."+t;Qr(i,s,Tl(l-1,r,e,u));n.sheets.push(s);zn(r.wbrels,-1,"worksheets/sheet"+l+"."+t,Rn.WS[0]);}if(h){var p=h["!comments"];var m=false;var v="";if(p&&p.length>0){var g=false;p.forEach(function(e){e[1].forEach(function(e){if(e.T==true)g=true})});if(g){v="xl/threadedComments/threadedComment"+l+".xml";Qr(i,v,ks(p,f,r));n.threadedcomments.push(v);zn(u,-1,"../threadedComments/threadedComment"+l+".xml",Rn.TCMNT)}v="xl/comments"+l+"."+t;Qr(i,v,bs(p,r));n.comments.push(v);zn(u,-1,"../comments"+l+"."+t,Rn.CMNT);m=true}if(h["!legacy"]){if(m)Qr(i,"xl/drawings/vmlDrawing"+l+".vml",ps(l,h["!comments"]))}delete h["!comments"];delete h["!legacy"]}if(u["!id"].rId1)Qr(i,Ln(s),Bn(u))}if(r.Strings!=null&&r.Strings.length>0){s="xl/sharedStrings."+t;Qr(i,s,Ci(r.Strings,r));n.strs.push(s);zn(r.wbrels,-1,"sharedStrings."+t,Rn.SST)}s="xl/workbook."+t;Qr(i,s,Vl(e,r));n.workbooks.push(s);zn(r.rels,1,s,Rn.WB);s="xl/theme/theme1.xml";Qr(i,s,ls(e.Themes,r));n.themes.push(s);zn(r.wbrels,-1,"theme/theme1.xml",Rn.THEME);s="xl/styles."+t;Qr(i,s,es(e,r));n.styles.push(s);zn(r.wbrels,-1,"styles."+t,Rn.STY);if(e.vbaraw&&a){s="xl/vbaProject.bin";Qr(i,s,e.vbaraw);n.vba.push(s);zn(r.wbrels,-1,"vbaProject.bin",Rn.VBA)}s="xl/metadata."+t;Qr(i,s,cs());n.metadata.push(s);zn(r.wbrels,-1,"metadata."+t,Rn.XLMETA);if(f.length>1){s="xl/persons/person.xml";Qr(i,s,xs(f,r));n.people.push(s);zn(r.wbrels,-1,"persons/person.xml",Rn.PEOPLE)}Qr(i,"[Content_Types].xml",Pn(n,r));Qr(i,"_rels/.rels",Bn(r.rels));Qr(i,"xl/_rels/workbook."+t+".rels",Bn(r.wbrels));delete r.revssf;delete r.ssf;return i}function Uo(e,r){var t="";switch((r||{}).type||"base64"){case"buffer":return[e[0],e[1],e[2],e[3],e[4],e[5],e[6],e[7]];case"base64":t=S(e.slice(0,12));break;case"binary":t=e;break;case"array":return[e[0],e[1],e[2],e[3],e[4],e[5],e[6],e[7]];default:throw new Error("Unrecognized type "+(r&&r.type||"undefined"));}return[t.charCodeAt(0),t.charCodeAt(1),t.charCodeAt(2),t.charCodeAt(3),t.charCodeAt(4),t.charCodeAt(5),t.charCodeAt(6),t.charCodeAt(7)]}function Bo(e,r){if(Qe.find(e,"EncryptedPackage"))return Po(e,r);return parse_xlscfb(e,r)}function zo(e,r){var t,a=e;var n=r||{};if(!n.type)n.type=_&&Buffer.isBuffer(e)?"buffer":"base64";t=rt(a,n);return Io(t,n)}function $o(e,r){var t=0;e:while(t<e.length)switch(e.charCodeAt(t)){case 10:;case 13:;case 32:++t;break;case 60:return parse_xlml(e.slice(t),r);default:break e;}return ui.to_workbook(e,r)}function Wo(e,r){var t="",a=Uo(e,r);switch(r.type){case"base64":t=S(e);break;case"binary":t=e;break;case"buffer":t=e.toString("binary");break;case"array":t=kr(e);break;default:throw new Error("Unrecognized type "+r.type);}if(a[0]==239&&a[1]==187&&a[2]==191)t=Dt(t);r.type="binary";return $o(t,r)}function jo(e,r){var t=e;if(r.type=="base64")t=S(t);if(typeof ArrayBuffer!=="undefined"&&e instanceof ArrayBuffer)t=new Uint8Array(e);t=typeof a!=="undefined"?a.utils.decode(1200,t.slice(2),"str"):_&&Buffer.isBuffer(e)?e.slice(2).toString("utf16le"):typeof Uint8Array!=="undefined"&&t instanceof Uint8Array?typeof TextDecoder!=="undefined"?new TextDecoder("utf-16le").decode(t.slice(2)):h(t.slice(2)):u(t.slice(2));r.type="binary";return $o(t,r)}function Ho(e){return!e.match(/[^\x00-\x7F]/)?e:Ot(e)}function Vo(e,r,t,a){if(a){t.type="string";return ui.to_workbook(e,t)}return ui.to_workbook(r,t)}function Xo(e,r){c();var t=r||{};if(t.codepage&&typeof a==="undefined")console.error("Codepage tables are not loaded.  Non-ASCII characters may not give expected results");if(typeof ArrayBuffer!=="undefined"&&e instanceof ArrayBuffer)return Xo(new Uint8Array(e),(t=yr(t),t.type="array",t));if(typeof Int8Array!=="undefined"&&e instanceof Int8Array)return Xo(new Uint8Array(e.buffer,e.byteOffset,e.length),t);if(typeof Uint8Array!=="undefined"&&e instanceof Uint8Array&&!t.type)t.type=typeof Deno!=="undefined"?"buffer":"array";var n=e,i=[0,0,0,0],s=false;if(t.cellStyles){t.cellNF=true;t.sheetStubs=true}Hs={};if(t.dateNF)Hs.dateNF=t.dateNF;if(!t.type)t.type=_&&Buffer.isBuffer(e)?"buffer":"base64";if(t.type=="file"){t.type=_?"buffer":"binary";n=nr(e);if(typeof Uint8Array!=="undefined"&&!_)t.type="array"}if(t.type=="string"){s=true;t.type="binary";t.codepage=65001;n=Ho(e)}if(t.type=="array"&&typeof Uint8Array!=="undefined"&&e instanceof Uint8Array&&typeof ArrayBuffer!=="undefined"){var l=new ArrayBuffer(3),o=new Uint8Array(l);o.foo="bar";if(!o.foo){t=yr(t);t.type="array";return Xo(I(n),t)}}switch((i=Uo(n,t))[0]){case 208:if(i[1]===207&&i[2]===17&&i[3]===224&&i[4]===161&&i[5]===177&&i[6]===26&&i[7]===225)return Bo(Qe.read(n,t),t);break;case 9:if(i[1]<=8)return parse_xlscfb(n,t);break;case 60:return parse_xlml(n,t);case 73:if(i[1]===73&&i[2]===42&&i[3]===0)throw new Error("TIFF Image File is not a spreadsheet");if(i[1]===68)return hi(n,t);break;case 84:if(i[1]===65&&i[2]===66&&i[3]===76)return ci.to_workbook(n,t);break;case 80:return i[1]===75&&i[2]<9&&i[3]<9?zo(n,t):Vo(e,n,t,s);case 239:return i[3]===60?parse_xlml(n,t):Vo(e,n,t,s);case 255:if(i[1]===254){return jo(n,t)}else if(i[1]===0&&i[2]===2&&i[3]===0)return WK_.to_workbook(n,t);break;case 0:if(i[1]===0){if(i[2]>=2&&i[3]===0)return WK_.to_workbook(n,t);if(i[2]===0&&(i[3]===8||i[3]===9))return WK_.to_workbook(n,t)}break;case 3:;case 131:;case 139:;case 140:return li.to_workbook(n,t);case 123:if(i[1]===92&&i[2]===114&&i[3]===116)return rtf_to_workbook(n,t);break;case 10:;case 13:;case 32:return Wo(n,t);case 137:if(i[1]===80&&i[2]===78&&i[3]===71)throw new Error("PNG Image File is not a spreadsheet");break;case 8:if(i[1]===231)throw new Error("Unsupported Multiplan 1.x file!");break;case 12:if(i[1]===236)throw new Error("Unsupported Multiplan 2.x file!");if(i[1]===237)throw new Error("Unsupported Multiplan 3.x file!");break;}if(si.indexOf(i[0])>-1&&i[2]<=12&&i[3]<=31)return li.to_workbook(n,t);return Vo(e,n,t,s)}function Go(e,r){var t=r||{};t.type="file";return Xo(e,t)}function Yo(e,r){switch(r.type){case"base64":;case"binary":break;case"buffer":;case"array":r.type="";break;case"file":return ar(r.file,Qe.write(e,{type:_?"buffer":""}));case"string":throw new Error("'string' output type invalid for '"+r.bookType+"' files");default:throw new Error("Unrecognized type "+r.type);}return Qe.write(e,r)}function Jo(e,r){switch(r.bookType){case"ods":return _o(e,r);case"numbers":return write_numbers_iwa(e,r);case"xlsb":return Ro(e,r);default:return Lo(e,r);}}function Zo(e,r){var t=yr(r||{});var a=Jo(e,t);return qo(a,t)}function Ko(e,r){var t=yr(r||{});var a=Lo(e,t);return qo(a,t)}function qo(e,r){var t={};var a=_?"nodebuffer":typeof Uint8Array!=="undefined"?"array":"string";if(r.compression)t.compression="DEFLATE";if(r.password)t.type=a;else switch(r.type){case"base64":t.type="base64";break;case"binary":t.type="string";break;case"string":throw new Error("'string' output type invalid for '"+r.bookType+"' files");case"buffer":;case"file":t.type=a;break;default:throw new Error("Unrecognized type "+r.type);}var n=e.FullPaths?Qe.write(e,{fileType:"zip",type:{nodebuffer:"buffer",string:"binary"}[t.type]||t.type,compression:!!r.compression}):e.generate(t);if(typeof Deno!=="undefined"){if(typeof n=="string"){if(r.type=="binary"||r.type=="base64")return n;n=new Uint8Array(O(n))}}if(r.password&&typeof encrypt_agile!=="undefined")return Yo(encrypt_agile(n,r.password),r);if(r.type==="file")return ar(r.file,n);return r.type=="string"?Dt(n):n}function Qo(e,r){var t=r||{};var a=write_xlscfb(e,t);return Yo(a,t)}function ec(e,r,t){if(!t)t="";var a=t+e;switch(r.type){case"base64":return y(Ot(a));case"binary":return Ot(a);case"string":return e;case"file":return ar(r.file,a,"utf8");case"buffer":{if(_)return A(a,"utf8");else if(typeof TextEncoder!=="undefined")return(new TextEncoder).encode(a);else return ec(a,{type:"binary"}).split("").map(function(e){return e.charCodeAt(0)})};}throw new Error("Unrecognized type "+r.type)}function rc(e,r){switch(r.type){case"base64":return x(e);case"binary":return e;case"string":return e;case"file":return ar(r.file,e,"binary");case"buffer":{if(_)return A(e,"binary");else return e.split("").map(function(e){return e.charCodeAt(0)})};}throw new Error("Unrecognized type "+r.type)}function tc(e,r){switch(r.type){case"string":;case"base64":;case"binary":var t="";for(var a=0;a<e.length;++a)t+=String.fromCharCode(e[a]);return r.type=="base64"?y(t):r.type=="string"?Dt(t):t;case"file":return ar(r.file,e);case"buffer":return e;default:throw new Error("Unrecognized type "+r.type);}}function ac(e,r){c();Wl(e);var t=yr(r||{});if(t.cellStyles){t.cellNF=true;t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=ac(e,t);t.type="array";return O(a)}return Ko(e,t)}function nc(e,r){c();Wl(e);var t=yr(r||{});if(t.cellStyles){t.cellNF=true;t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=nc(e,t);t.type="array";return O(a)}var n=0;if(t.sheet){if(typeof t.sheet=="number")n=t.sheet;else n=e.SheetNames.indexOf(t.sheet);if(!e.SheetNames[n])throw new Error("Sheet not found: "+t.sheet+" : "+typeof t.sheet)}switch(t.bookType||"xlsb"){case"xml":;case"xlml":return ec(write_xlml(e,t),t);case"slk":;case"sylk":return ec(oi.from_sheet(e.Sheets[e.SheetNames[n]],t,e),t);case"htm":;case"html":return ec(co(e.Sheets[e.SheetNames[n]],t),t);case"txt":return rc(pc(e.Sheets[e.SheetNames[n]],t),t);case"csv":return ec(dc(e.Sheets[e.SheetNames[n]],t),t,"\ufeff");case"dif":return ec(ci.from_sheet(e.Sheets[e.SheetNames[n]],t),t);case"dbf":return tc(li.from_sheet(e.Sheets[e.SheetNames[n]],t),t);case"prn":return ec(ui.from_sheet(e.Sheets[e.SheetNames[n]],t),t);case"rtf":return ec(sheet_to_rtf(e.Sheets[e.SheetNames[n]],t),t);case"eth":return ec(fi.from_sheet(e.Sheets[e.SheetNames[n]],t),t);case"fods":return ec(_o(e,t),t);case"wk1":return tc(WK_.sheet_to_wk1(e.Sheets[e.SheetNames[n]],t),t);case"wk3":return tc(WK_.book_to_wk3(e,t),t);case"biff2":if(!t.biff)t.biff=2;case"biff3":if(!t.biff)t.biff=3;case"biff4":if(!t.biff)t.biff=4;return tc(write_biff_buf(e,t),t);case"biff5":if(!t.biff)t.biff=5;case"biff8":;case"xla":;case"xls":if(!t.biff)t.biff=8;return Qo(e,t);case"xlsx":;case"xlsm":;case"xlam":;case"xlsb":;case"numbers":;case"ods":return Zo(e,t);default:throw new Error("Unrecognized bookType |"+t.bookType+"|");}}function ic(e){if(e.bookType)return;var r={xls:"biff8",htm:"html",slk:"sylk",socialcalc:"eth",Sh33tJS:"WTF"};var t=e.file.slice(e.file.lastIndexOf(".")).toLowerCase();if(t.match(/^\.[a-z]+$/))e.bookType=t.slice(1);e.bookType=r[e.bookType]||e.bookType}function sc(e,r,t){var a=t||{};a.type="file";a.file=r;ic(a);return nc(e,a)}function lc(e,r,t){var a=t||{};a.type="file";a.file=r;ic(a);return ac(e,a)}function oc(e,r,t,a){var n=t||{};n.type="file";n.file=e;ic(n);n.type="buffer";var i=a;if(!(i instanceof Function))i=t;return er.writeFile(e,nc(r,n),i)}function cc(e,r,t,a,n,i,s){var l=za(t);var o=s.defval,c=s.raw||!Object.prototype.hasOwnProperty.call(s,"raw");var f=true,u=e["!data"]!=null;var h=n===1?[]:{};if(n!==1){if(Object.defineProperty)try{Object.defineProperty(h,"__rowNum__",{value:t,enumerable:false})}catch(d){h.__rowNum__=t}else h.__rowNum__=t}if(!u||e["!data"][t])for(var p=r.s.c;p<=r.e.c;++p){var m=u?(e["!data"][t]||[])[p]:e[a[p]+l];if(m==null||m.t===undefined){if(o===undefined)continue;if(i[p]!=null){h[i[p]]=o}continue}var v=m.v;switch(m.t){case"z":if(v==null)break;continue;case"e":v=v==0?null:void 0;break;case"s":;case"b":;case"n":if(!m.z||!Re(m.z))break;v=pr(v);if(typeof v=="number")break;case"d":if(!(s&&(s.UTC||s.raw===false)))v=Mr(new Date(v));break;default:throw new Error("unrecognized type "+m.t);}if(i[p]!=null){if(v==null){if(m.t=="e"&&v===null)h[i[p]]=null;else if(o!==undefined)h[i[p]]=o;else if(c&&v===null)h[i[p]]=null;else continue}else{h[i[p]]=(m.t==="n"&&typeof s.rawNumbers==="boolean"?s.rawNumbers:c)?v:tn(m,v,s)}if(v!=null)f=false}}return{row:h,isempty:f}}function fc(e,r){if(e==null||e["!ref"]==null)return[];var t={t:"n",v:0},a=0,n=1,i=[],s=0,l="";var o={s:{r:0,c:0},e:{r:0,c:0}};var c=r||{};var f=c.range!=null?c.range:e["!ref"];if(c.header===1)a=1;else if(c.header==="A")a=2;else if(Array.isArray(c.header))a=3;else if(c.header==null)a=0;switch(typeof f){case"string":o=en(f);break;case"number":o=en(e["!ref"]);o.s.r=f;break;default:o=f;}if(a>0)n=0;var u=za(o.s.r);var h=[];var d=[];var p=0,m=0;var v=e["!data"]!=null;var g=o.s.r,b=0;var w={};if(v&&!e["!data"][g])e["!data"][g]=[];var k=c.skipHidden&&e["!cols"]||[];var y=c.skipHidden&&e["!rows"]||[];for(b=o.s.c;b<=o.e.c;++b){if((k[b]||{}).hidden)continue;h[b]=Ha(b);t=v?e["!data"][g][b]:e[h[b]+u];switch(a){case 1:i[b]=b-o.s.c;break;case 2:i[b]=h[b];break;case 3:i[b]=c.header[b-o.s.c];break;default:if(t==null)t={w:"__EMPTY",t:"s"};l=s=tn(t,null,c);m=w[s]||0;if(!m)w[s]=1;else{do{l=s+"_"+m++}while(w[l]);w[s]=m;w[l]=1}i[b]=l;}}for(g=o.s.r+n;g<=o.e.r;++g){if((y[g]||{}).hidden)continue;var x=cc(e,o,g,h,a,i,c);if(x.isempty===false||(a===1?c.blankrows!==false:!!c.blankrows))d[p++]=x.row}d.length=p;return d}var uc=/"/g;function hc(e,r,t,a,n,i,s,l,o){var c=true;var f=[],u="",h=za(t);var d=e["!data"]!=null;var p=d&&e["!data"][t]||[];for(var m=r.s.c;m<=r.e.c;++m){if(!a[m])continue;var v=d?p[m]:e[a[m]+h];if(v==null)u="";else if(v.v!=null){c=false;u=""+(o.rawNumbers&&v.t=="n"?v.v:tn(v,null,o));for(var g=0,b=0;g!==u.length;++g)if((b=u.charCodeAt(g))===n||b===i||b===34||o.forceQuotes){u='"'+u.replace(uc,'""')+'"';break}if(u=="ID"&&l==0&&f.length==0)u='"ID"'}else if(v.f!=null&&!v.F){c=false;u="="+v.f;if(u.indexOf(",")>=0)u='"'+u.replace(uc,'""')+'"'}else u="";f.push(u)}if(o.strip)while(f[f.length-1]==="")--f.length;if(o.blankrows===false&&c)return null;return f.join(s)}function dc(e,r){var t=[];var a=r==null?{}:r;if(e==null||e["!ref"]==null)return"";var n=en(e["!ref"]);var i=a.FS!==undefined?a.FS:",",s=i.charCodeAt(0);var l=a.RS!==undefined?a.RS:"\n",o=l.charCodeAt(0);var c="",f=[];var u=a.skipHidden&&e["!cols"]||[];var h=a.skipHidden&&e["!rows"]||[];for(var d=n.s.c;d<=n.e.c;++d)if(!(u[d]||{}).hidden)f[d]=Ha(d);var p=0;for(var m=n.s.r;m<=n.e.r;++m){if((h[m]||{}).hidden)continue;c=hc(e,n,m,f,s,o,i,p,a);if(c==null){continue}if(c||a.blankrows!==false)t.push((p++?l:"")+c)}return t.join("")}function pc(e,r){if(!r)r={};r.FS="\t";r.RS="\n";var t=dc(e,r);if(typeof a=="undefined"||r.type=="string")return t;var n=a.utils.encode(1200,t,"str");return String.fromCharCode(255)+String.fromCharCode(254)+n}function mc(e,r){var t="",a,n="";if(e==null||e["!ref"]==null)return[];var i=en(e["!ref"]),s="",l=[],o;var c=[];var f=e["!data"]!=null;for(o=i.s.c;o<=i.e.c;++o)l[o]=Ha(o);for(var u=i.s.r;u<=i.e.r;++u){s=za(u);for(o=i.s.c;o<=i.e.c;++o){t=l[o]+s;a=f?(e["!data"][u]||[])[o]:e[t];n="";if(a===undefined)continue;else if(a.F!=null){t=a.F;if(!a.f)continue;n=a.f;if(t.indexOf(":")==-1)t=t+":"+t}if(a.f!=null)n=a.f;else if(r&&r.values===false)continue;else if(a.t=="z")continue;else if(a.t=="n"&&a.v!=null)n=""+a.v;else if(a.t=="b")n=a.v?"TRUE":"FALSE";else if(a.w!==undefined)n="'"+a.w;else if(a.v===undefined)continue;else if(a.t=="s")n="'"+a.v;else n=""+a.v;c[c.length]=t+"="+n}}return c}function vc(e,r,t){var a=t||{};var n=e?e["!data"]!=null:a.dense;if(b!=null&&n==null)n=b;var i=+!a.skipHeader;var s=e||{};if(!e&&n)s["!data"]=[];var l=0,o=0;if(s&&a.origin!=null){if(typeof a.origin=="number")l=a.origin;else{var c=typeof a.origin=="string"?Ya(a.origin):a.origin;l=c.r;o=c.c}}var f={s:{c:0,r:0},e:{c:o,r:l+r.length-1+i}};if(s["!ref"]){var u=en(s["!ref"]);f.e.c=Math.max(f.e.c,u.e.c);f.e.r=Math.max(f.e.r,u.e.r);if(l==-1){l=u.e.r+1;f.e.r=l+r.length-1+i}}else{if(l==-1){l=0;f.e.r=r.length-1+i}}var h=a.header||[],d=0;var p=[];r.forEach(function(e,r){if(n&&!s["!data"][l+r+i])s["!data"][l+r+i]=[];if(n)p=s["!data"][l+r+i];ir(e).forEach(function(t){if((d=h.indexOf(t))==-1)h[d=h.length]=t;var c=e[t];var f="z";var u="";var m=n?"":Ha(o+d)+za(l+r+i);var v=n?p[o+d]:s[m];if(c&&typeof c==="object"&&!(c instanceof Date)){if(n)p[o+d]=c;else s[m]=c}else{if(typeof c=="number")f="n";else if(typeof c=="boolean")f="b";else if(typeof c=="string")f="s";else if(c instanceof Date){f="d";if(!a.UTC)c=Ir(c);if(!a.cellDates){f="n";c=dr(c)}u=v!=null&&v.z&&Re(v.z)?v.z:a.dateNF||q[14]}else if(c===null&&a.nullError){f="e";c=0}if(!v){if(!n)s[m]=v={t:f,v:c};else p[o+d]=v={t:f,v:c}}else{v.t=f;v.v=c;delete v.w;delete v.R;if(u)v.z=u}if(u)v.z=u}})});f.e.c=Math.max(f.e.c,o+h.length-1);var m=za(l);if(n&&!s["!data"][l])s["!data"][l]=[];if(i)for(d=0;d<h.length;++d){if(n)s["!data"][l][d+o]={t:"s",v:h[d]};else s[Ha(d+o)+m]={t:"s",v:h[d]}}s["!ref"]=Ka(f);return s}function gc(e,r){return vc(null,e,r)}function bc(e,r,t){if(typeof r=="string"){if(e["!data"]!=null){var a=Ya(r);if(!e["!data"][a.r])e["!data"][a.r]=[];return e["!data"][a.r][a.c]||(e["!data"][a.r][a.c]={t:"z"})}return e[r]||(e[r]={t:"z"})}if(typeof r!="number")return bc(e,Ja(r));return bc(e,Ha(t||0)+za(r))}function wc(e,r){if(typeof r=="number"){if(r>=0&&e.SheetNames.length>r)return r;throw new Error("Cannot find sheet # "+r)}else if(typeof r=="string"){var t=e.SheetNames.indexOf(r);if(t>-1)return t;throw new Error("Cannot find sheet name |"+r+"|")}else throw new Error("Cannot find sheet |"+r+"|")}function kc(e,r){var t={SheetNames:[],Sheets:{}};if(e)yc(t,e,r||"Sheet1");return t}function yc(e,r,t,a){var n=1;if(!t)for(;n<=65535;++n,t=undefined)if(e.SheetNames.indexOf(t="Sheet"+n)==-1)break;if(!t||e.SheetNames.length>=65535)throw new Error("Too many worksheets");if(a&&e.SheetNames.indexOf(t)>=0&&t.length<32){var i=t.match(/\d+$/);n=i&&+i[0]||0;var s=i&&t.slice(0,i.index)||t;for(++n;n<=65535;++n)if(e.SheetNames.indexOf(t=s+n)==-1)break}zl(t);if(e.SheetNames.indexOf(t)>=0)throw new Error("Worksheet with name |"+t+"| already exists!");e.SheetNames.push(t);e.Sheets[t]=r;return t}function xc(e,r,t){if(!e.Workbook)e.Workbook={};if(!e.Workbook.Sheets)e.Workbook.Sheets=[];var a=wc(e,r);if(!e.Workbook.Sheets[a])e.Workbook.Sheets[a]={};switch(t){case 0:;case 1:;case 2:break;default:throw new Error("Bad sheet visibility setting "+t);}e.Workbook.Sheets[a].Hidden=t}function Cc(e,r){e.z=r;return e}function Sc(e,r,t){if(!r){delete e.l}else{e.l={Target:r};if(t)e.l.Tooltip=t}return e}function _c(e,r,t){return Sc(e,"#"+r,t)}function Ac(e,r,t){if(!e.c)e.c=[];e.c.push({t:r,a:t||"SheetJS"})}function Tc(e,r,t,a){var n=typeof r!="string"?r:en(r);var i=typeof r=="string"?r:Ka(r);for(var s=n.s.r;s<=n.e.r;++s)for(var l=n.s.c;l<=n.e.c;++l){var o=bc(e,s,l);o.t="n";o.F=i;delete o.v;if(s==n.s.r&&l==n.s.c){o.f=t;if(a)o.D=true}}var c=Za(e["!ref"]);if(c.s.r>n.s.r)c.s.r=n.s.r;if(c.s.c>n.s.c)c.s.c=n.s.c;if(c.e.r<n.e.r)c.e.r=n.e.r;if(c.e.c<n.e.c)c.e.c=n.e.c;e["!ref"]=Ka(c);return e}var Ec={encode_col:Ha,encode_row:za,encode_cell:Ja,encode_range:Ka,decode_col:ja,decode_row:Ba,split_cell:Ga,decode_cell:Ya,decode_range:Za,format_cell:tn,sheet_new:nn,sheet_add_aoa:sn,sheet_add_json:vc,sheet_add_dom:fo,aoa_to_sheet:ln,json_to_sheet:gc,table_to_sheet:uo,table_to_book:ho,sheet_to_csv:dc,sheet_to_txt:pc,sheet_to_json:fc,sheet_to_html:co,sheet_to_formulae:mc,sheet_to_row_object_array:fc,sheet_get_cell:bc,book_new:kc,book_append_sheet:yc,book_set_sheet_visibility:xc,cell_set_number_format:Cc,cell_set_hyperlink:Sc,cell_set_internal_link:_c,cell_add_comment:Ac,sheet_set_array_formula:Tc,consts:{SHEET_VISIBLE:0,SHEET_HIDDEN:1,SHEET_VERY_HIDDEN:2}};if(typeof parse_xlscfb!=="undefined")e.parse_xlscfb=parse_xlscfb;e.parse_zip=Io;e.read=Xo;e.readFile=Go;e.readFileSync=Go;e.write=nc;e.writeFile=sc;e.writeFileSync=sc;e.writeFileAsync=oc;e.utils=Ec;e.writeXLSX=ac;e.writeFileXLSX=lc;e.set_fs=rr;e.set_cptable=g;e.SSF=Ve;if(typeof __stream!=="undefined")e.stream=__stream;if(typeof Qe!=="undefined")e.CFB=Qe;if(typeof require!=="undefined"){var Fc=undefined;if((Fc||{}).Readable)set_readable(Fc.Readable);try{er=undefined}catch(Ms){}}}if(typeof exports!=="undefined")make_xlsx_lib(exports);else if(typeof module!=="undefined"&&module.exports)make_xlsx_lib(module.exports);else if(typeof define==="function"&&define.amd)define("xlsx",function(){if(!XLSX.version)make_xlsx_lib(XLSX);return XLSX});else make_xlsx_lib(XLSX);if(typeof window!=="undefined"&&!window.XLSX)try{window.XLSX=XLSX}catch(e){}
 </script>
-<script>/* 力训 · Excel 计划解析器（浏览器 / Node 通用）
+<script>/* 力训 · Excel 计划解析器 v2（浏览器 / Node 通用）
  *
- * 设计原则与 extract_plan.py 完全一致：
- *   不写死行号列号，靠扫描值为 "%" 的表头单元格倒推：
- *     该列 = 百分比；+1 = 次数；+2 = 组数；+3 = 重量；-1 = 动作名；-2 = 训练日/周标签
+ * 数据模型 v2：一切皆「处方条目」
+ *   item = { name, sets, reps, load, rest, note }
+ *   load = { type, value }   type ∈ percent1RM | kg | kgRange | rm | rpe | bodyweight | amap | timed | none
+ *
+ * 解析策略：先识别格式，退化到通用兜底。解析只求「大致对」，细节在 App 里手动改。
  */
 (function (root, factory) {
   var api = factory();
@@ -228,131 +345,169 @@ parse_Primary(n.content)}catch(l){}a="/EncryptionInfo";n=Qe.find(e,a);if(!n||!n.
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var BAR_KG = 20;
-  var PLATE_SET = [20, 15, 10, 5, 2.5, 1.25];
-  var WEEK_RE = /(?:周|W|Week|第)\s*(\d+)/i;
-  var BODYWEIGHT_RE = /双杠|俯卧撑|引体|悬垂|吊环|自重/;
-  var WEEKDAY_CN = {
-    '星期一': 1, '星期二': 2, '星期三': 3, '星期四': 4, '星期五': 5, '星期六': 6, '星期日': 7, '星期天': 7,
-    '周一': 1, '周二': 2, '周三': 3, '周四': 4, '周五': 5, '周六': 6, '周日': 7
-  };
+  var WEEK_RE = /(?:周|週|W|Week|第)\s*(\d+)/i;
+  var BODYWEIGHT_RE = /雙槓|双杠|俯臥撐|俯卧撑|引體|引体|懸垂|悬垂|吊環|吊环|自重|棒式|撐體|撑体/;
+  var DAY_RE = /^(?:Day\s*(\d+)|第([一二三四五六七\d]+)\s*[練练]|第(\d+)\s*[練练])/i;
 
-  function roundToPlate(x, step) {
-    if (x == null) return null;
-    step = step || 2.5;
-    return Math.round(Math.round(x / step) * step * 100) / 100;
+  /* ---------------- 通用小工具 ---------------- */
+
+  function cleanName(s) {
+    if (s == null) return '';
+    return String(s).replace(/\s+/g, ' ').trim();
   }
 
-  function platesOf(total, bar) {
-    bar = bar == null ? BAR_KG : bar;
-    if (total == null || total < bar) return null;
-    var per = (total - bar) / 2;
-    var out = [];
-    for (var i = 0; i < PLATE_SET.length; i++) {
-      var p = PLATE_SET[i];
-      while (per >= p - 1e-9) { out.push(p); per -= p; }
+  // 次數：把 Excel 誤判的日期还原成 "8-10"，数字转字符串
+  function decodeReps(v) {
+    if (v == null) return null;
+    if (v instanceof Date) {
+      // Excel 把 "8-10" 存成 2018-08-10
+      return v.getMonth() + 1 + '-' + v.getDate();
     }
-    if (per > 1e-9) return null;
+    if (typeof v === 'number') {
+      return Number.isInteger(v) ? String(v) : String(v);
+    }
+    var s = cleanName(v);
+    return s || null;
+  }
+
+  // 休息时间 -> 秒
+  function parseRest(v) {
+    if (v == null) return null;
+    if (typeof v === 'number') return Math.round(v * 60);
+    var s = String(v);
+    var nums = s.match(/\d+(?:\.\d+)?/g);
+    if (!nums) return null;
+    var val;
+    if (nums.length >= 2) {
+      val = (parseFloat(nums[0]) + parseFloat(nums[1])) / 2;   // "2-3 分鐘" -> 2.5
+    } else {
+      val = parseFloat(nums[0]);
+    }
+    if (/秒/.test(s)) return Math.round(val);
+    return Math.round(val * 60);
+  }
+
+  // 单个值 -> load
+  function toLoad(v) {
+    if (v == null || v === '') return { type: 'none' };
+    if (v instanceof Date) return { type: 'none' };           // 日期一般出现在次数列，不在重量列
+
+    if (typeof v === 'number') {
+      if (v > 0 && v < 1.5) return { type: 'percent1RM', value: v };
+      if (v >= 6 && v <= 10) return { type: 'rpe', value: v }; // 6~10 视为 RPE
+      if (v > 10) return { type: 'kg', value: v };
+      return { type: 'none' };
+    }
+
+    var s = cleanName(v);
+    if (!s) return { type: 'none' };
+
+    var m;
+    if ((m = s.match(/^(\d+(?:\.\d+)?)\s*[~\-–]\s*(\d+(?:\.\d+)?)\s*(?:kg|KG|Kg|公斤)/)) ) {
+      return { type: 'kgRange', value: m[1] + '~' + m[2] };
+    }
+    if ((m = s.match(/^(\d+(?:\.\d+)?)\s*(?:kg|KG|Kg|公斤)\s*$/))) {
+      return { type: 'kg', value: parseFloat(m[1]) };
+    }
+    if ((m = s.match(/(\d+)\s*[~\-–]\s*(\d+)\s*RM/i))) return { type: 'rm', value: m[1] + '-' + m[2] };
+    if ((m = s.match(/(\d+)\s*RM/i))) return { type: 'rm', value: m[1] };
+    if (/^RPE\s*(\d+(?:\.\d+)?)/i.test(s)) return { type: 'rpe', value: parseFloat(RegExp.$1) };
+    if (/^\d+\s*秒$/.test(s)) return { type: 'timed', value: s };
+    if (/AMAP|力竭|做到力竭/i.test(s)) return { type: 'amap' };
+    if (BODYWEIGHT_RE.test(s)) return { type: 'bodyweight' };
+
+    // 兜底：在长文本里搜（例如 "负重下半程引体选2.5~10KG，连续不停顿，6组"）
+    var m2;
+    if ((m2 = s.match(/(\d+)\s*[~\-–]\s*(\d+)\s*RM/i))) return { type: 'rm', value: m2[1] + '-' + m2[2] };
+    if ((m2 = s.match(/(\d+)\s*RM/i))) return { type: 'rm', value: m2[1] };
+    if ((m2 = s.match(/(\d+(?:\.\d+)?)\s*[~\-–]\s*(\d+(?:\.\d+)?)\s*(?:kg|KG|Kg|公斤)/))) {
+      return { type: 'kgRange', value: m2[1] + '~' + m2[2] };
+    }
+    if ((m2 = s.match(/(\d+(?:\.\d+)?)\s*(?:kg|KG|Kg|公斤)/))) return { type: 'kg', value: parseFloat(m2[1]) };
+
+    return { type: 'none' };
+  }
+
+  // 从一行文字里抠出「组数 / 次数 / 休息」，用于纯文本计划
+  function parseInline(text) {
+    var out = { sets: null, reps: null, rest: null };
+    var m;
+    if ((m = text.match(/(\d+)\s*[×xX]\s*(\d+)/))) {
+      out.sets = parseInt(m[1], 10);
+      out.reps = m[2];
+    } else if ((m = text.match(/(\d+)\s*组/))) {
+      out.sets = parseInt(m[1], 10);
+      var m1 = text.match(/(\d+)\s*组\s*[×xX]?\s*(?:(\d+)\s*次)?/);
+      if (m1 && m1[2]) out.reps = m1[2];
+    }
+    if ((m = text.match(/(\d+)\s*[~\-–]\s*(\d+)\s*次/))) out.reps = m[1] + '-' + m[2];
+    if ((m = text.match(/组休\s*(\d+(?:\.\d+)?)\s*[~\-–]?\s*(\d+(?:\.\d+)?)?\s*(min|分鐘|分钟|秒)?/i))) {
+      var a = parseFloat(m[1]);
+      var b = m[2] ? parseFloat(m[2]) : a;
+      var unit = m[3] || 'min';
+      var avg = (a + b) / 2;
+      out.rest = /秒/.test(unit) ? Math.round(avg) : Math.round(avg * 60);
+    }
     return out;
   }
 
-  /* ---------- 单元格访问 ---------- */
-  function makeSheet(XLSX, ws) {
-    var range = XLSX.utils.decode_range(ws['!ref'] || 'A1:A1');
-    var cache = {};
-    function cell(r, c) {                      // r,c 从 1 开始
-      if (r < 1 || c < 1) return null;
-      var key = r + ':' + c;
-      if (key in cache) return cache[key];
-      var addr = XLSX.utils.encode_cell({ r: r - 1, c: c - 1 });
-      cache[key] = ws[addr] || null;
-      return cache[key];
-    }
-    function val(r, c) {
-      var x = cell(r, c);
-      if (!x) return null;
-      if (x.v !== undefined && x.v !== null && x.v !== '') return x.v;
-      return null;
-    }
-    function str(r, c) {
-      var x = cell(r, c);
-      if (!x) return null;
-      if (x.t === 's' || typeof x.v === 'string') {
-        return x.v == null ? null : String(x.v).trim();
-      }
-      return null;
-    }
-    function num(r, c) {
-      var x = cell(r, c);
-      if (!x) return null;
-      if (typeof x.v === 'number' && isFinite(x.v)) return x.v;
-      return null;
-    }
-    return {
-      maxRow: range.e.r + 1,
-      maxCol: range.e.c + 1,
-      cell: cell, val: val, str: str, num: num
-    };
-  }
-
-  /* ---------- 1RM ---------- */
-  function findOneRM(XLSX, wb) {
-    var candidates = wb.SheetNames.filter(function (n) { return /1\s*rm/i.test(n); });
-    if (!candidates.length) candidates = wb.SheetNames.slice(0, 1);
-
-    for (var si = 0; si < candidates.length; si++) {
-      var sh = makeSheet(XLSX, wb.Sheets[candidates[si]]);
-      // 找含 "1RM" 的标签单元格
-      for (var r = 1; r <= Math.min(sh.maxRow, 30); r++) {
-        for (var c = 1; c <= Math.min(sh.maxCol, 40); c++) {
-          var s = sh.str(r, c);
-          if (s && /1\s*rm/i.test(s)) {
-            // 在标签右/下 2x2 区域里找数字
-            var probe = [[r, c + 1], [r + 1, c], [r + 1, c + 1], [r, c + 2], [r + 2, c], [r, c + 3]];
-            for (var k = 0; k < probe.length; k++) {
-              var n = sh.num(probe[k][0], probe[k][1]);
-              if (n != null && n > 0 && n < 1000) return n;
-            }
-          }
+  /* ---------------- 样式识别 ---------------- */
+  function detectFormat(wb) {
+    var hasPctHeader = false, hasColumnHeader = false;
+    wb.SheetNames.forEach(function (n) {
+      if (/營養|营养|有氧/.test(n)) return;
+      var ws = wb.Sheets[n];
+      if (!ws || !ws['!ref']) return;
+      var XLSX = wb.__XLSX;
+      var range = XLSX.utils.decode_range(ws['!ref']);
+      for (var r = range.s.r; r <= Math.min(range.e.r, 60); r++) {
+        for (var c = range.s.c; c <= Math.min(range.e.c, 30); c++) {
+          var cell = ws[XLSX.utils.encode_cell({ r: r, c: c })];
+          var v = cell && cell.v;
+          if (typeof v !== 'string') continue;
+          if (v.trim() === '%') hasPctHeader = true;
+          if (/^組數$|^组数$/.test(v.trim())) hasColumnHeader = true;
         }
       }
-      // 兜底：第一个合理的数字
-      for (var rr = 1; rr <= Math.min(sh.maxRow, 30); rr++) {
-        for (var cc = 1; cc <= Math.min(sh.maxCol, 40); cc++) {
-          var v = sh.num(rr, cc);
-          if (v != null && v > 10 && v < 1000) return v;
-        }
-      }
-    }
-    return null;
+    });
+    if (hasPctHeader) return 'matrix';
+    if (hasColumnHeader) return 'columns';
+    return 'text';
   }
 
-  /* ---------- 主解析 ---------- */
-  function extractPlan(XLSX, workbook, opts) {
-    opts = opts || {};
-    var bar = opts.bar || BAR_KG;
-    var oneRM = findOneRM(XLSX, workbook);
-    if (oneRM == null) throw new Error('没找到 1RM 值，无法生成计划');
-
+  /* ================= 适配器 A：百分比矩阵 ================= */
+  function adaptMatrix(XLSX, wb, opts) {
     var weeks = [];
     var warnings = [];
 
-    workbook.SheetNames.forEach(function (sname) {
-      if (/1\s*rm/i.test(sname.trim())) return;
-      var sh = makeSheet(XLSX, workbook.Sheets[sname]);
+    wb.SheetNames.forEach(function (sname) {
+      if (/1\s*rm|營養|营养|有氧/i.test(sname)) return;
+      var ws = wb.Sheets[sname];
+      if (!ws || !ws['!ref']) return;
+      var range = XLSX.utils.decode_range(ws['!ref']);
+      function cell(r, c) {
+        if (r < 0 || c < 0) return null;
+        return ws[XLSX.utils.encode_cell({ r: r, c: c })] || null;
+      }
+      function str(r, c) {
+        var x = cell(r, c);
+        if (!x) return null;
+        return (x.t === 's' || typeof x.v === 'string') ? cleanName(x.v) : null;
+      }
+      function num(r, c) {
+        var x = cell(r, c);
+        return (x && typeof x.v === 'number') ? x.v : null;
+      }
 
-      // 1) 所有 "%" 表头
       var headers = [];
-      for (var r = 1; r <= sh.maxRow; r++) {
-        for (var c = 1; c <= sh.maxCol; c++) {
-          var s = sh.str(r, c);
-          if (s === '%') headers.push([r, c]);
+      for (var r = range.s.r; r <= range.e.r; r++) {
+        for (var c = range.s.c; c <= range.e.c; c++) {
+          if (str(r, c) === '%') headers.push([r, c]);
         }
       }
-      if (!headers.length) { warnings.push('[' + sname + '] 没找到 "%" 表头，已跳过'); return; }
+      if (!headers.length) return;
 
-      var dayRows = [];
-      var weekCols = [];
+      var dayRows = [], weekCols = [];
       headers.forEach(function (h) {
         if (dayRows.indexOf(h[0]) < 0) dayRows.push(h[0]);
         if (weekCols.indexOf(h[1]) < 0) weekCols.push(h[1]);
@@ -360,109 +515,310 @@ parse_Primary(n.content)}catch(l){}a="/EncryptionInfo";n=Qe.find(e,a);if(!n||!n.
       dayRows.sort(function (a, b) { return a - b; });
       weekCols.sort(function (a, b) { return a - b; });
 
-      // 2) 逐 周 x 训练日
-      weekCols.forEach(function (wc, wi) {
-        var weekNo = null;
+      weekCols.forEach(function (wc) {
         var weekLabel = null;
-        var topRows = Math.min.apply(null, dayRows);
-        for (var r = 1; r <= topRows; r++) {
-          var v = sh.str(r, Math.max(wc - 2, 1));
-          if (v) {
-            var m = WEEK_RE.exec(v);
-            if (m) { weekNo = parseInt(m[1], 10); weekLabel = v; break; }
-          }
+        var top = Math.min.apply(null, dayRows);
+        for (var rr = 0; rr < top; rr++) {
+          var v = str(rr, Math.max(wc - 2, 0));
+          if (v && WEEK_RE.test(v)) { weekLabel = v; break; }
         }
-        if (weekNo == null) { weekNo = wi + 1; weekLabel = 'W' + weekNo; }
-
-        var sessionList = [];
-
+        var sessions = [];
         dayRows.forEach(function (dr, di) {
-          var nextDr = (di + 1 < dayRows.length) ? dayRows[di + 1] : Math.min(dr + 11, sh.maxRow + 1);
-          var dayRaw = sh.str(dr, Math.max(wc - 2, 1));
-          var day = dayRaw || ('第' + (di + 1) + '训练日');
-          var weekday = WEEKDAY_CN[day] || null;
-
+          var nextDr = (di + 1 < dayRows.length) ? dayRows[di + 1] : Math.min(dr + 11, range.e.r + 1);
+          var day = str(dr, Math.max(wc - 2, 0)) || ('Day ' + (di + 1));
           var items = [];
-          for (var rr = dr + 1; rr < nextDr; rr++) {
-            var name = sh.str(rr, wc - 1);
+          for (var r2 = dr + 1; r2 < nextDr; r2++) {
+            var name = str(r2, wc - 1);
             if (!name) continue;
-            if (name === '次数' || name === '组数' || name === '重量' || name === '%') continue;
-
-            var pct = sh.num(rr, wc);
-            var reps = sh.num(rr, wc + 1);
-            var sets = sh.num(rr, wc + 2);
-            if (pct != null && pct > 1) pct = pct / 100;
-
-            var wCell = sh.cell(rr, wc + 3);
-            var hasFormula = !!(wCell && wCell.f);
-            var cached = null;
-            if (wCell && typeof wCell.v === 'number' && isFinite(wCell.v)) cached = wCell.v;
-
-            var weight = null;
-            if (cached != null) weight = cached;
-            else if (hasFormula && pct != null) weight = Math.round(oneRM * pct * 100) / 100;
-
-            var estimated = false;
-            if (weight == null && pct != null && !BODYWEIGHT_RE.test(name)) {
-              weight = Math.round(oneRM * pct * 100) / 100;
-              estimated = true;
+            if (/^(次數|次数|組數|组数|重量|%|休息時間|休息时间)$/.test(name)) continue;
+            var pct = num(r2, wc);
+            var reps = decodeReps(num(r2, wc + 1) != null ? num(r2, wc + 1) : (cell(r2, wc + 1) && cell(r2, wc + 1).v));
+            var sets = num(r2, wc + 2);
+            var load;
+            if (pct != null) {
+              if (pct > 1) pct = pct / 100;
+              load = { type: 'percent1RM', value: Math.round(pct * 10000) / 10000 };
+            } else if (BODYWEIGHT_RE.test(name)) {
+              load = { type: 'bodyweight' };
+            } else {
+              load = { type: 'none' };
             }
-
-            var actual = weight == null ? null : roundToPlate(weight);
-            var note = null;
-            if (pct == null && sets == null) note = '原表无处方，自由发挥';
-            else if (estimated) note = '原表未填重量，按 ' + Math.round(pct * 100) + '% × 1RM 估算';
-            else if (weight == null) note = '自重动作，原表未给重量';
-
             items.push({
-              exercise: name,
+              name: name,
               sets: sets ? Math.round(sets) : null,
-              reps: reps ? Math.round(reps) : null,
-              pct: pct == null ? null : Math.round(pct * 10000) / 10000,
-              target: weight,
-              actual: actual,
-              plates: actual == null ? [] : platesOf(actual, bar),
-              estimated: estimated,
-              note: note
+              reps: reps,
+              load: load,
+              rest: null,
+              note: null
             });
           }
-
-          if (items.length) sessionList.push({ day: day, weekday: weekday, items: items });
-          else if (dayRaw) warnings.push('[' + sname + ' ' + weekLabel + ' ' + day + '] 该日没有动作数据');
+          if (items.length) sessions.push({ day: day, title: null, items: items });
         });
-
-        weeks.push({ week: 0, sheet: sname, label: weekLabel, sessions: sessionList });
+        weeks.push({ label: weekLabel || ('W' + (weeks.length + 1)), sessions: sessions });
       });
     });
 
-    // 重新连续编号
+    return { weeks: weeks, warnings: warnings };
+  }
+
+  /* ================= 适配器 B：Day 区块 + 列表头 ================= */
+  function adaptColumns(XLSX, wb, opts) {
+    var weeks = [];
+    var warnings = [];
+
+    wb.SheetNames.forEach(function (sname) {
+      if (/營養|营养|有氧/.test(sname)) return;
+      var ws = wb.Sheets[sname];
+      if (!ws || !ws['!ref']) return;
+      var range = XLSX.utils.decode_range(ws['!ref']);
+
+      function cell(r, c) {
+        if (r < 0 || c < 0) return null;
+        return ws[XLSX.utils.encode_cell({ r: r, c: c })] || null;
+      }
+      function str(r, c) {
+        var x = cell(r, c);
+        if (!x) return null;
+        if (x.t === 's' || typeof x.v === 'string') return cleanName(x.v);
+        return null;
+      }
+      function raw(r, c) { var x = cell(r, c); return x ? x.v : null; }
+      function num(r, c) {
+        var x = cell(r, c);
+        return (x && typeof x.v === 'number') ? x.v : null;
+      }
+
+      // 找所有表头行（含 組數/组数）
+      var headerRows = [];
+      for (var r = range.s.r; r <= range.e.r; r++) {
+        for (var c = range.s.c; c <= range.e.c; c++) {
+          var v = str(r, c);
+          if (v && /^(組數|组数)$/.test(v)) { headerRows.push(r); break; }
+        }
+      }
+      if (!headerRows.length) return;
+
+      var sessions = [];
+      headerRows.forEach(function (hr, hi) {
+        var cols = { sets: -1, reps: -1, load: -1, rest: -1, name: -1 };
+        for (var c = range.s.c; c <= range.e.c; c++) {
+          var v = str(hr, c);
+          if (!v) continue;
+          // 注意：10 週表里 "最後一組的 RPE" 也含 RPE 字样，
+          // 必须排除，否则会把真正的强度列覆盖成记录列。
+          if (/最後|最后/.test(v)) continue;
+          if (/^(組數|组数)$/.test(v)) { if (cols.sets < 0) cols.sets = c; }
+          else if (/^(次數|次数)$/.test(v)) { if (cols.reps < 0) cols.reps = c; }
+          else if (/強度|强度|%1RM/i.test(v)) { if (cols.load < 0) cols.load = c; }
+          else if (/休息/.test(v)) { if (cols.rest < 0) cols.rest = c; }
+        }
+        if (cols.sets < 0 || cols.reps < 0) return;
+        cols.name = cols.sets - 1;
+        if (cols.name < range.s.c) cols.name = range.s.c;
+
+        // Day 标签：向上找 A 列的 "Day N"
+        var day = null, title = null;
+        for (var rr = hr - 1; rr >= Math.max(0, hr - 8); rr--) {
+          var a = str(rr, range.s.c);
+          if (a && /Day\s*\d+|第[一二三四五六七八九十\d]+\s*[練练]/i.test(a)) {
+            day = a;
+            // 标题（如 "上半身"）：同行 Day 右侧最近的非空文本
+            for (var cc = range.s.c + 1; cc <= Math.min(range.s.c + 3, range.e.c); cc++) {
+              var t = str(rr, cc);
+              if (t && t !== day) { title = t; break; }
+            }
+            break;
+          }
+        }
+        if (!day) day = 'Day ' + (hi + 1);
+
+        var items = [];
+        for (var r2 = hr + 1; r2 <= range.e.r; r2++) {
+          var a2 = str(r2, range.s.c);
+          if (a2 && /^(開始時間|结束时间|結束時間|總組數|训练总时数|訓練總時數)/.test(a2)) break;
+          var name = str(r2, cols.name);
+          if (!name) continue;
+          if (/^(組數|组数|次數|次数)$/.test(name)) continue;
+
+          var sets = num(r2, cols.sets);
+          var reps = decodeReps(raw(r2, cols.reps));
+          var loadV = cols.load >= 0 ? raw(r2, cols.load) : null;
+          var load = toLoad(loadV);
+          if (load.type === 'none' && BODYWEIGHT_RE.test(name)) load = { type: 'bodyweight' };
+
+          items.push({
+            name: name,
+            sets: sets ? Math.round(sets) : null,
+            reps: reps,
+            load: load,
+            rest: cols.rest >= 0 ? parseRest(raw(r2, cols.rest)) : null,
+            note: null
+          });
+        }
+        if (items.length) sessions.push({ day: day, title: title, items: items });
+      });
+
+      if (!sessions.length) return;
+      weeks.push({ label: sname, sessions: sessions });
+    });
+
+    return { weeks: weeks, warnings: warnings };
+  }
+
+  /* ================= 适配器 C：文本表（按星期分列） ================= */
+  var SKIP_TXT = /^(休|休息|熱身與激活|热身与激活|第一練|第二練|第一练|第二练)$/;
+  var WEEKDAY_MAP_RE = /^周([一二三四五六日天])$/;
+
+  function splitTextItems(txt) {
+    var parts = txt.split(/(?=(?:^|[\s，,；;])\d{1,2}\s*[.、．])/);
+    parts = parts.map(function (x) { return x.trim(); }).filter(function (x) { return x.length > 1; });
+    return parts.length ? parts : [txt];
+  }
+
+  function makeItemFromText(txt) {
+    var inline = parseInline(txt);
+    return {
+      name: txt,
+      sets: inline.sets,
+      reps: inline.reps,
+      load: toLoad(txt),
+      rest: inline.rest,
+      note: null
+    };
+  }
+
+  function adaptText(XLSX, wb, opts) {
+    var weeks = [];
+    var warnings = [];
+
+    wb.SheetNames.forEach(function (sname) {
+      if (/營養|营养|有氧/.test(sname)) return;
+      var ws = wb.Sheets[sname];
+      if (!ws || !ws['!ref']) return;
+      var range = XLSX.utils.decode_range(ws['!ref']);
+
+      function str(r, c) {
+        var cell = ws[XLSX.utils.encode_cell({ r: r, c: c })];
+        if (!cell) return null;
+        return typeof cell.v === 'string' ? cleanName(cell.v) : null;
+      }
+
+      // 扫出周区块：{labelRow, weekLabel, headerRow, dayCols}
+      var blocks = [];
+      for (var r = range.s.r; r <= range.e.r; r++) {
+        var first = null, dayCols = {}, nDay = 0;
+        for (var c = range.s.c; c <= range.e.c; c++) {
+          var v = str(r, c);
+          if (!v) continue;
+          if (first === null) first = v;
+          if (WEEKDAY_MAP_RE.test(v)) { dayCols[c] = v; nDay++; }
+        }
+        if (first === null) continue;
+        if (/^第[一二三四五六七八九十\d]+周/.test(first)) {
+          blocks.push({ labelRow: r, weekLabel: first, headerRow: -1, dayCols: null });
+        } else if (nDay >= 3) {
+          if (!blocks.length) blocks.push({ labelRow: r, weekLabel: '导入内容', headerRow: -1, dayCols: null });
+          var b = blocks[blocks.length - 1];
+          b.headerRow = r;
+          b.dayCols = dayCols;
+        }
+      }
+
+      var made = false;
+      blocks.forEach(function (b, i) {
+        if (b.headerRow < 0) return;
+        var start = b.headerRow + 1;
+        var end = (i + 1 < blocks.length && blocks[i + 1].headerRow >= 0)
+          ? blocks[i + 1].labelRow
+          : range.e.r + 1;
+        if (end <= start) return;
+
+        var sessions = [];
+        Object.keys(b.dayCols).map(Number).sort(function (x, y) { return x - y; }).forEach(function (col) {
+          var day = b.dayCols[col].replace('天', '日');
+          var items = [];
+          for (var rr = start; rr < end; rr++) {
+            var txt = str(rr, col);
+            if (!txt || SKIP_TXT.test(txt)) continue;
+            splitTextItems(txt).forEach(function (part) {
+              if (SKIP_TXT.test(part)) return;
+              items.push(makeItemFromText(part));
+            });
+          }
+          if (items.length) sessions.push({ day: day, title: null, items: items });
+        });
+        if (sessions.length) {
+          weeks.push({ label: b.weekLabel, sessions: sessions });
+          made = true;
+        }
+      });
+
+      // 完全认不出结构 -> 整表拉平
+      if (!made) {
+        var flat = [];
+        for (var r2 = range.s.r; r2 <= range.e.r; r2++) {
+          for (var c2 = range.s.c; c2 <= range.e.c; c2++) {
+            var t = str(r2, c2);
+            if (!t || SKIP_TXT.test(t) || t.length < 2) continue;
+            if (/^(周[一二三四五六日天]|第[一二三四五六七八九十\d]+周)/.test(t)) continue;
+            flat.push(makeItemFromText(t));
+          }
+        }
+        if (flat.length) {
+          weeks.push({ label: sname, sessions: [{ day: '导入内容', title: null, items: flat }] });
+          warnings.push('「' + sname + '」没有识别出表格结构，已按文本顺序导入，请手动整理');
+        }
+      }
+    });
+
+    return { weeks: weeks, warnings: warnings };
+  }
+
+  /* ================= 入口 ================= */
+  function extractPlan(XLSX, workbook, opts) {
+    opts = opts || {};
+    workbook.__XLSX = XLSX;
+
+    var fmt = opts.forceFormat || detectFormat(workbook);
+    var result;
+    if (fmt === 'matrix') result = adaptMatrix(XLSX, workbook, opts);
+    else if (fmt === 'columns') result = adaptColumns(XLSX, workbook, opts);
+    else result = adaptText(XLSX, workbook, opts);
+
+    // 过滤掉没有动作的周，并重新编号
+    var weeks = result.weeks.filter(function (w) { return w.sessions && w.sessions.length; });
     weeks.forEach(function (w, i) { w.week = i + 1; });
 
+    if (!weeks.length) throw new Error('没有从这个文件里解析出任何训练内容');
+
     return {
+      version: 2,
       planName: opts.planName || '导入的计划',
-      oneRM: oneRM,
-      bar: bar,
-      totalWeeks: weeks.length,
+      format: fmt,
+      sourceFile: opts.fileName || null,
+      createdAt: new Date().toISOString(),
       weeks: weeks,
-      warnings: warnings,
-      importedAt: new Date().toISOString()
+      warnings: result.warnings || []
     };
   }
 
   return {
     extractPlan: extractPlan,
-    platesOf: platesOf,
-    roundToPlate: roundToPlate,
-    BAR_KG: BAR_KG,
-    PLATE_SET: PLATE_SET
+    detectFormat: detectFormat,
+    decodeReps: decodeReps,
+    parseRest: parseRest,
+    toLoad: toLoad
   };
 });
 </script>
 <script>
-
-/* ==================== 存储 ==================== */
-const K_PROG = 'lixun.progress.v1';
-const K_SET  = 'lixun.settings.v1';
+/* ============================================================
+ * 存储
+ * ========================================================== */
+const K_PLAN = 'lixun.plan.v2';
+const K_REFS = 'lixun.refs.v1';
+const K_SET  = 'lixun.settings.v2';
+const K_PROG = 'lixun.progress.v2';
 
 function loadJSON(k, def){
   try{ const s = localStorage.getItem(k); return s ? JSON.parse(s) : def; }
@@ -472,26 +828,165 @@ function saveJSON(k, v){
   try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){}
 }
 
-const K_PLAN = 'lixun.plan.v1';
-let PLAN = loadJSON(K_PLAN, null);
-if(!PLAN || !Array.isArray(PLAN.weeks) || !PLAN.weeks.length) PLAN = DEFAULT_PLAN;
-
-let progress = loadJSON(K_PROG, {});
-let settings = loadJSON(K_SET, null);
-
 function todayISO(){
   const d = new Date();
   d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
   return d.toISOString().slice(0,10);
 }
-if(!settings || !settings.startDate){
-  settings = Object.assign({ startDate: todayISO(), restSec: 90, barKg: 20 }, settings || {});
-  saveJSON(K_SET, settings);
-}
-if(settings.barKg == null) settings.barKg = 20;
-if(settings.restSec == null) settings.restSec = 90;
 
-/* ==================== 状态 ==================== */
+/* ============================================================
+ * 状态
+ * ========================================================== */
+let PLAN = loadJSON(K_PLAN, null);
+if(!PLAN || PLAN.version !== 2 || !Array.isArray(PLAN.weeks) || !PLAN.weeks.length){
+  PLAN = JSON.parse(JSON.stringify(DEFAULT_PLAN));
+}
+let REFS = loadJSON(K_REFS, {});
+let settings = Object.assign(
+  { startDate: todayISO(), restSec: 120, barKg: 20, rounding: 2.5, roundMode: 'floor' },
+  loadJSON(K_SET, {})
+);
+let progress = loadJSON(K_PROG, {});
+
+/* 给每个条目一个稳定 uid，保证编辑后打卡记录不串 */
+let uidSeq = 1;
+function ensureUids(){
+  PLAN.weeks.forEach((w, wi) => w.sessions.forEach((s, si) => s.items.forEach((it, ii) => {
+    if(!it.uid) it.uid = 'u' + (uidSeq++);
+  })));
+}
+ensureUids();
+
+const $ = id => document.getElementById(id);
+
+function toast(msg){
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._tm);
+  t._tm = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ============================================================
+ * 重量计算
+ * ========================================================== */
+const PLATE_SET = [20,15,10,5,2.5,1.25];
+
+function snap(kg){
+  if(kg == null) return null;
+  const step = Math.max(0.5, settings.rounding || 2.5);
+  const n = settings.roundMode === 'nearest'
+    ? Math.round(kg / step) * step
+    : Math.floor(kg / step) * step;
+  return Math.round(n * 100) / 100;
+}
+
+function platesOf(total){
+  const bar = settings.barKg == null ? 20 : settings.barKg;
+  if(total == null || total < bar) return null;
+  let per = (total - bar) / 2;
+  const out = [];
+  for(const p of PLATE_SET){
+    while(per >= p - 1e-9){ out.push(p); per -= p; }
+  }
+  if(per > 1e-9) return null;
+  return out;
+}
+
+function repsMid(reps){
+  if(reps == null) return 8;
+  const nums = String(reps).match(/\d+/g);
+  if(!nums || !nums.length) return 8;
+  const vals = nums.map(Number);
+  return vals.length >= 2 ? (vals[0] + vals[1]) / 2 : vals[0];
+}
+
+// 单位统一：1RM 反推 RM 重量（Epley）
+function weightFromRM(oneRM, reps){
+  return oneRM / (1 + reps / 30);
+}
+
+const TYPE_LABEL = {
+  percent1RM: '%1RM', rm: 'RM', kg: 'kg', kgRange: 'kg区间',
+  rpe: 'RPE', bodyweight: '自重', amap: '力竭', timed: '计时', none: '—'
+};
+
+/**
+ * 解析一个条目的重量
+ * 返回 { kg, text, detail, plates, need, tag, cls }
+ */
+function resolveLoad(item){
+  const L = item.load || { type: 'none' };
+  const ref = REFS[item.name] || {};
+  const base = { tag: TYPE_LABEL[L.type] || '', cls: 'none', kg: null, detail: '', plates: null };
+
+  if(L.type === 'percent1RM'){
+    const pct = Math.round((L.value || 0) * 100);
+    base.text = pct + '%';
+    base.cls = 'pct';
+    if(ref.oneRM != null){
+      base.kg = snap(ref.oneRM * L.value);
+      base.detail = ref.oneRM + ' × ' + pct + '%';
+      base.plates = platesOf(base.kg);
+    } else {
+      base.need = 'oneRM';
+    }
+    return base;
+  }
+
+  if(L.type === 'rm'){
+    base.text = String(L.value || '');
+    base.cls = 'rm';
+    if(ref.work != null){
+      base.kg = snap(ref.work);
+      base.detail = '做组重量';
+      base.plates = platesOf(base.kg);
+    } else if(ref.oneRM != null){
+      base.kg = snap(weightFromRM(ref.oneRM, repsMid(L.value)));
+      base.detail = '估自 1RM ' + ref.oneRM;
+      base.plates = platesOf(base.kg);
+    } else {
+      base.need = 'work';
+    }
+    return base;
+  }
+
+  if(L.type === 'kg'){
+    base.tag = '';
+    base.text = L.value + ' kg';
+    base.cls = 'pct';
+    base.kg = snap(L.value);
+    base.plates = platesOf(base.kg);
+    return base;
+  }
+
+  if(L.type === 'kgRange'){
+    base.tag = '';
+    base.text = L.value + ' kg';
+    base.cls = 'pct';
+    return base;
+  }
+
+  if(L.type === 'rpe'){
+    // RPE 是主观强度，不是重量：只在标签里显示，右侧不摆数字
+    base.tag = 'RPE ' + L.value;
+    base.text = '';
+    base.cls = 'rpe';
+    return base;
+  }
+
+  if(L.type === 'bodyweight'){ base.tag = ''; base.text = '自重'; base.cls = 'bw'; return base; }
+  if(L.type === 'amap'){ base.tag = ''; base.text = '力竭'; base.cls = 'bw'; return base; }
+  if(L.type === 'timed'){ base.tag = ''; base.text = L.value || '计时'; base.cls = 'bw'; return base; }
+
+  base.text = '';
+  base.cls = 'none';
+  return base;
+}
+
+/* ============================================================
+ * 周 / 日 状态
+ * ========================================================== */
 const todayWeekday = new Date().getDay() === 0 ? 7 : new Date().getDay();
 
 function weekIndexFromDate(){
@@ -502,52 +997,61 @@ function weekIndexFromDate(){
   return Math.max(0, Math.min(PLAN.weeks.length - 1, w - 1));
 }
 
-let state = { w: weekIndexFromDate(), d: 0 };
+let state = { w: weekIndexFromDate(), d: 0, edit: false };
 
 function sessionsOf(wi){ return PLAN.weeks[wi].sessions; }
+function dayWeekday(dayName){
+  const m = /周([一二三四五六日天])/.exec(dayName || '');
+  if(m) return '一二三四五六日'.indexOf(m[1]) + 1 || 7;
+  const m2 = /星期([一二三四五六日天])/.exec(dayName || '');
+  if(m2) return '一二三四五六日'.indexOf(m2[1]) + 1 || 7;
+  return null;
+}
 
 (function pickDay(){
   const ss = sessionsOf(state.w);
-  let idx = ss.findIndex(s => s.weekday === todayWeekday);
+  let idx = ss.findIndex(s => dayWeekday(s.day) === todayWeekday);
   if(idx < 0){
-    idx = ss.findIndex(s => s.weekday && s.weekday > todayWeekday);
+    idx = ss.findIndex(s => { const wd = dayWeekday(s.day); return wd && wd > todayWeekday; });
     if(idx < 0) idx = 0;
   }
   state.d = Math.max(0, idx);
 })();
 
-/* ==================== 重量 / 杠铃片 ==================== */
-const PLATE_SET = [20,15,10,5,2.5,1.25];
-function platesOf(total, bar){
-  if(total == null || total < bar) return null;
-  let per = (total - bar) / 2;
-  const out = [];
-  for(const p of PLATE_SET){
-    while(per >= p - 1e-9){ out.push(p); per -= p; }
-  }
-  if(per > 1e-9) return null;
-  return out;
-}
-function fmtNum(n){
-  if(n == null) return '-';
-  return Number.isInteger(n) ? String(n) : String(Math.round(n*100)/100);
-}
-
-/* ==================== 渲染 ==================== */
-const $ = id => document.getElementById(id);
-
-function setKey(w,d,i,s){ return `${w}-${d}-${i}-${s}`; }
+/* ============================================================
+ * 进度
+ * ========================================================== */
+function setKey(wi, di, uid, si){ return wi + '.' + di + '.' + uid + '.' + si; }
 function itemSets(it){ return it.sets && it.sets > 0 ? it.sets : 1; }
-function itemDoneCount(w,d,i,it){
-  const n = itemSets(it);
-  let c = 0;
-  for(let s=0; s<n; s++) if(progress[setKey(w,d,i,s)]) c++;
+function itemDone(wi, di, it){
+  const n = itemSets(it); let c = 0;
+  for(let s = 0; s < n; s++) if(progress[setKey(wi, di, it.uid, s)]) c++;
   return c;
 }
+function sessionProgress(wi, di){
+  const s = sessionsOf(wi)[di];
+  if(!s) return { done: 0, total: 0 };
+  let done = 0, total = 0;
+  s.items.forEach(it => { total += itemSets(it); done += itemDone(wi, di, it); });
+  return { done, total };
+}
+function overallProgress(){
+  let done = 0, total = 0;
+  PLAN.weeks.forEach((w, wi) => w.sessions.forEach((s, di) => {
+    const p = sessionProgress(wi, di); done += p.done; total += p.total;
+  }));
+  return { done, total };
+}
+function weekFullyDone(wi){
+  return sessionsOf(wi).every((_, di) => { const p = sessionProgress(wi, di); return p.total > 0 && p.done === p.total; });
+}
 
+/* ============================================================
+ * 渲染
+ * ========================================================== */
 function renderAll(){
-  $('planTitle').textContent = PLAN.planName;
-  $('oneRM').textContent = fmtNum(PLAN.oneRM);
+  $('planTitle').textContent = PLAN.planName || '力训计划';
+  $('planSub').textContent = PLAN.weeks.length + ' 周 · ' + PLAN.weeks.reduce((a,w)=>a+w.sessions.length,0) + ' 训练日';
   renderWeekBar();
   renderDayBar();
   renderMain();
@@ -560,13 +1064,12 @@ function renderWeekBar(){
   PLAN.weeks.forEach((wk, wi) => {
     const b = document.createElement('button');
     b.className = 'chip' + (wi === state.w ? ' active' : '');
-    const doneW = weekFullyDone(wi);
-    b.innerHTML = `第${wi+1}周${doneW ? '<span class="dot">✓</span>' : ''}`;
-    b.onclick = () => { state.w = wi; state.d = 0; renderAll(); window.scrollTo({top:0}); };
+    b.innerHTML = `第${wi+1}周${weekFullyDone(wi) ? '<span class="dot">✓</span>' : ''}`;
+    b.onclick = () => { state.w = wi; state.d = 0; renderAll(); window.scrollTo({ top: 0 }); };
     bar.appendChild(b);
   });
   const act = bar.querySelector('.chip.active');
-  if(act) act.scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'});
+  if(act) act.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
 }
 
 function renderDayBar(){
@@ -574,11 +1077,11 @@ function renderDayBar(){
   bar.innerHTML = '';
   sessionsOf(state.w).forEach((s, di) => {
     const b = document.createElement('button');
-    const isToday = (state.w === weekIndexFromDate()) && s.weekday === todayWeekday;
+    const isToday = (state.w === weekIndexFromDate()) && dayWeekday(s.day) === todayWeekday;
     b.className = 'chip daychip' + (di === state.d ? ' active' : '');
-    const pct = sessionProgress(state.w, di);
-    const mark = pct.done === pct.total && pct.total > 0 ? '<span class="dot">✓</span>' : '';
-    b.innerHTML = `${s.day}${isToday ? ' · 今天' : ''}${mark}`;
+    const p = sessionProgress(state.w, di);
+    const mark = (p.total > 0 && p.done === p.total) ? '<span class="dot">✓</span>' : '';
+    b.innerHTML = (s.day || ('第' + (di+1) + '天')) + (isToday ? ' · 今天' : '') + mark;
     b.onclick = () => { state.d = di; renderMain(); renderDayBar(); };
     bar.appendChild(b);
   });
@@ -587,257 +1090,408 @@ function renderDayBar(){
 function renderMain(){
   const main = $('main');
   const wi = state.w;
-  const ss = sessionsOf(wi);
-  const s = ss[state.d];
+  const s = sessionsOf(wi)[state.d];
   main.innerHTML = '';
   if(!s){ main.innerHTML = '<div class="empty">这一周没有训练日</div>'; return; }
 
-  const totalSets = s.items.reduce((a,it)=>a+itemSets(it),0);
-  let doneSets = 0;
-  s.items.forEach((it,i)=> doneSets += itemDoneCount(wi, state.d, i, it));
-
+  const p = sessionProgress(wi, state.d);
   const head = document.createElement('div');
   head.className = 'sesshead';
-  head.innerHTML = `<h2>第${wi+1}周 · ${s.day}</h2><div class="cnt">${s.items.length} 个动作 · ${doneSets}/${totalSets} 组</div>`;
+  head.innerHTML = '<h2>' + (s.day || '训练') + (s.title ? ' · ' + escapeHtml(s.title) : '') + '</h2>'
+                 + '<div class="cnt">' + s.items.length + ' 个动作 · ' + p.done + '/' + p.total + ' 组</div>';
   main.appendChild(head);
 
-  s.items.forEach((it, i) => {
-    const card = document.createElement('div');
-    card.className = 'item';
-    const done = itemDoneCount(wi, state.d, i, it);
-    if(done === itemSets(it)) card.classList.add('done');
+  s.items.forEach((it, ii) => main.appendChild(renderItem(it, ii, wi)));
 
-    const pctTxt = it.pct != null ? `<span class="pct">${Math.round(it.pct*100)}%</span>` : '';
-    const setsReps = (it.sets && it.reps) ? `${it.sets}组 × ${it.reps}次` : (it.sets ? `${it.sets}组` : '自选');
+  const add = document.createElement('button');
+  add.className = 'addbtn';
+  add.textContent = '+ 添加动作';
+  add.onclick = () => openItemEditor(null, wi, state.d);
+  main.appendChild(add);
+}
 
-    let wtHtml = '';
-    if(it.actual != null){
-      const plates = platesOf(it.actual, settings.barKg);
-      const plateTxt = plates ? `每侧 ${plates.map(fmtNum).join(' + ')} kg` : '每侧片数算不出';
-      const tgt = it.estimated
-        ? `<div class="tgt" style="color:var(--warn)">估算 ${fmtNum(it.target)} kg</div>`
-        : ((it.target != null && Math.abs(it.target - it.actual) > 1e-9)
-            ? `<div class="tgt">表内 <s>${fmtNum(it.target)}</s> kg</div>` : '');
-      wtHtml = `<div class="wt">
-          <div class="big">${fmtNum(it.actual)}<small>kg</small></div>
-          ${tgt}
-          <div class="plates">${plateTxt}</div>
-        </div>`;
-    } else {
-      wtHtml = `<div class="wt"><div class="big" style="font-size:15px;color:var(--dim)">自重</div></div>`;
-    }
+function renderItem(it, ii, wi){
+  const di = state.d;
+  const r = resolveLoad(it);
+  const card = document.createElement('div');
+  card.className = 'item';
+  const done = itemDone(wi, di, it);
+  if(done === itemSets(it)) card.classList.add('done');
+  if(r.need) card.classList.add('need');
 
-    card.innerHTML = `
-      <div class="row1">
-        <div>
-          <div class="ex">${escapeHtml(it.exercise)}</div>
-          <div class="meta">${setsReps} ${pctTxt}</div>
-        </div>
-        ${wtHtml}
-      </div>`;
+  const repsTxt = it.reps ? String(it.reps) : '';
+  const setsTxt = it.sets ? it.sets + '组' : '';
+  const metaParts = [];
+  if(setsTxt) metaParts.push(setsTxt);
+  if(repsTxt) metaParts.push(repsTxt + '次');
+  if(r.tag) metaParts.push('<span class="tag ' + r.cls + '">' + escapeHtml(r.tag) + (r.text ? ' ' + escapeHtml(r.text) : '') + '</span>');
 
-    if(it.note){
-      const n = document.createElement('div');
-      n.className = 'note';
-      n.textContent = it.note;
-      card.appendChild(n);
-    }
+  let wtHtml = '';
+  if(r.need){
+    wtHtml = '<div class="wt"><div class="ask">待填</div><div class="tgt">' + (r.need === 'oneRM' ? '需 1RM' : '需做组重量') + '</div></div>';
+  } else if(r.kg != null){
+    const pl = r.plates;
+    wtHtml = '<div class="wt">'
+      + '<div class="big">' + fmtNum(r.kg) + '<small>kg</small></div>'
+      + (r.detail ? '<div class="tgt">' + escapeHtml(r.detail) + '</div>' : '')
+      + (pl ? '<div class="plates">每侧 ' + pl.map(fmtNum).join('+') + '</div>' : '')
+      + '</div>';
+  } else if(r.text){
+    wtHtml = '<div class="wt"><div class="big" style="font-size:15px;color:var(--dim)">' + escapeHtml(r.text) + '</div></div>';
+  }
 
-    const setsWrap = document.createElement('div');
-    setsWrap.className = 'sets';
-    const n = itemSets(it);
-    for(let si=0; si<n; si++){
-      const btn = document.createElement('button');
-      btn.className = 'setbtn' + (progress[setKey(wi, state.d, i, si)] ? ' on' : '');
-      btn.textContent = (it.sets ? si+1 : '完成');
-      if(!it.sets) btn.classList.add('wide');
-      btn.onclick = () => toggleSet(wi, state.d, i, si, it);
-      setsWrap.appendChild(btn);
-    }
-    card.appendChild(setsWrap);
+  card.innerHTML =
+    '<div class="row1">'
+    + '<div style="min-width:0"><div class="ex">' + escapeHtml(it.name) + '</div>'
+    + '<div class="meta">' + metaParts.join(' ') + '</div></div>'
+    + wtHtml + '</div>';
 
-    if(done === itemSets(it)){
-      const c = document.createElement('div');
-      c.className = 'celebrate';
-      c.style.padding = '6px 0 0';
-      c.style.fontSize = '12px';
-      c.textContent = '已完成';
-      card.appendChild(c);
-    }
+  if(it.note){
+    const n = document.createElement('div');
+    n.className = 'note'; n.textContent = it.note;
+    card.appendChild(n);
+  }
 
-    main.appendChild(card);
-  });
+  // 缺参考重量时，整张卡可点，直接跳到参考重量页
+  if(r.need){
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (ev) => {
+      if(ev.target.closest('.setbtn')) return;
+      openRefs();
+    });
+  }
 
-  const tools = document.createElement('div');
-  tools.className = 'tools';
-  const t0 = document.createElement('button');
-  t0.className = 'tool'; t0.textContent = '📥 导入 Excel';
-  t0.onclick = () => $('fileInput').click();
-  const t1 = document.createElement('button');
-  t1.className = 'tool'; t1.textContent = '⚙ 设置';
-  t1.onclick = openSettings;
-  const t2 = document.createElement('button');
-  t2.className = 'tool'; t2.textContent = '↺ 清空本日';
-  t2.onclick = () => clearSession(wi, state.d);
-  tools.appendChild(t0); tools.appendChild(t1); tools.appendChild(t2);
-  main.appendChild(tools);
+  const setsWrap = document.createElement('div');
+  setsWrap.className = 'sets';
+  const n = itemSets(it);
+  for(let si = 0; si < n; si++){
+    const b = document.createElement('button');
+    b.className = 'setbtn' + (progress[setKey(wi, di, it.uid, si)] ? ' on' : '');
+    b.textContent = it.sets ? (si + 1) : '完成';
+    if(!it.sets) b.classList.add('wide');
+    b.onclick = () => toggleSet(wi, di, it, si);
+    setsWrap.appendChild(b);
+  }
+  card.appendChild(setsWrap);
+
+  if(state.edit){
+    const row = document.createElement('div');
+    row.className = 'editrow';
+    const e = document.createElement('button');
+    e.className = 'ebtn'; e.textContent = '✏️ 编辑这个动作';
+    e.onclick = () => openItemEditor(it, wi, di);
+    const d = document.createElement('button');
+    d.className = 'ebtn danger'; d.textContent = '删除';
+    d.onclick = () => {
+      if(!confirm('删除「' + it.name + '」？')) return;
+      sessionsOf(wi)[di].items.splice(ii, 1);
+      savePlan(); renderMain(); renderWeekBar(); renderProgress();
+    };
+    row.appendChild(e); row.appendChild(d);
+    card.appendChild(row);
+  }
+
+  if(done === itemSets(it) && itemSets(it) > 1){
+    const c = document.createElement('div');
+    c.style.cssText = 'text-align:center;padding:6px 0 0;color:var(--ok);font-weight:700;font-size:12px';
+    c.textContent = '已完成';
+    card.appendChild(c);
+  }
+  return card;
+}
+
+function renderProgress(){
+  const { done, total } = overallProgress();
+  $('totalProg').textContent = '完成 ' + done + ' / ' + total + ' 组';
+  $('progBar').style.width = total ? (done / total * 100).toFixed(2) + '%' : '0%';
+  const isCur = state.w === weekIndexFromDate();
+  const hasToday = isCur && sessionsOf(state.w).some(s => dayWeekday(s.day) === todayWeekday);
+  $('todayTag').textContent = isCur ? (hasToday ? '今天有训练' : '今天休息') : '';
 }
 
 function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 }
-
-function sessionProgress(wi, di){
-  const s = sessionsOf(wi)[di];
-  if(!s) return {done:0,total:0};
-  let done=0,total=0;
-  s.items.forEach((it,i)=>{ total += itemSets(it); done += itemDoneCount(wi,di,i,it); });
-  return {done,total};
-}
-function weekFullyDone(wi){
-  return sessionsOf(wi).every((_,di)=>{ const p = sessionProgress(wi,di); return p.total>0 && p.done===p.total; });
-}
-function overallProgress(){
-  let done=0,total=0;
-  PLAN.weeks.forEach((_,wi)=> sessionsOf(wi).forEach((_,di)=>{
-    const p = sessionProgress(wi,di); done += p.done; total += p.total;
-  }));
-  return {done,total};
-}
-function renderProgress(){
-  const {done,total} = overallProgress();
-  $('totalProg').textContent = `完成 ${done} / ${total} 组`;
-  $('progBar').style.width = total ? (done/total*100).toFixed(2)+'%' : '0%';
-  const isCurWeek = state.w === weekIndexFromDate();
-  const todaySess = isCurWeek && sessionsOf(state.w).some(s=>s.weekday===todayWeekday);
-  $('todayTag').textContent = isCurWeek ? (todaySess ? '今天有训练' : '今天休息') : '';
+function fmtNum(n){
+  if(n == null) return '-';
+  return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100);
 }
 
-/* ==================== 交互 ==================== */
-function toggleSet(wi, di, i, si, it){
-  const k = setKey(wi, di, i, si);
-  if(progress[k]){
-    delete progress[k];
-    saveJSON(K_PROG, progress);
-    renderAll();
-    return;
-  }
+/* ============================================================
+ * 打卡
+ * ========================================================== */
+function toggleSet(wi, di, it, si){
+  const k = setKey(wi, di, it.uid, si);
+  if(progress[k]){ delete progress[k]; saveJSON(K_PROG, progress); renderAll(); return; }
   progress[k] = Date.now();
   saveJSON(K_PROG, progress);
   renderAll();
-  startRest(settings.restSec);
+  startRest((it.rest && it.rest > 0) ? it.rest : settings.restSec);
 }
 
-function clearSession(wi, di){
-  if(!confirm('清空这一天的所有打卡记录？')) return;
-  const s = sessionsOf(wi)[di];
-  s.items.forEach((it,i)=>{ for(let si=0; si<itemSets(it); si++) delete progress[setKey(wi,di,i,si)]; });
-  saveJSON(K_PROG, progress);
-  renderAll();
-}
-
-/* ==================== 组间歇计时器 ==================== */
+/* ============================================================
+ * 组间歇
+ * ========================================================== */
 let rest = { endAt: 0, total: 0, timer: null, wakeLock: null, audioCtx: null };
 
 function startRest(sec){
   rest.total = sec;
-  rest.endAt = Date.now() + sec*1000;
+  rest.endAt = Date.now() + sec * 1000;
   document.body.classList.add('resting');
   $('rest').classList.add('show');
   updateRest();
   clearInterval(rest.timer);
-  rest.timer = setInterval(() => {
-    updateRest();
-    if(Date.now() >= rest.endAt) finishRest();
-  }, 100);
+  rest.timer = setInterval(() => { updateRest(); if(Date.now() >= rest.endAt) finishRest(); }, 100);
   requestWakeLock();
 }
-
 function updateRest(){
-  const left = Math.max(0, (rest.endAt - Date.now())/1000);
-  const m = Math.floor(left/60), s = Math.floor(left%60);
+  const left = Math.max(0, (rest.endAt - Date.now()) / 1000);
+  const m = Math.floor(left / 60), s = Math.floor(left % 60);
   const el = $('clock');
-  el.innerHTML = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}<small>休息</small>`;
+  el.innerHTML = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + '<small>休息</small>';
   el.classList.toggle('low', left <= 10);
-  const ratio = rest.total ? left/rest.total : 0;
   const tr = $('restTrack');
-  tr.style.width = (ratio*100).toFixed(1) + '%';
+  tr.style.width = (rest.total ? left / rest.total * 100 : 0).toFixed(1) + '%';
   tr.classList.toggle('low', left <= 10);
-  $('restLabel').textContent = left > 0
-    ? `组间歇 · 共 ${rest.total}s`
-    : '休息结束，该下一组了！';
 }
-
 function finishRest(){
-  clearInterval(rest.timer);
-  rest.timer = null;
-  updateRest();
+  clearInterval(rest.timer); rest.timer = null; updateRest();
   beep();
   if(navigator.vibrate) navigator.vibrate([200,100,200,100,350]);
   document.body.classList.add('flash');
-  setTimeout(()=>document.body.classList.remove('flash'), 1200);
+  setTimeout(() => document.body.classList.remove('flash'), 1200);
   releaseWakeLock();
-  setTimeout(()=>{
-    $('rest').classList.remove('show');
-    document.body.classList.remove('resting');
-  }, 4000);
+  setTimeout(() => { $('rest').classList.remove('show'); document.body.classList.remove('resting'); }, 3000);
 }
-
 function beep(){
   try{
-    if(!rest.audioCtx) rest.audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+    if(!rest.audioCtx) rest.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const ctx = rest.audioCtx;
     if(ctx.state === 'suspended') ctx.resume();
     [0, 0.22, 0.44].forEach(t => {
       const o = ctx.createOscillator(), g = ctx.createGain();
       o.type = 'sine'; o.frequency.value = 880;
       g.gain.setValueAtTime(0.0001, ctx.currentTime + t);
-      g.gain.exponentialRampToValueAtTime(0.28, ctx.currentTime + t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.3, ctx.currentTime + t + 0.02);
       g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + t + 0.16);
       o.connect(g); g.connect(ctx.destination);
       o.start(ctx.currentTime + t); o.stop(ctx.currentTime + t + 0.18);
     });
   }catch(e){}
 }
-
 async function requestWakeLock(){
-  try{
-    if('wakeLock' in navigator && !rest.wakeLock){
-      rest.wakeLock = await navigator.wakeLock.request('screen');
-    }
-  }catch(e){}
+  try{ if('wakeLock' in navigator && !rest.wakeLock) rest.wakeLock = await navigator.wakeLock.request('screen'); }catch(e){}
 }
 function releaseWakeLock(){
   try{ if(rest.wakeLock){ rest.wakeLock.release(); rest.wakeLock = null; } }catch(e){}
 }
-
 $('plus15').onclick = () => { rest.endAt += 15000; rest.total += 15; updateRest(); };
 $('minus15').onclick = () => { rest.endAt -= 15000; updateRest(); if(Date.now() >= rest.endAt) finishRest(); };
 $('skip').onclick = () => {
-  clearInterval(rest.timer); rest.timer = null;
-  releaseWakeLock();
-  $('rest').classList.remove('show');
-  document.body.classList.remove('resting');
+  clearInterval(rest.timer); rest.timer = null; releaseWakeLock();
+  $('rest').classList.remove('show'); document.body.classList.remove('resting');
 };
 
-document.addEventListener('visibilitychange', () => {
-  if(document.visibilityState === 'visible' && rest.timer) updateRest();
-});
+/* ============================================================
+ * 参考重量
+ * ========================================================== */
+function collectExerciseNames(){
+  const seen = new Map();
+  const add = n => { if(n && !seen.has(n)) seen.set(n, { name: n, uses: [] }); };
+  PLAN.weeks.forEach((w, wi) => w.sessions.forEach((s, si) => s.items.forEach(it => {
+    add(it.name);
+    if(it.name) seen.get(it.name).uses.push(it.load && it.load.type);
+  })));
+  Object.keys(REFS).forEach(add);
+  return Array.from(seen.values());
+}
 
-/* ==================== Excel 导入 ==================== */
+function refStatus(name){
+  const ref = REFS[name] || {};
+  const edges = collectExerciseNames().find(x => x.name === name);
+  const types = edges ? edges.uses : [];
+  const needsOneRM = types.includes('percent1RM');
+  const needsWork = types.includes('rm');
+  let needOne = needsOneRM && ref.oneRM == null;
+  let needWork = needsWork && ref.work == null && ref.oneRM == null;
+  return { needOne, needWork, ok: !needOne && !needWork };
+}
+
+function renderRefs(){
+  const list = $('refsList');
+  list.innerHTML = '';
+  const names = collectExerciseNames();
+
+  let missing = 0;
+  names.forEach(x => { const st = refStatus(x.name); if(!st.ok) missing++; });
+  $('refsHint').innerHTML = missing
+    ? '共 <b style="color:var(--txt)">' + names.length + '</b> 个动作，其中 <b style="color:var(--warn)">' + missing + '</b> 个还没填参考重量。<br>填了 1RM 就能按百分比自动算；只填「做组重量」也可以。'
+    : '共 <b style="color:var(--txt)">' + names.length + '</b> 个动作，参考重量都齐了 ✓';
+
+  if(!names.length){
+    list.innerHTML = '<div class="empty">计划里还没有动作</div>';
+    return;
+  }
+
+  names.forEach(x => {
+    const ref = REFS[x.name] || {};
+    const st = refStatus(x.name);
+    const row = document.createElement('div');
+    row.className = 'field';
+    row.innerHTML =
+      '<div class="dotstat ' + (st.ok ? 'ok' : 'miss') + '"></div>'
+      + '<label title="' + escapeHtml(x.name) + '">' + escapeHtml(x.name.length > 14 ? x.name.slice(0, 14) + '…' : x.name) + '</label>'
+      + '<input type="number" step="0.5" placeholder="1RM" value="' + (ref.oneRM != null ? ref.oneRM : '') + '" data-name="' + escapeHtml(x.name) + '" data-field="oneRM">'
+      + '<input type="number" step="0.5" placeholder="做组" value="' + (ref.work != null ? ref.work : '') + '" data-name="' + escapeHtml(x.name) + '" data-field="work">';
+
+    row.querySelectorAll('input').forEach(inp => {
+      inp.onchange = () => {
+        const nm = inp.getAttribute('data-name');
+        const f = inp.getAttribute('data-field');
+        REFS[nm] = REFS[nm] || {};
+        const v = inp.value.trim();
+        REFS[nm][f] = v === '' ? null : parseFloat(v);
+        saveJSON(K_REFS, REFS);
+        renderRefs();
+        renderMain();
+      };
+    });
+    list.appendChild(row);
+  });
+
+  $('gBar').value = settings.barKg;
+  $('gRound').value = settings.rounding;
+  $('gMode').value = settings.roundMode;
+}
+
+function openRefs(){ renderRefs(); $('refsSheet').classList.add('show'); }
+function closeRefs(){ $('refsSheet').classList.remove('show'); renderAll(); }
+
+$('navRefs').onclick = openRefs;
+$('refsClose').onclick = closeRefs;
+$('addRef').onclick = () => {
+  const name = prompt('动作名称');
+  if(!name) return;
+  REFS[name.trim()] = REFS[name.trim()] || {};
+  saveJSON(K_REFS, REFS);
+  renderRefs();
+};
+$('gBar').onchange = e => { settings.barKg = parseFloat(e.target.value) || 20; saveSettings(); };
+$('gRound').onchange = e => { settings.rounding = parseFloat(e.target.value) || 2.5; saveSettings(); };
+$('gMode').onchange = e => { settings.roundMode = e.target.value; saveSettings(); };
+
+function saveSettings(){ saveJSON(K_SET, settings); renderRefs(); renderMain(); }
+function savePlan(){ saveJSON(K_PLAN, PLAN); }
+
+/* ============================================================
+ * 条目编辑
+ * ========================================================== */
+let editing = { item: null, wi: 0, di: 0, isNew: false };
+
+function openItemEditor(item, wi, di){
+  editing = { item: item, wi: wi, di: di, isNew: !item };
+  const it = item || { name: '', sets: 3, reps: '', load: { type: 'none' }, rest: null, note: null };
+  $('itemDlgTitle').textContent = item ? '编辑动作' : '添加动作';
+  $('iName').value = it.name || '';
+  $('iSets').value = it.sets == null ? '' : it.sets;
+  $('iReps').value = it.reps == null ? '' : it.reps;
+  $('iType').value = (it.load && it.load.type) || 'none';
+  $('iValue').value = (it.load && it.load.value != null) ? it.load.value : '';
+  $('iRest').value = it.rest || '';
+  $('iNote').value = it.note || '';
+  $('iDelete').style.display = item ? '' : 'none';
+  syncEditorValue();
+  $('itemDlg').showModal();
+}
+
+function syncEditorValue(){
+  const t = $('iType').value;
+  const wrap = $('iValueWrap');
+  const label = $('iValueLabel');
+  const map = {
+    percent1RM: ['百分比（0.8 表示 80%）', true, '0.8'],
+    rm: ['RM 次数（如 8-12）', true, '8-12'],
+    kg: ['公斤数', true, '60'],
+    kgRange: ['区间（如 2.5~10）', true, '2.5~10'],
+    rpe: ['RPE 数值（如 9）', true, '9'],
+    timed: ['时间（如 45秒）', true, '45秒'],
+    bodyweight: ['', false, ''],
+    amap: ['', false, ''],
+    none: ['', false, '']
+  };
+  const conf = map[t] || ['', false, ''];
+  wrap.style.display = conf[1] ? '' : 'none';
+  label.textContent = conf[0];
+  $('iValue').placeholder = conf[2];
+}
+
+$('iType').onchange = syncEditorValue;
+
+$('iSave').onclick = () => {
+  const name = $('iName').value.trim();
+  if(!name){ toast('请填动作名称'); return; }
+  const type = $('iType').value;
+  let value = $('iValue').value.trim();
+  if(type === 'percent1RM'){
+    let n = parseFloat(value);
+    if(isNaN(n)){ toast('百分比要填数字，如 0.8'); return; }
+    if(n > 1) n = n / 100;
+    value = n;
+  } else if(['rm','kg','rpe'].includes(type)){
+    value = parseFloat(value);
+    if(isNaN(value)){ toast('数值填错了'); return; }
+  } else if(type === 'none' || type === 'bodyweight' || type === 'amap'){
+    value = null;
+  }
+
+  const data = {
+    name: name,
+    sets: $('iSets').value ? parseInt($('iSets').value, 10) : null,
+    reps: $('iReps').value.trim() || null,
+    load: { type: type, value: value },
+    rest: $('iRest').value ? parseInt($('iRest').value, 10) : null,
+    note: $('iNote').value.trim() || null
+  };
+
+  const items = sessionsOf(editing.wi)[editing.di].items;
+  if(editing.isNew){
+    data.uid = 'u' + (uidSeq++) + '_' + Date.now();
+    items.push(data);
+  } else {
+    data.uid = editing.item.uid;
+    Object.assign(editing.item, data);
+  }
+  savePlan();
+  $('itemDlg').close();
+  renderMain(); renderWeekBar(); renderDayBar(); renderProgress();
+};
+
+$('iDelete').onclick = () => {
+  if(!editing.item) return;
+  if(!confirm('删除「' + editing.item.name + '」？')) return;
+  const items = sessionsOf(editing.wi)[editing.di].items;
+  const idx = items.indexOf(editing.item);
+  if(idx >= 0) items.splice(idx, 1);
+  savePlan();
+  $('itemDlg').close();
+  renderMain(); renderWeekBar(); renderDayBar(); renderProgress();
+};
+
+/* ============================================================
+ * 导入
+ * ========================================================== */
 let pendingPlan = null;
 
+$('navImport').onclick = () => $('fileInput').click();
 $('fileInput').onchange = async (e) => {
   const file = e.target.files && e.target.files[0];
   if(!file) return;
   e.target.value = '';
+  toast('正在解析…');
   try{
     const buf = await file.arrayBuffer();
-    const wb = XLSX.read(new Uint8Array(buf), { type:'array', cellFormula:true, cellNF:false, cellStyles:false });
-    const plan = LiXun.extractPlan(XLSX, wb, {
-      planName: file.name.replace(/\.(xlsx|xlsm)$/i, ''),
-      bar: settings.barKg
-    });
+    const wb = XLSX.read(new Uint8Array(buf), { type: 'array', cellDates: true, cellFormula: true, cellNF: false, cellStyles: false });
+    const plan = LiXun.extractPlan(XLSX, wb, { planName: file.name.replace(/\.(xlsx|xlsm)$/i, ''), fileName: file.name });
     pendingPlan = plan;
     showImportPreview(plan, file.name);
   }catch(err){
@@ -848,79 +1502,84 @@ $('fileInput').onchange = async (e) => {
 function showImportPreview(plan, fileName){
   const sessions = plan.weeks.reduce((a,w)=>a+w.sessions.length,0);
   const items = plan.weeks.reduce((a,w)=>a+w.sessions.reduce((b,s)=>b+s.items.length,0),0);
-  const sets = plan.weeks.reduce((a,w)=>a+w.sessions.reduce((b,s)=>b+s.items.reduce((c,it)=>c+(it.sets||1),0),0),0);
-  $('importInfo').innerHTML = `
-    <div><b style="color:var(--txt)">${escapeHtml(fileName)}</b></div>
-    <div style="margin-top:6px">1RM：<b style="color:var(--ok)">${fmtNum(plan.oneRM)} kg</b></div>
-    <div>周数：<b style="color:var(--txt)">${plan.totalWeeks}</b>　训练日：<b style="color:var(--txt)">${sessions}</b></div>
-    <div>动作条目：<b style="color:var(--txt)">${items}</b>　总组数：<b style="color:var(--txt)">${sets}</b></div>`;
-  const w = plan.warnings || [];
-  $('importWarn').textContent = w.length ? ('⚠ 有 ' + w.length + ' 条提示：' + w.slice(0, 2).join('；')) : '';
+  const kinds = {};
+  plan.weeks.forEach(w=>w.sessions.forEach(s=>s.items.forEach(it=>{
+    const t = it.load ? it.load.type : 'none';
+    kinds[t] = (kinds[t]||0)+1;
+  })));
+  const kindTxt = Object.keys(kinds).map(k => (TYPE_LABEL[k]||k) + ' ' + kinds[k]).join(' · ');
+  $('importInfo').innerHTML =
+    '<div><b style="color:var(--txt)">' + escapeHtml(fileName) + '</b></div>'
+    + '<div>识别格式：<b style="color:var(--txt)">' + escapeHtml(plan.format) + '</b></div>'
+    + '<div>周数：<b style="color:var(--txt)">' + plan.weeks.length + '</b>　训练日：<b style="color:var(--txt)">' + sessions + '</b></div>'
+    + '<div>动作条目：<b style="color:var(--txt)">' + items + '</b></div>'
+    + '<div style="margin-top:6px">重量类型：' + escapeHtml(kindTxt) + '</div>';
+  $('importWarn').textContent = (plan.warnings && plan.warnings.length) ? ('⚠ ' + plan.warnings.slice(0,2).join('；')) : '';
   $('importDlg').showModal();
 }
 
 $('cancelImport').onclick = () => { pendingPlan = null; $('importDlg').close(); };
-
 $('confirmImport').onclick = () => {
   if(!pendingPlan) return;
-  if(Object.keys(progress).length > 0 && !confirm('导入新计划会清空当前打卡记录，继续？')) return;
+  if(Object.keys(progress).length && !confirm('导入新计划会清空当前打卡记录，继续？')) return;
   PLAN = pendingPlan;
   pendingPlan = null;
   progress = {};
-  saveJSON(K_PLAN, PLAN);
+  ensureUids();
+  savePlan();
   saveJSON(K_PROG, progress);
   state.w = weekIndexFromDate();
   state.d = 0;
   $('importDlg').close();
   renderAll();
   window.scrollTo({ top: 0 });
+  const missing = collectExerciseNames().filter(x => !refStatus(x.name).ok).length;
+  if(missing) toast('导入成功，但有 ' + missing + ' 个动作需要填参考重量');
+  else toast('导入成功');
 };
 
-/* 恢复内置默认计划 */
-$('restorePlan').onclick = () => {
-  if(!confirm('恢复为内置的默认计划？当前导入的计划会被覆盖。')) return;
-  PLAN = DEFAULT_PLAN;
-  progress = {};
-  saveJSON(K_PLAN, PLAN);
-  saveJSON(K_PROG, progress);
-  state.w = weekIndexFromDate();
-  state.d = 0;
-  $('settingsDlg').close();
-  renderAll();
+/* ============================================================
+ * 设置面板
+ * ========================================================== */
+$('navSettings').onclick = () => {
+  $('sStart').value = settings.startDate;
+  $('sRest').value = settings.restSec;
+  $('planInfo').textContent = (PLAN.planName || '') + ' · ' + PLAN.weeks.length + ' 周 · 格式 ' + (PLAN.format || '内置');
+  $('settingsSheet').classList.add('show');
+};
+$('setClose').onclick = () => { $('settingsSheet').classList.remove('show'); renderAll(); };
+$('sStart').onchange = e => { settings.startDate = e.target.value || todayISO(); saveSettings(); state.w = weekIndexFromDate(); renderAll(); };
+$('sRest').onchange = e => { settings.restSec = Math.max(10, Math.min(900, parseInt(e.target.value,10) || 120)); saveSettings(); };
+$('btnResetProg').onclick = () => {
+  if(!confirm('清空全部打卡记录？')) return;
+  progress = {}; saveJSON(K_PROG, progress); renderAll(); toast('已清空');
+};
+$('btnRestore').onclick = () => {
+  if(!confirm('恢复内置的三乐卧推计划？当前计划会被覆盖。')) return;
+  PLAN = JSON.parse(JSON.stringify(DEFAULT_PLAN));
+  progress = {}; ensureUids();
+  savePlan(); saveJSON(K_PROG, progress);
+  state.w = weekIndexFromDate(); state.d = 0;
+  renderAll(); toast('已恢复');
 };
 
-/* ==================== 设置 ==================== */
-function openSettings(){
-  $('startDate').value = settings.startDate;
-  $('restSec').value = settings.restSec;
-  $('barKg').value = settings.barKg;
-  $('settingsDlg').showModal();
-}
-$('saveSettings').onclick = () => {
-  settings.startDate = $('startDate').value || todayISO();
-  settings.restSec = Math.max(10, Math.min(600, parseInt($('restSec').value)||90));
-  settings.barKg = Math.max(0, parseFloat($('barKg').value)||20);
-  saveJSON(K_SET, settings);
-  state.w = weekIndexFromDate();
-  $('settingsDlg').close();
-  renderAll();
-};
-$('resetProg').onclick = () => {
-  if(!confirm('确定清空全部 ' + PLAN.totalWeeks + ' 周的打卡记录？不可恢复。')) return;
-  progress = {};
-  saveJSON(K_PROG, progress);
-  $('settingsDlg').close();
-  renderAll();
+/* ============================================================
+ * 编辑模式
+ * ========================================================== */
+$('navEdit').onclick = () => {
+  state.edit = !state.edit;
+  $('navEdit').classList.toggle('on', state.edit);
+  renderMain();
+  toast(state.edit ? '编辑模式：可以改动作了' : '已退出编辑模式');
 };
 
-/* ==================== 启动 ==================== */
+/* ============================================================
+ * 启动
+ * ========================================================== */
 renderAll();
-console.log('[力训] 计划已加载:', PLAN.planName, PLAN.totalWeeks, '周');
-
-/* PWA：https/localhost 下才注册 Service Worker（file:// 不支持） */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(err => console.warn('[力训] SW 注册失败', err));
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
 }
 </script>

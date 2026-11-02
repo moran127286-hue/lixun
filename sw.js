@@ -1,5 +1,5 @@
 /* 力训 · Service Worker —— 让 App 可安装、可离线 */
-const CACHE = 'lixun-v4';
+const CACHE = 'lixun-v5';
 const ASSETS = [
   './',
   './index.html',
